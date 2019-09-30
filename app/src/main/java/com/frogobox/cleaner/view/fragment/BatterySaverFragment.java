@@ -253,7 +253,7 @@ public class BatterySaverFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.battery_saver, container, false);
+        View view = inflater.inflate(R.layout.fragment_battery_saver, container, false);
         mWaveLoadingView = (WaveLoadingView) view.findViewById(R.id.waveView);
         ImageView powersaving = view.findViewById(R.id.powersaving);
         ImageView ultrasaving = view.findViewById(R.id.ultra);

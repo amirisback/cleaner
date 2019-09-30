@@ -38,7 +38,7 @@ public class AppListenerBroadcastReceiver extends BroadcastReceiver {
             try {
                 String appName = (String) packageManager.getApplicationLabel(packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA));
                 LayoutInflater inflater = LayoutInflater.from(context);
-                View layout = inflater.inflate(R.layout.my_toast, null);
+                View layout = inflater.inflate(R.layout.toast_apps, null);
                 ImageView image = layout.findViewById(R.id.image);
                 TextView text = layout.findViewById(R.id.textView1);
                 String notif = appName + " Is Optimized by" + context.getString(R.string.app_name);

@@ -30,7 +30,7 @@ public class ScanCpuAppsViewAdapter extends RecyclerView.Adapter<ScanCpuAppsView
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.scan_cpu_apps, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.content_item_scan_cpu, parent, false);
         return new MyViewHolder(itemView);
     }
 

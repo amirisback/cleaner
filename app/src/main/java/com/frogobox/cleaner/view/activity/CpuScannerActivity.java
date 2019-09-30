@@ -59,7 +59,7 @@ public class CpuScannerActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cpu_scanner);
+        setContentView(R.layout.activity_cpu_scanner);
         scanner = findViewById(R.id.scann);
         cpu = findViewById(R.id.cpu);
         cooledcpu = findViewById(R.id.cpucooler);

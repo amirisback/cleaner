@@ -72,7 +72,7 @@ public class PhoneBoosterFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.phone_booster, container, false);
+        view = inflater.inflate(R.layout.fragment_phone_booster, container, false);
 
         arcView = view.findViewById(R.id.dynamicArcView2);
         scanning = view.findViewById(R.id.scanning);
@@ -149,7 +149,7 @@ public class PhoneBoosterFragment extends Fragment {
 //                            Toast.makeText(getActivity(), "Phone Is Aleady Optimized", Toast.LENGTH_SHORT).show();
 
                         @SuppressLint("RestrictedApi") LayoutInflater inflater = getLayoutInflater(getArguments());
-                        View layout = inflater.inflate(R.layout.my_toast, null);
+                        View layout = inflater.inflate(R.layout.toast_apps, null);
 
                         ImageView image = layout.findViewById(R.id.image);
 

@@ -21,7 +21,7 @@ public class RevertPowerSavingActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.revert_powersaving);
+        setContentView(R.layout.activity_revert_powersaving);
         DecoView arcView = (DecoView) findViewById(R.id.dynamicArcView2);
 
         arcView.addSeries(new SeriesItem.Builder(Color.argb(255, 218, 218, 218))

@@ -112,7 +112,7 @@ public class CPUCoolerFragment extends Fragment {
 //                                Toast.makeText(getActivity(), "CPU Temperature is Already Normal", Toast.LENGTH_SHORT).show();
 
                                     LayoutInflater inflater = getLayoutInflater(getArguments());
-                                    View layout = inflater.inflate(R.layout.my_toast, null);
+                                    View layout = inflater.inflate(R.layout.toast_apps, null);
 
                                     ImageView image = layout.findViewById(R.id.image);
 
@@ -170,7 +170,7 @@ public class CPUCoolerFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.cpu_cooler, container, false);
+        view = inflater.inflate(R.layout.fragment_cpu_cooler, container, false);
 
         try {
 
@@ -192,7 +192,7 @@ public class CPUCoolerFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     LayoutInflater inflater = getLayoutInflater(getArguments());
-                    View layout = inflater.inflate(R.layout.my_toast, null);
+                    View layout = inflater.inflate(R.layout.toast_apps, null);
 
                     ImageView image = layout.findViewById(R.id.image);
 

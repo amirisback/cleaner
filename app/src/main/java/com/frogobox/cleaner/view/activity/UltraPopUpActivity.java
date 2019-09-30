@@ -36,7 +36,7 @@ public class UltraPopUpActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle b = getIntent().getExtras();
-        setContentView(R.layout.ultra_popup);
+        setContentView(R.layout.activity_ultra_popup);
         ImageView applied = findViewById(R.id.applied);
         TextView extendedtime = findViewById(R.id.addedtime);
         TextView extendedtimedetail = findViewById(R.id.addedtimedetail);

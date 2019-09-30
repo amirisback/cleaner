@@ -28,7 +28,7 @@ public class PickAppsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pick_apps);
+        setContentView(R.layout.activity_pick_apps);
 
         sharedpreferences = getSharedPreferences(Constant.Variable.SHARED_PREF_WASEEMBEST, Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
@@ -62,7 +62,7 @@ public class PickAppsActivity extends Activity {
                     finish();
                 } else {
                     LayoutInflater inflater = getLayoutInflater();
-                    View layout = inflater.inflate(R.layout.my_toast, null);
+                    View layout = inflater.inflate(R.layout.toast_apps, null);
 
                     ImageView image = layout.findViewById(R.id.image);
 
@@ -104,7 +104,7 @@ public class PickAppsActivity extends Activity {
                     finish();
                 } else {
                     LayoutInflater inflater = getLayoutInflater();
-                    View layout = inflater.inflate(R.layout.my_toast, null);
+                    View layout = inflater.inflate(R.layout.toast_apps, null);
 
                     ImageView image = layout.findViewById(R.id.image);
 
@@ -146,7 +146,7 @@ public class PickAppsActivity extends Activity {
                 } else {
 
                     LayoutInflater inflater = getLayoutInflater();
-                    View layout = inflater.inflate(R.layout.my_toast, null);
+                    View layout = inflater.inflate(R.layout.toast_apps, null);
 
                     ImageView image = layout.findViewById(R.id.image);
 
@@ -188,7 +188,7 @@ public class PickAppsActivity extends Activity {
                     finish();
                 } else {
                     LayoutInflater inflater = getLayoutInflater();
-                    View layout = inflater.inflate(R.layout.my_toast, null);
+                    View layout = inflater.inflate(R.layout.toast_apps, null);
 
                     ImageView image = layout.findViewById(R.id.image);
 
@@ -232,7 +232,7 @@ public class PickAppsActivity extends Activity {
                 } else {
 
                     LayoutInflater inflater = getLayoutInflater();
-                    View layout = inflater.inflate(R.layout.my_toast, null);
+                    View layout = inflater.inflate(R.layout.toast_apps, null);
 
                     ImageView image = layout.findViewById(R.id.image);
 
@@ -276,7 +276,7 @@ public class PickAppsActivity extends Activity {
 //                    Toast.makeText(Pick_Apps.this, "Choose Another App This App Is Already Added", Toast.LENGTH_SHORT).show();
 
                     LayoutInflater inflater = getLayoutInflater();
-                    View layout = inflater.inflate(R.layout.my_toast, null);
+                    View layout = inflater.inflate(R.layout.toast_apps, null);
 
                     ImageView image = layout.findViewById(R.id.image);
 

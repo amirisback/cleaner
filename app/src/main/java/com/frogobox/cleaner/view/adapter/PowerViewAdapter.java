@@ -27,7 +27,7 @@ public class PowerViewAdapter extends RecyclerView.Adapter<PowerViewAdapter.MyVi
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.powe_itemlist, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.content_item_power, parent, false);
         return new MyViewHolder(itemView);
     }
 

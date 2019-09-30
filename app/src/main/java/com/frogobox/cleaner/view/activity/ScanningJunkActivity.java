@@ -76,7 +76,7 @@ public class ScanningJunkActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Bundle junk = getIntent().getExtras();
-        setContentView(R.layout.scanning_junk);
+        setContentView(R.layout.activity_scanning_junk);
         avi1 = findViewById(R.id.scan1);
         avi2 = findViewById(R.id.scan2);
         avi3 = findViewById(R.id.scan3);

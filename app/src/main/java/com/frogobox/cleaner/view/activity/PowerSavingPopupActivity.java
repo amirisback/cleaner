@@ -39,7 +39,7 @@ public class PowerSavingPopupActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle b = getIntent().getExtras();
-        setContentView(R.layout.powersaving_popup);
+        setContentView(R.layout.activity_powersaving_popup);
 
         SharedPreferences sharedpreferences = getSharedPreferences(Constant.Variable.SHARED_PREF_WAS, Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();

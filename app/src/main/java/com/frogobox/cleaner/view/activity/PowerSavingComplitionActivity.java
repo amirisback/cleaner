@@ -51,7 +51,7 @@ public class PowerSavingComplitionActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.powersaving_completion);
+        setContentView(R.layout.activity_powersaving_completion);
         ist = findViewById(R.id.ist);
         sec = findViewById(R.id.sec);
         thir = findViewById(R.id.thi);

@@ -47,7 +47,7 @@ public class NormalModeActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.revert_to_normal);
+        setContentView(R.layout.activity_revert_to_normal);
 
         ist = findViewById(R.id.ist);
         sec = findViewById(R.id.sec);

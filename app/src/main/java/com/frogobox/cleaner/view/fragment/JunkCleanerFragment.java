@@ -50,7 +50,7 @@ public class JunkCleanerFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.junk_cleaner, container, false);
+        view = inflater.inflate(R.layout.fragment_junk_cleaner, container, false);
         mainbrush = view.findViewById(R.id.mainbrush);
         mainbutton = view.findViewById(R.id.mainbutton);
         cache = view.findViewById(R.id.cache);
@@ -193,7 +193,7 @@ public class JunkCleanerFragment extends Fragment {
 //                        Toast.makeText(getActivity(), "No Junk Files ALready Cleaned.", Toast.LENGTH_LONG).show();
 
                         @SuppressLint("RestrictedApi") LayoutInflater inflater = getLayoutInflater(getArguments());
-                        View layout = inflater.inflate(R.layout.my_toast, null);
+                        View layout = inflater.inflate(R.layout.toast_apps, null);
 
                         ImageView image = layout.findViewById(R.id.image);
 
