@@ -9,8 +9,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +17,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.frogobox.cleaner.service.AlarmJunkBroadcastReceiver;
-import com.frogobox.cleaner.view.activity.MainActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.service.AlarmJunkBroadcastReceiver;
+import com.frogobox.cleaner.utils.Constant;
+import com.frogobox.cleaner.view.activity.MainActivity;
 import com.frogobox.cleaner.view.activity.ScanningJunkActivity;
 
 import java.util.Random;
@@ -32,43 +34,43 @@ import static android.content.Context.ALARM_SERVICE;
  * Created by Frogobox Software Industries 2/12/2017.
  */
 
-public class JunkCleanerFragment extends Fragment{
+public class JunkCleanerFragment extends Fragment {
 
-    ImageView mainbrush,cache,temp,residue,system;
-    TextView maintext,cachetext,temptext,residuetext,systemtext;
     public static ImageView mainbutton;
+    private ImageView mainbrush, cache, temp, residue, system;
+    private TextView maintext, cachetext, temptext, residuetext, systemtext;
+    private int checkvar = 0;
+    private int alljunk;
 
-    int checkvar=0;
-    int alljunk;
+    private SharedPreferences sharedpreferences;
+    private SharedPreferences.Editor editor;
 
-    SharedPreferences sharedpreferences;
-    SharedPreferences.Editor editor;
+    private View view;
 
-    View view;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view= inflater.inflate(R.layout.junk_cleaner, container, false);
-        mainbrush=(ImageView) view.findViewById(R.id.mainbrush);
-        mainbutton=(ImageView) view.findViewById(R.id.mainbutton);
-        cache=(ImageView) view.findViewById(R.id.cache);
-        temp=(ImageView) view.findViewById(R.id.temp);
-        residue=(ImageView) view.findViewById(R.id.residue);
-        system=(ImageView) view.findViewById(R.id.system);
+        view = inflater.inflate(R.layout.junk_cleaner, container, false);
+        mainbrush = view.findViewById(R.id.mainbrush);
+        mainbutton = view.findViewById(R.id.mainbutton);
+        cache = view.findViewById(R.id.cache);
+        temp = view.findViewById(R.id.temp);
+        residue = view.findViewById(R.id.residue);
+        system = view.findViewById(R.id.system);
 
 
-        maintext=(TextView) view.findViewById(R.id.maintext);
-        cachetext=(TextView) view.findViewById(R.id.cachetext);
-        temptext =(TextView) view.findViewById(R.id.temptext);
-        residuetext =(TextView) view.findViewById(R.id.residuetext);
-        systemtext =(TextView) view.findViewById(R.id.systemtext);
+        maintext = view.findViewById(R.id.maintext);
+        cachetext = view.findViewById(R.id.cachetext);
+        temptext = view.findViewById(R.id.temptext);
+        residuetext = view.findViewById(R.id.residuetext);
+        systemtext = view.findViewById(R.id.systemtext);
 
         try {
 
-            sharedpreferences = getActivity().getSharedPreferences("waseem", Context.MODE_PRIVATE);
+            sharedpreferences = getActivity().getSharedPreferences(Constant.Variable.SHARED_PREF_WASEEM, Context.MODE_PRIVATE);
 
 
-            if (sharedpreferences.getString("junk", "1").equals("1")) {
+            if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_JUNK, "1").equals("1")) {
                 mainbrush.setImageResource(R.drawable.junk_red);
                 mainbutton.setImageResource(R.drawable.clean);
                 cache.setImageResource(R.drawable.cache);
@@ -135,10 +137,10 @@ public class JunkCleanerFragment extends Fragment{
                 @Override
                 public void onClick(View v) {
 
-                    if (sharedpreferences.getString("junk", "1").equals("1")) {
+                    if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_JUNK, "1").equals("1")) {
 
                         Intent i = new Intent(getActivity(), ScanningJunkActivity.class);
-                        i.putExtra("junk", alljunk + "");
+                        i.putExtra(Constant.Variable.SHARED_PREF_JUNK, alljunk + "");
                         startActivity(i);
 
                         final Handler handler = new Handler();
@@ -173,7 +175,7 @@ public class JunkCleanerFragment extends Fragment{
 
 
                                 editor = sharedpreferences.edit();
-                                editor.putString("junk", "0");
+                                editor.putString(Constant.Variable.SHARED_PREF_JUNK, "0");
                                 editor.commit();
 
 
@@ -193,9 +195,9 @@ public class JunkCleanerFragment extends Fragment{
                         @SuppressLint("RestrictedApi") LayoutInflater inflater = getLayoutInflater(getArguments());
                         View layout = inflater.inflate(R.layout.my_toast, null);
 
-                        ImageView image = (ImageView) layout.findViewById(R.id.image);
+                        ImageView image = layout.findViewById(R.id.image);
 
-                        TextView text = (TextView) layout.findViewById(R.id.textView1);
+                        TextView text = layout.findViewById(R.id.textView1);
                         text.setText("No Junk Files ALready Cleaned.");
 
                         Toast toast = new Toast(getActivity());
@@ -237,9 +239,7 @@ public class JunkCleanerFragment extends Fragment{
 //            systemtext.setText(proc4+" MB");
 //            systemtext.setTextColor(Color.parseColor("#F22938"));
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
 

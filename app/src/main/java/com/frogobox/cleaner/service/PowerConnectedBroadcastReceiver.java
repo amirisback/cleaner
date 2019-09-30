@@ -10,13 +10,11 @@ import com.frogobox.cleaner.view.activity.MainActivity;
  * Created by Frogobox Software Industries 3/14/2017.
  */
 
-public class PowerConnectedBroadcastReceiver extends BroadcastReceiver{
-
-    // bROAD CAST THAT lISTEN fOR charger Connected Events
+public class PowerConnectedBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent i=new Intent(context, MainActivity.class);
+        Intent i = new Intent(context, MainActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(i);
     }

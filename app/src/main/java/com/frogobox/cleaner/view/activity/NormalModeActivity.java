@@ -13,14 +13,16 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.utils.Constant;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -34,46 +36,45 @@ import com.hookedonplay.decoviewlib.events.DecoEvent;
 
 public class NormalModeActivity extends Activity {
 
-    DecoView arcView;
-    TextView ist,sec,thir,fou,completion;
-    ImageView istpic,secpic,thirpic,foupic;
-    SharedPreferences sharedpreferences;
-    SharedPreferences.Editor editor;
-    int check=0;
-    InterstitialAd mInterstitialAd;
+    private DecoView arcView;
+    private TextView ist, sec, thir, fou, completion;
+    private ImageView istpic, secpic, thirpic, foupic;
+    private SharedPreferences sharedpreferences;
+    private SharedPreferences.Editor editor;
+    private int check = 0;
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.revert_to_normal);
 
-        ist=(TextView) findViewById(R.id.ist);
-        sec=(TextView) findViewById(R.id.sec);
-        thir=(TextView) findViewById(R.id.thi);
-        fou=(TextView) findViewById(R.id.fou);
-        istpic=(ImageView) findViewById(R.id.istpic);
-        secpic=(ImageView) findViewById(R.id.secpic);
-        thirpic=(ImageView) findViewById(R.id.thipic);
-        foupic=(ImageView) findViewById(R.id.foupic);
-        completion=(TextView) findViewById(R.id.completion);
+        ist = findViewById(R.id.ist);
+        sec = findViewById(R.id.sec);
+        thir = findViewById(R.id.thi);
+        fou = findViewById(R.id.fou);
+        istpic = findViewById(R.id.istpic);
+        secpic = findViewById(R.id.secpic);
+        thirpic = findViewById(R.id.thipic);
+        foupic = findViewById(R.id.foupic);
+        completion = findViewById(R.id.completion);
 
-        sharedpreferences = getSharedPreferences("was", Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences(Constant.Variable.SHARED_PREF_WAS, Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
 
 
         ///// Call to Intersticial load
 
         mInterstitialAd = new InterstitialAd(getApplicationContext());
-                    mInterstitialAd.setAdUnitId(getResources().getString(R.string.interstitial));
-                    AdRequest adRequestInter = new AdRequest.Builder().build();
-                    mInterstitialAd.setAdListener(new AdListener() {
-                        @Override
-                        public void onAdLoaded() {
+        mInterstitialAd.setAdUnitId(getResources().getString(R.string.interstitial));
+        AdRequest adRequestInter = new AdRequest.Builder().build();
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
 
-                        }
-                    });
-                    mInterstitialAd.loadAd(adRequestInter);
-
+            }
+        });
+        mInterstitialAd.loadAd(adRequestInter);
 
 
         //// DEcoView Library For Progress Completion a circle Drrawn using this library
@@ -98,7 +99,7 @@ public class NormalModeActivity extends Activity {
                 .setLineWidth(10f)
                 .build();
 
-        SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor("#FFFFFF"))
+        SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor(Constant.Variable.COLOR_WHITE))
                 .setRange(0, 100, 0)
                 .setLineWidth(10f)
                 .build();
@@ -113,11 +114,10 @@ public class NormalModeActivity extends Activity {
 
                 Float obj = new Float(v1);
                 int i = obj.intValue();
-                completion.setText(i+"%");
+                completion.setText(i + "%");
 
-                if(v1>=10 && v1<50)
-                {
-                    ist.setTextColor(Color.parseColor("#FFFFFF"));
+                if (v1 >= 10 && v1 < 50) {
+                    ist.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
                     istpic.setImageResource(R.drawable.circle_white);
 //
 //                    final InterstitialAd mInterstitialAd = new InterstitialAd(getApplicationContext());
@@ -131,20 +131,14 @@ public class NormalModeActivity extends Activity {
 //                    });
 //                    mInterstitialAd.loadAd(adRequestInter);
 
-                }
-                else if(v1>=50 && v1<75)
-                {
-                    sec.setTextColor(Color.parseColor("#FFFFFF"));
+                } else if (v1 >= 50 && v1 < 75) {
+                    sec.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
                     secpic.setImageResource(R.drawable.circle_white);
-                }
-                else if(v1>=75 && v1<90)
-                {
-                    thir.setTextColor(Color.parseColor("#FFFFFF"));
+                } else if (v1 >= 75 && v1 < 90) {
+                    thir.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
                     thirpic.setImageResource(R.drawable.circle_white);
-                }
-                else if(v1>=90 && v1<=100)
-                {
-                    fou.setTextColor(Color.parseColor("#FFFFFF"));
+                } else if (v1 >= 90 && v1 <= 100) {
+                    fou.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
                     foupic.setImageResource(R.drawable.circle_white);
                 }
 
@@ -190,15 +184,11 @@ public class NormalModeActivity extends Activity {
             public void onEventEnd(DecoEvent decoEvent) {
 
 
-                try
-                {
+                try {
                     mInterstitialAd.show();
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
 
                 }
-
 
 
 //                bottom.setText("Found");
@@ -206,7 +196,7 @@ public class NormalModeActivity extends Activity {
 //                Random ran3 = new Random();
 //                ramperct.setText(ran3.nextInt(40) + 20+"%");
 
-                check=1;
+                check = 1;
                 youDesirePermissionCode(NormalModeActivity.this);
 
 //                enablesall();
@@ -217,8 +207,7 @@ public class NormalModeActivity extends Activity {
         }).build());
     }
 
-    public void enablesall()
-    {
+    public void enablesall() {
 
 
         /// activate and release all system services
@@ -252,9 +241,7 @@ public class NormalModeActivity extends Activity {
     }
 
 
-
-
-    public void youDesirePermissionCode(Activity context){
+    public void youDesirePermissionCode(Activity context) {
 
         //// Run time permission for marshmallow users
 
@@ -271,7 +258,7 @@ public class NormalModeActivity extends Activity {
             enablesall();
 
             finish();
-        }  else {
+        } else {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                 Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
                 intent.setData(Uri.parse("package:" + context.getPackageName()));
@@ -281,12 +268,13 @@ public class NormalModeActivity extends Activity {
             }
         }
     }
+
     //
     @SuppressLint("NewApi")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && Settings.System.canWrite(this)){
+        if (requestCode == 1 && Settings.System.canWrite(this)) {
             Log.d("TAG", "CODE_WRITE_SETTINGS_PERMISSION success");
 
 
@@ -318,14 +306,10 @@ public class NormalModeActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(check==1)
-        {
-            try
-            {
+        if (check == 1) {
+            try {
                 enablesall();
-            }
-            catch(Exception e)
-            {
+            } catch (Exception e) {
                 finish();
             }
             finish();

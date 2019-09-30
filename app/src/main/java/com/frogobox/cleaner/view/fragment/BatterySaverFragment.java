@@ -8,18 +8,20 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.BatteryManager;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.utils.Constant;
 import com.frogobox.cleaner.view.activity.MainActivity;
 import com.frogobox.cleaner.view.activity.NormalModeActivity;
 import com.frogobox.cleaner.view.activity.PowerSavingPopupActivity;
-import com.frogobox.cleaner.myapplication.R;
 import com.frogobox.cleaner.view.activity.UltraPopUpActivity;
 
 import me.itangqi.waveloadingview.WaveLoadingView;
@@ -30,12 +32,10 @@ import me.itangqi.waveloadingview.WaveLoadingView;
 
 public class BatterySaverFragment extends Fragment {
 
-    View view;
-    WaveLoadingView mWaveLoadingView;
-    ImageView powersaving, ultrasaving, normal;
-    TextView hourn, minutes, hourp, minutep, houru, minutesu, hourmain, minutesmain;
-    SharedPreferences sharedpreferences;
-    SharedPreferences.Editor editor;
+    private WaveLoadingView mWaveLoadingView;
+    private TextView hourn, minutes, hourp, minutep, houru, minutesu, hourmain, minutesmain;
+    private SharedPreferences sharedpreferences;
+    private SharedPreferences.Editor editor;
 
     private BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver() {
         @Override
@@ -253,20 +253,20 @@ public class BatterySaverFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.battery_saver, container, false);
+        View view = inflater.inflate(R.layout.battery_saver, container, false);
         mWaveLoadingView = (WaveLoadingView) view.findViewById(R.id.waveView);
-        powersaving = (ImageView) view.findViewById(R.id.powersaving);
-        ultrasaving = (ImageView) view.findViewById(R.id.ultra);
-        normal = (ImageView) view.findViewById(R.id.normal);
-        hourn = (TextView) view.findViewById(R.id.hourn);
-        minutes = (TextView) view.findViewById(R.id.minutes);
-        hourp = (TextView) view.findViewById(R.id.hourp);
-        minutep = (TextView) view.findViewById(R.id.minutesp);
-        houru = (TextView) view.findViewById(R.id.houru);
-        minutesu = (TextView) view.findViewById(R.id.minutesu);
-        hourmain = (TextView) view.findViewById(R.id.hourmain);
-        minutesmain = (TextView) view.findViewById(R.id.minutesmain);
-        sharedpreferences = getActivity().getSharedPreferences("was", Context.MODE_PRIVATE);
+        ImageView powersaving = view.findViewById(R.id.powersaving);
+        ImageView ultrasaving = view.findViewById(R.id.ultra);
+        ImageView normal = view.findViewById(R.id.normal);
+        hourn = view.findViewById(R.id.hourn);
+        minutes = view.findViewById(R.id.minutes);
+        hourp = view.findViewById(R.id.hourp);
+        minutep = view.findViewById(R.id.minutesp);
+        houru = view.findViewById(R.id.houru);
+        minutesu = view.findViewById(R.id.minutesu);
+        hourmain = view.findViewById(R.id.hourmain);
+        minutesmain = view.findViewById(R.id.minutesmain);
+        sharedpreferences = getActivity().getSharedPreferences(Constant.Variable.SHARED_PREF_WAS, Context.MODE_PRIVATE);
         getActivity().registerReceiver(this.mBatInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 
         try {
@@ -275,10 +275,10 @@ public class BatterySaverFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(getActivity(), PowerSavingPopupActivity.class);
-                    i.putExtra("hour", hourp.getText());
-                    i.putExtra("minutes", minutep.getText());
-                    i.putExtra("minutesnormal", minutes.getText());
-                    i.putExtra("hournormal", hourn.getText());
+                    i.putExtra(Constant.Variable.EXTRA_HOURS, hourp.getText());
+                    i.putExtra(Constant.Variable.EXTRA_MINUTES, minutep.getText());
+                    i.putExtra(Constant.Variable.EXTRA_MINUTES_NORMAL, minutes.getText());
+                    i.putExtra(Constant.Variable.EXTRA_HOURS_NORMAL, hourn.getText());
                     startActivity(i);
                 }
             });
@@ -287,10 +287,10 @@ public class BatterySaverFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(getActivity(), UltraPopUpActivity.class);
-                    i.putExtra("hour", houru.getText());
-                    i.putExtra("minutes", minutesu.getText());
-                    i.putExtra("minutesnormal", minutes.getText());
-                    i.putExtra("hournormal", hourn.getText());
+                    i.putExtra(Constant.Variable.EXTRA_HOURS, houru.getText());
+                    i.putExtra(Constant.Variable.EXTRA_MINUTES, minutesu.getText());
+                    i.putExtra(Constant.Variable.EXTRA_MINUTES_NORMAL, minutes.getText());
+                    i.putExtra(Constant.Variable.EXTRA_HOURS_NORMAL, hourn.getText());
                     startActivity(i);
                 }
             });
@@ -305,8 +305,8 @@ public class BatterySaverFragment extends Fragment {
 
 
             mWaveLoadingView.setShapeType(WaveLoadingView.ShapeType.CIRCLE);
-            mWaveLoadingView.setCenterTitleColor(Color.parseColor("#FFFFFF"));
-            mWaveLoadingView.setBottomTitleColor(Color.parseColor("#FFFFFF"));
+            mWaveLoadingView.setCenterTitleColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
+            mWaveLoadingView.setBottomTitleColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
             mWaveLoadingView.setBorderWidth(10);
             mWaveLoadingView.setAmplitudeRatio(30);
             mWaveLoadingView.setWaveColor(Color.parseColor("#2499E0"));
@@ -341,9 +341,7 @@ public class BatterySaverFragment extends Fragment {
         super.onStop();
         try {
             getActivity().unregisterReceiver(mBatInfoReceiver);
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
 
         }
     }

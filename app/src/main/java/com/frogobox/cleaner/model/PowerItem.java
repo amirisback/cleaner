@@ -6,7 +6,7 @@ package com.frogobox.cleaner.model;
 
 public class PowerItem {
 
-    String text;
+    private String text;
 
     public String getText() {
         return text;

@@ -4,17 +4,18 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.frogobox.cleaner.view.adapter.PowerViewAdapter;
-import com.frogobox.cleaner.model.PowerItem;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.frogobox.cleaner.model.PowerItem;
 import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.utils.Constant;
+import com.frogobox.cleaner.view.adapter.PowerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,51 +27,45 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
  * Created by Frogobox Software Industries 2/19/2017.
  */
 
-public class UltraPopUpActivity extends Activity{
+public class UltraPopUpActivity extends Activity {
 
-    RecyclerView recyclerView;
-    PowerViewAdapter mAdapter;
-    List<PowerItem> items;
-    ImageView applied;
-    TextView extendedtime,extendedtimedetail;
-    int hour;
-    int min;
+    private PowerViewAdapter mAdapter;
+    private List<PowerItem> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle b=getIntent().getExtras();
+        Bundle b = getIntent().getExtras();
         setContentView(R.layout.ultra_popup);
-        applied =(ImageView) findViewById(R.id.applied);
-        extendedtime=(TextView) findViewById(R.id.addedtime);
-        extendedtimedetail=(TextView) findViewById(R.id.addedtimedetail);
+        ImageView applied = findViewById(R.id.applied);
+        TextView extendedtime = findViewById(R.id.addedtime);
+        TextView extendedtimedetail = findViewById(R.id.addedtimedetail);
 
 
+        int hour;
+        int min;
         try {
 
-            hour = Integer.parseInt(b.getString("hour").replaceAll("[^0-9]", "")) - Integer.parseInt(b.getString("hournormal").replaceAll("[^0-9]", ""));
-            min = Integer.parseInt(b.getString("minutes").replaceAll("[^0-9]", "")) - Integer.parseInt(b.getString("minutesnormal").replaceAll("[^0-9]", ""));
-        }
-        catch(Exception e)
-        {
-            hour=4;
-            min=7;
+            hour = Integer.parseInt(b.getString(Constant.Variable.EXTRA_HOURS).replaceAll("[^0-9]", "")) - Integer.parseInt(b.getString(Constant.Variable.EXTRA_HOURS_NORMAL).replaceAll("[^0-9]", ""));
+            min = Integer.parseInt(b.getString(Constant.Variable.EXTRA_MINUTES).replaceAll("[^0-9]", "")) - Integer.parseInt(b.getString(Constant.Variable.EXTRA_MINUTES_NORMAL).replaceAll("[^0-9]", ""));
+        } catch (Exception e) {
+            hour = 4;
+            min = 7;
         }
 
-        if(hour==0 && min==0)
-        {
-            hour=4;
-            min=7;
+        if (hour == 0 && min == 0) {
+            hour = 4;
+            min = 7;
         }
 
-        extendedtime.setText("(+"+hour+" h " +Math.abs(min)+" m)");
-        extendedtimedetail.setText("Extended Battery Up to "+Math.abs(hour)+"h "+Math.abs(min)+"m");
+        extendedtime.setText("(+" + hour + " h " + Math.abs(min) + " m)");
+        extendedtimedetail.setText("Extended Battery Up to " + Math.abs(hour) + "h " + Math.abs(min) + "m");
 
         applied.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent i=new Intent(UltraPopUpActivity.this, ApplyingUltraActivity.class);
+                Intent i = new Intent(UltraPopUpActivity.this, ApplyingUltraActivity.class);
                 startActivity(i);
 //                if (Build.VERSION.SDK_INT >= 21) {
 //                    getWindow().setNavigationBarColor(Color.parseColor("#000000"));
@@ -82,9 +77,9 @@ public class UltraPopUpActivity extends Activity{
             }
         });
 
-        items =new ArrayList<>();
+        items = new ArrayList<>();
 
-        recyclerView =(RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         recyclerView.setItemAnimator(new SlideInLeftAnimator());
 //                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
@@ -139,7 +134,6 @@ public class UltraPopUpActivity extends Activity{
         }, 4000);
 
 
-
         final Handler handler5 = new Handler();
         handler5.postDelayed(new Runnable() {
             @Override
@@ -167,11 +161,10 @@ public class UltraPopUpActivity extends Activity{
 //        }, 4000);
 
 
-
     }
 
     public void add(String text, int position) {
-        PowerItem item=new PowerItem();
+        PowerItem item = new PowerItem();
         item.setText(text);
         items.add(item);
 //        mDataSet.add(position, text);

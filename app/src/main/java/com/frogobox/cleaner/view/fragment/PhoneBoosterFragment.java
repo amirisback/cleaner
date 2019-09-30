@@ -1,5 +1,6 @@
 package com.frogobox.cleaner.view.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -8,8 +9,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,9 +24,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.frogobox.cleaner.view.activity.MainActivity;
-import com.frogobox.cleaner.service.AlarmBoosterBroadcastReceiver;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.service.AlarmBoosterBroadcastReceiver;
+import com.frogobox.cleaner.utils.Constant;
+import com.frogobox.cleaner.view.activity.MainActivity;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -52,40 +55,40 @@ import static android.content.Context.ALARM_SERVICE;
 
 public class PhoneBoosterFragment extends Fragment {
 
-    int mb = 1024 * 1024;
-    View view;
-    DecoView arcView;
-    TextView scanning, centree, totalram, usedram, appused, appsfreed, processes,top,bottom,ramperct;
-    LinearLayout scanlay, optimizelay;
     public static ImageView optimizebutton;
-    TimerTask timer = null;
-    TimerTask timer2 = null;
-    int x, y;
-    int counter = 0;
-    SharedPreferences sharedpreferences;
-    SharedPreferences.Editor editor;
-    InterstitialAd mInterstitialAd;
+    private int mb = 1024 * 1024;
+    private View view;
+    private DecoView arcView;
+    private TextView scanning, centree, totalram, usedram, appused, appsfreed, processes, top, bottom, ramperct;
+    private LinearLayout scanlay, optimizelay;
+    private TimerTask timer = null;
+    private TimerTask timer2 = null;
+    private int x, y;
+    private int counter = 0;
+    private SharedPreferences sharedpreferences;
+    private SharedPreferences.Editor editor;
+    private InterstitialAd mInterstitialAd;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.phone_booster, container, false);
 
-        arcView = (DecoView) view.findViewById(R.id.dynamicArcView2);
-        scanning = (TextView) view.findViewById(R.id.scanning);
-        scanlay = (LinearLayout) view.findViewById(R.id.scanlay);
-        optimizelay = (LinearLayout) view.findViewById(R.id.optimizelay);
-        optimizebutton = (ImageView) view.findViewById(R.id.optbutton);
-        centree = (TextView) view.findViewById(R.id.centree);
-        totalram = (TextView) view.findViewById(R.id.totalram);
-        usedram = (TextView) view.findViewById(R.id.usedram);
-        appsfreed = (TextView) view.findViewById(R.id.appsfreed);
-        appused = (TextView) view.findViewById(R.id.appsused);
-        processes = (TextView) view.findViewById(R.id.processes);
-        top = (TextView) view.findViewById(R.id.top);
-        bottom = (TextView) view.findViewById(R.id.bottom);
-        ramperct = (TextView) view.findViewById(R.id.ramperct);
-        sharedpreferences = getActivity().getSharedPreferences("waseem", Context.MODE_PRIVATE);
+        arcView = view.findViewById(R.id.dynamicArcView2);
+        scanning = view.findViewById(R.id.scanning);
+        scanlay = view.findViewById(R.id.scanlay);
+        optimizelay = view.findViewById(R.id.optimizelay);
+        optimizebutton = view.findViewById(R.id.optbutton);
+        centree = view.findViewById(R.id.centree);
+        totalram = view.findViewById(R.id.totalram);
+        usedram = view.findViewById(R.id.usedram);
+        appsfreed = view.findViewById(R.id.appsfreed);
+        appused = view.findViewById(R.id.appsused);
+        processes = view.findViewById(R.id.processes);
+        top = view.findViewById(R.id.top);
+        bottom = view.findViewById(R.id.bottom);
+        ramperct = view.findViewById(R.id.ramperct);
+        sharedpreferences = getActivity().getSharedPreferences(Constant.Variable.SHARED_PREF_WASEEM, Context.MODE_PRIVATE);
 
         mInterstitialAd = new InterstitialAd(getActivity());
         mInterstitialAd.setAdUnitId(getResources().getString(R.string.interstitial));
@@ -97,9 +100,6 @@ public class PhoneBoosterFragment extends Fragment {
             }
         });
         mInterstitialAd.loadAd(adRequestInter);
-
-
-
 
 
         try {
@@ -115,11 +115,11 @@ public class PhoneBoosterFragment extends Fragment {
             optimizebutton.setImageResource(0);
             optimizebutton.setImageResource(R.drawable.optimize);
 
-            if (sharedpreferences.getString("booster", "1").equals("0")) {
+            if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1").equals("0")) {
                 optimizebutton.setImageResource(0);
                 optimizebutton.setImageResource(R.drawable.optimized);
 
-                centree.setText(sharedpreferences.getString("value", "50MB"));
+                centree.setText(sharedpreferences.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB"));
 
             }
 
@@ -129,11 +129,11 @@ public class PhoneBoosterFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
 
-                    if (sharedpreferences.getString("booster", "1").equals("1")) {
+                    if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1").equals("1")) {
                         optimize();
 
                         editor = sharedpreferences.edit();
-                        editor.putString("booster", "0");
+                        editor.putString(Constant.Variable.SHARED_PREF_BOOSTER, "0");
                         editor.commit();
 
 
@@ -148,12 +148,12 @@ public class PhoneBoosterFragment extends Fragment {
 
 //                            Toast.makeText(getActivity(), "Phone Is Aleady Optimized", Toast.LENGTH_SHORT).show();
 
-                        LayoutInflater inflater = getLayoutInflater(getArguments());
+                        @SuppressLint("RestrictedApi") LayoutInflater inflater = getLayoutInflater(getArguments());
                         View layout = inflater.inflate(R.layout.my_toast, null);
 
-                        ImageView image = (ImageView) layout.findViewById(R.id.image);
+                        ImageView image = layout.findViewById(R.id.image);
 
-                        TextView text = (TextView) layout.findViewById(R.id.textView1);
+                        TextView text = layout.findViewById(R.id.textView1);
                         text.setText("Phone Is Aleady Optimized");
 
                         Toast toast = new Toast(getActivity());
@@ -172,9 +172,7 @@ public class PhoneBoosterFragment extends Fragment {
 // Create background track
 
 //    optimize();
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
 
         }
 
@@ -188,7 +186,7 @@ public class PhoneBoosterFragment extends Fragment {
         rotate.setDuration(5000);
         rotate.setInterpolator(new LinearInterpolator());
 
-        ImageView image = (ImageView) view.findViewById(R.id.circularlines);
+        ImageView image = view.findViewById(R.id.circularlines);
 
         image.startAnimation(rotate);
 
@@ -250,11 +248,11 @@ public class PhoneBoosterFragment extends Fragment {
                 bottom.setText("Found");
                 top.setText("Storage");
                 Random ran3 = new Random();
-                ramperct.setText(ran3.nextInt(40) + 20+"%");
+                ramperct.setText(ran3.nextInt(40) + 20 + "%");
             }
         }).build());
 
-        ImageView img_animation = (ImageView) view.findViewById(R.id.waves);
+        ImageView img_animation = view.findViewById(R.id.waves);
 
         TranslateAnimation animation = new TranslateAnimation(0.0f, 1000.0f, 0.0f, 0.0f);          //  new TranslateAnimation(xFrom,xTo, yFrom,yTo)
         animation.setDuration(5000);  // animation duration
@@ -293,7 +291,7 @@ public class PhoneBoosterFragment extends Fragment {
                 centree.setText(getUsedMemorySize() - x + " MB");
 
                 editor = sharedpreferences.edit();
-                editor.putString("value", getUsedMemorySize() - x + " MB");
+                editor.putString(Constant.Variable.SHARED_PREF_VALUE, getUsedMemorySize() - x + " MB");
                 editor.commit();
 
                 Log.e("used mem", getUsedMemorySize() + " MB");
@@ -306,11 +304,6 @@ public class PhoneBoosterFragment extends Fragment {
                 appused.setText(Math.abs(getUsedMemorySize() - x - 30) + " MB/ ");
 
                 processes.setText(y - proc + "");
-
-
-
-
-
 
 
 //                optimizebutton.setOnClickListener(new View.OnClickListener() {
@@ -389,9 +382,7 @@ public class PhoneBoosterFragment extends Fragment {
                             centree.setText(counter + "MB");
                         }
                     });
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
 
                 }
 
@@ -400,7 +391,6 @@ public class PhoneBoosterFragment extends Fragment {
 
         };
         t.schedule(timer, 30, 30);
-
 
 
         Random ran2 = new Random();
@@ -440,8 +430,6 @@ public class PhoneBoosterFragment extends Fragment {
                 .build());
 
 
-
-
         arcView.addEvent(new DecoEvent.Builder(proc).setIndex(series1Index2).setDelay(2000).setListener(new DecoEvent.ExecuteEventListener() {
             @Override
             public void onEventStart(DecoEvent decoEvent) {
@@ -459,12 +447,10 @@ public class PhoneBoosterFragment extends Fragment {
 
                 centree.setText(getUsedMemorySize() + " MB");
 
-                if(sharedpreferences.getString("booster","1").equals("0"))
-                {
+                if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1").equals("0")) {
 
-                    centree.setText(sharedpreferences.getString("value","50MB"));
+                    centree.setText(sharedpreferences.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB"));
                 }
-
 
 
                 final Timer t = new Timer();
@@ -486,9 +472,9 @@ public class PhoneBoosterFragment extends Fragment {
 
                                         centree.setText(getUsedMemorySize() + " MB");
 
-                                        if (sharedpreferences.getString("booster", "1").equals("0")) {
+                                        if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1").equals("0")) {
 
-                                            centree.setText(sharedpreferences.getString("value", "50MB"));
+                                            centree.setText(sharedpreferences.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB"));
                                         }
 
                                         t2.cancel();
@@ -498,9 +484,7 @@ public class PhoneBoosterFragment extends Fragment {
 
                                     }
                                 });
-                            }
-                            catch(Exception e)
-                            {
+                            } catch (Exception e) {
 
                             }
 
@@ -508,14 +492,11 @@ public class PhoneBoosterFragment extends Fragment {
 
                     };
 //Set the schedule function and rate
-                }
-                catch(Exception e)
-                {
+                } catch (Exception e) {
 
                 }
 
                 t2.schedule(timer2, 100, 100);
-
 
 
             }
@@ -607,10 +588,8 @@ public class PhoneBoosterFragment extends Fragment {
             long availableMegs = mi.availMem / 1048576L;
 
             return availableMegs;
-        }
-        catch(Exception e)
-        {
-            return 200 ;
+        } catch (Exception e) {
+            return 200;
         }
 
     }

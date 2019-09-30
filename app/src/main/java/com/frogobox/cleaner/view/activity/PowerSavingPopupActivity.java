@@ -6,17 +6,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.frogobox.cleaner.view.adapter.PowerViewAdapter;
-import com.frogobox.cleaner.model.PowerItem;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.frogobox.cleaner.model.PowerItem;
 import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.utils.Constant;
+import com.frogobox.cleaner.view.adapter.PowerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,69 +29,61 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
  * Created by Frogobox Software Industries 2/19/2017.
  */
 
-public class PowerSavingPopupActivity extends Activity{
-    RecyclerView recyclerView;
-    PowerViewAdapter mAdapter;
-    List<PowerItem> items;
-    ImageView applied;
-    SharedPreferences sharedpreferences;
-    SharedPreferences.Editor editor;
-    TextView extendedtime,extendedtimedetail;
+public class PowerSavingPopupActivity extends Activity {
 
-    int hour;
-    int min;
+    private PowerViewAdapter mAdapter;
+    private List<PowerItem> items;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle b=getIntent().getExtras();
+        Bundle b = getIntent().getExtras();
         setContentView(R.layout.powersaving_popup);
-        sharedpreferences = getSharedPreferences("was", Context.MODE_PRIVATE);
+
+        SharedPreferences sharedpreferences = getSharedPreferences(Constant.Variable.SHARED_PREF_WAS, Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
-        extendedtime=(TextView) findViewById(R.id.addedtime);
-        extendedtimedetail=(TextView) findViewById(R.id.addedtimedetail);
+        TextView extendedtime = findViewById(R.id.addedtime);
+        TextView extendedtimedetail = findViewById(R.id.addedtimedetail);
 
-
+        int hour;
+        int min;
         try {
-            hour = Integer.parseInt(b.getString("hour").replaceAll("[^0-9]", "")) - Integer.parseInt(b.getString("hournormal").replaceAll("[^0-9]", ""));
-            min = Integer.parseInt(b.getString("minutes").replaceAll("[^0-9]", "")) - Integer.parseInt(b.getString("minutesnormal").replaceAll("[^0-9]", ""));
-        }
-        catch(Exception e)
-        {
-            hour=3;
-            min=5;
+            hour = Integer.parseInt(b.getString(Constant.Variable.EXTRA_HOURS).replaceAll("[^0-9]", "")) - Integer.parseInt(b.getString(Constant.Variable.EXTRA_HOURS_NORMAL).replaceAll("[^0-9]", ""));
+            min = Integer.parseInt(b.getString(Constant.Variable.EXTRA_MINUTES).replaceAll("[^0-9]", "")) - Integer.parseInt(b.getString(Constant.Variable.EXTRA_MINUTES_NORMAL).replaceAll("[^0-9]", ""));
+        } catch (Exception e) {
+            hour = 3;
+            min = 5;
         }
 
-        if(hour==0 && min==0)
-        {
-            hour=3;
-            min=5;
+        if (hour == 0 && min == 0) {
+            hour = 3;
+            min = 5;
         }
-        extendedtime.setText("(+"+hour+" h " +Math.abs(min)+" m)");
-        extendedtimedetail.setText("Extended Battery Up to "+Math.abs(hour)+"h "+Math.abs(min)+"m");
+        extendedtime.setText("(+" + hour + " h " + Math.abs(min) + " m)");
+        extendedtimedetail.setText("Extended Battery Up to " + Math.abs(hour) + "h " + Math.abs(min) + "m");
 
 //        (+10 h 30m)
 
 
-        items=new ArrayList<>();
-        applied=(ImageView) findViewById(R.id.applied);
+        items = new ArrayList<>();
+        ImageView applied = findViewById(R.id.applied);
         applied.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-
                 editor.putString("mode", "1");
                 editor.commit();
 
-                Intent i=new Intent(getApplicationContext(), PowerSavingComplitionActivity.class);
+                Intent i = new Intent(getApplicationContext(), PowerSavingComplitionActivity.class);
                 startActivity(i);
 
                 finish();
             }
         });
 
-        recyclerView =(RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         recyclerView.setItemAnimator(new SlideInLeftAnimator());
 //                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
@@ -146,13 +139,12 @@ public class PowerSavingPopupActivity extends Activity{
         }, 4000);
 
 
-
     }
 
     public void add(String text, int position) {
 
 
-        PowerItem item=new PowerItem();
+        PowerItem item = new PowerItem();
         item.setText(text);
         items.add(item);
 //        mDataSet.add(position, text);

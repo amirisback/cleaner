@@ -12,10 +12,6 @@ import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -26,10 +22,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.frogobox.cleaner.model.Apps;
+import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.utils.Constant;
 import com.frogobox.cleaner.view.activity.CpuScannerActivity;
 import com.frogobox.cleaner.view.activity.MainActivity;
-import com.frogobox.cleaner.myapplication.R;
 import com.frogobox.cleaner.view.adapter.CPUCoolerViewAdapter;
 
 import java.io.File;
@@ -45,16 +47,17 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class CPUCoolerFragment extends Fragment {
 
-    TextView batterytemp, showmain, showsec, nooverheating;
-    float temp;
-    ImageView coolbutton, tempimg;
-    RecyclerView recyclerView;
-    CPUCoolerViewAdapter mAdapter;
     public static List<Apps> apps;
-    List<Apps> apps2;
-    int check = 0;
+    private View view;
+    private TextView batterytemp, showmain, showsec, nooverheating;
+    private float temp;
+    private ImageView coolbutton, tempimg;
+    private RecyclerView recyclerView;
+    private CPUCoolerViewAdapter mAdapter;
+    private List<Apps> apps2;
+    private int check = 0;
 
-    BroadcastReceiver batteryReceiver = new BroadcastReceiver() {
+    private BroadcastReceiver batteryReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
 
@@ -111,9 +114,9 @@ public class CPUCoolerFragment extends Fragment {
                                     LayoutInflater inflater = getLayoutInflater(getArguments());
                                     View layout = inflater.inflate(R.layout.my_toast, null);
 
-                                    ImageView image = (ImageView) layout.findViewById(R.id.image);
+                                    ImageView image = layout.findViewById(R.id.image);
 
-                                    TextView text = (TextView) layout.findViewById(R.id.textView1);
+                                    TextView text = layout.findViewById(R.id.textView1);
                                     text.setText("CPU Temperature is Already Normal.");
 
                                     Toast toast = new Toast(getActivity());
@@ -156,16 +159,13 @@ public class CPUCoolerFragment extends Fragment {
 //                recyclerView.getItemAnimator().setChangeDuration(1000);
 
                 }
-            }
-            catch(Exception e)
-            {
+            } catch (Exception e) {
 
             }
 
 
         }
     };
-    View view;
 
     @Nullable
     @Override
@@ -178,11 +178,11 @@ public class CPUCoolerFragment extends Fragment {
             recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
 
-            tempimg = (ImageView) view.findViewById(R.id.tempimg);
-            showmain = (TextView) view.findViewById(R.id.showmain);
-            showsec = (TextView) view.findViewById(R.id.showsec);
-            coolbutton = (ImageView) view.findViewById(R.id.coolbutton);
-            nooverheating = (TextView) view.findViewById(R.id.nooverheating);
+            tempimg = view.findViewById(R.id.tempimg);
+            showmain = view.findViewById(R.id.showmain);
+            showsec = view.findViewById(R.id.showsec);
+            coolbutton = view.findViewById(R.id.coolbutton);
+            nooverheating = view.findViewById(R.id.nooverheating);
 
             showmain.setText("NORMAL");
             showsec.setText("CPU Temperature is GOOD");
@@ -194,9 +194,9 @@ public class CPUCoolerFragment extends Fragment {
                     LayoutInflater inflater = getLayoutInflater(getArguments());
                     View layout = inflater.inflate(R.layout.my_toast, null);
 
-                    ImageView image = (ImageView) layout.findViewById(R.id.image);
+                    ImageView image = layout.findViewById(R.id.image);
 
-                    TextView text = (TextView) layout.findViewById(R.id.textView1);
+                    TextView text = layout.findViewById(R.id.textView1);
                     text.setText("CPU Temperature is Already Normal.");
 
                     Toast toast = new Toast(getActivity());
@@ -208,7 +208,7 @@ public class CPUCoolerFragment extends Fragment {
             });
 
             tempimg.setImageResource(R.drawable.blue_cooler);
-            batterytemp = (TextView) view.findViewById(R.id.batterytemp);
+            batterytemp = view.findViewById(R.id.batterytemp);
 
             Log.e("Temperrature", temp + "");
         } catch (Exception e) {
@@ -244,7 +244,7 @@ public class CPUCoolerFragment extends Fragment {
                 String packageName = packages.get(k).packageName;
                 Log.e("packageName-->", "" + packageName);
 
-                if (!packageName.equals("fast.cleaner.battery.saver")) {
+                if (!packageName.equals(Constant.Variable.PACKAGE_NAME)) {
 
 //                String size = packages.get(k).metaData.size()+"";
 //                Log.e("Size-->", "" + packageName);

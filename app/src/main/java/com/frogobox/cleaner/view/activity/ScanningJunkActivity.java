@@ -14,8 +14,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -25,10 +23,13 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.frogobox.cleaner.view.adapter.JunkAppsViewAdapter;
-import com.frogobox.cleaner.model.Apps;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.frogobox.cleaner.model.Apps;
 import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.utils.Constant;
+import com.frogobox.cleaner.view.adapter.JunkAppsViewAdapter;
 import com.github.ybq.android.spinkit.style.ThreeBounce;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -50,24 +51,23 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class ScanningJunkActivity extends Activity {
 
-    AVLoadingIndicatorView avi1, avi2, avi3, avi4, avi5, avi6;
-    ImageView front,back;
-    Runnable myRunnable2;
-    Handler myHandler2;
-    Handler myHandler;
-    Runnable myRunnable;
-    int check = 0;
-    TextView files;
-    List<ApplicationInfo> packages;
-    int prog=0;
-    Timer T2,T3;
-    JunkAppsViewAdapter mAdapter;
-    RecyclerView recyclerView;
-    public List<Apps> apps;
-    PackageManager pm;
-    ImageView mImgCheck;
-    TextView scanning;
-    InterstitialAd mInterstitialAd;
+    private AVLoadingIndicatorView avi1, avi2, avi3, avi4, avi5, avi6;
+    private ImageView front, back;
+    private Runnable myRunnable2;
+    private Handler myHandler2;
+    private Handler myHandler;
+    private Runnable myRunnable;
+    private int check = 0;
+    private TextView files;
+    private List<ApplicationInfo> packages;
+    private int prog = 0;
+    private Timer T2, T3;
+    private JunkAppsViewAdapter mAdapter;
+    private List<Apps> apps;
+    private PackageManager pm;
+    private ImageView mImgCheck;
+    private TextView scanning;
+    private InterstitialAd mInterstitialAd;
 
 
     //// Scanning for any junk file existance inorder to clean it
@@ -75,18 +75,18 @@ public class ScanningJunkActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final Bundle junk=getIntent().getExtras();
+        final Bundle junk = getIntent().getExtras();
         setContentView(R.layout.scanning_junk);
-        avi1 = (AVLoadingIndicatorView) findViewById(R.id.scan1);
-        avi2 = (AVLoadingIndicatorView) findViewById(R.id.scan2);
-        avi3 = (AVLoadingIndicatorView) findViewById(R.id.scan3);
-        avi4 = (AVLoadingIndicatorView) findViewById(R.id.scan4);
-        avi5 = (AVLoadingIndicatorView) findViewById(R.id.scan5);
-        avi6 = (AVLoadingIndicatorView) findViewById(R.id.scan6);
-        files =(TextView) findViewById(R.id.files);
-        back=(ImageView) findViewById(R.id.back);
-        scanning=(TextView) findViewById(R.id.scanning);
-        apps=new ArrayList<>();
+        avi1 = findViewById(R.id.scan1);
+        avi2 = findViewById(R.id.scan2);
+        avi3 = findViewById(R.id.scan3);
+        avi4 = findViewById(R.id.scan4);
+        avi5 = findViewById(R.id.scan5);
+        avi6 = findViewById(R.id.scan6);
+        files = findViewById(R.id.files);
+        back = findViewById(R.id.back);
+        scanning = findViewById(R.id.scanning);
+        apps = new ArrayList<>();
 
 
         mInterstitialAd = new InterstitialAd(getApplicationContext());
@@ -124,9 +124,6 @@ public class ScanningJunkActivity extends Activity {
                 avi6.hide();
 
 
-
-
-
                 files.setText("");
             }
 
@@ -138,7 +135,7 @@ public class ScanningJunkActivity extends Activity {
         });
 
 
-        front = (ImageView) findViewById(R.id.front);
+        front = findViewById(R.id.front);
 
         front.startAnimation(rotate);
 
@@ -149,21 +146,17 @@ public class ScanningJunkActivity extends Activity {
         ActivityManager mActivityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
 
 
-
-        T2=new Timer();
+        T2 = new Timer();
         T2.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                runOnUiThread(new Runnable()
-                {
+                runOnUiThread(new Runnable() {
                     @Override
-                    public void run()
-                    {
-                        if(prog<packages.size()) {
-                            files.setText(""+packages.get(prog).sourceDir);
+                    public void run() {
+                        if (prog < packages.size()) {
+                            files.setText("" + packages.get(prog).sourceDir);
                             prog++;
-                        }
-                        else {
+                        } else {
                             T2.cancel();
                             T2.purge();
                         }
@@ -171,10 +164,10 @@ public class ScanningJunkActivity extends Activity {
                     }
                 });
             }
-        },80, 80);
+        }, 80, 80);
 
 
-        recyclerView =(RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         recyclerView.setItemAnimator(new SlideInLeftAnimator());
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(this));
@@ -198,7 +191,7 @@ public class ScanningJunkActivity extends Activity {
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(this));
 
 
-                //Do something after 100ms
+        //Do something after 100ms
 
 
         final Handler handler1 = new Handler();
@@ -226,7 +219,6 @@ public class ScanningJunkActivity extends Activity {
             @Override
             public void run() {
                 add("Close All Battery Consuming Apps", 2);
-
 
 
             }
@@ -284,8 +276,8 @@ public class ScanningJunkActivity extends Activity {
                 remove(0);
 
 
-                final RippleBackground rippleBackground=(RippleBackground)findViewById(R.id.content);
-                ImageView imageView=(ImageView)findViewById(R.id.centerImage);
+                final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.content);
+                ImageView imageView = findViewById(R.id.centerImage);
                 rippleBackground.startRippleAnimation();
 //                front.setImageResource(0);
 //                imageView.setImageResource(0);
@@ -294,25 +286,24 @@ public class ScanningJunkActivity extends Activity {
                 front.setImageResource(R.drawable.task_complete);
                 back.setImageResource(R.drawable.green_circle);
 
-                ProgressBar progressBar = (ProgressBar)findViewById(R.id.spin_kit);
+                ProgressBar progressBar = (ProgressBar) findViewById(R.id.spin_kit);
                 ThreeBounce doubleBounce = new ThreeBounce();
                 progressBar.setIndeterminateDrawable(doubleBounce);
                 progressBar.setVisibility(View.GONE);
 
-                scanning.setPadding(20,0,0,0);
+                scanning.setPadding(20, 0, 0, 0);
 
 
                 if (Build.VERSION.SDK_INT < 23) {
 
                     scanning.setTextAppearance(getApplicationContext(), android.R.style.TextAppearance_Medium);
-                    scanning.setText(junk.getString("junk")+ " MB of Junk Files Are Cleared");
+                    scanning.setText(junk.getString(Constant.Variable.SHARED_PREF_JUNK) + " MB of Junk Files Are Cleared");
 
                 } else {
 
                     scanning.setTextAppearance(android.R.style.TextAppearance_Medium);
-                    scanning.setText(junk.getString("junk")+ " MB of Junk Files Are Cleared");
+                    scanning.setText(junk.getString(Constant.Variable.SHARED_PREF_JUNK) + " MB of Junk Files Are Cleared");
                 }
-
 
 
                 ObjectAnimator anim = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flipping);
@@ -324,8 +315,8 @@ public class ScanningJunkActivity extends Activity {
                     @Override
                     public void onAnimationStart(Animator animation) {
 
-                        scanning.setText("Cleared " +junk.getString("junk")+ " MB");
-                        scanning.setTextColor(Color.parseColor("#FFFFFF"));
+                        scanning.setText("Cleared " + junk.getString(Constant.Variable.SHARED_PREF_JUNK) + " MB");
+                        scanning.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
                     }
 
                     @Override
@@ -345,10 +336,6 @@ public class ScanningJunkActivity extends Activity {
 
                             }
                         }, 1000);
-
-
-
-
 
 
                     }
@@ -374,17 +361,13 @@ public class ScanningJunkActivity extends Activity {
 //        }, 1000);
 
 
-
-
-
     }
 
 
     void startAnim(int i1) {
 
 
-
-        if (i1  == 1) {
+        if (i1 == 1) {
             avi1.show();
             avi3.show();
             avi5.show();
@@ -392,7 +375,7 @@ public class ScanningJunkActivity extends Activity {
             avi2.hide();
             avi4.hide();
             avi6.hide();
-        } else if(i1==2){
+        } else if (i1 == 2) {
             avi2.show();
             avi4.show();
             avi6.show();
@@ -400,8 +383,7 @@ public class ScanningJunkActivity extends Activity {
             avi1.hide();
             avi3.hide();
             avi5.hide();
-        }
-        else if(i1==3){
+        } else if (i1 == 3) {
             avi2.show();
             avi4.show();
             avi6.show();
@@ -409,8 +391,7 @@ public class ScanningJunkActivity extends Activity {
             avi1.show();
             avi3.show();
             avi5.show();
-        }
-        else if(i1==4){
+        } else if (i1 == 4) {
             avi2.show();
             avi3.show();
             avi5.show();
@@ -439,12 +420,12 @@ public class ScanningJunkActivity extends Activity {
     public void add(String text, int position) {
 
 
-        int p=0 + (int)(Math.random() * ((packages.size()-1 - 0) + 1));
+        int p = 0 + (int) (Math.random() * ((packages.size() - 1 - 0) + 1));
 
 
         Drawable ico = null;
 
-        Apps item=new Apps();
+        Apps item = new Apps();
 
         String packageName = packages.get(p).packageName;
         try {
@@ -469,7 +450,10 @@ public class ScanningJunkActivity extends Activity {
         apps.remove(position);
     }
 
-
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+    }
 
     public class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
         private Drawable mDivider;
@@ -502,11 +486,5 @@ public class ScanningJunkActivity extends Activity {
                 mDivider.draw(c);
             }
         }
-    }
-
-
-    @Override
-    public void onBackPressed() {
-//        super.onBackPressed();
     }
 }

@@ -16,17 +16,13 @@ import com.hookedonplay.decoviewlib.events.DecoEvent;
 
 public class RevertPowerSavingActivity extends Activity{
 
-
-
     /// Apply Normal Mode and Remove any power saving mode that was selected
-
-    DecoView arcView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.revert_powersaving);
-        arcView = (DecoView) findViewById(R.id.dynamicArcView2);
+        DecoView arcView = (DecoView) findViewById(R.id.dynamicArcView2);
 
         arcView.addSeries(new SeriesItem.Builder(Color.argb(255, 218, 218, 218))
                 .setRange(0, 100, 0)

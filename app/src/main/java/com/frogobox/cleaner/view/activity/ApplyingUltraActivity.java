@@ -15,14 +15,16 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.utils.Constant;
 import com.hookedonplay.decoviewlib.DecoView;
 import com.hookedonplay.decoviewlib.charts.SeriesItem;
 import com.hookedonplay.decoviewlib.events.DecoEvent;
@@ -33,42 +35,35 @@ import com.hookedonplay.decoviewlib.events.DecoEvent;
 
 public class ApplyingUltraActivity extends Activity {
 
+    // activate ultra powersaving mode by closing system services
 
-
-    //// activate ultra powersaving mode by closing system services
-
-    DecoView arcView;
-    TextView ist,sec,thir,fou,completion,fif;
-    ImageView istpic,secpic,thirpic,foupic,fifthpic;
-    SharedPreferences sharedpreferences;
-    SharedPreferences.Editor editor;
-    int check=0;
+    private TextView ist, sec, thir, fou, completion, fif;
+    private ImageView istpic, secpic, thirpic, foupic, fifthpic;
+    private int check = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.applying_ultra);
+        setContentView(R.layout.activity_applying_ultra);
 
-        ist=(TextView) findViewById(R.id.ist);
-        sec=(TextView) findViewById(R.id.sec);
-        thir=(TextView) findViewById(R.id.thi);
-        fou=(TextView) findViewById(R.id.fou);
-        fif=(TextView) findViewById(R.id.fif);
-        istpic=(ImageView) findViewById(R.id.istpic);
-        secpic=(ImageView) findViewById(R.id.secpic);
-        thirpic=(ImageView) findViewById(R.id.thipic);
-        foupic=(ImageView) findViewById(R.id.foupic);
-        foupic=(ImageView) findViewById(R.id.foupic);
-        fifthpic =(ImageView) findViewById(R.id.fifthpic);
-        completion=(TextView) findViewById(R.id.completion);
+        ist = findViewById(R.id.ist);
+        sec = findViewById(R.id.sec);
+        thir = findViewById(R.id.thi);
+        fou = findViewById(R.id.fou);
+        fif = findViewById(R.id.fif);
+        istpic = findViewById(R.id.istpic);
+        secpic = findViewById(R.id.secpic);
+        thirpic = findViewById(R.id.thipic);
+        foupic = findViewById(R.id.foupic);
+        foupic = findViewById(R.id.foupic);
+        fifthpic = findViewById(R.id.fifthpic);
+        completion = findViewById(R.id.completion);
 
-        sharedpreferences = getSharedPreferences("was", Context.MODE_PRIVATE);
-        editor = sharedpreferences.edit();
-
-
+        SharedPreferences sharedpreferences = getSharedPreferences(Constant.Variable.SHARED_PREF_WAS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
 
 
-        arcView = (DecoView) findViewById(R.id.dynamicArcView2);
+        DecoView arcView = findViewById(R.id.dynamicArcView2);
 
 //        arcView.addSeries(new SeriesItem.Builder(Color.argb(255, 218, 218, 218))
 //                .setRange(0, 100, 0)
@@ -87,7 +82,7 @@ public class ApplyingUltraActivity extends Activity {
                 .setLineWidth(10f)
                 .build();
 
-        SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor("#FFFFFF"))
+        SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor(Constant.Variable.COLOR_WHITE))
                 .setRange(0, 100, 0)
                 .setLineWidth(10f)
                 .build();
@@ -102,32 +97,23 @@ public class ApplyingUltraActivity extends Activity {
 
                 Float obj = new Float(v1);
                 int i = obj.intValue();
-                completion.setText(i+"%");
+                completion.setText(i + "%");
 
-                if(v1>=10 && v1<40)
-                {
-                    ist.setTextColor(Color.parseColor("#FFFFFF"));
+                if (v1 >= 10 && v1 < 40) {
+                    ist.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
                     istpic.setImageResource(R.drawable.circle_white);
 
-                }
-                else if(v1>=40 && v1<65)
-                {
-                    sec.setTextColor(Color.parseColor("#FFFFFF"));
+                } else if (v1 >= 40 && v1 < 65) {
+                    sec.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
                     secpic.setImageResource(R.drawable.circle_white);
-                }
-                else if(v1>=65 && v1<80)
-                {
-                    thir.setTextColor(Color.parseColor("#FFFFFF"));
+                } else if (v1 >= 65 && v1 < 80) {
+                    thir.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
                     thirpic.setImageResource(R.drawable.circle_white);
-                }
-                else if(v1>=80 && v1<90)
-                {
-                    fou.setTextColor(Color.parseColor("#FFFFFF"));
+                } else if (v1 >= 80 && v1 < 90) {
+                    fou.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
                     foupic.setImageResource(R.drawable.circle_white);
-                }
-                else if(v1>=90 && v1<100)
-                {
-                    fif.setTextColor(Color.parseColor("#FFFFFF"));
+                } else if (v1 >= 90 && v1 < 100) {
+                    fif.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
                     fifthpic.setImageResource(R.drawable.circle_white);
                 }
 
@@ -176,18 +162,8 @@ public class ApplyingUltraActivity extends Activity {
 //                Random ran3 = new Random();
 //                ramperct.setText(ran3.nextInt(40) + 20+"%");
 
-
-
-
-
-                check=1;
+                check = 1;
                 youDesirePermissionCode(ApplyingUltraActivity.this);
-
-
-
-
-
-
 
                 enablesall();
 //                editor.putString("mode", "2");
@@ -196,28 +172,23 @@ public class ApplyingUltraActivity extends Activity {
         }).build());
     }
 
-    public void enablesall()
-    {
+    public void enablesall() {
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter.isEnabled()) {
             mBluetoothAdapter.disable();
         }
 
-        WifiManager wifiManager = (WifiManager) getApplication().getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifiManager = (WifiManager) getApplication().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
 
         boolean wifiEnabled = wifiManager.isWifiEnabled();
-        if(wifiEnabled)
-        {
+        if (wifiEnabled) {
             wifiManager.setWifiEnabled(false);
         }
 
 //        setAutoOrientationEnabled(getApplicationContext(), false);
-//
 //        Settings.System.putInt(this.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, 20);
-//
 //        ContentResolver.setMasterSyncAutomatically(false);
-
 
     }
 
@@ -228,12 +199,11 @@ public class ApplyingUltraActivity extends Activity {
     }
 
 
-
     @SuppressLint("NewApi")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && Settings.System.canWrite(this)){
+        if (requestCode == 1 && Settings.System.canWrite(this)) {
             Log.d("TAG", "CODE_WRITE_SETTINGS_PERMISSION success");
 
 
@@ -246,14 +216,14 @@ public class ApplyingUltraActivity extends Activity {
             ContentResolver.setMasterSyncAutomatically(false);
 
 
-            Intent i=new Intent(ApplyingUltraActivity.this, BatterySaverBlackActivity.class);
+            Intent i = new Intent(ApplyingUltraActivity.this, BatterySaverBlackActivity.class);
             startActivity(i);
             finish();
         }
     }
 
 
-    public void youDesirePermissionCode(Activity context){
+    public void youDesirePermissionCode(Activity context) {
         boolean permission;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             permission = Settings.System.canWrite(context);
@@ -271,11 +241,11 @@ public class ApplyingUltraActivity extends Activity {
             ContentResolver.setMasterSyncAutomatically(false);
 
 
-            Intent i=new Intent(ApplyingUltraActivity.this, BatterySaverBlackActivity.class);
+            Intent i = new Intent(ApplyingUltraActivity.this, BatterySaverBlackActivity.class);
             startActivity(i);
             finish();
 
-        }  else {
+        } else {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                 Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
                 intent.setData(Uri.parse("package:" + context.getPackageName()));
@@ -303,7 +273,7 @@ public class ApplyingUltraActivity extends Activity {
             ContentResolver.setMasterSyncAutomatically(false);
 
 
-            Intent i=new Intent(ApplyingUltraActivity.this, BatterySaverBlackActivity.class);
+            Intent i = new Intent(ApplyingUltraActivity.this, BatterySaverBlackActivity.class);
             startActivity(i);
             finish();
         }
@@ -314,25 +284,21 @@ public class ApplyingUltraActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(check==1)
-        {
-            try
-            {
+        if (check == 1) {
+            try {
                 PowerSavingComplitionActivity.setAutoOrientationEnabled(getApplicationContext(), false);
 
                 Settings.System.putInt(this.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, 20);
 
                 ContentResolver.setMasterSyncAutomatically(false);
 
-            }
-            catch(Exception e)
-            {
-                Intent i=new Intent(ApplyingUltraActivity.this, BatterySaverBlackActivity.class);
+            } catch (Exception e) {
+                Intent i = new Intent(ApplyingUltraActivity.this, BatterySaverBlackActivity.class);
                 startActivity(i);
                 finish();
             }
 
-            Intent i=new Intent(ApplyingUltraActivity.this, BatterySaverBlackActivity.class);
+            Intent i = new Intent(ApplyingUltraActivity.this, BatterySaverBlackActivity.class);
             startActivity(i);
             finish();
         }

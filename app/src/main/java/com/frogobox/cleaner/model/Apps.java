@@ -8,8 +8,8 @@ import android.graphics.drawable.Drawable;
 
 public class Apps {
 
-    String size;
-    Drawable image;
+    private String size;
+    private Drawable image;
 
     public String getSize() {
         return size;

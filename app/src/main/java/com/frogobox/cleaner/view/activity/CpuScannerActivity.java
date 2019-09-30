@@ -8,8 +8,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -20,11 +18,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.frogobox.cleaner.view.adapter.ScanCpuAppsViewAdapter;
-import com.frogobox.cleaner.model.Apps;
-import com.frogobox.cleaner.view.fragment.CPUCoolerFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.frogobox.cleaner.model.Apps;
 import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.view.adapter.ScanCpuAppsViewAdapter;
+import com.frogobox.cleaner.view.fragment.CPUCoolerFragment;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -43,29 +43,29 @@ public class CpuScannerActivity extends Activity {
 
     ///// Scan Cpu For Power Consuming and Over heating Apps
 
-    ImageView scanner,img_animation,cpu;
-    BrokenView brokenView;
-    BrokenTouchListener listener;
-    ScanCpuAppsViewAdapter mAdapter;
-    RecyclerView recyclerView;
-    List<Apps> app=null;
-    PackageManager pm;
-    List<ApplicationInfo> packages;
-    TextView cooledcpu;
-    RelativeLayout rel;
-    InterstitialAd mInterstitialAd;
+    private ImageView scanner, img_animation, cpu;
+    private BrokenView brokenView;
+    private BrokenTouchListener listener;
+    private ScanCpuAppsViewAdapter mAdapter;
+    private RecyclerView recyclerView;
+    private List<Apps> app = null;
+    private PackageManager pm;
+    private List<ApplicationInfo> packages;
+    private TextView cooledcpu;
+    private RelativeLayout rel;
+    private InterstitialAd mInterstitialAd;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cpu_scanner);
-        scanner = (ImageView) findViewById(R.id.scann);
-        cpu = (ImageView) findViewById(R.id.cpu);
-        cooledcpu=(TextView) findViewById(R.id.cpucooler);
-        img_animation = (ImageView) findViewById(R.id.heart);
-        rel=(RelativeLayout) findViewById(R.id.rel);
-        app=new ArrayList<>();
+        scanner = findViewById(R.id.scann);
+        cpu = findViewById(R.id.cpu);
+        cooledcpu = findViewById(R.id.cpucooler);
+        img_animation = findViewById(R.id.heart);
+        rel = (RelativeLayout) findViewById(R.id.rel);
+        app = new ArrayList<>();
 
         mInterstitialAd = new InterstitialAd(getApplicationContext());
         mInterstitialAd.setAdUnitId(getResources().getString(R.string.interstitial));
@@ -84,8 +84,6 @@ public class CpuScannerActivity extends Activity {
         rotate.setRepeatCount(3);
         rotate.setInterpolator(new LinearInterpolator());
         scanner.startAnimation(rotate);
-
-
 
 
         TranslateAnimation animation = new TranslateAnimation(0.0f, 1000.0f, 0.0f, 0.0f);          //  new TranslateAnimation(xFrom,xTo, yFrom,yTo)
@@ -201,8 +199,8 @@ public class CpuScannerActivity extends Activity {
                     add("Closes System Services like Bluetooth,Screen Rotation,Sync etc.", 6);
                     remove(0);
 
-                    final RippleBackground rippleBackground=(RippleBackground)findViewById(R.id.content);
-                    ImageView imageView=(ImageView)findViewById(R.id.centerImage);
+                    final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.content);
+                    ImageView imageView = findViewById(R.id.centerImage);
                     rippleBackground.startRippleAnimation();
 
                     img_animation.setImageResource(0);
@@ -230,9 +228,7 @@ public class CpuScannerActivity extends Activity {
                             rippleBackground.stopRippleAnimation();
 
 
-                                    mInterstitialAd.show();
-
-
+                            mInterstitialAd.show();
 
 
                             final Handler handler6 = new Handler();
@@ -273,9 +269,7 @@ public class CpuScannerActivity extends Activity {
 //            }
 //        }, 8000);
 
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
 
         }
 
@@ -307,9 +301,7 @@ public class CpuScannerActivity extends Activity {
 
 
             mAdapter.notifyItemInserted(position);
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
 
         }
     }
@@ -320,9 +312,7 @@ public class CpuScannerActivity extends Activity {
         mAdapter.notifyItemRemoved(position);
         try {
             CPUCoolerFragment.apps.remove(position);
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
 
         }
     }

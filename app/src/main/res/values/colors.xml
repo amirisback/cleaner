@@ -12,4 +12,7 @@
     <color name="colorPrimaryDark1">#27282D</color>
     <color name="colorAccent1">#27282D</color>
 
+    <color name="colorBaseWhite">#FFFFFF</color>
+    <color name="colorTextWhite">@color/colorBaseWhite</color>
+
 </resources>

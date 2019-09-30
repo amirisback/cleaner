@@ -1,14 +1,14 @@
 package com.frogobox.cleaner.view.adapter;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.frogobox.cleaner.model.Apps;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.frogobox.cleaner.model.Apps;
 import com.frogobox.cleaner.myapplication.R;
 
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class JunkAppsViewAdapter extends RecyclerView.Adapter<JunkAppsViewAdapter.MyViewHolder> {
 
-    public List<Apps> apps;
+    private List<Apps> apps;
 
     public JunkAppsViewAdapter(List<Apps> getapps) {
         apps = getapps;
@@ -45,18 +45,17 @@ public class JunkAppsViewAdapter extends RecyclerView.Adapter<JunkAppsViewAdapte
         return apps.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView size;
-        ImageView image;
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        private TextView size;
+        private ImageView image;
 
-        public MyViewHolder(View view) {
+        private MyViewHolder(View view) {
             super(view);
-            size = (TextView) view.findViewById(R.id.apptext);
-            image = (ImageView) view.findViewById(R.id.appimage);
+            size = view.findViewById(R.id.apptext);
+            image = view.findViewById(R.id.appimage);
 
         }
     }
-
 
 
 }

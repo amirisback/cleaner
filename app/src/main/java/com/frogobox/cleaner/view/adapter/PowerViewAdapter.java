@@ -1,13 +1,13 @@
 package com.frogobox.cleaner.view.adapter;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.frogobox.cleaner.model.PowerItem;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.frogobox.cleaner.model.PowerItem;
 import com.frogobox.cleaner.myapplication.R;
 
 import java.util.List;
@@ -18,11 +18,10 @@ import java.util.List;
 
 public class PowerViewAdapter extends RecyclerView.Adapter<PowerViewAdapter.MyViewHolder> {
 
-    public List<PowerItem> apps;
+    private List<PowerItem> apps;
 
-    public PowerViewAdapter(List<PowerItem> getapps)
-    {
-        apps=getapps;
+    public PowerViewAdapter(List<PowerItem> getapps) {
+        apps = getapps;
     }
 
     @Override
@@ -33,11 +32,10 @@ public class PowerViewAdapter extends RecyclerView.Adapter<PowerViewAdapter.MyVi
     }
 
 
-
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        PowerItem app= apps.get(position);
+        PowerItem app = apps.get(position);
         holder.size.setText(app.getText());
     }
 
@@ -46,13 +44,13 @@ public class PowerViewAdapter extends RecyclerView.Adapter<PowerViewAdapter.MyVi
         return apps.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView size;
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        private TextView size;
 
 
-        public MyViewHolder(View view) {
+        private MyViewHolder(View view) {
             super(view);
-            size = (TextView) view.findViewById(R.id.items);
+            size = view.findViewById(R.id.items);
         }
     }
 }

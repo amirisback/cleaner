@@ -5,37 +5,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import com.frogobox.cleaner.utils.Constant;
+
 /**
  * Created by Frogobox Software Industries 3/2/2017.
  */
 
 public final class AlarmJunkBroadcastReceiver extends BroadcastReceiver {
-    SharedPreferences.Editor editor;
-    SharedPreferences sharedpreferences;
+
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        sharedpreferences = context.getSharedPreferences("waseem", Context.MODE_PRIVATE);
-//        Toast.makeText(context, "Alarm worked.", Toast.LENGTH_LONG).show();
-
-
-
-        /// notify user to clean junk files that junk has been appeared
-
+        SharedPreferences.Editor editor;
+        SharedPreferences sharedpreferences;
+        sharedpreferences = context.getSharedPreferences(Constant.Variable.SHARED_PREF_WASEEM, Context.MODE_PRIVATE);
 
         editor = sharedpreferences.edit();
-        editor.putString("junk", "1");
+        editor.putString(Constant.Variable.SHARED_PREF_JUNK, "1");
         editor.commit();
-
-//        try {
-//            JunkCleaner.mainbutton.setBackgroundResource(0);
-//            JunkCleaner.mainbutton.setImageResource(0);
-//            JunkCleaner.mainbutton.setImageResource(R.drawable.clean);
-//        }
-//        catch(Exception e)
-//        {
-//
-//        }
 
     }
 }

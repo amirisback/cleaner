@@ -13,15 +13,17 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.utils.Constant;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -35,33 +37,31 @@ import com.hookedonplay.decoviewlib.events.DecoEvent;
 
 public class PowerSavingComplitionActivity extends Activity {
 
-    DecoView arcView;
-    TextView ist,sec,thir,fou,completion;
-    ImageView istpic,secpic,thirpic,foupic;
-    int check=0;
-    InterstitialAd mInterstitialAd;
-
+    private TextView ist, sec, thir, fou, completion;
+    private ImageView istpic, secpic, thirpic, foupic;
+    private int check = 0;
+    private InterstitialAd mInterstitialAd;
 
     /// Power Saving Mode is Applied Compeltion Indicator Animation
 
+    public static void setAutoOrientationEnabled(Context context, boolean enabled) {
+        Settings.System.putInt(context.getContentResolver(), Settings.System.ACCELEROMETER_ROTATION, enabled ? 1 : 0);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.powersaving_completion);
-        ist=(TextView) findViewById(R.id.ist);
-        sec=(TextView) findViewById(R.id.sec);
-        thir=(TextView) findViewById(R.id.thi);
-        fou=(TextView) findViewById(R.id.fou);
-        istpic=(ImageView) findViewById(R.id.istpic);
-        secpic=(ImageView) findViewById(R.id.secpic);
-        thirpic=(ImageView) findViewById(R.id.thipic);
-        foupic=(ImageView) findViewById(R.id.foupic);
-        completion=(TextView) findViewById(R.id.completion);
-
-
-        arcView = (DecoView) findViewById(R.id.dynamicArcView2);
-
+        ist = findViewById(R.id.ist);
+        sec = findViewById(R.id.sec);
+        thir = findViewById(R.id.thi);
+        fou = findViewById(R.id.fou);
+        istpic = findViewById(R.id.istpic);
+        secpic = findViewById(R.id.secpic);
+        thirpic = findViewById(R.id.thipic);
+        foupic = findViewById(R.id.foupic);
+        completion = findViewById(R.id.completion);
+        DecoView arcView = findViewById(R.id.dynamicArcView2);
         mInterstitialAd = new InterstitialAd(getApplicationContext());
         mInterstitialAd.setAdUnitId(getResources().getString(R.string.interstitial));
         AdRequest adRequestInter = new AdRequest.Builder().build();
@@ -90,7 +90,7 @@ public class PowerSavingComplitionActivity extends Activity {
                 .setLineWidth(10f)
                 .build();
 
-        SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor("#FFFFFF"))
+        SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor(Constant.Variable.COLOR_WHITE))
                 .setRange(0, 100, 0)
                 .setLineWidth(10f)
                 .build();
@@ -105,27 +105,20 @@ public class PowerSavingComplitionActivity extends Activity {
 
                 Float obj = new Float(v1);
                 int i = obj.intValue();
-                completion.setText(i+"%");
+                completion.setText(i + "%");
 
-                if(v1>=10 && v1<50)
-                {
-                    ist.setTextColor(Color.parseColor("#FFFFFF"));
+                if (v1 >= 10 && v1 < 50) {
+                    ist.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
                     istpic.setImageResource(R.drawable.circle_white);
 
-                }
-                else if(v1>=50 && v1<75)
-                {
-                    sec.setTextColor(Color.parseColor("#FFFFFF"));
+                } else if (v1 >= 50 && v1 < 75) {
+                    sec.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
                     secpic.setImageResource(R.drawable.circle_white);
-                }
-                else if(v1>=75 && v1<90)
-                {
-                    thir.setTextColor(Color.parseColor("#FFFFFF"));
+                } else if (v1 >= 75 && v1 < 90) {
+                    thir.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
                     thirpic.setImageResource(R.drawable.circle_white);
-                }
-                else if(v1>=90 && v1<=100)
-                {
-                    fou.setTextColor(Color.parseColor("#FFFFFF"));
+                } else if (v1 >= 90 && v1 <= 100) {
+                    fou.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
                     foupic.setImageResource(R.drawable.circle_white);
 
 
@@ -177,9 +170,7 @@ public class PowerSavingComplitionActivity extends Activity {
 //                ramperct.setText(ran3.nextInt(40) + 20+"%");
 
 
-
-                        mInterstitialAd.show();
-
+                mInterstitialAd.show();
 
 
                 youDesirePermissionCode(PowerSavingComplitionActivity.this);
@@ -187,16 +178,14 @@ public class PowerSavingComplitionActivity extends Activity {
 
                 closesall();
 
-                check=1;
-
+                check = 1;
 
 
             }
         }).build());
     }
 
-    public void closesall()
-    {
+    public void closesall() {
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter.isEnabled()) {
             mBluetoothAdapter.disable();
@@ -212,22 +201,13 @@ public class PowerSavingComplitionActivity extends Activity {
 //        }
 
 
-
-
         ContentResolver.setMasterSyncAutomatically(false);
 
 
 //
 
 
-
     }
-
-    public static void setAutoOrientationEnabled(Context context, boolean enabled)
-    {
-        Settings.System.putInt( context.getContentResolver(), Settings.System.ACCELEROMETER_ROTATION, enabled ? 1 : 0);
-    }
-
 
     @Override
     public void onBackPressed() {
@@ -235,8 +215,7 @@ public class PowerSavingComplitionActivity extends Activity {
     }
 
 
-
-    public void youDesirePermissionCode(Activity context){
+    public void youDesirePermissionCode(Activity context) {
         boolean permission;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             permission = Settings.System.canWrite(context);
@@ -251,7 +230,7 @@ public class PowerSavingComplitionActivity extends Activity {
             setAutoOrientationEnabled(context, false);
 
             finish();
-        }  else {
+        } else {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                 Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
                 intent.setData(Uri.parse("package:" + context.getPackageName()));
@@ -261,12 +240,13 @@ public class PowerSavingComplitionActivity extends Activity {
             }
         }
     }
-//
+
+    //
     @SuppressLint("NewApi")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && Settings.System.canWrite(this)){
+        if (requestCode == 1 && Settings.System.canWrite(this)) {
             Log.d("TAG", "CODE_WRITE_SETTINGS_PERMISSION success");
 
 
@@ -286,7 +266,7 @@ public class PowerSavingComplitionActivity extends Activity {
         if (requestCode == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             //do your code
 
-            Toast.makeText(getApplicationContext(),"onRequestPermissionsResult",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "onRequestPermissionsResult", Toast.LENGTH_LONG).show();
 
             Settings.System.putInt(this.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, 30);
             setAutoOrientationEnabled(this, false);
@@ -300,15 +280,11 @@ public class PowerSavingComplitionActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(check==1)
-        {
-            try
-            {
+        if (check == 1) {
+            try {
                 Settings.System.putInt(this.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, 30);
                 setAutoOrientationEnabled(this, false);
-            }
-            catch(Exception e)
-            {
+            } catch (Exception e) {
                 finish();
             }
             finish();
