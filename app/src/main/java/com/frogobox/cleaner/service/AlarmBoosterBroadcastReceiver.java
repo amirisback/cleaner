@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
-import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.utils.Constant;
 import com.frogobox.cleaner.view.fragment.PhoneBoosterFragment;
 

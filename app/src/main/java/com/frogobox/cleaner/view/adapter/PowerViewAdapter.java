@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.frogobox.cleaner.model.PowerItem;
-import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.R;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.animation.AccelerateInterpolator;
 
-import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.R;
 import com.hookedonplay.decoviewlib.DecoView;
 import com.hookedonplay.decoviewlib.charts.SeriesItem;
 import com.hookedonplay.decoviewlib.events.DecoEvent;

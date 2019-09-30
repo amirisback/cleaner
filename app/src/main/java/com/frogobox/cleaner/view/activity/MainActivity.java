@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.utils.Constant;
 import com.frogobox.cleaner.utils.PagerAdapter;
 import com.google.android.material.tabs.TabLayout;

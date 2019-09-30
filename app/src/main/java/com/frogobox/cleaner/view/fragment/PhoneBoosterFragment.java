@@ -27,7 +27,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.service.AlarmBoosterBroadcastReceiver;
 import com.frogobox.cleaner.utils.Constant;
 import com.frogobox.cleaner.view.activity.MainActivity;

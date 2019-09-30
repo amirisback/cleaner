@@ -23,7 +23,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.utils.Constant;
 import com.hookedonplay.decoviewlib.DecoView;
 import com.hookedonplay.decoviewlib.charts.SeriesItem;

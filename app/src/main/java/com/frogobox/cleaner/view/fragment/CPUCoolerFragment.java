@@ -28,7 +28,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.frogobox.cleaner.model.Apps;
-import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.utils.Constant;
 import com.frogobox.cleaner.view.activity.CpuScannerActivity;
 import com.frogobox.cleaner.view.activity.MainActivity;

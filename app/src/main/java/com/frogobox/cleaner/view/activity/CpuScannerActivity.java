@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.frogobox.cleaner.model.Apps;
-import com.frogobox.cleaner.myapplication.R;
+import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.view.adapter.ScanCpuAppsViewAdapter;
 import com.frogobox.cleaner.view.fragment.CPUCoolerFragment;
 import com.google.android.gms.ads.AdListener;
