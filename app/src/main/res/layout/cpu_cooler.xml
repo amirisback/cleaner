@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="6"
+    android:background="#000000"
+    android:gravity="center">
+
+    <LinearLayout
+        android:background="#27282D"
+        android:orientation="vertical"
+        android:layout_weight="4.8"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:weightSum="8">
+
+        <RelativeLayout
+            android:layout_weight="5"
+            android:padding="@dimen/_20sdp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        <ImageView
+            android:id="@+id/tempimg"
+            android:src="@drawable/blue_cooler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/batterytemp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:textStyle="bold"
+            android:textSize="@dimen/_25sdp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:text="23.2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp" />
+        </RelativeLayout>
+
+        <TextView
+            android:textSize="@dimen/_25sdp"
+            android:id="@+id/showmain"
+            android:textColor="#24D149"
+            android:gravity="top|center"
+            android:text="NORMAL"
+            android:textStyle="bold"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+        <ImageView
+            android:id="@+id/coolbutton"
+            android:padding="@dimen/_7sdp"
+            android:gravity="center"
+            android:src="@drawable/cool_button_blue"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <TextView
+            android:id="@+id/showsec"
+            android:textColor="#24D149"
+            android:gravity="center"
+            android:text="CPU Temperature is GOOD"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+        android:background="#27282D"
+
+        android:layout_marginTop="1dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_weight="1.2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:foregroundGravity="center"
+            android:id="@+id/recycler_view"
+            android:scrollbars="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/nooverheating"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:text="Currently No App Causing Overheating"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

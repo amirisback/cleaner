@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="8"
+    android:background="#000000">
+
+    <LinearLayout
+        android:background="#27282D"
+        android:orientation="vertical"
+        android:weightSum="8"
+        android:layout_weight="6"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+
+        <LinearLayout
+            android:layout_weight="5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <ImageView
+                android:id="@+id/mainbrush"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:src="@drawable/junk_blue"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:weightSum="2"
+            android:orientation="vertical"
+            android:layout_weight="3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <TextView
+                android:id="@+id/maintext"
+                android:gravity="center"
+                android:text="CRYSTAL CLEAR"
+                android:textColor="#24D149"
+                android:textStyle="bold"
+                android:textSize="@dimen/_25sdp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:paddingBottom="@dimen/_5sdp"/>
+
+            <ImageView
+                android:id="@+id/mainbutton"
+                android:padding="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:src="@drawable/clean"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/_15sdp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#27282D"
+        android:layout_marginTop="1dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:weightSum="4"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingBottom="@dimen/_5sdp">
+            <TextView
+                android:id="@+id/cachetext"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:text="0 MB"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+            <ImageView
+                android:id="@+id/cache"
+                android:src="@drawable/cache2"
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingBottom="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:weightSum="4"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/temptext"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:text="0 MB"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+            <ImageView
+                android:id="@+id/temp"
+                android:src="@drawable/temp2"
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingBottom="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:weightSum="4"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/residuetext"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:text="0 MB"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+            <ImageView
+                android:id="@+id/residue"
+                android:src="@drawable/res2"
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingBottom="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:weightSum="4"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/systemtext"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:text="0 MB"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+            <ImageView
+                android:id="@+id/system"
+                android:src="@drawable/sys2"
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

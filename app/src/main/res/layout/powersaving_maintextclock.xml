@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:layout_weight="12"
+   >
+<LinearLayout
+    android:weightSum="10"
+    android:layout_weight="4.5"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="0dp">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_weight="2"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/more"
+                android:id="@+id/dots"
+                android:layout_alignParentRight="true"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp" />
+            <TextView
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:id="@+id/disable"
+                android:visibility="invisible"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:layout_toLeftOf="@+id/dots"
+                android:background="@drawable/disable_ultra"
+                android:text="   Disable Extreme Power Saving Mode   "
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp" />
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextClock
+        android:layout_weight="4"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:layout_width="match_parent"
+
+        android:textSize="@dimen/_40sdp"/>
+
+    <TextView
+        android:layout_weight="2"
+        android:layout_height="0dp"
+        android:textSize="@dimen/_17sdp"
+        android:textColor="#ffffff"
+        android:text="16h 21m remaning"
+        android:id="@+id/timeremaning"
+        android:gravity="center"
+        android:layout_width="match_parent"
+         />
+
+    <TextView
+        android:layout_weight="2"
+        android:layout_height="0dp"
+        android:textSize="@dimen/_17sdp"
+        android:textColor="#ffffff"
+        android:text="Battery Power 20%"
+        android:id="@+id/batteryremaning"
+        android:gravity="center"
+        android:layout_width="match_parent"
+       />
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="3.5"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        </LinearLayout>
+
+    <LinearLayout
+        android:weightSum="4"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingLeft="@dimen/_15sdp"
+        android:paddingRight="@dimen/_15sdp">
+
+        <ImageView
+            android:id="@+id/phone"
+            android:padding="@dimen/_9sdp"
+            android:src="@drawable/phone"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/messages"
+            android:padding="@dimen/_9sdp"
+            android:src="@drawable/message"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+
+            android:id="@+id/internet"
+            android:padding="@dimen/_9sdp"
+            android:src="@drawable/internet"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/settings"
+            android:padding="@dimen/_9sdp"
+            android:src="@drawable/settings"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:weightSum="4"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingLeft="@dimen/_15sdp"
+        android:paddingRight="@dimen/_15sdp">
+
+        <ImageView
+            android:id="@+id/playstore"
+            android:padding="@dimen/_9sdp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/contacts"
+            android:padding="@dimen/_9sdp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/calculator"
+            android:padding="@dimen/_9sdp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/alaram"
+            android:padding="@dimen/_9sdp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</LinearLayout>

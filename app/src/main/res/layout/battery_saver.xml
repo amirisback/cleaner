@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6.5"
+        android:background="#27282D"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7"
+            android:gravity="center">
+
+            <ImageView
+            android:src="@drawable/blue_circle_battery"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_5sdp">
+
+                <me.itangqi.waveloadingview.WaveLoadingView
+                    android:id="@+id/waveView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    app:wlv_borderColor="#FFFFFF"
+                    app:wlv_borderWidth="6dp"
+                    app:wlv_progressValue="40"
+                    app:wlv_round_rectangle="true"
+                    app:wlv_shapeType="circle"
+                    app:wlv_titleBottomSize="@dimen/_30sdp"
+
+                    app:wlv_titleCenterColor="#FFFFFF"
+                    app:wlv_titleCenterSize="@dimen/_30sdp"
+                    app:wlv_titleCenterStrokeColor="#FFFFFF"
+                    app:wlv_titleCenterStrokeWidth="2dp"
+                    app:wlv_triangle_direction="north"
+                    app:wlv_waveAmplitude="40"
+                    app:wlv_waveColor="#2499E0" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/hourmain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_30sdp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" h"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_24sdp" />
+
+
+                <TextView
+                    android:id="@+id/minutesmain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:text="15"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_30sdp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" m"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_24sdp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top|center"
+                android:text="charging time remaning"
+                android:textColor="#24D149"
+                android:textSize="@dimen/_18sdp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:paddingLeft="@dimen/_25sdp"
+        android:paddingRight="@dimen/_25sdp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_weight="3.5"
+        android:background="#27282D"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:weightSum="10"
+            >
+
+            <LinearLayout
+                android:layout_marginLeft="@dimen/_1sdp"
+                android:layout_weight="3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="bottom"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom|center">
+
+                <TextView
+                    android:id="@+id/hourn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_15sdp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" h"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_12sdp" />
+
+
+                <TextView
+                    android:id="@+id/minutes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:text="15"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_15sdp" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" m"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_12sdp" />
+
+            </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/normal"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/_68sdp"
+            android:layout_height="@dimen/_68sdp"
+            android:src="@drawable/normal_mode"/>
+
+            </LinearLayout>
+
+        <ImageView
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/_20sdp"
+            android:layout_marginLeft="-7dp"
+            android:layout_marginRight="-7dp"
+            android:src="@drawable/green_line"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_weight="0.7"
+             />
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:weightSum="10">
+
+            <LinearLayout
+                android:layout_marginLeft="@dimen/_1sdp"
+                android:layout_weight="3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="bottom|center"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom|center">
+
+                <TextView
+                    android:id="@+id/hourp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_15sdp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" h"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_12sdp" />
+
+
+                <TextView
+                    android:id="@+id/minutesp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:text="15"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_15sdp" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" m"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_12sdp" />
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/powersaving"
+                android:layout_width="@dimen/_78sdp"
+                android:layout_height="@dimen/_68sdp"
+                android:src="@drawable/ultra_mode"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/_20sdp"
+            android:layout_marginLeft="-8dp"
+            android:layout_marginRight="-8dp"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_weight="0.7"
+            android:src="@drawable/blue_line"/>
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:weightSum="10">
+
+            <LinearLayout
+                android:layout_marginLeft="@dimen/_1sdp"
+                android:layout_weight="3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="bottom"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom|center">
+
+                <TextView
+                    android:id="@+id/houru"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_15sdp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" h"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_12sdp" />
+
+
+                <TextView
+                    android:id="@+id/minutesu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:text="15"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_15sdp" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" m"
+                    android:textColor="#24D149"
+                    android:textSize="@dimen/_12sdp" />
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/ultra"
+                android:layout_width="@dimen/_68sdp"
+                android:layout_height="@dimen/_68sdp"
+                android:src="@drawable/extreme_mode"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

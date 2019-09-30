@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="10"
+    android:background="#000000">
+
+    <LinearLayout
+        android:background="#27282D"
+        android:weightSum="10"
+        android:orientation="vertical"
+        android:layout_weight="7"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <TextView
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:text="Extreme Power Saving"
+            android:textStyle="bold"
+            android:textSize="@dimen/_25sdp"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+        <RelativeLayout
+            android:layout_weight="5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+
+            <ImageView
+                android:src="@drawable/pop_up"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <TextView
+                android:textSize="@dimen/_18sdp"
+                android:id="@+id/added"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="Add"
+                android:textColor="#FFFFFF"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/addedtime"
+                android:textSize="@dimen/_16sdp"
+                android:paddingTop="@dimen/_50sdp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="(+10 h 30m)"
+                android:textColor="#FFFFFF"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/addedtimedetail"
+            android:gravity="center"
+            android:textSize="@dimen/_16sdp"
+            android:textColor="#FFFFFF"
+            android:text="Extended Battery Up to 10h 30m"
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+        <ImageView
+            android:id="@+id/applied"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/apply"
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:background="#000000">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:paddingTop="@dimen/_10sdp"
+            android:background="#27282D"
+            android:foregroundGravity="center"
+            android:id="@+id/recycler_view"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+</LinearLayout>

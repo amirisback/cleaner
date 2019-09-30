@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:wheel="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="10"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:background="#000000"
+        android:layout_weight="6"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:padding="@dimen/_40sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.hookedonplay.decoviewlib.DecoView
+            android:id="@+id/dynamicArcView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            />
+            <TextView
+                android:id="@+id/completion"
+                android:textColor="#FFFFFF"
+                android:text="0%"
+                android:textSize="@dimen/_25sdp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:weightSum="6"
+        android:background="#000000"
+        android:layout_marginTop="1dp"
+        android:layout_weight="4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:weightSum="20"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <ImageView
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/circle_grey"
+                android:id="@+id/istpic"
+                android:layout_weight="1.5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+
+        <TextView
+            android:gravity="center|left"
+            android:id="@+id/ist"
+            android:text="Decreasing Brightness Upto 90%"
+            android:textColor="#808080"
+            android:layout_weight="18.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:weightSum="20"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <ImageView
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/circle_grey"
+                android:id="@+id/secpic"
+                android:layout_weight="1.5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                android:gravity="center|left"
+                android:id="@+id/sec"
+                android:text="Decreasing Device Performance"
+                android:textColor="#808080"
+                android:layout_weight="18.5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:weightSum="20"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/circle_grey"
+                android:id="@+id/thipic"
+                android:layout_weight="1.5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                android:gravity="center|left"
+                android:id="@+id/thi"
+                android:text="Closing Background Apps and Services"
+                android:textColor="#808080"
+                android:layout_weight="18.5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:weightSum="20"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <ImageView
+                android:layout_gravity="top"
+               android:padding="@dimen/_5sdp"
+                android:src="@drawable/circle_grey"
+                android:id="@+id/foupic"
+                android:layout_weight="1.5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                android:gravity="center|left"
+                android:id="@+id/fou"
+                android:text="Locking Acess To Power Consuming Apps"
+                android:textColor="#808080"
+                android:layout_weight="18.5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:weightSum="20"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <ImageView
+                android:layout_gravity="top"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/circle_grey"
+                android:id="@+id/fifthpic"
+                android:layout_weight="1.5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                android:gravity="center|left"
+                android:id="@+id/fif"
+                android:text="Closing All Power Consuming Functions"
+                android:textColor="#808080"
+                android:layout_weight="18.5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#99FFFFFF"
+    android:weightSum="10"
+    android:paddingTop="@dimen/_80sdp"
+    android:paddingBottom="@dimen/_80sdp"
+    android:paddingLeft="@dimen/_10sdp"
+    android:paddingRight="@dimen/_10sdp"
+    >
+
+   <LinearLayout
+       android:background="#000000"
+       android:layout_weight="1.7"
+       android:layout_width="match_parent"
+       android:layout_height="0dp">
+
+       <TextView
+           android:gravity="center"
+           android:textColor="#FFFFFF"
+           android:text="ADD APPLICATIONS"
+           android:textStyle="bold"
+           android:textAppearance="?android:textAppearanceLarge"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent" />
+
+   </LinearLayout>
+    <LinearLayout
+        android:background="#000000"
+        android:layout_weight="2.3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <TextView
+            android:paddingLeft="@dimen/_4sdp"
+            android:paddingRight="@dimen/_4sdp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:text="Limited Apps are avalible and Some Apps and Features may not work when Ultra Power Saving Mode is Enabled."
+            android:textAppearance="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="#000000"
+        android:layout_weight="6"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:layout_weight="3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:weightSum="3"
+            android:paddingTop="@dimen/_4sdp"
+            android:paddingBottom="@dimen/_2sdp">
+
+            <LinearLayout
+                android:padding="@dimen/_7sdp"
+                android:weightSum="5"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+
+                    android:id="@+id/addcontacts"
+                    android:src="@drawable/contacts"
+                    android:layout_weight="3.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+                <TextView
+                    android:gravity="center"
+                    android:text="Contacts"
+                    android:textColor="#FFFFFF"
+                    android:layout_weight="1.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:padding="@dimen/_7sdp"
+                android:weightSum="5"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/addcamera"
+                    android:src="@drawable/camera"
+                    android:layout_weight="3.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+                <TextView
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:text="Camera"
+                    android:layout_weight="1.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:padding="@dimen/_7sdp"
+                android:weightSum="5"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/addcalculator"
+                    android:src="@drawable/calc"
+                    android:layout_weight="3.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+                <TextView
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:text="Calculator"
+                    android:layout_weight="1.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:weightSum="3"
+            android:paddingTop="@dimen/_2sdp"
+            android:paddingBottom="@dimen/_6sdp">
+
+            <LinearLayout
+                android:padding="@dimen/_7sdp"
+                android:weightSum="5"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/addclock"
+                    android:src="@drawable/clock"
+                    android:layout_weight="3.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+                <TextView
+                    android:gravity="center"
+                    android:text="Alaram"
+                    android:textColor="#FFFFFF"
+                    android:layout_weight="1.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:padding="@dimen/_7sdp"
+                android:weightSum="5"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/addmap"
+                    android:src="@drawable/map"
+                    android:layout_weight="3.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+                <TextView
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:text="Map"
+                    android:layout_weight="1.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:padding="@dimen/_7sdp"
+                android:weightSum="5"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/addplaystore"
+                    android:src="@drawable/gp"
+                    android:layout_weight="3.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+                <TextView
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:text="Play Store"
+                    android:layout_weight="1.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

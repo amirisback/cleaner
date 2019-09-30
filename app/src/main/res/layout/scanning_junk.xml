@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_weight="10"
+    android:background="#000000"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:weightSum="10"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6.5"
+        android:background="#27282D"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_weight="7.5"
+            android:padding="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+
+
+
+
+
+            <ImageView
+                android:src="@drawable/back"
+                android:id="@+id/back"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/scan1"
+                android:paddingTop="@dimen/_60sdp"
+                android:paddingLeft="@dimen/_55sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:indicatorName="BallScaleMultipleIndicator"
+                app:indicatorColor="#F22938"
+                />
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/scan2"
+                android:paddingTop="@dimen/_170sdp"
+                android:paddingLeft="@dimen/_150sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:indicatorName="BallScaleMultipleIndicator"
+                app:indicatorColor="#F22938"
+                />
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/scan3"
+                android:paddingTop="@dimen/_160sdp"
+                android:paddingLeft="@dimen/_90sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:indicatorName="BallScaleMultipleIndicator"
+                app:indicatorColor="#F22938"
+                />
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/scan4"
+                android:paddingTop="@dimen/_60sdp"
+                android:paddingLeft="@dimen/_170sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:indicatorName="BallScaleMultipleIndicator"
+                app:indicatorColor="#F22938"
+                />
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/scan5"
+                android:paddingTop="@dimen/_60sdp"
+                android:paddingLeft="@dimen/_120sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:indicatorName="BallScaleMultipleIndicator"
+                app:indicatorColor="#F22938"
+                />
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/scan6"
+                android:paddingTop="@dimen/_170sdp"
+                android:paddingLeft="@dimen/_130sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:indicatorName="BallScaleMultipleIndicator"
+                app:indicatorColor="#F22938"
+                />
+
+            <com.skyfishjy.library.RippleBackground
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/content"
+                app:rb_color="#24D149"
+                app:rb_radius="22dp"
+                app:rb_rippleAmount="4"
+                app:rb_duration="3000"
+                app:rb_scale="6">
+                <ImageView
+
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_90sdp"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/centerImage"
+                    android:clickable="true"
+                    />
+            </com.skyfishjy.library.RippleBackground>
+
+            <ImageView
+
+                android:src="@drawable/upper"
+                android:id="@+id/front"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/_25sdp"
+            >
+        <TextView
+
+            android:layout_centerInParent="true"
+            android:text="Scanning"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="#FFFFFF"
+            android:id="@+id/scanning"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:paddingTop="@dimen/_7sdp"
+                android:layout_centerInParent="true"
+                android:paddingLeft="-15dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_toRightOf="@+id/scanning"
+                android:id="@+id/spin_kit"
+                style="@style/SpinKitView.Large.ThreeBounce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:SpinKit_Color="#FFFFFF" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="#FFFFFF"
+            android:id="@+id/files"
+            android:gravity="center"
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_weight="3.5"
+        android:background="#27282D">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:foregroundGravity="center"
+            android:id="@+id/recycler_view"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
