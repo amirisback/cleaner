@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="@dimen/_60sdp"
     android:layout_height="match_parent"
+    android:layout_gravity="bottom|center"
     android:gravity="center"
-    android:layout_gravity="bottom|center">
+    android:orientation="vertical">
 
     <ImageView
-        android:layout_gravity="center"
         android:id="@+id/appimage"
         android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp" />
+        android:layout_height="@dimen/_40sdp"
+        android:layout_gravity="center" />
+
     <TextView
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="@dimen/_10sdp"
-        android:textColor="@color/colorTextWhite"
         android:id="@+id/apptext"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/colorTextWhite"
+        android:textSize="@dimen/_10sdp" />
 
 </LinearLayout>
