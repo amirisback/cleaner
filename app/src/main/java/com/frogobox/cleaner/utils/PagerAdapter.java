@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.frogobox.cleaner.view.fragment.BatterySaverFragment;
 import com.frogobox.cleaner.view.fragment.CPUCoolerFragment;
 import com.frogobox.cleaner.view.fragment.JunkCleanerFragment;
-import com.frogobox.cleaner.view.fragment.PhoneBoosterFragment;
+import com.frogobox.cleaner.view.fragment.ChargeBoosterFragment;
 
 /**
  * Created by Frogobox Software Industries 2/12/2017.
@@ -26,7 +26,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                PhoneBoosterFragment tab1 = new PhoneBoosterFragment();
+                ChargeBoosterFragment tab1 = new ChargeBoosterFragment();
                 return tab1;
             case 1:
                 BatterySaverFragment tab2 = new BatterySaverFragment();

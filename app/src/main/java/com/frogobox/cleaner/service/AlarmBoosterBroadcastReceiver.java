@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 
 import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.utils.Constant;
-import com.frogobox.cleaner.view.fragment.PhoneBoosterFragment;
+import com.frogobox.cleaner.view.fragment.ChargeBoosterFragment;
 
 /**
  * Created by Frogobox Software Industries 3/2/2017.
@@ -30,9 +30,9 @@ public final class AlarmBoosterBroadcastReceiver extends BroadcastReceiver {
         editor.commit();
 
         try {
-            PhoneBoosterFragment.optimizebutton.setBackgroundResource(0);
-            PhoneBoosterFragment.optimizebutton.setImageResource(0);
-            PhoneBoosterFragment.optimizebutton.setImageResource(R.drawable.optimize);
+            ChargeBoosterFragment.optimizebutton.setBackgroundResource(0);
+            ChargeBoosterFragment.optimizebutton.setImageResource(0);
+            ChargeBoosterFragment.optimizebutton.setImageResource(R.drawable.optimize);
         } catch (Exception e) {
 
         }

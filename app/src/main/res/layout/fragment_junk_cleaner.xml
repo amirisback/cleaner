@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +14,6 @@
         android:layout_weight="6"
         android:layout_width="match_parent"
         android:layout_height="0dp">
-
 
         <LinearLayout
             android:layout_weight="5"
@@ -48,7 +47,7 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:paddingBottom="@dimen/_5sdp"/>
+                android:paddingBottom="@dimen/_5sdp" />
 
             <ImageView
                 android:id="@+id/mainbutton"
@@ -58,7 +57,7 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginBottom="@dimen/_15sdp"/>
+                android:layout_marginBottom="@dimen/_15sdp" />
 
         </LinearLayout>
 
@@ -83,6 +82,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:paddingBottom="@dimen/_5sdp">
+
             <TextView
                 android:id="@+id/cachetext"
                 android:textColor="@color/colorTextWhite"
@@ -91,6 +91,7 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp" />
+
             <ImageView
                 android:id="@+id/cache"
                 android:src="@drawable/cache2"
@@ -109,6 +110,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center">
+
             <TextView
                 android:id="@+id/temptext"
                 android:textColor="@color/colorTextWhite"
@@ -117,6 +119,7 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp" />
+
             <ImageView
                 android:id="@+id/temp"
                 android:src="@drawable/temp2"
@@ -135,6 +138,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center">
+
             <TextView
                 android:id="@+id/residuetext"
                 android:textColor="@color/colorTextWhite"
@@ -143,6 +147,7 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp" />
+
             <ImageView
                 android:id="@+id/residue"
                 android:src="@drawable/res2"
@@ -161,6 +166,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center">
+
             <TextView
                 android:id="@+id/systemtext"
                 android:textColor="@color/colorTextWhite"

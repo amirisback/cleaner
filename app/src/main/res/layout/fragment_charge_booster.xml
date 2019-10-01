@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorBackgroundBlack"
     android:orientation="vertical"
     android:weightSum="10">
@@ -15,94 +14,87 @@
         android:gravity="center">
 
         <RelativeLayout
-            android:layout_gravity="center"
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center">
 
             <ImageView
-                android:layout_centerInParent="true"
-                android:src="@drawable/black_circle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:src="@drawable/black_circle" />
 
             <ImageView
                 android:id="@+id/waves"
-                android:paddingTop="@dimen/_20sdp"
-                android:layout_marginLeft="-700dp"
-                android:src="@drawable/running_bar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <LinearLayout
-                android:layout_centerInParent="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="-700dp"
+                android:paddingTop="@dimen/_20sdp"
+                android:src="@drawable/running_bar" />
+
+            <ImageView
+                android:id="@+id/circularlines"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/circular_lines" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
                 android:gravity="center"
                 android:padding="@dimen/_18sdp">
 
                 <com.hookedonplay.decoviewlib.DecoView
                     android:id="@+id/dynamicArcView2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
-                    />
+                    android:layout_height="match_parent" />
 
             </LinearLayout>
 
-
-            <ImageView
-                android:layout_centerInParent="true"
-                android:id="@+id/circularlines"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/circular_lines"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-
             <LinearLayout
-                android:orientation="vertical"
-                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="3"
-                android:padding="@dimen/_40sdp">
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/_40sdp"
+                android:weightSum="3">
 
                 <TextView
-
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="#F22938"
+                    android:id="@+id/top"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="Storage"
-                    android:id="@+id/top"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp" />
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:textColor="#F22938" />
+
                 <TextView
-                    android:gravity="center"
-                    android:textColor="@color/colorTextWhite"
-                    android:textSize="@dimen/_24sdp"
-                    android:layout_weight="1"
                     android:id="@+id/centree"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    />
-                <TextView
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:gravity="center"
-                    android:textColor="@color/colorTextGreen"
-                    android:text="Found"
                     android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="@dimen/_24sdp" />
+
+                <TextView
                     android:id="@+id/bottom"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp" />
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Found"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:textColor="@color/colorTextGreen" />
 
             </LinearLayout>
 
-
         </RelativeLayout>
-
 
     </LinearLayout>
 
@@ -114,34 +106,33 @@
 
         <LinearLayout
             android:id="@+id/scanlay"
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center">
 
             <TextView
-                android:gravity="center"
-                android:textColor="@color/colorTextWhite"
-                android:textAppearance="?android:textAppearanceLarge"
                 android:id="@+id/scanning"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="@color/colorTextWhite" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
             android:id="@+id/optimizelay"
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/optbutton"
-                android:layout_gravity="center"
                 android:layout_width="@dimen/_150sdp"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                />
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/_10sdp" />
 
         </LinearLayout>
 
@@ -156,7 +147,6 @@
         android:weightSum="2">
 
         <LinearLayout
-
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="1dp"
@@ -166,7 +156,6 @@
             android:orientation="vertical"
             android:paddingLeft="@dimen/_1sdp"
             android:weightSum="6">
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -200,7 +189,6 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -219,7 +207,6 @@
                 android:orientation="horizontal"
                 android:paddingTop="@dimen/_3sdp"
                 android:weightSum="2">
-
 
                 <TextView
                     android:id="@+id/appsused"
@@ -292,7 +279,6 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -311,7 +297,6 @@
                 android:orientation="horizontal"
                 android:paddingTop="@dimen/_3sdp"
                 android:weightSum="2">
-
 
                 <TextView
                     android:id="@+id/usedram"

@@ -53,7 +53,7 @@ import static android.content.Context.ALARM_SERVICE;
  * Created by Frogobox Software Industries 2/12/2017.
  */
 
-public class PhoneBoosterFragment extends Fragment {
+public class ChargeBoosterFragment extends Fragment {
 
     public static ImageView optimizebutton;
     private int mb = 1024 * 1024;
@@ -72,7 +72,7 @@ public class PhoneBoosterFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_phone_booster, container, false);
+        view = inflater.inflate(R.layout.fragment_charge_booster, container, false);
 
         arcView = view.findViewById(R.id.dynamicArcView2);
         scanning = view.findViewById(R.id.scanning);

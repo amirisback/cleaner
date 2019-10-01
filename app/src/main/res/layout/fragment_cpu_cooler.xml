@@ -20,23 +20,24 @@
             android:padding="@dimen/_20sdp"
             android:layout_width="match_parent"
             android:layout_height="0dp">
-        <ImageView
-            android:id="@+id/tempimg"
-            android:src="@drawable/blue_cooler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
-        <TextView
-            android:id="@+id/batterytemp"
-            android:layout_marginBottom="@dimen/_20sdp"
-            android:textStyle="bold"
-            android:textSize="@dimen/_25sdp"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:textColor="@color/colorTextWhite"
-            android:text="23.2"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp" />
+            <ImageView
+                android:id="@+id/tempimg"
+                android:src="@drawable/blue_cooler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/batterytemp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:textStyle="bold"
+                android:textSize="@dimen/_25sdp"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:textColor="@color/colorTextWhite"
+                android:text="23.2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp" />
         </RelativeLayout>
 
         <TextView
@@ -59,6 +60,7 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="0dp" />
+
         <TextView
             android:id="@+id/showsec"
             android:textColor="@color/colorTextGreen"
@@ -70,7 +72,6 @@
             android:layout_height="0dp" />
 
     </LinearLayout>
-
 
 
     <RelativeLayout
@@ -89,14 +90,15 @@
             android:gravity="center">
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:foregroundGravity="center"
-            android:id="@+id/recycler_view"
-            android:scrollbars="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:foregroundGravity="center"
+                android:id="@+id/recycler_view"
+                android:scrollbars="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
+
         <TextView
             android:id="@+id/nooverheating"
             android:textColor="@color/colorTextWhite"
@@ -105,8 +107,6 @@
             android:textAppearance="?android:textAppearanceMedium"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
-
 
     </RelativeLayout>
 
