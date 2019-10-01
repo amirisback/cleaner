@@ -79,7 +79,7 @@
                 android:layout_weight="18.5"
                 android:gravity="center|left"
                 android:text="Decreasing Brightness Upto 90%"
-                android:textColor="#808080" />
+                android:textColor="@color/colorTextDarkGrey" />
 
         </LinearLayout>
 
@@ -105,7 +105,7 @@
                 android:layout_weight="18.5"
                 android:gravity="center|left"
                 android:text="Decreasing Device Performance"
-                android:textColor="#808080" />
+                android:textColor="@color/colorTextDarkGrey" />
 
         </LinearLayout>
 
@@ -132,7 +132,7 @@
                 android:layout_weight="18.5"
                 android:gravity="center|left"
                 android:text="Closing Background Apps and Services"
-                android:textColor="#808080" />
+                android:textColor="@color/colorTextDarkGrey" />
 
         </LinearLayout>
 
@@ -159,7 +159,7 @@
                 android:layout_weight="18.5"
                 android:gravity="center|left"
                 android:text="Locking Acess To Power Consuming Apps"
-                android:textColor="#808080" />
+                android:textColor="@color/colorTextDarkGrey" />
 
         </LinearLayout>
 
@@ -186,7 +186,7 @@
                 android:layout_weight="18.5"
                 android:gravity="center|left"
                 android:text="Closing All Power Consuming Functions"
-                android:textColor="#808080" />
+                android:textColor="@color/colorTextDarkGrey" />
         </LinearLayout>
 
     </LinearLayout>

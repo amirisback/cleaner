@@ -1,228 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#99FFFFFF"
-    android:weightSum="10"
-    android:paddingTop="@dimen/_80sdp"
-    android:paddingBottom="@dimen/_80sdp"
+    android:orientation="vertical"
     android:paddingLeft="@dimen/_10sdp"
+    android:paddingTop="@dimen/_80sdp"
     android:paddingRight="@dimen/_10sdp"
-    >
+    android:paddingBottom="@dimen/_80sdp"
+    android:weightSum="10">
 
-   <LinearLayout
-       android:background="@color/colorBackgroundBlack"
-       android:layout_weight="1.7"
-       android:layout_width="match_parent"
-       android:layout_height="0dp">
-
-       <TextView
-           android:gravity="center"
-           android:textColor="@color/colorTextWhite"
-           android:text="ADD APPLICATIONS"
-           android:textStyle="bold"
-           android:textAppearance="?android:textAppearanceLarge"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent" />
-
-   </LinearLayout>
     <LinearLayout
-        android:background="@color/colorBackgroundBlack"
-        android:layout_weight="2.3"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="1.7"
+        android:background="@color/colorBackgroundBlack">
 
         <TextView
-            android:paddingLeft="@dimen/_4sdp"
-            android:paddingRight="@dimen/_4sdp"
-            android:gravity="center"
-            android:textColor="@color/colorTextWhite"
-            android:text="Limited Apps are avalible and Some Apps and Features may not work when Ultra Power Saving Mode is Enabled."
-            android:textAppearance="?android:textAppearanceSmall"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="ADD APPLICATIONS"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@color/colorTextWhite"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:background="@color/colorBackgroundBlack"
-        android:layout_weight="6"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="2.3"
+        android:background="@color/colorBackgroundBlack">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="@dimen/_4sdp"
+            android:paddingRight="@dimen/_4sdp"
+            android:text="Limited Apps are avalible and Some Apps and Features may not work when Ultra Power Saving Mode is Enabled."
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/colorTextWhite" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:background="@color/colorBackgroundBlack"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_weight="3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:weightSum="3"
+            android:layout_weight="3"
             android:paddingTop="@dimen/_4sdp"
-            android:paddingBottom="@dimen/_2sdp">
+            android:paddingBottom="@dimen/_2sdp"
+            android:weightSum="3">
 
             <LinearLayout
-                android:padding="@dimen/_7sdp"
-                android:weightSum="5"
-                android:orientation="vertical"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/_7sdp"
+                android:weightSum="5">
 
                 <ImageView
-
                     android:id="@+id/addcontacts"
-                    android:src="@drawable/contacts"
-                    android:layout_weight="3.5"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp" />
+                    android:layout_height="0dp"
+                    android:layout_weight="3.5"
+                    android:src="@drawable/contacts" />
+
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.5"
                     android:gravity="center"
                     android:text="Contacts"
-                    android:textColor="@color/colorTextWhite"
-                    android:layout_weight="1.5"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp" />
+                    android:textColor="@color/colorTextWhite" />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:padding="@dimen/_7sdp"
-                android:weightSum="5"
-                android:orientation="vertical"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/_7sdp"
+                android:weightSum="5">
 
                 <ImageView
                     android:id="@+id/addcamera"
-                    android:src="@drawable/camera"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="3.5"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp" />
+                    android:src="@drawable/camera" />
+
                 <TextView
-                    android:gravity="center"
-                    android:textColor="@color/colorTextWhite"
-                    android:text="Camera"
-                    android:layout_weight="1.5"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp" />
+                    android:layout_height="0dp"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:text="Camera"
+                    android:textColor="@color/colorTextWhite" />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:padding="@dimen/_7sdp"
-                android:weightSum="5"
-                android:orientation="vertical"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/_7sdp"
+                android:weightSum="5">
 
                 <ImageView
                     android:id="@+id/addcalculator"
-                    android:src="@drawable/calc"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="3.5"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp" />
+                    android:src="@drawable/calc" />
+
                 <TextView
-                    android:gravity="center"
-                    android:textColor="@color/colorTextWhite"
-                    android:text="Calculator"
-                    android:layout_weight="1.5"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp" />
+                    android:layout_height="0dp"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:text="Calculator"
+                    android:textColor="@color/colorTextWhite" />
 
             </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_weight="3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:weightSum="3"
+            android:layout_weight="3"
             android:paddingTop="@dimen/_2sdp"
-            android:paddingBottom="@dimen/_6sdp">
+            android:paddingBottom="@dimen/_6sdp"
+            android:weightSum="3">
 
             <LinearLayout
-                android:padding="@dimen/_7sdp"
-                android:weightSum="5"
-                android:orientation="vertical"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/_7sdp"
+                android:weightSum="5">
 
                 <ImageView
                     android:id="@+id/addclock"
-                    android:src="@drawable/clock"
-                    android:layout_weight="3.5"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp" />
+                    android:layout_height="0dp"
+                    android:layout_weight="3.5"
+                    android:src="@drawable/clock" />
+
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.5"
                     android:gravity="center"
                     android:text="Alaram"
-                    android:textColor="@color/colorTextWhite"
-                    android:layout_weight="1.5"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp" />
+                    android:textColor="@color/colorTextWhite" />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:padding="@dimen/_7sdp"
-                android:weightSum="5"
-                android:orientation="vertical"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/_7sdp"
+                android:weightSum="5">
 
                 <ImageView
                     android:id="@+id/addmap"
-                    android:src="@drawable/map"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="3.5"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp" />
+                    android:src="@drawable/map" />
+
                 <TextView
-                    android:gravity="center"
-                    android:textColor="@color/colorTextWhite"
-                    android:text="Map"
-                    android:layout_weight="1.5"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp" />
+                    android:layout_height="0dp"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:text="Map"
+                    android:textColor="@color/colorTextWhite" />
 
             </LinearLayout>
 
-
             <LinearLayout
-                android:padding="@dimen/_7sdp"
-                android:weightSum="5"
-                android:orientation="vertical"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/_7sdp"
+                android:weightSum="5">
 
                 <ImageView
                     android:id="@+id/addplaystore"
-                    android:src="@drawable/gp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="3.5"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp" />
+                    android:src="@drawable/gp" />
+
                 <TextView
-                    android:gravity="center"
-                    android:textColor="@color/colorTextWhite"
-                    android:text="Play Store"
-                    android:layout_weight="1.5"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp" />
+                    android:layout_height="0dp"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:text="Play Store"
+                    android:textColor="@color/colorTextWhite" />
 
             </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
-
-
 
 </LinearLayout>

@@ -80,7 +80,7 @@
                 android:gravity="center|left"
                 android:id="@+id/ist"
                 android:text="Decreasing Screen Brightness Upto 80%"
-                android:textColor="#808080"
+                android:textColor="@color/colorTextDarkGrey"
                 android:layout_weight="18.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent" />
@@ -107,7 +107,7 @@
                 android:gravity="center|left"
                 android:id="@+id/sec"
                 android:text="Decreases Device Performance "
-                android:textColor="#808080"
+                android:textColor="@color/colorTextDarkGrey"
                 android:layout_weight="18.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent" />
@@ -134,7 +134,7 @@
                 android:gravity="center|left"
                 android:id="@+id/thi"
                 android:text="Closing Background Apps and Tasks"
-                android:textColor="#808080"
+                android:textColor="@color/colorTextDarkGrey"
                 android:layout_weight="18.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent" />
@@ -161,7 +161,7 @@
                 android:gravity="center|left"
                 android:id="@+id/fou"
                 android:text="Closing System Services like Bluetooth etc."
-                android:textColor="#808080"
+                android:textColor="@color/colorTextDarkGrey"
                 android:layout_weight="18.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent" />
