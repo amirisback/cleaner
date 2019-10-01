@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:wheel="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="10"
-    android:background="@color/colorBackgroundWhite">
+    android:background="@color/colorBackgroundWhite"
+    android:orientation="vertical"
+    android:weightSum="10">
 
     <LinearLayout
-        android:background="@color/colorBackgroundBlack"
-        android:layout_weight="6"
-        android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="6"
+        android:background="@color/colorBackgroundBlack"
         android:gravity="center"
         android:padding="@dimen/_40sdp">
 
@@ -20,18 +18,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.hookedonplay.decoviewlib.DecoView
-                android:id="@+id/dynamicArcView2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                />
             <TextView
                 android:id="@+id/completion"
-                android:textColor="@color/colorTextWhite"
-                android:text="0%"
-                android:textSize="@dimen/_25sdp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:gravity="center"
+                android:text="0%"
+                android:textColor="@color/colorTextWhite"
+                android:textSize="@dimen/_25sdp" />
+
+            <com.hookedonplay.decoviewlib.DecoView
+                android:id="@+id/dynamicArcView2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </RelativeLayout>
@@ -39,19 +36,19 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:weightSum="6"
-        android:background="@color/colorBackgroundBlack"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginTop="1dp"
         android:layout_weight="4"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:background="@color/colorBackgroundBlack"
+        android:orientation="vertical"
+        android:weightSum="6">
 
         <LinearLayout
-            android:layout_weight="1"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
@@ -60,134 +57,125 @@
         </LinearLayout>
 
         <LinearLayout
-            android:weightSum="20"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="20">
 
             <ImageView
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/circle_grey"
                 android:id="@+id/istpic"
-                android:layout_weight="1.5"
                 android:layout_width="0dp"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/circle_grey" />
 
 
             <TextView
-                android:gravity="center|left"
                 android:id="@+id/ist"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="18.5"
+                android:gravity="center|left"
                 android:text="Decreasing Screen Brightness Upto 80%"
-                android:textColor="@color/colorTextDarkGrey"
-                android:layout_weight="18.5"
-                android:layout_width="0dp"
-                android:layout_height="match_parent" />
+                android:textColor="@color/colorTextDarkGrey" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:weightSum="20"
-            android:orientation="horizontal"
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="20">
 
             <ImageView
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/circle_grey"
                 android:id="@+id/secpic"
-                android:layout_weight="1.5"
                 android:layout_width="0dp"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/circle_grey" />
 
 
             <TextView
-                android:gravity="center|left"
                 android:id="@+id/sec"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="18.5"
+                android:gravity="center|left"
                 android:text="Decreases Device Performance "
-                android:textColor="@color/colorTextDarkGrey"
-                android:layout_weight="18.5"
-                android:layout_width="0dp"
-                android:layout_height="match_parent" />
+                android:textColor="@color/colorTextDarkGrey" />
 
         </LinearLayout>
+
         <LinearLayout
-            android:weightSum="20"
-            android:orientation="horizontal"
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="20">
 
             <ImageView
-                android:layout_gravity="center"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/circle_grey"
                 android:id="@+id/thipic"
-                android:layout_weight="1.5"
                 android:layout_width="0dp"
-                android:layout_height="match_parent" />
-
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.5"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/circle_grey" />
 
             <TextView
-                android:gravity="center|left"
                 android:id="@+id/thi"
-                android:text="Closing Background Apps and Tasks"
-                android:textColor="@color/colorTextDarkGrey"
-                android:layout_weight="18.5"
                 android:layout_width="0dp"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_weight="18.5"
+                android:gravity="center|left"
+                android:text="Closing Background Apps and Tasks"
+                android:textColor="@color/colorTextDarkGrey" />
 
         </LinearLayout>
+
         <LinearLayout
-            android:weightSum="20"
-            android:orientation="horizontal"
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="20">
 
             <ImageView
-                android:layout_gravity="top"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/circle_grey"
                 android:id="@+id/foupic"
-                android:layout_weight="1.5"
                 android:layout_width="0dp"
-                android:layout_height="match_parent" />
-
+                android:layout_height="match_parent"
+                android:layout_gravity="top"
+                android:layout_weight="1.5"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/circle_grey" />
 
             <TextView
-                android:gravity="center|left"
                 android:id="@+id/fou"
-                android:text="Closing System Services like Bluetooth etc."
-                android:textColor="@color/colorTextDarkGrey"
-                android:layout_weight="18.5"
                 android:layout_width="0dp"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_weight="18.5"
+                android:gravity="center|left"
+                android:text="Closing System Services like Bluetooth etc."
+                android:textColor="@color/colorTextDarkGrey" />
 
         </LinearLayout>
 
-
-
         <LinearLayout
-            android:layout_weight="1"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
         </LinearLayout>
-
-
-
-
 
     </LinearLayout>
-
-
 
 </LinearLayout>
