@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="6"
-    android:background="#000000"
+    android:background="@color/colorBackgroundBlack"
     android:gravity="center">
 
     <LinearLayout
-        android:background="#27282D"
+        android:background="@color/colorBackgroundDarkBlackBlue"
         android:orientation="vertical"
         android:layout_weight="4.8"
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
             android:textSize="@dimen/_25sdp"
             android:layout_alignParentBottom="true"
             android:gravity="center"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorTextWhite"
             android:text="23.2"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp" />
@@ -42,7 +42,7 @@
         <TextView
             android:textSize="@dimen/_25sdp"
             android:id="@+id/showmain"
-            android:textColor="#24D149"
+            android:textColor="@color/colorTextGreen"
             android:gravity="top|center"
             android:text="NORMAL"
             android:textStyle="bold"
@@ -61,7 +61,7 @@
             android:layout_height="0dp" />
         <TextView
             android:id="@+id/showsec"
-            android:textColor="#24D149"
+            android:textColor="@color/colorTextGreen"
             android:gravity="center"
             android:text="CPU Temperature is GOOD"
             android:textAppearance="?android:textAppearanceLarge"
@@ -74,7 +74,7 @@
 
 
     <RelativeLayout
-        android:background="#27282D"
+        android:background="@color/colorBackgroundDarkBlackBlue"
 
         android:layout_marginTop="1dp"
         android:layout_gravity="center"
@@ -99,7 +99,7 @@
         </LinearLayout>
         <TextView
             android:id="@+id/nooverheating"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorTextWhite"
             android:gravity="center"
             android:text="Currently No App Causing Overheating"
             android:textAppearance="?android:textAppearanceMedium"

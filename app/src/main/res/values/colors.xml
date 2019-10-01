@@ -7,12 +7,28 @@
     <color name="tab_background_unselected">#F22938</color>
     <color name="transparent">#00000000</color>
 
-
     <color name="colorPrimary1">#27282D</color>
     <color name="colorPrimaryDark1">#27282D</color>
     <color name="colorAccent1">#27282D</color>
 
+    <!-- Base Color   -->
+
     <color name="colorBaseWhite">#FFFFFF</color>
+    <color name="colorBaseBlack">#000000</color>
+    <color name="colorBaseGreen">#24D149</color>
+    <color name="colorBaseDarkGrey">#808080</color>
+    <color name="colorBaseDarkBlackBlue">#27282D</color>
+
     <color name="colorTextWhite">@color/colorBaseWhite</color>
+    <color name="colorTextBlack">@color/colorBaseBlack</color>
+    <color name="colorTextGreen">@color/colorBaseGreen</color>
+    <color name="colorTextDarkGrey">@color/colorBaseDarkGrey</color>
+    <color name="colorTextDarkBlackBlue">@color/colorBaseDarkBlackBlue</color>
+
+    <color name="colorBackgroundWhite">@color/colorBaseWhite</color>
+    <color name="colorBackgroundBlack">@color/colorBaseBlack</color>
+    <color name="colorBackgroundGreen">@color/colorBaseGreen</color>
+    <color name="colorBackgroundDarkGrey">@color/colorBaseDarkGrey</color>
+    <color name="colorBackgroundDarkBlackBlue">@color/colorBaseDarkBlackBlue</color>
 
 </resources>

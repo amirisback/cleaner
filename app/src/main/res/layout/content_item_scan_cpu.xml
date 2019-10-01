@@ -17,7 +17,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:textSize="@dimen/_10sdp"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorTextWhite"
         android:id="@+id/apptext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:gravity="top"
-    android:background="#27282D">
+    android:background="@color/colorBackgroundDarkBlackBlue">
 
     <ImageView
         android:layout_marginTop="@dimen/_5sdp"
@@ -18,7 +18,7 @@
         android:gravity="top"
         android:layout_marginLeft="@dimen/_10sdp"
         android:textSize="@dimen/_15sdp"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorTextWhite"
         android:id="@+id/items"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

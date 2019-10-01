@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="@color/colorBackgroundBlack"
     android:layout_weight="12"
    >
 <LinearLayout
@@ -46,7 +46,7 @@
         android:layout_weight="4"
         android:layout_height="0dp"
         android:gravity="center"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorTextWhite"
         android:layout_width="match_parent"
 
         android:textSize="@dimen/_40sdp"/>
@@ -55,7 +55,7 @@
         android:layout_weight="2"
         android:layout_height="0dp"
         android:textSize="@dimen/_17sdp"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorTextWhite"
         android:text="16h 21m remaning"
         android:id="@+id/timeremaning"
         android:gravity="center"
@@ -66,7 +66,7 @@
         android:layout_weight="2"
         android:layout_height="0dp"
         android:textSize="@dimen/_17sdp"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorTextWhite"
         android:text="Battery Power 20%"
         android:id="@+id/batteryremaning"
         android:gravity="center"

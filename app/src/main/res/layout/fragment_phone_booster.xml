@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
-    android:background="#000000"
+    android:background="@color/colorBackgroundBlack"
     android:orientation="vertical"
     android:weightSum="10">
 
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5.5"
-        android:background="#27282D"
+        android:background="@color/colorBackgroundDarkBlackBlue"
         android:gravity="center">
 
         <RelativeLayout
@@ -81,7 +81,7 @@
                     android:layout_height="0dp" />
                 <TextView
                     android:gravity="center"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/colorTextWhite"
                     android:textSize="@dimen/_24sdp"
                     android:layout_weight="1"
                     android:id="@+id/centree"
@@ -91,7 +91,7 @@
                 <TextView
                     android:textAppearance="?android:textAppearanceLarge"
                     android:gravity="center"
-                    android:textColor="#24D149"
+                    android:textColor="@color/colorTextGreen"
                     android:text="Found"
                     android:layout_weight="1"
                     android:id="@+id/bottom"
@@ -110,7 +110,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.2"
-        android:background="#27282D">
+        android:background="@color/colorBackgroundDarkBlackBlue">
 
         <LinearLayout
             android:id="@+id/scanlay"
@@ -120,7 +120,7 @@
 
             <TextView
                 android:gravity="center"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorTextWhite"
                 android:textAppearance="?android:textAppearanceLarge"
                 android:id="@+id/scanning"
                 android:layout_width="match_parent"
@@ -161,7 +161,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="1dp"
             android:layout_weight="1"
-            android:background="#27282D"
+            android:background="@color/colorBackgroundDarkBlackBlue"
             android:gravity="center_vertical|center_horizontal"
             android:orientation="vertical"
             android:paddingLeft="@dimen/_1sdp"
@@ -188,7 +188,7 @@
                     android:gravity="center"
                     android:text="13"
                     android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/colorTextWhite"
                     android:textSize="@dimen/_22sdp" />
 
             </LinearLayout>
@@ -207,7 +207,7 @@
                     android:gravity="center"
                     android:text="Running Processes"
                     android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/colorTextWhite"
                     android:textSize="@dimen/_12sdp" />
 
             </LinearLayout>
@@ -229,7 +229,7 @@
                     android:gravity="right"
                     android:text="1.24 GB/"
                     android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/colorTextWhite"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
 
@@ -241,7 +241,7 @@
                     android:gravity="left"
                     android:text="2.67 GB"
                     android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/colorTextWhite"
                     android:textSize="@dimen/_12sdp" />
 
             </LinearLayout>
@@ -253,7 +253,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="1dp"
             android:layout_weight="1"
-            android:background="#27282D"
+            android:background="@color/colorBackgroundDarkBlackBlue"
             android:gravity="center_vertical|center_horizontal"
             android:orientation="vertical"
             android:paddingLeft="@dimen/_1sdp"
@@ -280,7 +280,7 @@
                     android:gravity="center"
                     android:text="48%"
                     android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/colorTextWhite"
                     android:textSize="@dimen/_22sdp" />
 
             </LinearLayout>
@@ -299,7 +299,7 @@
                     android:gravity="center"
                     android:text="Ram Usage"
                     android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/colorTextWhite"
                     android:textSize="@dimen/_12sdp" />
 
             </LinearLayout>
@@ -321,7 +321,7 @@
                     android:gravity="right"
                     android:text="1.24 GB/"
                     android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/colorTextWhite"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
 
@@ -333,7 +333,7 @@
                     android:gravity="left"
                     android:text="2.67 GB"
                     android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/colorTextWhite"
                     android:textSize="@dimen/_12sdp" />
 
             </LinearLayout>

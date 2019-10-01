@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#27282D"
+    android:background="@color/colorBackgroundDarkBlackBlue"
     android:weightSum="10">
 
     <RelativeLayout
@@ -61,7 +61,7 @@
         android:layout_height="0dp">
         <TextView
             android:id="@+id/cpucooler"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorTextWhite"
             android:textAppearance="?android:textAppearanceLarge"
             android:text="Cooling CPU "
             android:gravity="center"

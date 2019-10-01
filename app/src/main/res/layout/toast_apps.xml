@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:text="My message"
-        android:textColor="#FFFFFF">
+        android:textColor="@color/colorTextWhite">
     </TextView>
 
 </LinearLayout>

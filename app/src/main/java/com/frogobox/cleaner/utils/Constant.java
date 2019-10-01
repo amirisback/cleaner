@@ -36,11 +36,11 @@ public class Constant {
         public static String SHARED_PREF_BUTTON_3 = "SHARED_PREF_BUTTON_3";
         public static String SHARED_PREF_BUTTON_4 = "SHARED_PREF_BUTTON_4";
 
-        public static String EXTRA_HOURS = "extra_hours";
-        public static String EXTRA_HOURS_NORMAL = "extra_hours_normal";
+        public static String EXTRA_HOURS = "EXTRA_HOURS";
+        public static String EXTRA_HOURS_NORMAL = "EXTRA_HOURS_NORMAL";
 
-        public static String EXTRA_MINUTES = "extra_minute";
-        public static String EXTRA_MINUTES_NORMAL = "extra_minuts_normal";
+        public static String EXTRA_MINUTES = "EXTRA_MINUTES";
+        public static String EXTRA_MINUTES_NORMAL = "EXTRA_MINUTES_NORMAL";
 
         public static String COLOR_WHITE = "#FFFFFF";
 

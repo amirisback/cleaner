@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="10"
-    android:background="#000000">
+    android:background="@color/colorBackgroundBlack">
 
     <LinearLayout
-        android:background="#27282D"
+        android:background="@color/colorBackgroundDarkBlackBlue"
         android:weightSum="10"
         android:orientation="vertical"
         android:layout_weight="7"
@@ -15,7 +15,7 @@
         android:layout_height="0dp">
 
         <TextView
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorTextWhite"
             android:gravity="center"
             android:text="Extreme Power Saving"
             android:textStyle="bold"
@@ -40,7 +40,7 @@
                 android:textStyle="bold"
                 android:gravity="center"
                 android:text="Add"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorTextWhite"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <TextView
@@ -50,7 +50,7 @@
                 android:textStyle="bold"
                 android:gravity="center"
                 android:text="(+10 h 30m)"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorTextWhite"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </RelativeLayout>
@@ -59,7 +59,7 @@
             android:id="@+id/addedtimedetail"
             android:gravity="center"
             android:textSize="@dimen/_16sdp"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorTextWhite"
             android:text="Extended Battery Up to 10h 30m"
             android:layout_weight="1.5"
             android:layout_width="match_parent"
@@ -80,11 +80,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="1dp"
-        android:background="#000000">
+        android:background="@color/colorBackgroundBlack">
 
         <androidx.recyclerview.widget.RecyclerView
             android:paddingTop="@dimen/_10sdp"
-            android:background="#27282D"
+            android:background="@color/colorBackgroundDarkBlackBlue"
             android:foregroundGravity="center"
             android:id="@+id/recycler_view"
             android:scrollbars="vertical"

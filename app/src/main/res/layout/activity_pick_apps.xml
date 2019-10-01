@@ -12,14 +12,14 @@
     >
 
    <LinearLayout
-       android:background="#000000"
+       android:background="@color/colorBackgroundBlack"
        android:layout_weight="1.7"
        android:layout_width="match_parent"
        android:layout_height="0dp">
 
        <TextView
            android:gravity="center"
-           android:textColor="#FFFFFF"
+           android:textColor="@color/colorTextWhite"
            android:text="ADD APPLICATIONS"
            android:textStyle="bold"
            android:textAppearance="?android:textAppearanceLarge"
@@ -28,7 +28,7 @@
 
    </LinearLayout>
     <LinearLayout
-        android:background="#000000"
+        android:background="@color/colorBackgroundBlack"
         android:layout_weight="2.3"
         android:layout_width="match_parent"
         android:layout_height="0dp">
@@ -37,7 +37,7 @@
             android:paddingLeft="@dimen/_4sdp"
             android:paddingRight="@dimen/_4sdp"
             android:gravity="center"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorTextWhite"
             android:text="Limited Apps are avalible and Some Apps and Features may not work when Ultra Power Saving Mode is Enabled."
             android:textAppearance="?android:textAppearanceSmall"
             android:layout_width="match_parent"
@@ -47,7 +47,7 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:background="#000000"
+        android:background="@color/colorBackgroundBlack"
         android:layout_weight="6"
         android:layout_width="match_parent"
         android:layout_height="0dp">
@@ -78,7 +78,7 @@
                 <TextView
                     android:gravity="center"
                     android:text="Contacts"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/colorTextWhite"
                     android:layout_weight="1.5"
                     android:layout_width="match_parent"
                     android:layout_height="0dp" />
@@ -102,7 +102,7 @@
                     android:layout_height="0dp" />
                 <TextView
                     android:gravity="center"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/colorTextWhite"
                     android:text="Camera"
                     android:layout_weight="1.5"
                     android:layout_width="match_parent"
@@ -127,7 +127,7 @@
                     android:layout_height="0dp" />
                 <TextView
                     android:gravity="center"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/colorTextWhite"
                     android:text="Calculator"
                     android:layout_weight="1.5"
                     android:layout_width="match_parent"
@@ -162,7 +162,7 @@
                 <TextView
                     android:gravity="center"
                     android:text="Alaram"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/colorTextWhite"
                     android:layout_weight="1.5"
                     android:layout_width="match_parent"
                     android:layout_height="0dp" />
@@ -186,7 +186,7 @@
                     android:layout_height="0dp" />
                 <TextView
                     android:gravity="center"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/colorTextWhite"
                     android:text="Map"
                     android:layout_weight="1.5"
                     android:layout_width="match_parent"
@@ -211,7 +211,7 @@
                     android:layout_height="0dp" />
                 <TextView
                     android:gravity="center"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/colorTextWhite"
                     android:text="Play Store"
                     android:layout_weight="1.5"
                     android:layout_width="match_parent"
