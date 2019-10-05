@@ -23,7 +23,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+
 import com.frogobox.cleaner.R;
+import com.frogobox.cleaner.base.BaseActivity;
 import com.frogobox.cleaner.utils.Constant;
 
 import java.util.Locale;
@@ -34,7 +37,7 @@ import static android.content.ContentValues.TAG;
  * Created by Frogobox Software Industries 2/21/2017.
  */
 
-public class BatterySaverBlackActivity extends Activity {
+public class BatterySaverBlackActivity extends BaseActivity {
 
     ///Apply Extrem Power Saving Mode by allowing very few Apps to run
 

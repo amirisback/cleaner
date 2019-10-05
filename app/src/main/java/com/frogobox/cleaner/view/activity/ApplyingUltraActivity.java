@@ -20,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+
+import com.frogobox.cleaner.base.BaseActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -33,7 +35,7 @@ import com.hookedonplay.decoviewlib.events.DecoEvent;
  * Created by Frogobox Software Industries 2/21/2017.
  */
 
-public class ApplyingUltraActivity extends Activity {
+public class ApplyingUltraActivity extends BaseActivity {
 
     // activate ultra powersaving mode by closing system services
 

@@ -9,9 +9,11 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.frogobox.cleaner.base.BaseActivity;
 import com.frogobox.cleaner.model.PowerItem;
 import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.utils.Constant;
@@ -27,7 +29,7 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
  * Created by Frogobox Software Industries 2/19/2017.
  */
 
-public class UltraPopUpActivity extends Activity {
+public class UltraPopUpActivity extends BaseActivity {
 
     private PowerViewAdapter mAdapter;
     private List<PowerItem> items;

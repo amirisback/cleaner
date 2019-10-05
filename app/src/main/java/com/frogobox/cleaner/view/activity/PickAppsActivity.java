@@ -1,6 +1,6 @@
 package com.frogobox.cleaner.view.activity;
 
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,14 +11,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+
 import com.frogobox.cleaner.R;
+import com.frogobox.cleaner.base.BaseActivity;
 import com.frogobox.cleaner.utils.Constant;
 
 /**
  * Created by Frogobox Software Industries 2/26/2017.
  */
 
-public class PickAppsActivity extends Activity {
+public class PickAppsActivity extends BaseActivity {
 
     private SharedPreferences sharedpreferences;
     private SharedPreferences.Editor editor;

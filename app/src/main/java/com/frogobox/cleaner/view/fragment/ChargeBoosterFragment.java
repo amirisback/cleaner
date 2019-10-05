@@ -25,12 +25,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.frogobox.cleaner.R;
+import com.frogobox.cleaner.base.BaseFragment;
 import com.frogobox.cleaner.service.AlarmBoosterBroadcastReceiver;
 import com.frogobox.cleaner.utils.Constant;
-import com.frogobox.cleaner.view.activity.MainActivity;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -50,10 +49,24 @@ import static android.content.Context.ACTIVITY_SERVICE;
 import static android.content.Context.ALARM_SERVICE;
 
 /**
- * Created by Frogobox Software Industries 2/12/2017.
+ * Created by Faisal Amir
+ * FrogoBox Inc License
+ * =========================================
+ * PublicSpeakingBooster
+ * Copyright (C) 16/08/2019.
+ * All rights reserved
+ * -----------------------------------------
+ * Name     : Muhammad Faisal Amir
+ * E-mail   : faisalamircs@gmail.com
+ * Github   : github.com/amirisback
+ * LinkedIn : linkedin.com/in/faisalamircs
+ * -----------------------------------------
+ * FrogoBox Software Industries
+ * com.frogobox.publicspeakingbooster.base
+ *
  */
 
-public class ChargeBoosterFragment extends Fragment {
+public class ChargeBoosterFragment extends BaseFragment {
 
     public static ImageView optimizebutton;
     private int mb = 1024 * 1024;
@@ -103,13 +116,8 @@ public class ChargeBoosterFragment extends Fragment {
 
 
         try {
-
-            MainActivity.name.setText("Charge Booster");
-
-
             Random ran3 = new Random();
             ramperct.setText(ran3.nextInt(60) + 40 + "%");
-
 
             optimizebutton.setBackgroundResource(0);
             optimizebutton.setImageResource(0);
@@ -118,9 +126,7 @@ public class ChargeBoosterFragment extends Fragment {
             if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1").equals("0")) {
                 optimizebutton.setImageResource(0);
                 optimizebutton.setImageResource(R.drawable.optimized);
-
                 centree.setText(sharedpreferences.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB"));
-
             }
 
             start();
@@ -578,8 +584,7 @@ public class ChargeBoosterFragment extends Fragment {
         return lastValue;
     }
 
-
-    public long getUsedMemorySize() {
+    private long getUsedMemorySize() {
 
         try {
             ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
@@ -594,7 +599,7 @@ public class ChargeBoosterFragment extends Fragment {
 
     }
 
-    public void killall() {
+    private void killall() {
 //    List<ApplicationInfo> packages;
 //    PackageManager pm;
 //    pm = getActivity().getPackageManager();
@@ -609,19 +614,5 @@ public class ChargeBoosterFragment extends Fragment {
 //        mActivityManager.killBackgroundProcesses(packageInfo.packageName);
 //    }
     }
-
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-
-
-        if (isVisibleToUser) {
-            MainActivity.name.setText("Charge Booster");
-        } else {
-
-        }
-    }
-
 
 }

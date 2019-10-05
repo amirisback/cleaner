@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 28
@@ -21,8 +23,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation 'androidx.appcompat:appcompat:1.0.0'
+
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
 
     implementation 'com.intuit.sdp:sdp-android:1.0.4'
     implementation 'com.github.bmarrdev:android-DecoView-charting:v1.2'
@@ -41,4 +49,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+}
+repositories {
+    mavenCentral()
 }

@@ -18,10 +18,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.frogobox.cleaner.R;
+import com.frogobox.cleaner.base.BaseActivity;
 import com.frogobox.cleaner.utils.Constant;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -34,7 +36,7 @@ import com.hookedonplay.decoviewlib.events.DecoEvent;
  * Created by Frogobox Software Industries 2/21/2017.
  */
 
-public class NormalModeActivity extends Activity {
+public class NormalModeActivity extends BaseActivity {
 
     private DecoView arcView;
     private TextView ist, sec, thir, fou, completion;

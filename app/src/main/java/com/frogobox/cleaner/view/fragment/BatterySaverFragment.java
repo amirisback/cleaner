@@ -15,11 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.frogobox.cleaner.R;
+import com.frogobox.cleaner.base.BaseFragment;
 import com.frogobox.cleaner.utils.Constant;
-import com.frogobox.cleaner.view.activity.MainActivity;
 import com.frogobox.cleaner.view.activity.NormalModeActivity;
 import com.frogobox.cleaner.view.activity.PowerSavingPopupActivity;
 import com.frogobox.cleaner.view.activity.UltraPopUpActivity;
@@ -27,10 +26,24 @@ import com.frogobox.cleaner.view.activity.UltraPopUpActivity;
 import me.itangqi.waveloadingview.WaveLoadingView;
 
 /**
- * Created by Frogobox Software Industries 2/12/2017.
+ * Created by Faisal Amir
+ * FrogoBox Inc License
+ * =========================================
+ * PublicSpeakingBooster
+ * Copyright (C) 16/08/2019.
+ * All rights reserved
+ * -----------------------------------------
+ * Name     : Muhammad Faisal Amir
+ * E-mail   : faisalamircs@gmail.com
+ * Github   : github.com/amirisback
+ * LinkedIn : linkedin.com/in/faisalamircs
+ * -----------------------------------------
+ * FrogoBox Software Industries
+ * com.frogobox.publicspeakingbooster.base
+ *
  */
 
-public class BatterySaverFragment extends Fragment {
+public class BatterySaverFragment extends BaseFragment {
 
     private WaveLoadingView mWaveLoadingView;
     private TextView hourn, minutes, hourp, minutep, houru, minutesu, hourmain, minutesmain;
@@ -328,11 +341,9 @@ public class BatterySaverFragment extends Fragment {
 
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
-//        MainActivity.name.setText("Battery Saver");
         getActivity().registerReceiver(this.mBatInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
     }
 
@@ -342,20 +353,6 @@ public class BatterySaverFragment extends Fragment {
         try {
             getActivity().unregisterReceiver(mBatInfoReceiver);
         } catch (Exception e) {
-
-        }
-    }
-
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-
-
-        if (isVisibleToUser) {
-            MainActivity.name.setText("Battery Saver");
-
-        } else {
 
         }
     }

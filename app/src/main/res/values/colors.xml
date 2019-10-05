@@ -18,6 +18,8 @@
     <color name="colorBaseGreen">#24D149</color>
     <color name="colorBaseDarkGrey">#808080</color>
     <color name="colorBaseDarkBlackBlue">#27282D</color>
+    <color name="colorBase">#272A2D</color>
+
 
     <color name="colorTextWhite">@color/colorBaseWhite</color>
     <color name="colorTextBlack">@color/colorBaseBlack</color>
@@ -30,5 +32,6 @@
     <color name="colorBackgroundGreen">@color/colorBaseGreen</color>
     <color name="colorBackgroundDarkGrey">@color/colorBaseDarkGrey</color>
     <color name="colorBackgroundDarkBlackBlue">@color/colorBaseDarkBlackBlue</color>
+    <color name="colorIndicatorTablayout">@color/colorBaseWhite</color>
 
 </resources>

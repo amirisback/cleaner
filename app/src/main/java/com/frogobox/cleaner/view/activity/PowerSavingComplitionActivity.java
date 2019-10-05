@@ -19,10 +19,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.frogobox.cleaner.R;
+import com.frogobox.cleaner.base.BaseActivity;
 import com.frogobox.cleaner.utils.Constant;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -35,7 +37,7 @@ import com.hookedonplay.decoviewlib.events.DecoEvent;
  * Created by Frogobox Software Industries 2/22/2017.
  */
 
-public class PowerSavingComplitionActivity extends Activity {
+public class PowerSavingComplitionActivity extends BaseActivity {
 
     private TextView ist, sec, thir, fou, completion;
     private ImageView istpic, secpic, thirpic, foupic;

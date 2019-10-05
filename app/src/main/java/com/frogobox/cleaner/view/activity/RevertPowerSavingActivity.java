@@ -5,7 +5,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.animation.AccelerateInterpolator;
 
+
+
 import com.frogobox.cleaner.R;
+import com.frogobox.cleaner.base.BaseActivity;
 import com.hookedonplay.decoviewlib.DecoView;
 import com.hookedonplay.decoviewlib.charts.SeriesItem;
 import com.hookedonplay.decoviewlib.events.DecoEvent;
@@ -14,7 +17,7 @@ import com.hookedonplay.decoviewlib.events.DecoEvent;
  * Created by Frogobox Software Industries 2/21/2017.
  */
 
-public class RevertPowerSavingActivity extends Activity{
+public class RevertPowerSavingActivity extends BaseActivity {
 
     /// Apply Normal Mode and Remove any power saving mode that was selected
 

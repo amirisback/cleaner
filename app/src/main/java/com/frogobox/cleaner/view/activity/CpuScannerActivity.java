@@ -18,9 +18,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.frogobox.cleaner.base.BaseActivity;
 import com.frogobox.cleaner.model.Apps;
 import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.view.adapter.ScanCpuAppsViewAdapter;
@@ -39,7 +41,7 @@ import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 
-public class CpuScannerActivity extends Activity {
+public class CpuScannerActivity extends BaseActivity {
 
     ///// Scan Cpu For Power Consuming and Over heating Apps
 

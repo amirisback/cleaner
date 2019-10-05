@@ -18,12 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.frogobox.cleaner.R;
+import com.frogobox.cleaner.base.BaseFragment;
 import com.frogobox.cleaner.service.AlarmJunkBroadcastReceiver;
 import com.frogobox.cleaner.utils.Constant;
-import com.frogobox.cleaner.view.activity.MainActivity;
 import com.frogobox.cleaner.view.activity.ScanningJunkActivity;
 
 import java.util.Random;
@@ -31,12 +30,25 @@ import java.util.Random;
 import static android.content.Context.ALARM_SERVICE;
 
 /**
- * Created by Frogobox Software Industries 2/12/2017.
+ * Created by Faisal Amir
+ * FrogoBox Inc License
+ * =========================================
+ * PublicSpeakingBooster
+ * Copyright (C) 16/08/2019.
+ * All rights reserved
+ * -----------------------------------------
+ * Name     : Muhammad Faisal Amir
+ * E-mail   : faisalamircs@gmail.com
+ * Github   : github.com/amirisback
+ * LinkedIn : linkedin.com/in/faisalamircs
+ * -----------------------------------------
+ * FrogoBox Software Industries
+ * com.frogobox.publicspeakingbooster.base
  */
 
-public class JunkCleanerFragment extends Fragment {
+public class JunkCleanerFragment extends BaseFragment {
 
-    public static ImageView mainbutton;
+    private ImageView mainbutton;
     private ImageView mainbrush, cache, temp, residue, system;
     private TextView maintext, cachetext, temptext, residuetext, systemtext;
     private int checkvar = 0;
@@ -246,25 +258,4 @@ public class JunkCleanerFragment extends Fragment {
         return view;
     }
 
-
-    @Override
-    public boolean getUserVisibleHint() {
-
-//        MainActivity.name.setText("Junk Cleaner");
-        return getUserVisibleHint();
-
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-
-
-        if (isVisibleToUser) {
-            MainActivity.name.setText("Junk Cleaner");
-
-        } else {
-
-        }
-    }
 }

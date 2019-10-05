@@ -23,9 +23,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.frogobox.cleaner.base.BaseActivity;
 import com.frogobox.cleaner.model.Apps;
 import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.utils.Constant;
@@ -49,7 +51,7 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
  * Created by Frogobox Software Industries 2/24/2017.
  */
 
-public class ScanningJunkActivity extends Activity {
+public class ScanningJunkActivity extends BaseActivity {
 
     private AVLoadingIndicatorView avi1, avi2, avi3, avi4, avi5, avi6;
     private ImageView front, back;
