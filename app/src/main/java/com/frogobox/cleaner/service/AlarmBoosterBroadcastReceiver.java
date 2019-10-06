@@ -32,7 +32,7 @@ public final class AlarmBoosterBroadcastReceiver extends BroadcastReceiver {
         try {
             ChargeBoosterFragment.optimizebutton.setBackgroundResource(0);
             ChargeBoosterFragment.optimizebutton.setImageResource(0);
-            ChargeBoosterFragment.optimizebutton.setImageResource(R.drawable.optimize);
+            ChargeBoosterFragment.optimizebutton.setImageResource(R.drawable.bg_button_optimize);
         } catch (Exception e) {
 
         }

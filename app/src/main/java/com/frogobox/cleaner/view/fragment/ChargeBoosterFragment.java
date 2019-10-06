@@ -121,11 +121,11 @@ public class ChargeBoosterFragment extends BaseFragment {
 
             optimizebutton.setBackgroundResource(0);
             optimizebutton.setImageResource(0);
-            optimizebutton.setImageResource(R.drawable.optimize);
+            optimizebutton.setImageResource(R.drawable.bg_button_optimize);
 
             if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1").equals("0")) {
                 optimizebutton.setImageResource(0);
-                optimizebutton.setImageResource(R.drawable.optimized);
+                optimizebutton.setImageResource(R.drawable.bg_button_optimized);
                 centree.setText(sharedpreferences.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB"));
             }
 
@@ -177,7 +177,7 @@ public class ChargeBoosterFragment extends BaseFragment {
 //#F22938 red
 // Create background track
 
-//    optimize();
+//    background_button_optimize();
         } catch (Exception e) {
 
         }
@@ -285,7 +285,7 @@ public class ChargeBoosterFragment extends BaseFragment {
                 scanlay.setVisibility(View.GONE);
                 optimizelay.setVisibility(View.VISIBLE);
 //                optimizebutton.setOnClickListener(null);
-                optimizebutton.setImageResource(R.drawable.optimized);
+                optimizebutton.setImageResource(R.drawable.bg_button_optimized);
 
 
                 Random ran = new Random();
@@ -315,7 +315,7 @@ public class ChargeBoosterFragment extends BaseFragment {
 //                optimizebutton.setOnClickListener(new View.OnClickListener() {
 //                    @Override
 //                    public void onClick(View v) {
-////                        optimizebutton.setBackgroundResource(R.drawable.optimized);
+////                        optimizebutton.setBackgroundResource(R.drawable.background_button_optimized);
 //                        Toast.makeText(getActivity(), "Already Optimized", Toast.LENGTH_SHORT).show();
 //                    }
 //                });
@@ -334,13 +334,13 @@ public class ChargeBoosterFragment extends BaseFragment {
 //                            @Override
 //                            public void run() {
 //                                optimizebutton.setBackgroundResource(0);
-//                                optimizebutton.setBackgroundResource(R.drawable.optimize);
+//                                optimizebutton.setBackgroundResource(R.drawable.background_button_optimize);
 //
 //                                optimizebutton.setOnClickListener(new View.OnClickListener() {
 //                                    @Override
 //                                    public void onClick(View v) {
 //
-//                                        optimize();
+//                                        background_button_optimize();
 //                                    }
 //                                });
 //                                t.cancel();
@@ -383,7 +383,7 @@ public class ChargeBoosterFragment extends BaseFragment {
                         @Override
                         public void run() {
 //                        optimizebutton.setBackgroundResource(0);
-//                        optimizebutton.setBackgroundResource(R.drawable.optimize);
+//                        optimizebutton.setBackgroundResource(R.drawable.background_button_optimize);
                             counter++;
                             centree.setText(counter + "MB");
                         }

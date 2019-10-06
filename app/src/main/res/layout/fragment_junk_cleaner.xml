@@ -24,7 +24,7 @@
                 android:id="@+id/mainbrush"
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_10sdp"
-                android:src="@drawable/junk_blue"
+                android:src="@drawable/img_junktop_blue"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
@@ -53,7 +53,7 @@
                 android:id="@+id/mainbutton"
                 android:padding="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_10sdp"
-                android:src="@drawable/clean"
+                android:src="@drawable/bg_button_clean"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -94,7 +94,7 @@
 
             <ImageView
                 android:id="@+id/cache"
-                android:src="@drawable/cache2"
+                android:src="@drawable/img_junk_green_cache"
                 android:layout_weight="2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp" />
@@ -122,7 +122,7 @@
 
             <ImageView
                 android:id="@+id/temp"
-                android:src="@drawable/temp2"
+                android:src="@drawable/img_junk_green_temp"
                 android:layout_weight="2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp" />
@@ -150,7 +150,7 @@
 
             <ImageView
                 android:id="@+id/residue"
-                android:src="@drawable/res2"
+                android:src="@drawable/img_junk_green_residual"
                 android:layout_weight="2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp" />
@@ -178,7 +178,7 @@
 
             <ImageView
                 android:id="@+id/system"
-                android:src="@drawable/sys2"
+                android:src="@drawable/img_junk_green_system"
                 android:layout_weight="2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp" />

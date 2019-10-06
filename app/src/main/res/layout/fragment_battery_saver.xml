@@ -22,7 +22,7 @@
             android:gravity="center">
 
             <ImageView
-                android:src="@drawable/blue_circle_battery"
+                android:src="@drawable/circle_blue_battery"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
@@ -186,7 +186,7 @@
                 android:layout_gravity="center"
                 android:layout_width="@dimen/_68sdp"
                 android:layout_height="@dimen/_68sdp"
-                android:src="@drawable/normal_mode" />
+                android:src="@drawable/img_powersaving_normal" />
 
         </LinearLayout>
 
@@ -195,7 +195,7 @@
             android:paddingTop="@dimen/_20sdp"
             android:layout_marginLeft="-7dp"
             android:layout_marginRight="-7dp"
-            android:src="@drawable/green_line"
+            android:src="@drawable/line_green"
             android:layout_width="0dp"
             android:layout_height="@dimen/_30sdp"
             android:layout_weight="0.7" />
@@ -255,7 +255,7 @@
                 android:id="@+id/powersaving"
                 android:layout_width="@dimen/_78sdp"
                 android:layout_height="@dimen/_68sdp"
-                android:src="@drawable/ultra_mode" />
+                android:src="@drawable/img_powersaving_ultra" />
 
         </LinearLayout>
 
@@ -267,7 +267,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/_30sdp"
             android:layout_weight="0.7"
-            android:src="@drawable/blue_line" />
+            android:src="@drawable/line_blue" />
 
         <LinearLayout
             android:gravity="center"
@@ -323,7 +323,7 @@
                 android:id="@+id/ultra"
                 android:layout_width="@dimen/_68sdp"
                 android:layout_height="@dimen/_68sdp"
-                android:src="@drawable/extreme_mode" />
+                android:src="@drawable/img_powersaving_extreme" />
 
         </LinearLayout>
 

@@ -83,12 +83,12 @@ public class JunkCleanerFragment extends BaseFragment {
 
 
             if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_JUNK, "1").equals("1")) {
-                mainbrush.setImageResource(R.drawable.junk_red);
-                mainbutton.setImageResource(R.drawable.clean);
-                cache.setImageResource(R.drawable.cache);
-                temp.setImageResource(R.drawable.temp);
-                residue.setImageResource(R.drawable.res);
-                system.setImageResource(R.drawable.sys);
+                mainbrush.setImageResource(R.drawable.img_junktop_red);
+                mainbutton.setImageResource(R.drawable.bg_button_clean);
+                cache.setImageResource(R.drawable.img_junk_red_cache);
+                temp.setImageResource(R.drawable.img_junk_red_temp);
+                residue.setImageResource(R.drawable.img_junk_red_residual);
+                system.setImageResource(R.drawable.img_junk_red_system);
 
                 Random ran1 = new Random();
                 final int proc1 = ran1.nextInt(20) + 5;
@@ -120,12 +120,12 @@ public class JunkCleanerFragment extends BaseFragment {
                 systemtext.setTextColor(Color.parseColor("#F22938"));
 
             } else {
-                mainbrush.setImageResource(R.drawable.junk_blue);
-                mainbutton.setImageResource(R.drawable.cleaned);
-                cache.setImageResource(R.drawable.cache2);
-                temp.setImageResource(R.drawable.temp2);
-                residue.setImageResource(R.drawable.res2);
-                system.setImageResource(R.drawable.sys2);
+                mainbrush.setImageResource(R.drawable.img_junktop_blue);
+                mainbutton.setImageResource(R.drawable.bg_button_cleaned);
+                cache.setImageResource(R.drawable.img_junk_green_cache);
+                temp.setImageResource(R.drawable.img_junk_green_temp);
+                residue.setImageResource(R.drawable.img_junk_green_residual);
+                system.setImageResource(R.drawable.img_junk_green_system);
 
 
                 maintext.setText("CRYSTAL CLEAR");
@@ -162,12 +162,12 @@ public class JunkCleanerFragment extends BaseFragment {
                                 //Do something after 100ms
 
 
-                                mainbrush.setImageResource(R.drawable.junk_blue);
-                                mainbutton.setImageResource(R.drawable.cleaned);
-                                cache.setImageResource(R.drawable.cache2);
-                                temp.setImageResource(R.drawable.temp2);
-                                residue.setImageResource(R.drawable.res2);
-                                system.setImageResource(R.drawable.sys2);
+                                mainbrush.setImageResource(R.drawable.img_junktop_blue);
+                                mainbutton.setImageResource(R.drawable.bg_button_cleaned);
+                                cache.setImageResource(R.drawable.img_junk_green_cache);
+                                temp.setImageResource(R.drawable.img_junk_green_temp);
+                                residue.setImageResource(R.drawable.img_junk_green_residual);
+                                system.setImageResource(R.drawable.img_junk_green_system);
 
 
                                 maintext.setText("CRYSTAL CLEAR");

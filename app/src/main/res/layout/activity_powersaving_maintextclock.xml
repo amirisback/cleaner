@@ -98,7 +98,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="@dimen/_9sdp"
-            android:src="@drawable/phone" />
+            android:src="@drawable/ic_apps_phone" />
 
         <ImageView
             android:id="@+id/messages"
@@ -106,7 +106,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="@dimen/_9sdp"
-            android:src="@drawable/message" />
+            android:src="@drawable/ic_apps_message" />
 
         <ImageView
 
@@ -115,7 +115,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="@dimen/_9sdp"
-            android:src="@drawable/internet" />
+            android:src="@drawable/ic_apps_internet" />
 
         <ImageView
             android:id="@+id/settings"
@@ -123,7 +123,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="@dimen/_9sdp"
-            android:src="@drawable/settings" />
+            android:src="@drawable/ic_apps_settings" />
 
     </LinearLayout>
 

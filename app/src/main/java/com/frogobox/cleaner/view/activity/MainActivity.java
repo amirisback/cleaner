@@ -72,10 +72,10 @@ public class MainActivity extends BaseActivity {
         ////// Create Tabs Layout.
 
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.phonebooster));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.battery_saver));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.cooler));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.cleaner));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_tablayout_chargebooster));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_tablayout_batterysaver));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_tablayout_cooler));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_tablayout_junkcleaner));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = findViewById(R.id.pager);

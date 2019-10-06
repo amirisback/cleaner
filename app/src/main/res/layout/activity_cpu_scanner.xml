@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/_30sdp"
-            android:src="@drawable/cpu" />
+            android:src="@drawable/img_cpu" />
 
         <com.skyfishjy.library.RippleBackground
             android:id="@+id/content"
@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/_30sdp"
-            android:src="@drawable/scanner" />
+            android:src="@drawable/img_scan_scanner" />
 
     </RelativeLayout>
 
@@ -80,7 +80,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="-700dp"
             android:paddingBottom="@dimen/_15sdp"
-            android:src="@drawable/heartbeat" />
+            android:src="@drawable/img_loading_heartbeat" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"

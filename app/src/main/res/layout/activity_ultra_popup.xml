@@ -73,7 +73,7 @@
             android:layout_height="0dp"
             android:layout_weight="1.5"
             android:padding="@dimen/_8sdp"
-            android:src="@drawable/apply" />
+            android:src="@drawable/bg_button_apply" />
 
     </LinearLayout>
 

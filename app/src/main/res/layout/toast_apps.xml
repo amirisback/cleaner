@@ -3,7 +3,7 @@
     android:id="@+id/mylayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/round_toast"
+    android:background="@drawable/bg_toast"
     android:gravity="center"
     android:orientation="horizontal"
     android:paddingLeft="@dimen/_15sdp"

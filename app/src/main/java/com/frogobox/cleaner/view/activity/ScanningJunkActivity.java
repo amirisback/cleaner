@@ -3,7 +3,6 @@ package com.frogobox.cleaner.view.activity;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.ObjectAnimator;
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -72,7 +71,7 @@ public class ScanningJunkActivity extends BaseActivity {
     private InterstitialAd mInterstitialAd;
 
 
-    //// Scanning for any junk file existance inorder to clean it
+    //// Scanning for any junk file existance inorder to bg_button_clean it
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -284,9 +283,9 @@ public class ScanningJunkActivity extends BaseActivity {
 //                front.setImageResource(0);
 //                imageView.setImageResource(0);
 //                front.setImageDrawable(ContextCompat.getDrawable(Sacnning_Junk.this, R.drawable.task_complete));
-//                imageView.setImageDrawable(ContextCompat.getDrawable(Sacnning_Junk.this, R.drawable.green_circle));
-                front.setImageResource(R.drawable.task_complete);
-                back.setImageResource(R.drawable.green_circle);
+//                imageView.setImageDrawable(ContextCompat.getDrawable(Sacnning_Junk.this, R.drawable.circle_line_green));
+                front.setImageResource(R.drawable.img_scan_task_complete);
+                back.setImageResource(R.drawable.circle_line_green);
 
                 ProgressBar progressBar = (ProgressBar) findViewById(R.id.spin_kit);
                 ThreeBounce doubleBounce = new ThreeBounce();
@@ -463,9 +462,9 @@ public class ScanningJunkActivity extends BaseActivity {
         public SimpleDividerItemDecoration(Context context) {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                mDivider = context.getResources().getDrawable(R.drawable.line_divvide, context.getTheme());
+                mDivider = context.getResources().getDrawable(R.drawable.line_divide, context.getTheme());
             } else {
-                mDivider = context.getResources().getDrawable(R.drawable.line_divvide);
+                mDivider = context.getResources().getDrawable(R.drawable.line_divide);
 
             }
         }

@@ -1,7 +1,6 @@
 package com.frogobox.cleaner.view.activity;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -447,85 +446,85 @@ public class BatterySaverBlackActivity extends BaseActivity {
 
     public void changepic() {
         if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_1, "0").equals("0")) {
-            alaram.setImageResource(R.drawable.add);
+            alaram.setImageResource(R.drawable.img_button_add);
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_1, "0").equals("1")) {
-            alaram.setImageResource(R.drawable.gp);
+            alaram.setImageResource(R.drawable.ic_apps_playstore);
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_1, "0").equals("2")) {
-            alaram.setImageResource(R.drawable.calc);
+            alaram.setImageResource(R.drawable.ic_apps_calc);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_1, "0").equals("3")) {
-            alaram.setImageResource(R.drawable.clock);
+            alaram.setImageResource(R.drawable.ic_apps_clock);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_1, "0").equals("4")) {
-            alaram.setImageResource(R.drawable.contacts);
+            alaram.setImageResource(R.drawable.ic_apps_contacts);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_1, "0").equals("5")) {
-            alaram.setImageResource(R.drawable.map);
+            alaram.setImageResource(R.drawable.ic_apps_map);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_1, "0").equals("6")) {
-            alaram.setImageResource(R.drawable.camera);
+            alaram.setImageResource(R.drawable.ic_apps_camera);
         }
 
 
         if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_2, "0").equals("0")) {
-            calculator.setImageResource(R.drawable.add);
+            calculator.setImageResource(R.drawable.img_button_add);
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_2, "0").equals("1")) {
-            calculator.setImageResource(R.drawable.gp);
+            calculator.setImageResource(R.drawable.ic_apps_playstore);
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_2, "0").equals("2")) {
-            calculator.setImageResource(R.drawable.calc);
+            calculator.setImageResource(R.drawable.ic_apps_calc);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_2, "0").equals("3")) {
-            calculator.setImageResource(R.drawable.clock);
+            calculator.setImageResource(R.drawable.ic_apps_clock);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_2, "0").equals("4")) {
-            calculator.setImageResource(R.drawable.contacts);
+            calculator.setImageResource(R.drawable.ic_apps_contacts);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_2, "0").equals("5")) {
-            calculator.setImageResource(R.drawable.map);
+            calculator.setImageResource(R.drawable.ic_apps_map);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_2, "0").equals("6")) {
-            calculator.setImageResource(R.drawable.camera);
+            calculator.setImageResource(R.drawable.ic_apps_camera);
         }
 
 
         if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_3, "0").equals("0")) {
-            playstore.setImageResource(R.drawable.add);
+            playstore.setImageResource(R.drawable.img_button_add);
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_3, "0").equals("1")) {
-            playstore.setImageResource(R.drawable.gp);
+            playstore.setImageResource(R.drawable.ic_apps_playstore);
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_3, "0").equals("2")) {
-            playstore.setImageResource(R.drawable.calc);
+            playstore.setImageResource(R.drawable.ic_apps_calc);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_3, "0").equals("3")) {
-            playstore.setImageResource(R.drawable.clock);
+            playstore.setImageResource(R.drawable.ic_apps_clock);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_3, "0").equals("4")) {
-            playstore.setImageResource(R.drawable.contacts);
+            playstore.setImageResource(R.drawable.ic_apps_contacts);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_3, "0").equals("5")) {
-            playstore.setImageResource(R.drawable.map);
+            playstore.setImageResource(R.drawable.ic_apps_map);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_3, "0").equals("6")) {
-            playstore.setImageResource(R.drawable.camera);
+            playstore.setImageResource(R.drawable.ic_apps_camera);
         }
 
         if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_4, "0").equals("0")) {
-            contacts.setImageResource(R.drawable.add);
+            contacts.setImageResource(R.drawable.img_button_add);
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_4, "0").equals("1")) {
-            contacts.setImageResource(R.drawable.gp);
+            contacts.setImageResource(R.drawable.ic_apps_playstore);
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_4, "0").equals("2")) {
-            contacts.setImageResource(R.drawable.calc);
+            contacts.setImageResource(R.drawable.ic_apps_calc);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_4, "0").equals("3")) {
-            contacts.setImageResource(R.drawable.clock);
+            contacts.setImageResource(R.drawable.ic_apps_clock);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_4, "0").equals("4")) {
-            contacts.setImageResource(R.drawable.contacts);
+            contacts.setImageResource(R.drawable.ic_apps_contacts);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_4, "0").equals("5")) {
-            contacts.setImageResource(R.drawable.map);
+            contacts.setImageResource(R.drawable.ic_apps_map);
 
         } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_4, "0").equals("6")) {
-            contacts.setImageResource(R.drawable.camera);
+            contacts.setImageResource(R.drawable.ic_apps_camera);
         }
     }
 

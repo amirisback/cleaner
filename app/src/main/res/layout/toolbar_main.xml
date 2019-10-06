@@ -26,7 +26,7 @@
     android:layout_marginBottom="@dimen/dimen_medium_8dp"
     android:layout_marginStart="@dimen/dimen_big_16dp"
     android:layout_marginEnd="@dimen/dimen_big_16dp"
-    android:background="@drawable/background_card_toolbar"
+    android:background="@drawable/bg_card_toolbar"
     android:elevation="2dp"
     app:title="@string/app_name"
     app:titleTextAppearance="@style/Toolbar.TitleText"

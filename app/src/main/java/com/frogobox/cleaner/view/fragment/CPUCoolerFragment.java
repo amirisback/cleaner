@@ -83,13 +83,13 @@ public class CPUCoolerFragment extends BaseFragment {
 
                     apps = new ArrayList<>();
                     apps2 = new ArrayList<>();
-                    tempimg.setImageResource(R.drawable.red_cooler);
+                    tempimg.setImageResource(R.drawable.img_cooler_red);
                     showmain.setText("OVERHEATED");
                     showmain.setTextColor(Color.parseColor("#F22938"));
                     showsec.setText("Apps are causing problem hit cool down");
                     nooverheating.setText("");
 
-                    coolbutton.setImageResource(R.drawable.cool_button_blue);
+                    coolbutton.setImageResource(R.drawable.bg_button_cool_blue);
                     coolbutton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -109,8 +109,8 @@ public class CPUCoolerFragment extends BaseFragment {
                                     showmain.setTextColor(Color.parseColor("#24D149"));
                                     showsec.setText("CPU Temperature is GOOD");
                                     showsec.setTextColor(Color.parseColor("#24D149"));
-                                    coolbutton.setImageResource(R.drawable.cooled);
-                                    tempimg.setImageResource(R.drawable.blue_cooler);
+                                    coolbutton.setImageResource(R.drawable.bg_button_cooled);
+                                    tempimg.setImageResource(R.drawable.img_cooler_blue);
                                     batterytemp.setText("25.3" + "°C");
                                     recyclerView.setAdapter(null);
 
@@ -199,7 +199,7 @@ public class CPUCoolerFragment extends BaseFragment {
             showmain.setText("NORMAL");
             showsec.setText("CPU Temperature is GOOD");
             nooverheating.setText("Currently No App causing Overheating");
-            coolbutton.setImageResource(R.drawable.cooled);
+            coolbutton.setImageResource(R.drawable.bg_button_cooled);
             coolbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -219,7 +219,7 @@ public class CPUCoolerFragment extends BaseFragment {
                 }
             });
 
-            tempimg.setImageResource(R.drawable.blue_cooler);
+            tempimg.setImageResource(R.drawable.img_cooler_blue);
             batterytemp = view.findViewById(R.id.batterytemp);
 
             Log.e("Temperrature", temp + "");

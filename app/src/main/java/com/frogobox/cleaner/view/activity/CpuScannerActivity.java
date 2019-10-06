@@ -3,7 +3,6 @@ package com.frogobox.cleaner.view.activity;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.ObjectAnimator;
-import android.app.Activity;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -207,8 +206,8 @@ public class CpuScannerActivity extends BaseActivity {
 
                     img_animation.setImageResource(0);
                     img_animation.setBackgroundResource(0);
-                    cpu.setImageResource(R.drawable.green_circle);
-                    scanner.setImageResource(R.drawable.task_complete);
+                    cpu.setImageResource(R.drawable.circle_line_green);
+                    scanner.setImageResource(R.drawable.img_scan_task_complete);
                     ObjectAnimator anim = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flipping);
                     anim.setTarget(scanner);
                     anim.setDuration(3000);

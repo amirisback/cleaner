@@ -25,7 +25,7 @@
                 android:id="@+id/back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/back" />
+                android:src="@drawable/ic_scanjunk_back" />
 
             <com.skyfishjy.library.RippleBackground
                 android:id="@+id/content"
@@ -105,7 +105,7 @@
                 android:id="@+id/front"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/upper" />
+                android:src="@drawable/img_scan_needle" />
 
         </RelativeLayout>
 

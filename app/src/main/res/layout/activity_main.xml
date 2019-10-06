@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:background="#F22938"
         android:elevation="6dp"
-        app:tabBackground="@drawable/tab_color_selector"
+        app:tabBackground="@drawable/bg_tab_color_selector"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:tabIndicatorColor="@color/colorIndicatorTablayout"/>

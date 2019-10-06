@@ -73,7 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="3.5"
-                    android:src="@drawable/contacts" />
+                    android:src="@drawable/ic_apps_contacts" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="3.5"
-                    android:src="@drawable/camera" />
+                    android:src="@drawable/ic_apps_camera" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -125,7 +125,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="3.5"
-                    android:src="@drawable/calc" />
+                    android:src="@drawable/ic_apps_calc" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -160,7 +160,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="3.5"
-                    android:src="@drawable/clock" />
+                    android:src="@drawable/ic_apps_clock" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -186,7 +186,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="3.5"
-                    android:src="@drawable/map" />
+                    android:src="@drawable/ic_apps_map" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -211,7 +211,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="3.5"
-                    android:src="@drawable/gp" />
+                    android:src="@drawable/ic_apps_playstore" />
 
                 <TextView
                     android:layout_width="match_parent"
