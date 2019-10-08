@@ -13,6 +13,8 @@
 
     <!-- Base Color   -->
 
+    <color name="colorBaseSeaBlue">#2499e0</color>
+    <color name="colorBaseRed">#F22938</color>
     <color name="colorBaseWhite">#FFFFFF</color>
     <color name="colorBaseBlack">#000000</color>
     <color name="colorBaseGreen">#24D149</color>
@@ -20,7 +22,7 @@
     <color name="colorBaseDarkBlackBlue">#27282D</color>
     <color name="colorBase">#272A2D</color>
 
-
+    <color name="colorTextRed">@color/colorBaseRed</color>
     <color name="colorTextWhite">@color/colorBaseWhite</color>
     <color name="colorTextBlack">@color/colorBaseBlack</color>
     <color name="colorTextGreen">@color/colorBaseGreen</color>

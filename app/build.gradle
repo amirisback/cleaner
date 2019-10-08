@@ -3,6 +3,22 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
 android {
+
+
+    def versionPropsFile = file('version.properties')
+    Properties versionProps = new Properties()
+
+    if (versionPropsFile.canRead()) {
+        versionProps.load(new FileInputStream(versionPropsFile))
+    } else {
+        versionProps['VERSION_CODE'] = '0'
+    }
+
+    def code = versionProps['VERSION_CODE'].toInteger()
+
+    versionProps['VERSION_CODE'] = code.toString()
+    versionProps.store(versionPropsFile.newWriter(), null)
+
     compileSdkVersion 28
     buildToolsVersion "28.0.3"
     defaultConfig {
@@ -12,6 +28,13 @@ android {
         versionCode 1
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        setProperty("archivesBaseName", "inteligent-cleaner" + versionName + "#" + code + "-"
+                + new Date().format('ddMMyy'))
+
+        resConfigs "en", "id"
+        vectorDrawables.useSupportLibrary = true
+
     }
     buildTypes {
         release {

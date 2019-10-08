@@ -44,6 +44,9 @@ public class Constant {
 
         public static String COLOR_WHITE = "#FFFFFF";
 
+        public static String _MB = " MB";
+        public static String ZERO_MB = "0 MB";
+
     }
 
 }
