@@ -25,6 +25,8 @@ import com.frogobox.cleaner.view.activity.UltraPopUpActivity;
 
 import me.itangqi.waveloadingview.WaveLoadingView;
 
+import static com.frogobox.cleaner.utils.Constant.Variable.COLOR_SEABLUE;
+
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
@@ -318,11 +320,11 @@ public class BatterySaverFragment extends BaseFragment {
 
 
             mWaveLoadingView.setShapeType(WaveLoadingView.ShapeType.CIRCLE);
-            mWaveLoadingView.setCenterTitleColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
-            mWaveLoadingView.setBottomTitleColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
+            mWaveLoadingView.setCenterTitleColor(mActivity.getColorRes(R.color.colorTextWhite));
+            mWaveLoadingView.setBottomTitleColor(mActivity.getColorRes(R.color.colorTextWhite));
             mWaveLoadingView.setBorderWidth(10);
             mWaveLoadingView.setAmplitudeRatio(30);
-            mWaveLoadingView.setWaveColor(Color.parseColor("#2499E0"));
+            mWaveLoadingView.setWaveColor(Color.parseColor(COLOR_SEABLUE));
             mWaveLoadingView.setBorderColor(Color.parseColor("#000000"));
             mWaveLoadingView.setTopTitleStrokeColor(Color.BLUE);
             mWaveLoadingView.setTopTitleStrokeWidth(3);

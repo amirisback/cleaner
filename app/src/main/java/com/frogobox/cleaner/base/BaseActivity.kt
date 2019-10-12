@@ -75,19 +75,18 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-    protected inline fun <reified ClassActivity> baseStartActivity(context: Context) {
-        context.startActivity(Intent(context, ClassActivity::class.java))
+    protected inline fun <reified ClassActivity> baseStartActivity() {
+        this.startActivity(Intent(this, ClassActivity::class.java))
     }
 
     protected inline fun <reified ClassActivity, Model> baseStartActivity(
-        context: Context,
         extraKey: String,
         data: Model
     ) {
-        val intent = Intent(context, ClassActivity::class.java)
+        val intent = Intent(this, ClassActivity::class.java)
         val extraData = BaseHelper().baseToJson(data)
         intent.putExtra(extraKey, extraData)
-        context.startActivity(intent)
+        this.startActivity(intent)
     }
 
     protected inline fun <reified Model> baseGetExtraData(extraKey: String): Model {
@@ -151,6 +150,10 @@ abstract class BaseActivity : AppCompatActivity() {
         } else {
             view.visibility = View.GONE
         }
+    }
+
+    fun getColorRes(res: Int) : Int{
+        return ContextCompat.getColor(this, res)
     }
 
 }

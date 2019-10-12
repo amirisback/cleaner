@@ -1,6 +1,7 @@
 package com.frogobox.cleaner.base
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -41,6 +42,21 @@ abstract class BaseFragment : Fragment() {
             replace(frameId, fragment)
             commit()
         }
+    }
+
+    protected inline fun <reified ClassActivity> baseStartActivity() {
+        context?.startActivity(Intent(context, ClassActivity::class.java))
+    }
+
+    protected inline fun <reified ClassActivity, Model> baseStartActivity(
+            context: Context,
+            extraKey: String,
+            data: Model
+    ) {
+        val intent = Intent(context, ClassActivity::class.java)
+        val extraData = BaseHelper().baseToJson(data)
+        intent.putExtra(extraKey, extraData)
+        context.startActivity(intent)
     }
 
     fun <Model> baseNewInstance(argsKey: String, data: Model){

@@ -317,7 +317,7 @@ public class ScanningJunkActivity extends BaseActivity {
                     public void onAnimationStart(Animator animation) {
 
                         scanning.setText("Cleared " + junk.getString(Constant.Variable.SHARED_PREF_JUNK) + " MB");
-                        scanning.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
+                        scanning.setTextColor(getColorRes(R.color.colorTextWhite));
                     }
 
                     @Override

@@ -20,16 +20,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-
-import com.frogobox.cleaner.base.BaseActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.frogobox.cleaner.R;
+import com.frogobox.cleaner.base.BaseActivity;
 import com.frogobox.cleaner.utils.Constant;
 import com.hookedonplay.decoviewlib.DecoView;
 import com.hookedonplay.decoviewlib.charts.SeriesItem;
 import com.hookedonplay.decoviewlib.events.DecoEvent;
+
+import static com.frogobox.cleaner.utils.Constant.Variable.COLOR_DARK_BLACK_BLUE;
 
 /**
  * Created by Frogobox Software Industries 2/21/2017.
@@ -72,19 +73,19 @@ public class ApplyingUltraActivity extends BaseActivity {
 //                .setInterpolator(new AccelerateInterpolator())
 //                .build());
 
-        arcView.addSeries(new SeriesItem.Builder(Color.parseColor("#27282D"))
+        arcView.addSeries(new SeriesItem.Builder(Color.parseColor(COLOR_DARK_BLACK_BLUE))
                 .setRange(0, 100, 100)
                 .setInitialVisibility(false)
                 .setLineWidth(12f)
                 .build());
 
 //Create data series track
-        SeriesItem seriesItem1 = new SeriesItem.Builder(Color.parseColor("#27282D"))
+        SeriesItem seriesItem1 = new SeriesItem.Builder(Color.parseColor(COLOR_DARK_BLACK_BLUE))
                 .setRange(0, 100, 0)
                 .setLineWidth(10f)
                 .build();
 
-        SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor(Constant.Variable.COLOR_WHITE))
+        SeriesItem seriesItem2 = new SeriesItem.Builder(getColorRes(R.color.colorTextWhite))
                 .setRange(0, 100, 0)
                 .setLineWidth(10f)
                 .build();
@@ -102,20 +103,20 @@ public class ApplyingUltraActivity extends BaseActivity {
                 completion.setText(i + "%");
 
                 if (v1 >= 10 && v1 < 40) {
-                    ist.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
+                    ist.setTextColor(getColorRes(R.color.colorTextWhite));
                     istpic.setImageResource(R.drawable.circle_white);
 
                 } else if (v1 >= 40 && v1 < 65) {
-                    sec.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
+                    sec.setTextColor(getColorRes(R.color.colorTextWhite));
                     secpic.setImageResource(R.drawable.circle_white);
                 } else if (v1 >= 65 && v1 < 80) {
-                    thir.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
+                    thir.setTextColor(getColorRes(R.color.colorTextWhite));
                     thirpic.setImageResource(R.drawable.circle_white);
                 } else if (v1 >= 80 && v1 < 90) {
-                    fou.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
+                    fou.setTextColor(getColorRes(R.color.colorTextWhite));
                     foupic.setImageResource(R.drawable.circle_white);
                 } else if (v1 >= 90 && v1 < 100) {
-                    fif.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
+                    fif.setTextColor(getColorRes(R.color.colorTextWhite));
                     fifthpic.setImageResource(R.drawable.circle_white);
                 }
 
@@ -289,9 +290,7 @@ public class ApplyingUltraActivity extends BaseActivity {
         if (check == 1) {
             try {
                 PowerSavingComplitionActivity.setAutoOrientationEnabled(getApplicationContext(), false);
-
                 Settings.System.putInt(this.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, 20);
-
                 ContentResolver.setMasterSyncAutomatically(false);
 
             } catch (Exception e) {

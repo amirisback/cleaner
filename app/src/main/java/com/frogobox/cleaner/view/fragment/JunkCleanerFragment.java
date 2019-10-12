@@ -26,6 +26,8 @@ import com.frogobox.cleaner.view.activity.ScanningJunkActivity;
 import java.util.Random;
 
 import static android.content.Context.ALARM_SERVICE;
+import static com.frogobox.cleaner.utils.Constant.Variable.COLOR_GREEN;
+import static com.frogobox.cleaner.utils.Constant.Variable.COLOR_RED;
 import static com.frogobox.cleaner.utils.Constant.Variable.ZERO_MB;
 import static com.frogobox.cleaner.utils.Constant.Variable._MB;
 
@@ -163,7 +165,7 @@ public class JunkCleanerFragment extends BaseFragment {
         String residueString = proc3 + _MB;
         String systemString = proc4 + _MB;
 
-        int colorText = Color.parseColor("#F22938");
+        int colorText = Color.parseColor(COLOR_RED);
 
         setupText(maintext, mainString, colorText);
         setupText(cachetext, cacheString, colorText);
@@ -181,7 +183,7 @@ public class JunkCleanerFragment extends BaseFragment {
         residue.setImageResource(R.drawable.img_junk_green_residual);
         system.setImageResource(R.drawable.img_junk_green_system);
 
-        int color = Color.parseColor("#24D149");
+        int color = Color.parseColor(COLOR_GREEN);
 
         setupText(maintext, "CRYSTAL CLEAR", color);
         setupText(cachetext, ZERO_MB, color);

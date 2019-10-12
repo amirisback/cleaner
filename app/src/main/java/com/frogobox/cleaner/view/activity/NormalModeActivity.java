@@ -32,6 +32,8 @@ import com.hookedonplay.decoviewlib.DecoView;
 import com.hookedonplay.decoviewlib.charts.SeriesItem;
 import com.hookedonplay.decoviewlib.events.DecoEvent;
 
+import static com.frogobox.cleaner.utils.Constant.Variable.COLOR_DARK_BLACK_BLUE;
+
 /**
  * Created by Frogobox Software Industries 2/21/2017.
  */
@@ -89,19 +91,19 @@ public class NormalModeActivity extends BaseActivity {
 //                .setInterpolator(new AccelerateInterpolator())
 //                .build());
 
-        arcView.addSeries(new SeriesItem.Builder(Color.parseColor("#27282D"))
+        arcView.addSeries(new SeriesItem.Builder(Color.parseColor(COLOR_DARK_BLACK_BLUE))
                 .setRange(0, 100, 100)
                 .setInitialVisibility(false)
                 .setLineWidth(12f)
                 .build());
 
 //Create data series track
-        SeriesItem seriesItem1 = new SeriesItem.Builder(Color.parseColor("#27282D"))
+        SeriesItem seriesItem1 = new SeriesItem.Builder(Color.parseColor(COLOR_DARK_BLACK_BLUE))
                 .setRange(0, 100, 0)
                 .setLineWidth(10f)
                 .build();
 
-        SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor(Constant.Variable.COLOR_WHITE))
+        SeriesItem seriesItem2 = new SeriesItem.Builder(getColorRes(R.color.colorTextWhite))
                 .setRange(0, 100, 0)
                 .setLineWidth(10f)
                 .build();
@@ -119,7 +121,7 @@ public class NormalModeActivity extends BaseActivity {
                 completion.setText(i + "%");
 
                 if (v1 >= 10 && v1 < 50) {
-                    ist.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
+                    ist.setTextColor(getColorRes(R.color.colorTextWhite));
                     istpic.setImageResource(R.drawable.circle_white);
 //
 //                    final InterstitialAd mInterstitialAd = new InterstitialAd(getApplicationContext());
@@ -134,13 +136,13 @@ public class NormalModeActivity extends BaseActivity {
 //                    mInterstitialAd.loadAd(adRequestInter);
 
                 } else if (v1 >= 50 && v1 < 75) {
-                    sec.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
+                    sec.setTextColor(getColorRes(R.color.colorTextWhite));
                     secpic.setImageResource(R.drawable.circle_white);
                 } else if (v1 >= 75 && v1 < 90) {
-                    thir.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
+                    thir.setTextColor(getColorRes(R.color.colorTextWhite));
                     thirpic.setImageResource(R.drawable.circle_white);
                 } else if (v1 >= 90 && v1 <= 100) {
-                    fou.setTextColor(Color.parseColor(Constant.Variable.COLOR_WHITE));
+                    fou.setTextColor(getColorRes(R.color.colorTextWhite));
                     foupic.setImageResource(R.drawable.circle_white);
                 }
 

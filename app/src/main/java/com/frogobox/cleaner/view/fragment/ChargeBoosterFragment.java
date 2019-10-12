@@ -47,6 +47,8 @@ import java.util.regex.Pattern;
 
 import static android.content.Context.ACTIVITY_SERVICE;
 import static android.content.Context.ALARM_SERVICE;
+import static com.frogobox.cleaner.utils.Constant.Variable.COLOR_RED;
+import static com.frogobox.cleaner.utils.Constant.Variable.COLOR_SEABLUE;
 
 /**
  * Created by Faisal Amir
@@ -202,19 +204,19 @@ public class ChargeBoosterFragment extends BaseFragment {
                 .setInterpolator(new AccelerateInterpolator())
                 .build());
 
-        arcView.addSeries(new SeriesItem.Builder(Color.parseColor("#F22938"))
+        arcView.addSeries(new SeriesItem.Builder(Color.parseColor(COLOR_RED))
                 .setRange(0, 100, 100)
                 .setInitialVisibility(false)
                 .setLineWidth(32f)
                 .build());
 
 //Create data series track
-        SeriesItem seriesItem1 = new SeriesItem.Builder(Color.parseColor("#F22938"))
+        SeriesItem seriesItem1 = new SeriesItem.Builder(Color.parseColor(COLOR_RED))
                 .setRange(0, 100, 0)
                 .setLineWidth(32f)
                 .build();
 
-        SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor("#2499E0"))
+        SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor(COLOR_SEABLUE))
                 .setRange(0, 100, 0)
                 .setLineWidth(32f)
                 .build();
@@ -408,19 +410,19 @@ public class ChargeBoosterFragment extends BaseFragment {
                 .setInterpolator(new AccelerateInterpolator())
                 .build());
 
-        arcView.addSeries(new SeriesItem.Builder(Color.parseColor("#F22938"))
+        arcView.addSeries(new SeriesItem.Builder(Color.parseColor(COLOR_RED))
                 .setRange(0, 100, 100)
                 .setInitialVisibility(false)
                 .setLineWidth(32f)
                 .build());
 
 //Create data series track
-        SeriesItem seriesItem1 = new SeriesItem.Builder(Color.parseColor("#F22938"))
+        SeriesItem seriesItem1 = new SeriesItem.Builder(Color.parseColor(COLOR_RED))
                 .setRange(0, 100, 0)
                 .setLineWidth(32f)
                 .build();
 
-        SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor("#2499E0"))
+        SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor(COLOR_SEABLUE))
                 .setRange(0, 100, 0)
                 .setLineWidth(32f)
                 .build();

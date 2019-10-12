@@ -22,8 +22,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-
 import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.base.BaseActivity;
 import com.frogobox.cleaner.utils.Constant;

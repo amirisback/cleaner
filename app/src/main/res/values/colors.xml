@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#27282D</color>
-    <color name="colorPrimaryDark">#27282D</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="tab_background_selected">#2499E0</color>
-    <color name="tab_background_unselected">#F22938</color>
-    <color name="transparent">#00000000</color>
-
-    <color name="colorPrimary1">#27282D</color>
-    <color name="colorPrimaryDark1">#27282D</color>
-    <color name="colorAccent1">#27282D</color>
 
     <!-- Base Color   -->
-
+    <color name="colorBaseTransparent">#00000000</color>
     <color name="colorBaseSeaBlue">#2499e0</color>
     <color name="colorBaseRed">#F22938</color>
+    <color name="colorBasePink">#FF4081</color>
     <color name="colorBaseWhite">#FFFFFF</color>
     <color name="colorBaseBlack">#000000</color>
     <color name="colorBaseGreen">#24D149</color>
     <color name="colorBaseDarkGrey">#808080</color>
     <color name="colorBaseDarkBlackBlue">#27282D</color>
     <color name="colorBase">#272A2D</color>
+
+    <color name="colorPrimary">@color/colorBaseDarkBlackBlue</color>
+    <color name="colorPrimaryDark">@color/colorBaseDarkBlackBlue</color>
+    <color name="colorAccent">@color/colorBasePink</color>
+
+    <color name="tab_background_selected">@color/colorBaseSeaBlue</color>
+    <color name="tab_background_unselected">@color/colorBaseRed</color>
 
     <color name="colorTextRed">@color/colorBaseRed</color>
     <color name="colorTextWhite">@color/colorBaseWhite</color>

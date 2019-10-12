@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,15 +30,19 @@ import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.base.BaseFragment;
 import com.frogobox.cleaner.model.Apps;
 import com.frogobox.cleaner.utils.Constant;
-import com.frogobox.cleaner.view.activity.CpuScannerActivity;
+import com.frogobox.cleaner.utils.Helper;
+import com.frogobox.cleaner.view.activity.CPUScannerActivity;
 import com.frogobox.cleaner.view.adapter.CPUCoolerViewAdapter;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
+
+import static com.frogobox.cleaner.utils.Constant.Variable.COLOR_RED;
 
 /**
  * Created by Faisal Amir
@@ -60,61 +65,14 @@ public class CPUCoolerFragment extends BaseFragment {
 
     public static List<Apps> apps;
     private TextView batterytemp, showmain, showsec, nooverheating;
-    private float temp;
     private ImageView coolbutton, tempimg;
     private RecyclerView recyclerView;
-    private CPUCoolerViewAdapter mAdapter;
     private int check = 0;
 
     private BroadcastReceiver batteryReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-
-            try {
-                int level = intent.getIntExtra("level", 0);
-                temp = ((float) intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0)) / 10;
-
-                batterytemp.setText(temp + "°C");
-
-                if (temp >= 30.0) {
-                    apps = new ArrayList<>();
-                    tempimg.setImageResource(R.drawable.img_cooler_red);
-                    showmain.setText("OVERHEATED");
-                    showmain.setTextColor(Color.parseColor("#F22938"));
-                    showsec.setText("Apps are causing problem hit cool down");
-                    nooverheating.setText("");
-                    coolbutton.setImageResource(R.drawable.bg_button_cool_blue);
-                    coolbutton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            setupCoolingBattery();
-                        }
-                    });
-
-                    setupAndroidVersion();
-                    recyclerView.setItemAnimator(new SlideInLeftAnimator());
-
-//                    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
-//                    recyclerView.setItemAnimator(new SlideInUpAnimator(new OvershootInterpolator(1f)));
-
-                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-
-                    recyclerView.getItemAnimator().setAddDuration(10000);
-                    mAdapter = new CPUCoolerViewAdapter(apps);
-                    recyclerView.setLayoutManager(mLayoutManager);
-                    recyclerView.setItemAnimator(new SlideInUpAnimator(new OvershootInterpolator(1f)));
-                    recyclerView.computeHorizontalScrollExtent();
-                    recyclerView.setAdapter(mAdapter);
-                    getAppsIcon();
-//                    recyclerView.getItemAnimator().setRemoveDuration(1000);
-//                    recyclerView.getItemAnimator().setMoveDuration(1000);
-//                    recyclerView.getItemAnimator().setChangeDuration(1000);
-
-                }
-            } catch (Exception e) {
-
-            }
-
+            setupBatteryReceiver(intent);
         }
     };
 
@@ -131,19 +89,57 @@ public class CPUCoolerFragment extends BaseFragment {
         setupCheckCooledBattery();
     }
 
-    private void setupCheckCooledBattery(){
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
         try {
-            getActivity().registerReceiver(batteryReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-            setupBatteryCooled();
-            Log.e("Temperrature", temp + "");
+            getActivity().unregisterReceiver(batteryReceiver);
         } catch (Exception e) {
 
         }
     }
 
-    private void setupCoolingBattery(){
-        Intent i = new Intent(getActivity(), CpuScannerActivity.class);
-        startActivity(i);
+    private void setupBatteryReceiver(Intent intent) {
+        try {
+            int level = intent.getIntExtra("level", 0);
+            float temp = ((float) intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0)) / 10;
+            batterytemp.setText(temp + "°C");
+            if (temp >= 30.0) {
+                setupSmartPhoneHotCondition();
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    private void setupCheckCooledBattery() {
+        try {
+            getActivity().registerReceiver(batteryReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+            setupBatteryCooled();
+        } catch (Exception e) {
+
+        }
+    }
+
+    private void setupSmartPhoneHotCondition() {
+        apps = new ArrayList<>();
+        tempimg.setImageResource(R.drawable.img_cooler_red);
+        showmain.setText("OVERHEATED");
+        showmain.setTextColor(mActivity.getColorRes(R.color.colorTextRed));
+        showsec.setText("Apps are causing problem hit cool down");
+        nooverheating.setText("");
+        coolbutton.setImageResource(R.drawable.bg_button_cool_blue);
+        coolbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setupCoolingBattery();
+            }
+        });
+        setupAndroidVersion();
+        setupHotApps();
+    }
+
+    private void setupCoolingBattery() {
+        startActivity(new Intent(getContext(), CPUScannerActivity.class));
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -158,8 +154,8 @@ public class CPUCoolerFragment extends BaseFragment {
     }
 
     private void setupBatteryCooled() {
-        showsec.setTextColor(Color.parseColor("#24D149"));
-        showmain.setTextColor(Color.parseColor("#24D149"));
+        showsec.setTextColor(mActivity.getColorRes(R.color.colorTextGreen));
+        showmain.setTextColor(mActivity.getColorRes(R.color.colorTextGreen));
         nooverheating.setText("Currently No App causing Overheating");
         showmain.setText("NORMAL");
         showsec.setText("CPU Temperature is GOOD");
@@ -186,24 +182,14 @@ public class CPUCoolerFragment extends BaseFragment {
     private void setupAndroidVersion() {
         if (Build.VERSION.SDK_INT < 23) {
             showsec.setTextAppearance(getContext(), android.R.style.TextAppearance_Medium);
-            showsec.setTextColor(Color.parseColor("#F22938"));
+            showsec.setTextColor(Color.parseColor(COLOR_RED));
         } else {
             showsec.setTextAppearance(android.R.style.TextAppearance_Small);
-            showsec.setTextColor(Color.parseColor("#F22938"));
+            showsec.setTextColor(Color.parseColor(COLOR_RED));
         }
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        try {
-            getActivity().unregisterReceiver(batteryReceiver);
-        } catch (Exception e) {
-
-        }
-    }
-
-    private void getAppsIcon() {
+    private void setupHotApps() {
 
         PackageManager pm = getActivity().getPackageManager();
         List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
@@ -237,7 +223,6 @@ public class CPUCoolerFragment extends BaseFragment {
                             }
 
                         }
-                        mAdapter.notifyDataSetChanged();
 
                     } catch (PackageManager.NameNotFoundException e) {
                         Log.e("ERROR", "Unable to find icon for package '"
@@ -249,11 +234,20 @@ public class CPUCoolerFragment extends BaseFragment {
         }
 
         if (apps.size() > 1) {
-            mAdapter = new CPUCoolerViewAdapter(apps);
-            mAdapter.notifyDataSetChanged();
+            CPUCoolerViewAdapter adapter = new CPUCoolerViewAdapter(apps);
+            adapter.notifyDataSetChanged();
+            setupRecyclerView(adapter);
         }
+    }
 
-
+    private void setupRecyclerView(CPUCoolerViewAdapter adapter) {
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setItemAnimator(new SlideInLeftAnimator());
+        recyclerView.getItemAnimator().setAddDuration(10000);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new SlideInUpAnimator(new OvershootInterpolator(1f)));
+        recyclerView.computeHorizontalScrollExtent();
+        recyclerView.setAdapter(adapter);
     }
 
 }

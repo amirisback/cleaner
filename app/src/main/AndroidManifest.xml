@@ -40,7 +40,7 @@
         <activity android:name="com.frogobox.cleaner.view.activity.PowerSavingComplitionActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.frogobox.cleaner.view.activity.ApplyingUltraActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.frogobox.cleaner.view.activity.ScanningJunkActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.frogobox.cleaner.view.activity.CpuScannerActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.frogobox.cleaner.view.activity.CPUScannerActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.frogobox.cleaner.view.activity.PickAppsActivity" android:theme="@style/Theme.Transparent" android:screenOrientation="portrait"/>
         <receiver android:name="com.frogobox.cleaner.service.AlarmBoosterBroadcastReceiver" />
         <receiver android:name="com.frogobox.cleaner.service.AlarmJunkBroadcastReceiver" />
