@@ -13,6 +13,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.frogobox.cleaner.R
+import com.frogobox.cleaner.utils.AdmobHelper
+import com.frogobox.cleaner.utils.AdmobHelper.Publisher.setupPublisher
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.reward.RewardedVideoAd
 
 
 /**
@@ -35,12 +39,26 @@ import com.frogobox.cleaner.R
 abstract class BaseActivity : AppCompatActivity() {
 
     lateinit var mActivity: AppCompatActivity
+    lateinit var mInterstitialAd: InterstitialAd
+    lateinit var mRewardedVideoAd: RewardedVideoAd
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivity = this
-
+        setupAdmob(this)
     }
+
+    private fun setupAdmob(context: Context){
+        setupPublisher(context)
+        setupAdmobInterstitial(context)
+//        setupAdmobVideo(context)
+    }
+
+    private fun setupAdmobInterstitial(context: Context) {
+        mInterstitialAd = InterstitialAd(context)
+        AdmobHelper.Interstitial.setupInterstitial(context, mInterstitialAd)
+    }
+
 
     protected fun setupNoLimitStatBar() {
         val windows = window // in Activity's onCreate() for instance

@@ -1,9 +1,15 @@
 package com.frogobox.cleaner.base
 
+import android.content.Context
 import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.frogobox.cleaner.R
+
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
@@ -75,5 +81,15 @@ abstract class BaseFragment : Fragment() {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
+    protected fun showCustomToast(message: String){
+        val layout = LayoutInflater.from(context).inflate(R.layout.toast_apps, null)
+        val text = layout.findViewById<TextView>(R.id.textView1)
+        text.setText(message)
+        val toast = Toast(context)
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 70)
+        toast.duration = Toast.LENGTH_LONG
+        toast.view = layout
+        toast.show()
+    }
 
 }

@@ -15,4 +15,7 @@
     <string name="title_charge_booster">Charge Booster</string>
     <string name="button_apply">Apply</string>
 
+    <string name="toast_cleaned_junk">No Junk Files Already Cleaned</string>
+    <string name="toast_cpu_normal_temperature">CPU Temperature is Already Normal</string>
+
 </resources>

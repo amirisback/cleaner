@@ -1,6 +1,5 @@
 package com.frogobox.cleaner.view.fragment;
 
-import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -9,13 +8,11 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -75,7 +72,7 @@ public class JunkCleanerFragment extends BaseFragment {
         setupCheckJunk();
     }
 
-    private void setupCheckJunk(){
+    private void setupCheckJunk() {
         try {
             sharedpreferences = getActivity().getSharedPreferences(Constant.Variable.SHARED_PREF_WASEEM, Context.MODE_PRIVATE);
             if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_JUNK, "1").equals("1")) {
@@ -89,7 +86,7 @@ public class JunkCleanerFragment extends BaseFragment {
                     if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_JUNK, "1").equals("1")) {
                         setupDoInClenerJunk();
                     } else {
-                        setupAlreadyCleanedJunk();
+                        showCustomToast(getString(R.string.toast_cleaned_junk));
                     }
                 }
             });
@@ -102,7 +99,7 @@ public class JunkCleanerFragment extends BaseFragment {
         textView.setTextColor(color);
     }
 
-    private void setupDoInClenerJunk(){
+    private void setupDoInClenerJunk() {
 
         Intent i = new Intent(getActivity(), ScanningJunkActivity.class);
         i.putExtra(Constant.Variable.SHARED_PREF_JUNK, alljunk + "");
@@ -191,20 +188,6 @@ public class JunkCleanerFragment extends BaseFragment {
         setupText(temptext, ZERO_MB, color);
         setupText(residuetext, ZERO_MB, color);
         setupText(systemtext, ZERO_MB, color);
-    }
-
-    private void setupAlreadyCleanedJunk() {
-        @SuppressLint("RestrictedApi") LayoutInflater inflater = getLayoutInflater(getArguments());
-        View layout = inflater.inflate(R.layout.toast_apps, null);
-        ImageView image = layout.findViewById(R.id.image);
-        TextView text = layout.findViewById(R.id.textView1);
-        text.setText("No Junk Files ALready Cleaned.");
-
-        Toast toast = new Toast(getActivity());
-        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 70);
-        toast.setDuration(Toast.LENGTH_LONG);
-        toast.setView(layout);
-        toast.show();
     }
 
 }
