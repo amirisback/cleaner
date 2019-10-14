@@ -22,7 +22,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,14 +29,12 @@ import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.base.BaseFragment;
 import com.frogobox.cleaner.model.Apps;
 import com.frogobox.cleaner.utils.Constant;
-import com.frogobox.cleaner.utils.Helper;
 import com.frogobox.cleaner.view.activity.CPUScannerActivity;
 import com.frogobox.cleaner.view.adapter.CPUCoolerViewAdapter;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;

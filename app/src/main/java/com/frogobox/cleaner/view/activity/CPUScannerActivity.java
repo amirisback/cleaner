@@ -64,11 +64,11 @@ public class CPUScannerActivity extends BaseActivity {
         cpu = findViewById(R.id.cpu);
         cooledcpu = findViewById(R.id.cpucooler);
         img_animation = findViewById(R.id.heart);
-        rel = (RelativeLayout) findViewById(R.id.rel);
+        rel = findViewById(R.id.rel);
         app = new ArrayList<>();
 
         mInterstitialAd = new InterstitialAd(getApplicationContext());
-        mInterstitialAd.setAdUnitId(getResources().getString(R.string.interstitial));
+        mInterstitialAd.setAdUnitId(getResources().getString(R.string.admob_interstitial));
         AdRequest adRequestInter = new AdRequest.Builder().build();
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
@@ -114,7 +114,7 @@ public class CPUScannerActivity extends BaseActivity {
         });
 
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
 
         recyclerView.setItemAnimator(new SlideInLeftAnimator());
 
@@ -318,8 +318,4 @@ public class CPUScannerActivity extends BaseActivity {
     }
 
 
-    @Override
-    public void onBackPressed() {
-//        super.onBackPressed();
-    }
 }
