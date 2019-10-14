@@ -119,7 +119,7 @@ public class CPUScannerActivity extends BaseActivity {
         recyclerView.setItemAnimator(new SlideInLeftAnimator());
 
 
-        mAdapter = new ScanCpuAppsViewAdapter(CPUCoolerFragment.apps);
+        mAdapter = new ScanCpuAppsViewAdapter(CPUCoolerFragment.Companion.getApps());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new SlideInUpAnimator(new OvershootInterpolator(1f)));
@@ -311,7 +311,7 @@ public class CPUScannerActivity extends BaseActivity {
 //        mDataSet.add(position, text);
         mAdapter.notifyItemRemoved(position);
         try {
-            CPUCoolerFragment.apps.remove(position);
+            CPUCoolerFragment.Companion.getApps().remove(position);
         } catch (Exception e) {
 
         }
