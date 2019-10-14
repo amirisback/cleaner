@@ -49,14 +49,13 @@ abstract class BaseFragment : Fragment() {
     }
 
     protected inline fun <reified ClassActivity, Model> baseStartActivity(
-            context: Context,
             extraKey: String,
             data: Model
     ) {
         val intent = Intent(context, ClassActivity::class.java)
         val extraData = BaseHelper().baseToJson(data)
         intent.putExtra(extraKey, extraData)
-        context.startActivity(intent)
+        context?.startActivity(intent)
     }
 
     fun <Model> baseNewInstance(argsKey: String, data: Model){

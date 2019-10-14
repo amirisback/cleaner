@@ -36,8 +36,6 @@ public class ScanCpuAppsViewAdapter extends RecyclerView.Adapter<ScanCpuAppsView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-
-
         Apps app = apps.get(position);
         holder.size.setText("");
         holder.image.setImageDrawable(app.getImage());
