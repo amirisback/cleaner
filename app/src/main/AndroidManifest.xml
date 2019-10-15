@@ -33,10 +33,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.frogobox.cleaner.view.activity.PowerSavingPopupActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.frogobox.cleaner.view.activity.UltraPopUpActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.frogobox.cleaner.view.activity.batterysaver.PowerSavingBatterySaverActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.frogobox.cleaner.view.activity.batterysaver.UltraBaterrySaverActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.frogobox.cleaner.view.activity.BatterySaverBlackActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.frogobox.cleaner.view.activity.NormalModeActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.frogobox.cleaner.view.activity.batterysaver.NormalModeBatterySaverActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.frogobox.cleaner.view.activity.PowerSavingComplitionActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.frogobox.cleaner.view.activity.ApplyingUltraActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.frogobox.cleaner.view.activity.ScanningJunkActivity" android:screenOrientation="portrait"/>

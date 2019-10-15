@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.base.BaseActivity;
 import com.frogobox.cleaner.utils.Constant;
+import com.frogobox.cleaner.view.activity.batterysaver.NormalModeBatterySaverActivity;
 
 import java.util.Locale;
 
@@ -151,7 +152,7 @@ public class BatterySaverBlackActivity extends BaseActivity {
                         @Override
                         public void onClick(View v) {
 
-                            Intent i = new Intent(BatterySaverBlackActivity.this, NormalModeActivity.class);
+                            Intent i = new Intent(BatterySaverBlackActivity.this, NormalModeBatterySaverActivity.class);
                             startActivity(i);
 
                             finish();

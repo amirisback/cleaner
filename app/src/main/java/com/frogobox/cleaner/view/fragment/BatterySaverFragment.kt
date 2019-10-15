@@ -11,9 +11,9 @@ import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseFragment
 import com.frogobox.cleaner.model.Time
 import com.frogobox.cleaner.utils.Constant
-import com.frogobox.cleaner.view.activity.NormalModeActivity
-import com.frogobox.cleaner.view.activity.PowerSavingPopupActivity
-import com.frogobox.cleaner.view.activity.UltraPopUpActivity
+import com.frogobox.cleaner.view.activity.batterysaver.NormalModeBatterySaverActivity
+import com.frogobox.cleaner.view.activity.batterysaver.PowerSavingBatterySaverActivity
+import com.frogobox.cleaner.view.activity.batterysaver.UltraBaterrySaverActivity
 import kotlinx.android.synthetic.main.fragment_battery_saver.*
 import me.itangqi.waveloadingview.WaveLoadingView
 
@@ -64,7 +64,7 @@ class BatterySaverFragment : BaseFragment() {
         try {
 
             powersaving.setOnClickListener {
-                val i = Intent(activity, PowerSavingPopupActivity::class.java)
+                val i = Intent(activity, PowerSavingBatterySaverActivity::class.java)
                 i.putExtra(Constant.Variable.EXTRA_HOURS, hourp!!.text)
                 i.putExtra(Constant.Variable.EXTRA_MINUTES, minutesp!!.text)
                 i.putExtra(Constant.Variable.EXTRA_MINUTES_NORMAL, minutes!!.text)
@@ -73,7 +73,7 @@ class BatterySaverFragment : BaseFragment() {
             }
 
             ultra.setOnClickListener {
-                val i = Intent(activity, UltraPopUpActivity::class.java)
+                val i = Intent(activity, UltraBaterrySaverActivity::class.java)
                 i.putExtra(Constant.Variable.EXTRA_HOURS, houru!!.text)
                 i.putExtra(Constant.Variable.EXTRA_MINUTES, minutesu!!.text)
                 i.putExtra(Constant.Variable.EXTRA_MINUTES_NORMAL, minutes!!.text)
@@ -82,7 +82,7 @@ class BatterySaverFragment : BaseFragment() {
             }
 
             normal.setOnClickListener {
-                baseStartActivity<NormalModeActivity>()
+                baseStartActivity<NormalModeBatterySaverActivity>()
             }
 
             waveView.setShapeType(WaveLoadingView.ShapeType.CIRCLE)
