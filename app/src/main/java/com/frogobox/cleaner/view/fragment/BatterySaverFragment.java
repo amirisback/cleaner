@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 
 import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.base.BaseFragment;
+import com.frogobox.cleaner.model.Time;
 import com.frogobox.cleaner.utils.Constant;
 import com.frogobox.cleaner.view.activity.NormalModeActivity;
 import com.frogobox.cleaner.view.activity.PowerSavingPopupActivity;
@@ -56,212 +57,10 @@ public class BatterySaverFragment extends BaseFragment {
         @Override
         public void onReceive(Context ctxt, Intent intent) {
             int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
-
             mWaveLoadingView.setProgressValue(level);
-//            mWaveLoadingView.setBottomTitle(level+"%");
             mWaveLoadingView.setCenterTitle(level + "%");
-
-            if (level <= 5) {
-                hourn.setText(0 + "");
-                minutes.setText(15 + "");
-
-                hourp.setText(2 + "");
-                minutep.setText(25 + "");
-
-                houru.setText(3 + "");
-                minutesu.setText(55 + "");
-
-                if (sharedpreferences.getString("mode", "0").equals("0")) {
-                    hourmain.setText(0 + "");
-                    minutesmain.setText(15 + "");
-                }
-
-                if (sharedpreferences.getString("mode", "0").equals("1")) {
-                    hourmain.setText(2 + "");
-                    minutesmain.setText(25 + "");
-                }
-            }
-            if (level > 5 && level <= 10) {
-                hourn.setText(0 + "");
-                minutes.setText(30 + "");
-
-                hourp.setText(3 + "");
-                minutep.setText(5 + "");
-
-                houru.setText(6 + "");
-                minutesu.setText(0 + "");
-
-                if (sharedpreferences.getString("mode", "0").equals("0")) {
-                    hourmain.setText(0 + "");
-                    minutesmain.setText(30 + "");
-                }
-
-                if (sharedpreferences.getString("mode", "0").equals("1")) {
-                    hourmain.setText(3 + "");
-                    minutesmain.setText(5 + "");
-                }
-            }
-            if (level > 10 && level <= 15) {
-                hourn.setText(0 + "");
-                minutes.setText(45 + "");
-
-                hourp.setText(3 + "");
-                minutep.setText(50 + "");
-
-                houru.setText(8 + "");
-                minutesu.setText(25 + "");
-
-                if (sharedpreferences.getString("mode", "0").equals("0")) {
-                    hourmain.setText(0 + "");
-                    minutesmain.setText(45 + "");
-                }
-
-                if (sharedpreferences.getString("mode", "0").equals("1")) {
-                    hourmain.setText(3 + "");
-                    minutesmain.setText(50 + "");
-                }
-            }
-            if (level > 15 && level <= 25) {
-                hourn.setText(1 + "");
-                minutes.setText(30 + "");
-
-                hourp.setText(4 + "");
-                minutep.setText(45 + "");
-
-                houru.setText(12 + "");
-                minutesu.setText(55 + "");
-
-                if (sharedpreferences.getString("mode", "0").equals("0")) {
-                    hourmain.setText(1 + "");
-                    minutesmain.setText(30 + "");
-                }
-
-                if (sharedpreferences.getString("mode", "0").equals("1")) {
-                    hourmain.setText(4 + "");
-                    minutesmain.setText(45 + "");
-                }
-            }
-            if (level > 25 && level <= 35) {
-                hourn.setText(2 + "");
-                minutes.setText(20 + "");
-
-                hourp.setText(6 + "");
-                minutep.setText(2 + "");
-
-                houru.setText(19 + "");
-                minutesu.setText(2 + "");
-
-                if (sharedpreferences.getString("mode", "0").equals("0")) {
-                    hourmain.setText(2 + "");
-                    minutesmain.setText(20 + "");
-                }
-
-                if (sharedpreferences.getString("mode", "0").equals("1")) {
-                    hourmain.setText(6 + "");
-                    minutesmain.setText(2 + "");
-                }
-            }
-            if (level > 35 && level <= 50) {
-                hourn.setText(5 + "");
-                minutes.setText(20 + "");
-
-                hourp.setText(9 + "");
-                minutep.setText(25 + "");
-
-                houru.setText(22 + "");
-                minutesu.setText(0 + "");
-
-                if (sharedpreferences.getString("mode", "0").equals("0")) {
-                    hourmain.setText(5 + "");
-                    minutesmain.setText(20 + "");
-                }
-
-                if (sharedpreferences.getString("mode", "0").equals("1")) {
-                    hourmain.setText(9 + "");
-                    minutesmain.setText(20 + "");
-                }
-            }
-            if (level > 50 && level <= 65) {
-                hourn.setText(7 + "");
-                minutes.setText(30 + "");
-
-                hourp.setText(11 + "");
-                minutep.setText(1 + "");
-
-                houru.setText(28 + "");
-                minutesu.setText(15 + "");
-
-                if (sharedpreferences.getString("mode", "0").equals("0")) {
-                    hourmain.setText(7 + "");
-                    minutesmain.setText(30 + "");
-                }
-
-                if (sharedpreferences.getString("mode", "0").equals("1")) {
-                    hourmain.setText(11 + "");
-                    minutesmain.setText(1 + "");
-                }
-            }
-            if (level > 65 && level <= 75) {
-                hourn.setText(9 + "");
-                minutes.setText(10 + "");
-
-                hourp.setText(14 + "");
-                minutep.setText(25 + "");
-
-                houru.setText(30 + "");
-                minutesu.setText(55 + "");
-
-                if (sharedpreferences.getString("mode", "0").equals("0")) {
-                    hourmain.setText(9 + "");
-                    minutesmain.setText(10 + "");
-                }
-
-                if (sharedpreferences.getString("mode", "0").equals("1")) {
-                    hourmain.setText(14 + "");
-                    minutesmain.setText(25 + "");
-                }
-            }
-            if (level > 75 && level <= 85) {
-                hourn.setText(14 + "");
-                minutes.setText(15 + "");
-
-                hourp.setText(17 + "");
-                minutep.setText(10 + "");
-
-                houru.setText(38 + "");
-                minutesu.setText(5 + "");
-
-                if (sharedpreferences.getString("mode", "0").equals("0")) {
-                    hourmain.setText(14 + "");
-                    minutesmain.setText(15 + "");
-                }
-
-                if (sharedpreferences.getString("mode", "0").equals("1")) {
-                    hourmain.setText(17 + "");
-                    minutesmain.setText(10 + "");
-                }
-            }
-            if (level > 85 && level <= 100) {
-                hourn.setText(20 + "");
-                minutes.setText(45 + "");
-
-                hourp.setText(30 + "");
-                minutep.setText(0 + "");
-
-                houru.setText(60 + "");
-                minutesu.setText(55 + "");
-
-                if (sharedpreferences.getString("mode", "0").equals("0")) {
-                    hourmain.setText(20 + "");
-                    minutesmain.setText(45 + "");
-                }
-
-                if (sharedpreferences.getString("mode", "0").equals("1")) {
-                    hourmain.setText(30 + "");
-                    minutesmain.setText(0 + "");
-                }
-            }
-
+//            mWaveLoadingView.setBottomTitle(level+"%");
+            setupCheckBatteryLevel(level);
         }
     };
 
@@ -359,5 +158,77 @@ public class BatterySaverFragment extends BaseFragment {
         }
     }
 
+    private void setupTextViewTime(Time time){
+        hourn.setText(time.getHourn() + "");
+        minutes.setText(time.getMinutes() + "");
+
+        hourp.setText(time.getHourp() + "");
+        minutep.setText(time.getMinutep() + "");
+
+        houru.setText(time.getHouru() + "");
+        minutesu.setText(time.getMinutesu() + "");
+
+        if (sharedpreferences.getString("mode", "0").equals("0")) {
+            hourmain.setText(time.getHourn() + "");
+            minutesmain.setText(time.getMinutes() + "");
+        }
+
+        if (sharedpreferences.getString("mode", "0").equals("1")) {
+            hourmain.setText(time.getHourp() + "");
+            minutesmain.setText(time.getMinutep() + "");
+        }
+    }
+
+    private void setupCheckBatteryLevel(int level){
+        if (level <= 5) {
+            Time time = new Time(0, 15, 2, 25, 3, 55);
+            setupTextViewTime(time);
+        }
+
+        if (5 < level && level <= 10) {
+            Time time = new Time(0, 30, 3, 5, 6, 0);
+            setupTextViewTime(time);
+        }
+
+        if (level > 10 && level <= 15) {
+            Time time = new Time(0, 45, 3, 50, 8, 25);
+            setupTextViewTime(time);
+        }
+
+        if (level > 15 && level <= 25) {
+            Time time = new Time(1, 30, 4, 45, 12, 55);
+            setupTextViewTime(time);
+        }
+
+        if (level > 25 && level <= 35) {
+            Time time = new Time(2, 20, 6, 2, 19, 2);
+            setupTextViewTime(time);
+        }
+
+        if (level > 35 && level <= 50) {
+            Time time = new Time(5, 20, 9, 25, 22, 0);
+            setupTextViewTime(time);
+        }
+
+        if (level > 50 && level <= 65) {
+            Time time = new Time(7, 30, 11, 1, 28, 15);
+            setupTextViewTime(time);
+        }
+
+        if (level > 65 && level <= 75) {
+            Time time = new Time(9, 10, 14, 25, 30, 55);
+            setupTextViewTime(time);
+        }
+
+        if (level > 75 && level <= 85) {
+            Time time = new Time(14, 15, 17, 10, 38, 5);
+            setupTextViewTime(time);
+        }
+
+        if (level > 85 && level <= 100) {
+            Time time = new Time(20, 45, 30, 0, 60, 55);
+            setupTextViewTime(time);
+        }
+    }
 
 }
