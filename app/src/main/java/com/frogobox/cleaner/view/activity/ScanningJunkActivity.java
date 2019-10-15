@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,13 +21,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.base.BaseActivity;
 import com.frogobox.cleaner.model.Apps;
-import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.utils.Constant;
 import com.frogobox.cleaner.view.adapter.JunkAppsViewAdapter;
 import com.github.ybq.android.spinkit.style.ThreeBounce;

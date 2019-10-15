@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Context.ALARM_SERVICE
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -16,7 +15,10 @@ import android.widget.TextView
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseFragment
 import com.frogobox.cleaner.service.AlarmJunkBroadcastReceiver
-import com.frogobox.cleaner.utils.Constant.Variable.*
+import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_JUNK
+import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_WASEEM
+import com.frogobox.cleaner.utils.Constant.Variable.ZERO_MB
+import com.frogobox.cleaner.utils.Constant.Variable._MB
 import com.frogobox.cleaner.view.activity.ScanningJunkActivity
 import kotlinx.android.synthetic.main.fragment_junk_cleaner.*
 import java.util.*
