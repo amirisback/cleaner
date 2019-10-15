@@ -42,11 +42,6 @@ public class Constant {
         public static String EXTRA_MINUTES = "EXTRA_MINUTES";
         public static String EXTRA_MINUTES_NORMAL = "EXTRA_MINUTES_NORMAL";
 
-        public static String COLOR_RED = "#F22938";
-        public static String COLOR_GREEN = "#24D149";
-        public static String COLOR_SEABLUE = "#2499E0";
-        public static String COLOR_DARK_BLACK_BLUE = "#27282D";
-
         public static String _MB = " MB";
         public static String ZERO_MB = "0 MB";
 

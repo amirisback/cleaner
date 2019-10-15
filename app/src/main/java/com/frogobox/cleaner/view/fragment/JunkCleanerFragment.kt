@@ -120,7 +120,7 @@ class JunkCleanerFragment : BaseFragment() {
         val residueString = proc3.toString() + _MB
         val systemString = proc4.toString() + _MB
 
-        val colorText = Color.parseColor(COLOR_RED)
+        val colorText = mActivity.getColorRes(R.color.colorTextRed)
 
         setupText(maintext, mainString, colorText)
         setupText(cachetext, cacheString, colorText)
@@ -138,7 +138,7 @@ class JunkCleanerFragment : BaseFragment() {
         residue.setImageResource(R.drawable.img_junk_green_residual)
         system.setImageResource(R.drawable.img_junk_green_system)
 
-        val color = Color.parseColor(COLOR_GREEN)
+        val color = mActivity.getColorRes(R.color.colorTextGreen)
 
         setupText(maintext, "CRYSTAL CLEAR", color)
         setupText(cachetext, ZERO_MB, color)

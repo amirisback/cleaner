@@ -11,7 +11,6 @@ import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseFragment
 import com.frogobox.cleaner.model.Time
 import com.frogobox.cleaner.utils.Constant
-import com.frogobox.cleaner.utils.Constant.Variable.COLOR_SEABLUE
 import com.frogobox.cleaner.view.activity.NormalModeActivity
 import com.frogobox.cleaner.view.activity.PowerSavingPopupActivity
 import com.frogobox.cleaner.view.activity.UltraPopUpActivity
@@ -91,8 +90,8 @@ class BatterySaverFragment : BaseFragment() {
             waveView.bottomTitleColor = mActivity.getColorRes(R.color.colorTextWhite)
             waveView.borderWidth = 10f
             waveView.setAmplitudeRatio(30)
-            waveView.waveColor = Color.parseColor(COLOR_SEABLUE)
-            waveView.borderColor = Color.parseColor("#000000")
+            waveView.waveColor = mActivity.getColorRes(R.color.colorBackgroundSeaBlue)
+            waveView.borderColor = mActivity.getColorRes(R.color.colorBackgroundBlack)
             waveView.setTopTitleStrokeColor(Color.BLUE)
             waveView.setTopTitleStrokeWidth(3f)
             waveView.setAnimDuration(3000)

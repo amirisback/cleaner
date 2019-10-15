@@ -1,20 +1,14 @@
 package com.frogobox.cleaner.view.activity;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.animation.AccelerateInterpolator;
-
-
 
 import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.base.BaseActivity;
 import com.hookedonplay.decoviewlib.DecoView;
 import com.hookedonplay.decoviewlib.charts.SeriesItem;
 import com.hookedonplay.decoviewlib.events.DecoEvent;
-
-import static com.frogobox.cleaner.utils.Constant.Variable.COLOR_RED;
-import static com.frogobox.cleaner.utils.Constant.Variable.COLOR_SEABLUE;
 
 /**
  * Created by Frogobox Software Industries 2/21/2017.
@@ -35,19 +29,19 @@ public class RevertPowerSavingActivity extends BaseActivity {
                 .setInterpolator(new AccelerateInterpolator())
                 .build());
 
-        arcView.addSeries(new SeriesItem.Builder(Color.parseColor(COLOR_RED))
+        arcView.addSeries(new SeriesItem.Builder(getColorRes(R.color.colorBackgroundRed))
                 .setRange(0, 100, 100)
                 .setInitialVisibility(false)
                 .setLineWidth(12f)
                 .build());
 
 //Create data series track
-        SeriesItem seriesItem1 = new SeriesItem.Builder(Color.parseColor(COLOR_RED))
+        SeriesItem seriesItem1 = new SeriesItem.Builder(getColorRes(R.color.colorBackgroundRed))
                 .setRange(0, 100, 0)
                 .setLineWidth(12f)
                 .build();
 
-        SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor(COLOR_SEABLUE))
+        SeriesItem seriesItem2 = new SeriesItem.Builder(getColorRes(R.color.colorBackgroundSeaBlue))
                 .setRange(0, 100, 0)
                 .setLineWidth(12f)
                 .build();

@@ -28,10 +28,12 @@
     <color name="colorTextDarkBlackBlue">@color/colorBaseDarkBlackBlue</color>
 
     <color name="colorBackgroundWhite">@color/colorBaseWhite</color>
+    <color name="colorBackgroundRed">@color/colorBaseRed</color>
     <color name="colorBackgroundBlack">@color/colorBaseBlack</color>
     <color name="colorBackgroundGreen">@color/colorBaseGreen</color>
     <color name="colorBackgroundDarkGrey">@color/colorBaseDarkGrey</color>
     <color name="colorBackgroundDarkBlackBlue">@color/colorBaseDarkBlackBlue</color>
+    <color name="colorBackgroundSeaBlue">@color/colorBaseSeaBlue</color>
     <color name="colorIndicatorTablayout">@color/colorBaseWhite</color>
 
 </resources>

@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.BatteryManager
 import android.os.Build
@@ -22,7 +21,6 @@ import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseFragment
 import com.frogobox.cleaner.model.Apps
 import com.frogobox.cleaner.utils.Constant
-import com.frogobox.cleaner.utils.Constant.Variable.COLOR_RED
 import com.frogobox.cleaner.view.activity.CPUScannerActivity
 import com.frogobox.cleaner.view.adapter.CPUCoolerViewAdapter
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
@@ -137,10 +135,10 @@ class CPUCoolerFragment : BaseFragment() {
     private fun setupAndroidVersion() {
         if (Build.VERSION.SDK_INT < 23) {
             showsec.setTextAppearance(context, android.R.style.TextAppearance_Medium)
-            showsec.setTextColor(Color.parseColor(COLOR_RED))
+            showsec.setTextColor(mActivity.getColorRes(R.color.colorTextRed))
         } else {
             showsec.setTextAppearance(android.R.style.TextAppearance_Small)
-            showsec.setTextColor(Color.parseColor(COLOR_RED))
+            showsec.setTextColor(mActivity.getColorRes(R.color.colorTextRed))
         }
     }
 

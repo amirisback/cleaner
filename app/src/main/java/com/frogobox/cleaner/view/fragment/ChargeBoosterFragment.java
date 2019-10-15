@@ -47,8 +47,6 @@ import java.util.regex.Pattern;
 
 import static android.content.Context.ACTIVITY_SERVICE;
 import static android.content.Context.ALARM_SERVICE;
-import static com.frogobox.cleaner.utils.Constant.Variable.COLOR_RED;
-import static com.frogobox.cleaner.utils.Constant.Variable.COLOR_SEABLUE;
 
 /**
  * Created by Faisal Amir
@@ -65,7 +63,6 @@ import static com.frogobox.cleaner.utils.Constant.Variable.COLOR_SEABLUE;
  * -----------------------------------------
  * FrogoBox Software Industries
  * com.frogobox.publicspeakingbooster.base
- *
  */
 
 public class ChargeBoosterFragment extends BaseFragment {
@@ -204,19 +201,19 @@ public class ChargeBoosterFragment extends BaseFragment {
                 .setInterpolator(new AccelerateInterpolator())
                 .build());
 
-        arcView.addSeries(new SeriesItem.Builder(Color.parseColor(COLOR_RED))
+        arcView.addSeries(new SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
                 .setRange(0, 100, 100)
                 .setInitialVisibility(false)
                 .setLineWidth(32f)
                 .build());
 
 //Create data series track
-        SeriesItem seriesItem1 = new SeriesItem.Builder(Color.parseColor(COLOR_RED))
+        SeriesItem seriesItem1 = new SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
                 .setRange(0, 100, 0)
                 .setLineWidth(32f)
                 .build();
 
-        SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor(COLOR_SEABLUE))
+        SeriesItem seriesItem2 = new SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundSeaBlue))
                 .setRange(0, 100, 0)
                 .setLineWidth(32f)
                 .build();
@@ -410,19 +407,19 @@ public class ChargeBoosterFragment extends BaseFragment {
                 .setInterpolator(new AccelerateInterpolator())
                 .build());
 
-        arcView.addSeries(new SeriesItem.Builder(Color.parseColor(COLOR_RED))
+        arcView.addSeries(new SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
                 .setRange(0, 100, 100)
                 .setInitialVisibility(false)
                 .setLineWidth(32f)
                 .build());
 
 //Create data series track
-        SeriesItem seriesItem1 = new SeriesItem.Builder(Color.parseColor(COLOR_RED))
+        SeriesItem seriesItem1 = new SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
                 .setRange(0, 100, 0)
                 .setLineWidth(32f)
                 .build();
 
-        SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor(COLOR_SEABLUE))
+        SeriesItem seriesItem2 = new SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundSeaBlue))
                 .setRange(0, 100, 0)
                 .setLineWidth(32f)
                 .build();

@@ -8,7 +8,6 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,21 +18,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.base.BaseActivity;
-import com.frogobox.cleaner.utils.Constant;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.hookedonplay.decoviewlib.DecoView;
 import com.hookedonplay.decoviewlib.charts.SeriesItem;
 import com.hookedonplay.decoviewlib.events.DecoEvent;
-
-import static com.frogobox.cleaner.utils.Constant.Variable.COLOR_DARK_BLACK_BLUE;
 
 /**
  * Created by Frogobox Software Industries 2/22/2017.
@@ -82,14 +77,14 @@ public class PowerSavingComplitionActivity extends BaseActivity {
 //                .setInterpolator(new AccelerateInterpolator())
 //                .build());
 
-        arcView.addSeries(new SeriesItem.Builder(Color.parseColor(COLOR_DARK_BLACK_BLUE))
+        arcView.addSeries(new SeriesItem.Builder(getColorRes(R.color.colorBackgroundDarkBlackBlue))
                 .setRange(0, 100, 100)
                 .setInitialVisibility(false)
                 .setLineWidth(12f)
                 .build());
 
 //Create data series track
-        SeriesItem seriesItem1 = new SeriesItem.Builder(Color.parseColor(COLOR_DARK_BLACK_BLUE))
+        SeriesItem seriesItem1 = new SeriesItem.Builder(getColorRes(R.color.colorBackgroundDarkBlackBlue))
                 .setRange(0, 100, 0)
                 .setLineWidth(10f)
                 .build();
