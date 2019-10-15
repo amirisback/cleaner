@@ -1,6 +1,5 @@
 package com.frogobox.cleaner.view.fragment;
 
-import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -10,7 +9,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +20,6 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -100,6 +97,7 @@ public class ChargeBoosterFragment extends BaseFragment {
         top = view.findViewById(R.id.top);
         bottom = view.findViewById(R.id.bottom);
         ramperct = view.findViewById(R.id.ramperct);
+        
         sharedpreferences = getActivity().getSharedPreferences(Constant.Variable.SHARED_PREF_WASEEM, Context.MODE_PRIVATE);
 
         mInterstitialAd = new InterstitialAd(getActivity());
@@ -141,7 +139,6 @@ public class ChargeBoosterFragment extends BaseFragment {
                         editor.putString(Constant.Variable.SHARED_PREF_BOOSTER, "0");
                         editor.commit();
 
-
                         Intent intent = new Intent(getActivity(), AlarmBoosterBroadcastReceiver.class);
 
                         PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), 0,
@@ -150,23 +147,7 @@ public class ChargeBoosterFragment extends BaseFragment {
                         AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);
                         alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (100 * 1000), pendingIntent);
                     } else {
-
-//                            Toast.makeText(getActivity(), "Phone Is Aleady Optimized", Toast.LENGTH_SHORT).show();
-
-                        @SuppressLint("RestrictedApi") LayoutInflater inflater = getLayoutInflater(getArguments());
-                        View layout = inflater.inflate(R.layout.toast_apps, null);
-
-                        ImageView image = layout.findViewById(R.id.image);
-
-                        TextView text = layout.findViewById(R.id.textView1);
-                        text.setText("Phone Is Aleady Optimized");
-
-                        Toast toast = new Toast(getActivity());
-                        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 70);
-                        toast.setDuration(Toast.LENGTH_LONG);
-                        toast.setView(layout);
-                        toast.show();
-
+                        showCustomToast(getString(R.string.toast_phone_already_optimized));
                     }
 
 
@@ -207,7 +188,7 @@ public class ChargeBoosterFragment extends BaseFragment {
                 .setLineWidth(32f)
                 .build());
 
-//Create data series track
+        // Create data series track
         SeriesItem seriesItem1 = new SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
                 .setRange(0, 100, 0)
                 .setLineWidth(32f)
