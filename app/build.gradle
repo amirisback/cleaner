@@ -64,7 +64,7 @@ dependencies {
     implementation 'com.zys:brokenview:1.0.3'
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
     implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
-    implementation 'com.google.android.gms:play-services-ads:8.4.0'
+    implementation 'com.google.android.gms:play-services-ads:18.2.0'
 //    implementation 'com.google.android.gms:play-services-ads:18.2.0'
     testImplementation 'junit:junit:4.12'
 

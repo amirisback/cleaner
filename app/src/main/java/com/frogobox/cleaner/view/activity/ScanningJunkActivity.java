@@ -89,7 +89,7 @@ public class ScanningJunkActivity extends BaseActivity {
 
 
         mInterstitialAd = new InterstitialAd(getApplicationContext());
-        mInterstitialAd.setAdUnitId(getResources().getString(R.string.interstitial));
+        mInterstitialAd.setAdUnitId(getResources().getString(R.string.admob_interstitial));
         AdRequest adRequestInter = new AdRequest.Builder().build();
         mInterstitialAd.setAdListener(new AdListener() {
             @Override

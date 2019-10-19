@@ -13,7 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.frogobox.cleaner.R
-import com.frogobox.cleaner.utils.AdmobHelper
+import com.frogobox.cleaner.utils.AdmobHelper.Interstitial.setupInterstitial
+import com.frogobox.cleaner.utils.AdmobHelper.Interstitial.showInterstitial
 import com.frogobox.cleaner.utils.AdmobHelper.Publisher.setupPublisher
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.reward.RewardedVideoAd
@@ -45,26 +46,29 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivity = this
-        setupAdmob(this)
+        setupAdmob()
     }
 
-    private fun setupAdmob(context: Context){
-        setupPublisher(context)
-        setupAdmobInterstitial(context)
+    private fun setupAdmob() {
+        setupPublisher(this)
+        setupAdmobInterstitial()
 //        setupAdmobVideo(context)
     }
 
-    private fun setupAdmobInterstitial(context: Context) {
-        mInterstitialAd = InterstitialAd(context)
-        AdmobHelper.Interstitial.setupInterstitial(context, mInterstitialAd)
+    private fun setupAdmobInterstitial() {
+        mInterstitialAd = InterstitialAd(this)
+        setupInterstitial(this, mInterstitialAd)
     }
 
+    protected fun setupShowAdsInterstitial() {
+        showInterstitial(mInterstitialAd)
+    }
 
     protected fun setupNoLimitStatBar() {
         val windows = window // in Activity's onCreate() for instance
         windows.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
     }
 
@@ -80,8 +84,8 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     protected inline fun <reified ClassActivity, Model> baseStartActivity(
-        extraKey: String,
-        data: Model
+            extraKey: String,
+            data: Model
     ) {
         val intent = Intent(this, ClassActivity::class.java)
         val extraData = BaseHelper().baseToJson(data)
@@ -95,11 +99,11 @@ abstract class BaseActivity : AppCompatActivity() {
         return extraData
     }
 
-    protected fun checkExtra(extraKey: String) : Boolean {
+    protected fun checkExtra(extraKey: String): Boolean {
         return intent?.hasExtra(extraKey)!!
     }
 
-    protected fun <Model>baseFragmentNewInstance(fragment: BaseFragment, argumentKey: String, extraDataResult: Model){
+    protected fun <Model> baseFragmentNewInstance(fragment: BaseFragment, argumentKey: String, extraDataResult: Model) {
         fragment.baseNewInstance(argumentKey, extraDataResult)
     }
 
@@ -113,12 +117,12 @@ abstract class BaseActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(upArrow)
         supportActionBar?.setBackgroundDrawable(
-            ColorDrawable(
-                ContextCompat.getColor(
-                    this,
-                    R.color.colorBaseWhite
+                ColorDrawable(
+                        ContextCompat.getColor(
+                                this,
+                                R.color.colorBaseWhite
+                        )
                 )
-            )
         )
     }
 
@@ -152,7 +156,7 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun getColorRes(res: Int) : Int{
+    fun getColorRes(res: Int): Int {
         return ContextCompat.getColor(this, res)
     }
 

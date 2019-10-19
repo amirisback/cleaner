@@ -3,6 +3,7 @@ package com.frogobox.cleaner.utils
 import android.content.Context
 import android.util.Log
 import com.frogobox.cleaner.R
+import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
@@ -41,10 +42,19 @@ class AdmobHelper {
 
         fun setupInterstitial(context: Context, mInterstitialAd: InterstitialAd){
             mInterstitialAd.adUnitId = context.getString(R.string.admob_interstitial)
-            mInterstitialAd.loadAd(AdRequest.Builder().build())
         }
 
         fun showInterstitial(mInterstitialAd: InterstitialAd){
+            mInterstitialAd.loadAd(AdRequest.Builder().build())
+            mInterstitialAd.adListener = object : AdListener() {
+                override fun onAdClosed() {
+                    mInterstitialAd.loadAd(AdRequest.Builder().build())
+                }
+            }
+            checkLoadedInterstitial(mInterstitialAd)
+        }
+
+        private fun checkLoadedInterstitial(mInterstitialAd: InterstitialAd){
             if (mInterstitialAd.isLoaded) {
                 mInterstitialAd.show()
             } else {
@@ -66,8 +76,6 @@ class AdmobHelper {
                 mRewardedVideoAd.show()
             }
         }
-
-
 
     }
 

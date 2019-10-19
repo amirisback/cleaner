@@ -101,7 +101,7 @@ public class ChargeBoosterFragment extends BaseFragment {
         sharedpreferences = getActivity().getSharedPreferences(Constant.Variable.SHARED_PREF_WASEEM, Context.MODE_PRIVATE);
 
         mInterstitialAd = new InterstitialAd(getActivity());
-        mInterstitialAd.setAdUnitId(getResources().getString(R.string.interstitial));
+        mInterstitialAd.setAdUnitId(getResources().getString(R.string.admob_interstitial));
         AdRequest adRequestInter = new AdRequest.Builder().build();
         mInterstitialAd.setAdListener(new AdListener() {
             @Override

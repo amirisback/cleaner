@@ -62,7 +62,7 @@ public class PowerSavingComplitionActivity extends BaseActivity {
         completion = findViewById(R.id.completion);
         DecoView arcView = findViewById(R.id.dynamicArcView2);
         mInterstitialAd = new InterstitialAd(getApplicationContext());
-        mInterstitialAd.setAdUnitId(getResources().getString(R.string.interstitial));
+        mInterstitialAd.setAdUnitId(getResources().getString(R.string.admob_interstitial));
         AdRequest adRequestInter = new AdRequest.Builder().build();
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
