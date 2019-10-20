@@ -28,6 +28,7 @@ import com.frogobox.cleaner.utils.Constant;
 import com.frogobox.cleaner.view.activity.batterysaver.NormalModeBatterySaverActivity;
 
 import java.util.Locale;
+import java.util.Objects;
 
 import static android.content.ContentValues.TAG;
 
@@ -175,21 +176,29 @@ public class BatterySaverBlackActivity extends BaseActivity {
                 editor.putString(Constant.Variable.SHARED_PREF_BUTTON, "1");
                 editor.commit();
 
-                if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_1, "0").equals("0")) {
-                    Intent i = new Intent(BatterySaverBlackActivity.this, PickAppsActivity.class);
-                    startActivity(i);
-                } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_1, "0").equals("1")) {
-                    playstore();
-                } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_1, "0").equals("2")) {
-                    calculator();
-                } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_1, "0").equals("3")) {
-                    alaram();
-                } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_1, "0").equals("4")) {
-                    contacts();
-                } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_1, "0").equals("5")) {
-                    map();
-                } else if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_1, "0").equals("6")) {
-                    camera();
+                switch (Objects.requireNonNull(sharedpreferences.getString(Constant.Variable.SHARED_PREF_BUTTON_1, "0"))) {
+                    case "0":
+                        Intent i = new Intent(BatterySaverBlackActivity.this, PickAppsActivity.class);
+                        startActivity(i);
+                        break;
+                    case "1":
+                        playstore();
+                        break;
+                    case "2":
+                        calculator();
+                        break;
+                    case "3":
+                        alaram();
+                        break;
+                    case "4":
+                        contacts();
+                        break;
+                    case "5":
+                        map();
+                        break;
+                    case "6":
+                        camera();
+                        break;
                 }
 
             }
@@ -324,6 +333,7 @@ public class BatterySaverBlackActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 Uri uri = intent.getData();

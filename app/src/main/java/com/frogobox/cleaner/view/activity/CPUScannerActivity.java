@@ -97,9 +97,7 @@ public class CPUScannerActivity extends BaseActivity {
 
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
+            public void onAnimationStart(Animation animation) { }
 
             @Override
             public void onAnimationEnd(Animation animation) {
@@ -108,17 +106,12 @@ public class CPUScannerActivity extends BaseActivity {
             }
 
             @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
+            public void onAnimationRepeat(Animation animation) { }
         });
 
 
         recyclerView = findViewById(R.id.recycler_view);
-
         recyclerView.setItemAnimator(new SlideInLeftAnimator());
-
-
         mAdapter = new ScanCpuAppsViewAdapter(CPUCoolerFragment.Companion.getApps());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -224,13 +217,8 @@ public class CPUScannerActivity extends BaseActivity {
 
                         @Override
                         public void onAnimationEnd(Animator animation) {
-
                             rippleBackground.stopRippleAnimation();
-
-
                             mInterstitialAd.show();
-
-
                             final Handler handler6 = new Handler();
                             handler6.postDelayed(new Runnable() {
                                 @Override
@@ -277,13 +265,9 @@ public class CPUScannerActivity extends BaseActivity {
 
     public void add(String text, int position) {
 
-
 //        int p=0 + (int)(Math.random() * ((packages.size() - 0) + 1));
-
 //        Drawable ico = null;
-
 //        Apps item=new Apps();
-
 //        String packageName = packages.get(p).packageName;
 //        try {
 //            String pName = (String) pm.getApplicationLabel(pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA));

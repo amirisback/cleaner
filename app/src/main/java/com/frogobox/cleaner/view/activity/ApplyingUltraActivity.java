@@ -209,7 +209,7 @@ public class ApplyingUltraActivity extends BaseActivity {
 
 //            Toast.makeText(getApplicationContext(),"onActivityResult",Toast.LENGTH_LONG).show();
             //do your code
-            PowerSavingComplitionActivity.setAutoOrientationEnabled(getApplicationContext(), false);
+            PowerSavingComplitionActivity.Companion.setAutoOrientationEnabled(getApplicationContext(), false);
 
             Settings.System.putInt(this.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, 20);
 
@@ -234,7 +234,7 @@ public class ApplyingUltraActivity extends BaseActivity {
         }
         if (permission) {
             //do your code
-            PowerSavingComplitionActivity.setAutoOrientationEnabled(getApplicationContext(), false);
+            PowerSavingComplitionActivity.Companion.setAutoOrientationEnabled(getApplicationContext(), false);
 
             Settings.System.putInt(this.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, 20);
 
@@ -266,7 +266,7 @@ public class ApplyingUltraActivity extends BaseActivity {
 
 //            Toast.makeText(getApplicationContext(),"onRequestPermissionsResult",Toast.LENGTH_LONG).show();
 
-            PowerSavingComplitionActivity.setAutoOrientationEnabled(getApplicationContext(), false);
+            PowerSavingComplitionActivity.Companion.setAutoOrientationEnabled(getApplicationContext(), false);
 
             Settings.System.putInt(this.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, 20);
 
@@ -286,7 +286,7 @@ public class ApplyingUltraActivity extends BaseActivity {
         super.onResume();
         if (check == 1) {
             try {
-                PowerSavingComplitionActivity.setAutoOrientationEnabled(getApplicationContext(), false);
+                PowerSavingComplitionActivity.Companion.setAutoOrientationEnabled(getApplicationContext(), false);
                 Settings.System.putInt(this.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, 20);
                 ContentResolver.setMasterSyncAutomatically(false);
 

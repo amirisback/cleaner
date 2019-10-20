@@ -228,8 +228,6 @@ public class ScanningJunkActivity extends BaseActivity {
             @Override
             public void run() {
                 add("Closes System Services like Bluetooth,Screen Rotation,Sync etc.", 3);
-
-
             }
         }, 4000);
 
@@ -273,7 +271,6 @@ public class ScanningJunkActivity extends BaseActivity {
             public void run() {
 //                add("Closes System Services like Bluetooth,Screen Rotation,Sync etc.", 6);
                 remove(0);
-
 
                 final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.content);
                 ImageView imageView = findViewById(R.id.centerImage);
@@ -364,8 +361,6 @@ public class ScanningJunkActivity extends BaseActivity {
 
 
     void startAnim(int i1) {
-
-
         if (i1 == 1) {
             avi1.show();
             avi3.show();
@@ -399,8 +394,6 @@ public class ScanningJunkActivity extends BaseActivity {
             avi2.show();
             avi6.show();
         }
-
-
         // or avi.smoothToShow();
     }
 
@@ -414,7 +407,6 @@ public class ScanningJunkActivity extends BaseActivity {
         avi6.show();
         // or avi.smoothToHide();
     }
-
 
     public void add(String text, int position) {
 
@@ -435,23 +427,16 @@ public class ScanningJunkActivity extends BaseActivity {
             e.printStackTrace();
         }
 
-
         item.setSize(packages.get(p).dataDir);
         apps.add(item);
 //        mDataSet.add(position, text);
         mAdapter.notifyItemInserted(position);
     }
 
-
     public void remove(int position) {
 //        mDataSet.add(position, text);
         mAdapter.notifyItemRemoved(position);
         apps.remove(position);
-    }
-
-    @Override
-    public void onBackPressed() {
-//        super.onBackPressed();
     }
 
     public class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
