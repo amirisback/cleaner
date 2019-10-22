@@ -3,10 +3,8 @@ package com.frogobox.cleaner.base
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.view.WindowManager
+import android.view.*
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -108,6 +106,17 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    protected fun showCustomToast(message: String){
+        val layout = LayoutInflater.from(this).inflate(R.layout.toast_apps, null)
+        val text = layout.findViewById<TextView>(R.id.textView1)
+        text.setText(message)
+        val toast = Toast(this)
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 70)
+        toast.duration = Toast.LENGTH_LONG
+        toast.view = layout
+        toast.show()
     }
 
     protected fun setupDetailActivity(title: String) {
