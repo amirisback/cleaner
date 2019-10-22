@@ -48,6 +48,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     private fun setupAdmob() {
         setupPublisher(this)
+        setupAdmobInterstitial()
 //        setupAdmobVideo(context)
     }
 
@@ -57,7 +58,6 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     protected fun setupShowAdsInterstitial() {
-        setupAdmobInterstitial()
         showInterstitial(mInterstitialAd)
     }
 

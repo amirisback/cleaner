@@ -102,7 +102,7 @@ class NormalModeBatterySaverActivity : BaseActivity() {
             override fun onEventStart(decoEvent: DecoEvent) {}
             override fun onEventEnd(decoEvent: DecoEvent) {
                 try {
-                    mInterstitialAd.show()
+                    setupShowAdsInterstitial()
                 } catch (e: Exception) {
 
                 }

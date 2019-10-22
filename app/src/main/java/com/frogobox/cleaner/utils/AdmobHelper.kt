@@ -42,23 +42,25 @@ class AdmobHelper {
 
         fun setupInterstitial(context: Context, mInterstitialAd: InterstitialAd){
             mInterstitialAd.adUnitId = context.getString(R.string.admob_interstitial)
-        }
-
-        fun showInterstitial(mInterstitialAd: InterstitialAd){
             mInterstitialAd.loadAd(AdRequest.Builder().build())
             mInterstitialAd.adListener = object : AdListener() {
                 override fun onAdClosed() {
                     mInterstitialAd.loadAd(AdRequest.Builder().build())
                 }
+                override fun onAdLoaded() {
+                    Log.d("Interstitial Load State", "loaded");
+                }
+                override fun onAdFailedToLoad(i: Int) {
+                    Log.w("Interstitial Load State", "onAdFailedToLoad:" + i)
+                }
             }
-            checkLoadedInterstitial(mInterstitialAd)
         }
 
-        private fun checkLoadedInterstitial(mInterstitialAd: InterstitialAd){
+        fun showInterstitial(mInterstitialAd: InterstitialAd){
             if (mInterstitialAd.isLoaded) {
                 mInterstitialAd.show()
             } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.")
+                Log.d("Interstitial Ads State", "The interstitial wasn't loaded yet.")
             }
         }
 

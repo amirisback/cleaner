@@ -25,9 +25,6 @@ import com.frogobox.cleaner.base.BaseActivity;
 import com.frogobox.cleaner.model.Apps;
 import com.frogobox.cleaner.view.adapter.ScanCpuAppsViewAdapter;
 import com.frogobox.cleaner.view.fragment.CPUCoolerFragment;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.skyfishjy.library.RippleBackground;
 import com.zys.brokenview.BrokenTouchListener;
 import com.zys.brokenview.BrokenView;
@@ -53,7 +50,6 @@ public class CPUScannerActivity extends BaseActivity {
     private List<ApplicationInfo> packages;
     private TextView cooledcpu;
     private RelativeLayout rel;
-    private InterstitialAd mInterstitialAd;
 
 
     @Override
@@ -66,18 +62,6 @@ public class CPUScannerActivity extends BaseActivity {
         img_animation = findViewById(R.id.heart);
         rel = findViewById(R.id.rel);
         app = new ArrayList<>();
-
-        mInterstitialAd = new InterstitialAd(getApplicationContext());
-        mInterstitialAd.setAdUnitId(getResources().getString(R.string.admob_interstitial));
-        AdRequest adRequestInter = new AdRequest.Builder().build();
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-
-            }
-        });
-        mInterstitialAd.loadAd(adRequestInter);
-
 
         RotateAnimation rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         rotate.setDuration(1500);
@@ -97,7 +81,8 @@ public class CPUScannerActivity extends BaseActivity {
 
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void onAnimationStart(Animation animation) { }
+            public void onAnimationStart(Animation animation) {
+            }
 
             @Override
             public void onAnimationEnd(Animation animation) {
@@ -106,7 +91,8 @@ public class CPUScannerActivity extends BaseActivity {
             }
 
             @Override
-            public void onAnimationRepeat(Animation animation) { }
+            public void onAnimationRepeat(Animation animation) {
+            }
         });
 
 
@@ -218,7 +204,7 @@ public class CPUScannerActivity extends BaseActivity {
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             rippleBackground.stopRippleAnimation();
-                            mInterstitialAd.show();
+                            setupShowAdsInterstitial();
                             final Handler handler6 = new Handler();
                             handler6.postDelayed(new Runnable() {
                                 @Override
