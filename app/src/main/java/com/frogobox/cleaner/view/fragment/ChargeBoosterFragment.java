@@ -64,10 +64,10 @@ import static android.content.Context.ALARM_SERVICE;
 
 public class ChargeBoosterFragment extends BaseFragment {
 
-    public static ImageView optimizebutton;
+    public static ImageView optbutton;
     private int mb = 1024 * 1024;
     private View view;
-    private DecoView arcView;
+    private DecoView dynamicArcView2;
     private TextView scanning, centree, totalram, usedram, appused, appsfreed, processes, top, bottom, ramperct;
     private LinearLayout scanlay, optimizelay;
     private TimerTask timer = null;
@@ -83,11 +83,11 @@ public class ChargeBoosterFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_charge_booster, container, false);
 
-        arcView = view.findViewById(R.id.dynamicArcView2);
+        dynamicArcView2 = view.findViewById(R.id.dynamicArcView2);
         scanning = view.findViewById(R.id.scanning);
         scanlay = view.findViewById(R.id.scanlay);
         optimizelay = view.findViewById(R.id.optimizelay);
-        optimizebutton = view.findViewById(R.id.optbutton);
+        optbutton = view.findViewById(R.id.optbutton);
         centree = view.findViewById(R.id.centree);
         totalram = view.findViewById(R.id.totalram);
         usedram = view.findViewById(R.id.usedram);
@@ -97,7 +97,7 @@ public class ChargeBoosterFragment extends BaseFragment {
         top = view.findViewById(R.id.top);
         bottom = view.findViewById(R.id.bottom);
         ramperct = view.findViewById(R.id.ramperct);
-        
+
         sharedpreferences = getActivity().getSharedPreferences(Constant.Variable.SHARED_PREF_WASEEM, Context.MODE_PRIVATE);
 
         mInterstitialAd = new InterstitialAd(getActivity());
@@ -116,19 +116,19 @@ public class ChargeBoosterFragment extends BaseFragment {
             Random ran3 = new Random();
             ramperct.setText(ran3.nextInt(60) + 40 + "%");
 
-            optimizebutton.setBackgroundResource(0);
-            optimizebutton.setImageResource(0);
-            optimizebutton.setImageResource(R.drawable.bg_button_optimize);
+            optbutton.setBackgroundResource(0);
+            optbutton.setImageResource(0);
+            optbutton.setImageResource(R.drawable.bg_button_optimize);
 
             if (sharedpreferences.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1").equals("0")) {
-                optimizebutton.setImageResource(0);
-                optimizebutton.setImageResource(R.drawable.bg_button_optimized);
+                optbutton.setImageResource(0);
+                optbutton.setImageResource(R.drawable.bg_button_optimized);
                 centree.setText(sharedpreferences.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB"));
             }
 
             start();
 
-            optimizebutton.setOnClickListener(new View.OnClickListener() {
+            optbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -177,12 +177,12 @@ public class ChargeBoosterFragment extends BaseFragment {
         image.startAnimation(rotate);
 
 
-        arcView.addSeries(new SeriesItem.Builder(Color.argb(255, 218, 218, 218))
+        dynamicArcView2.addSeries(new SeriesItem.Builder(Color.argb(255, 218, 218, 218))
                 .setRange(0, 100, 0)
                 .setInterpolator(new AccelerateInterpolator())
                 .build());
 
-        arcView.addSeries(new SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
+        dynamicArcView2.addSeries(new SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
                 .setRange(0, 100, 100)
                 .setInitialVisibility(false)
                 .setLineWidth(32f)
@@ -199,10 +199,10 @@ public class ChargeBoosterFragment extends BaseFragment {
                 .setLineWidth(32f)
                 .build();
 //
-//        int series1Index = arcView.addSeries(seriesItem1);
-        int series1Index2 = arcView.addSeries(seriesItem2);
+//        int series1Index = dynamicArcView2.addSeries(seriesItem1);
+        int series1Index2 = dynamicArcView2.addSeries(seriesItem2);
 
-        arcView.addEvent(new DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
+        dynamicArcView2.addEvent(new DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
                 .setDelay(500)
                 .setDuration(2000)
                 .setListener(new DecoEvent.ExecuteEventListener() {
@@ -220,7 +220,7 @@ public class ChargeBoosterFragment extends BaseFragment {
                 })
                 .build());
 
-        arcView.addEvent(new DecoEvent.Builder(25).setIndex(series1Index2).setDelay(4000).setListener(new DecoEvent.ExecuteEventListener() {
+        dynamicArcView2.addEvent(new DecoEvent.Builder(25).setIndex(series1Index2).setDelay(4000).setListener(new DecoEvent.ExecuteEventListener() {
             @Override
             public void onEventStart(DecoEvent decoEvent) {
                 bottom.setText("");
@@ -257,15 +257,14 @@ public class ChargeBoosterFragment extends BaseFragment {
                 scanlay.setVisibility(View.VISIBLE);
                 optimizelay.setVisibility(View.GONE);
                 scanning.setText("SCANNING...");
-                killall();
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
                 scanlay.setVisibility(View.GONE);
                 optimizelay.setVisibility(View.VISIBLE);
-//                optimizebutton.setOnClickListener(null);
-                optimizebutton.setImageResource(R.drawable.bg_button_optimized);
+//                optbutton.setOnClickListener(null);
+                optbutton.setImageResource(R.drawable.bg_button_optimized);
 
 
                 Random ran = new Random();
@@ -291,54 +290,6 @@ public class ChargeBoosterFragment extends BaseFragment {
 
                 processes.setText(y - proc + "");
 
-
-//                optimizebutton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-////                        optimizebutton.setBackgroundResource(R.drawable.background_button_optimized);
-//                        Toast.makeText(getActivity(), "Already Optimized", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//
-//
-//                final Timer t = new Timer();
-//                final Timer t2 = new Timer();
-//
-//
-//                timer = new TimerTask() {
-//
-//                    @Override
-//                    public void run() {
-//
-//                        getActivity().runOnUiThread(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                optimizebutton.setBackgroundResource(0);
-//                                optimizebutton.setBackgroundResource(R.drawable.background_button_optimize);
-//
-//                                optimizebutton.setOnClickListener(new View.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(View v) {
-//
-//                                        background_button_optimize();
-//                                    }
-//                                });
-//                                t.cancel();
-//                                timer.cancel();
-//                                t.purge();
-//
-//
-//                            }
-//                        });
-//
-//
-//                    }
-//
-//                };
-////Set the schedule function and rate
-//
-//                t.schedule(timer, 300000, 300000);
-
             }
 
             @Override
@@ -362,8 +313,8 @@ public class ChargeBoosterFragment extends BaseFragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-//                        optimizebutton.setBackgroundResource(0);
-//                        optimizebutton.setBackgroundResource(R.drawable.background_button_optimize);
+//                        optbutton.setBackgroundResource(0);
+//                        optbutton.setBackgroundResource(R.drawable.background_button_optimize);
                             counter++;
                             centree.setText(counter + "MB");
                         }
@@ -383,12 +334,12 @@ public class ChargeBoosterFragment extends BaseFragment {
         final int proc = ran2.nextInt(60) + 30;
 
 
-        arcView.addSeries(new SeriesItem.Builder(Color.argb(255, 218, 218, 218))
+        dynamicArcView2.addSeries(new SeriesItem.Builder(Color.argb(255, 218, 218, 218))
                 .setRange(0, 100, 0)
                 .setInterpolator(new AccelerateInterpolator())
                 .build());
 
-        arcView.addSeries(new SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
+        dynamicArcView2.addSeries(new SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
                 .setRange(0, 100, 100)
                 .setInitialVisibility(false)
                 .setLineWidth(32f)
@@ -407,16 +358,16 @@ public class ChargeBoosterFragment extends BaseFragment {
 
 
 //
-//        int series1Index = arcView.addSeries(seriesItem1);
-        int series1Index2 = arcView.addSeries(seriesItem2);
+//        int series1Index = dynamicArcView2.addSeries(seriesItem1);
+        int series1Index2 = dynamicArcView2.addSeries(seriesItem2);
 
-        arcView.addEvent(new DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
+        dynamicArcView2.addEvent(new DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
                 .setDelay(0)
                 .setDuration(600)
                 .build());
 
 
-        arcView.addEvent(new DecoEvent.Builder(proc).setIndex(series1Index2).setDelay(2000).setListener(new DecoEvent.ExecuteEventListener() {
+        dynamicArcView2.addEvent(new DecoEvent.Builder(proc).setIndex(series1Index2).setDelay(2000).setListener(new DecoEvent.ExecuteEventListener() {
             @Override
             public void onEventStart(DecoEvent decoEvent) {
 
@@ -502,13 +453,7 @@ public class ChargeBoosterFragment extends BaseFragment {
         processes.setText(y + "");
 
 
-//        final ActivityManager activityManager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
-//        final List<ActivityManager.RunningTaskInfo> recentTasks = activityManager.getRunningTasks(Integer.MAX_VALUE);
-//
-//        Log.e("Ruuning",recentTasks.size()+"");
-
     }
-
 
     public String getTotalRAM() {
 
@@ -577,22 +522,6 @@ public class ChargeBoosterFragment extends BaseFragment {
             return 200;
         }
 
-    }
-
-    private void killall() {
-//    List<ApplicationInfo> packages;
-//    PackageManager pm;
-//    pm = getActivity().getPackageManager();
-//    //get a list of installed apps.
-//    packages = pm.getInstalledApplications(0);
-//
-//    ActivityManager mActivityManager = (ActivityManager)getActivity().getSystemService(Context.ACTIVITY_SERVICE);
-//    String myPackage = getActivity().getApplicationContext().getPackageName();
-//    for (ApplicationInfo packageInfo : packages) {
-//        if((packageInfo.flags & ApplicationInfo.FLAG_SYSTEM)==1)continue;
-//        if(packageInfo.packageName.equals(myPackage)) continue;
-//        mActivityManager.killBackgroundProcesses(packageInfo.packageName);
-//    }
     }
 
 }
