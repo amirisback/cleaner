@@ -54,11 +54,6 @@ public class BatterySaverBlackActivity extends BaseActivity {
         @Override
         public void onReceive(Context ctxt, Intent intent) {
             int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
-//
-//            mWaveLoadingView.setProgressValue(level);
-////            mWaveLoadingView.setBottomTitle(level+"%");
-//            mWaveLoadingView.setCenterTitle(level+"%");
-
             batteryremaning.setText("Battery Remaning " + level + "%");
 
             if (level <= 5) {
@@ -127,7 +122,7 @@ public class BatterySaverBlackActivity extends BaseActivity {
         }
         ImageView phone = findViewById(R.id.phone);
         ImageView internet = findViewById(R.id.internet);
-        ImageView setting = findViewById(R.id.settings);
+        ImageView settings = findViewById(R.id.settings);
         ImageView messages = findViewById(R.id.messages);
         playstore = findViewById(R.id.playstore);
         contacts = findViewById(R.id.contacts);
@@ -258,7 +253,7 @@ public class BatterySaverBlackActivity extends BaseActivity {
             }
         });
 
-        setting.setOnClickListener(new View.OnClickListener() {
+        settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
