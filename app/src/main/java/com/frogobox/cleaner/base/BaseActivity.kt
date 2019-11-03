@@ -57,7 +57,7 @@ abstract class BaseActivity : AppCompatActivity() {
         setupInterstitial(this, mInterstitialAd)
     }
 
-    protected fun setupShowAdsInterstitial() {
+    fun setupShowAdsInterstitial() {
         showInterstitial(mInterstitialAd)
     }
 

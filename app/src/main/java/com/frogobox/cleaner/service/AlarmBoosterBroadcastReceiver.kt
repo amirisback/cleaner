@@ -6,7 +6,6 @@ import android.content.Intent
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.utils.Constant
 import com.frogobox.cleaner.view.fragment.ChargeBoosterFragment
-
 /**
  * Created by Frogobox Software Industries 3/2/2017.
  */
@@ -24,13 +23,13 @@ class AlarmBoosterBroadcastReceiver : BroadcastReceiver() {
         editor.putString(Constant.Variable.SHARED_PREF_BOOSTER, "1")
         editor.commit()
 
-        try {
-            ChargeBoosterFragment.optimizebutton.setBackgroundResource(0)
-            ChargeBoosterFragment.optimizebutton.setImageResource(0)
-            ChargeBoosterFragment.optimizebutton.setImageResource(R.drawable.bg_button_optimize)
-        } catch (e: Exception) {
-
-        }
+//        try {
+//            ChargeBoosterFragment.optimizeButton.setBackgroundResource(0)
+//            ChargeBoosterFragment.optimizeButton.setImageResource(0)
+//            ChargeBoosterFragment.optimizeButton.setImageResource(R.drawable.bg_button_optimize)
+//        } catch (e: Exception) {
+//
+//        }
 
     }
 
