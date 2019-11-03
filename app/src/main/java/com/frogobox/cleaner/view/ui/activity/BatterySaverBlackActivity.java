@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.activity;
+package com.frogobox.cleaner.view.ui.activity;
 
 import android.Manifest;
 import android.content.ActivityNotFoundException;
@@ -25,7 +25,7 @@ import android.widget.Toast;
 import com.frogobox.cleaner.R;
 import com.frogobox.cleaner.base.BaseActivity;
 import com.frogobox.cleaner.utils.Constant;
-import com.frogobox.cleaner.view.activity.batterysaver.NormalModeBatterySaverActivity;
+import com.frogobox.cleaner.view.ui.activity.batterysaver.NormalModeBatterySaverActivity;
 
 import java.util.Locale;
 import java.util.Objects;

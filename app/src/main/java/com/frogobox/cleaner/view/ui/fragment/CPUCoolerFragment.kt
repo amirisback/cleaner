@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.fragment
+package com.frogobox.cleaner.view.ui.fragment
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -21,7 +21,7 @@ import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseFragment
 import com.frogobox.cleaner.model.Apps
 import com.frogobox.cleaner.utils.Constant
-import com.frogobox.cleaner.view.activity.CPUScannerActivity
+import com.frogobox.cleaner.view.ui.activity.CPUScannerActivity
 import com.frogobox.cleaner.view.adapter.CPUCoolerViewAdapter
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator

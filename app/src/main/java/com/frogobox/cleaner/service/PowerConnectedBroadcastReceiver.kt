@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 
-import com.frogobox.cleaner.view.activity.MainActivity
+import com.frogobox.cleaner.view.ui.activity.MainActivity
 
 /**
  * Created by Frogobox Software Industries 3/14/2017.

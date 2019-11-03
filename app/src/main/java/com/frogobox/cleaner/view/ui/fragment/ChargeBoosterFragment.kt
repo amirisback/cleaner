@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.fragment
+package com.frogobox.cleaner.view.ui.fragment
 
 import android.app.ActivityManager
 import android.app.AlarmManager

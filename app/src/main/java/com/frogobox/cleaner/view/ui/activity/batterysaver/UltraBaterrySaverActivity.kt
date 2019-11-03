@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.activity.batterysaver
+package com.frogobox.cleaner.view.ui.activity.batterysaver
 
 import android.os.Bundle
 import android.os.Handler
@@ -8,7 +8,7 @@ import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseActivity
 import com.frogobox.cleaner.model.PowerItem
 import com.frogobox.cleaner.utils.Constant
-import com.frogobox.cleaner.view.activity.ApplyingUltraActivity
+import com.frogobox.cleaner.view.ui.activity.ApplyingUltraActivity
 import com.frogobox.cleaner.view.adapter.PowerViewAdapter
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator

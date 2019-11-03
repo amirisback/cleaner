@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.activity
+package com.frogobox.cleaner.view.ui.activity
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -8,10 +8,10 @@ import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseActivity
 import com.frogobox.cleaner.utils.Constant
 import com.frogobox.cleaner.utils.PagerAdapter
-import com.frogobox.cleaner.view.fragment.BatterySaverFragment
-import com.frogobox.cleaner.view.fragment.CPUCoolerFragment
-import com.frogobox.cleaner.view.fragment.ChargeBoosterFragment
-import com.frogobox.cleaner.view.fragment.JunkCleanerFragment
+import com.frogobox.cleaner.view.ui.fragment.BatterySaverFragment
+import com.frogobox.cleaner.view.ui.fragment.CPUCoolerFragment
+import com.frogobox.cleaner.view.ui.fragment.ChargeBoosterFragment
+import com.frogobox.cleaner.view.ui.fragment.JunkCleanerFragment
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_main.*

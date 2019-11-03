@@ -1,46 +1,55 @@
-package com.frogobox.cleaner.view.activity
+package com.frogobox.cleaner.view.ui.activity.batterysaver
 
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.bluetooth.BluetoothAdapter
 import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseActivity
+import com.frogobox.cleaner.utils.Constant
+import com.frogobox.cleaner.view.ui.activity.PowerSavingComplitionActivity
 import com.hookedonplay.decoviewlib.charts.SeriesItem
 import com.hookedonplay.decoviewlib.events.DecoEvent
-import kotlinx.android.synthetic.main.activity_powersaving_completion.*
+import kotlinx.android.synthetic.main.activity_revert_to_normal.*
 
 /**
- * Created by Frogobox Software Industries 2/22/2017.
+ * Created by Frogobox Software Industries 2/21/2017.
  */
 
-class PowerSavingComplitionActivity : BaseActivity() {
+class NormalModeBatterySaverActivity : BaseActivity() {
 
+    private var sharedpreferences: SharedPreferences? = null
+    private var editor: SharedPreferences.Editor? = null
     private var check = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_powersaving_completion)
+        setContentView(R.layout.activity_revert_to_normal)
 
-        dynamicArcView2.addSeries(SeriesItem.Builder(getColorRes(R.color.colorBackgroundDarkBlackBlue))
+        sharedpreferences = getSharedPreferences(Constant.Variable.SHARED_PREF_WAS, Context.MODE_PRIVATE)
+        editor = sharedpreferences!!.edit()
+
+        // Call to Intersticial load
+        setupShowAdsInterstitial()
+
+        dynamicArcView2!!.addSeries(SeriesItem.Builder(getColorRes(R.color.colorBackgroundDarkBlackBlue))
                 .setRange(0f, 100f, 100f)
                 .setInitialVisibility(false)
                 .setLineWidth(12f)
                 .build())
 
-        // Create data series track
+        //Create data series track
         val seriesItem1 = SeriesItem.Builder(getColorRes(R.color.colorBackgroundDarkBlackBlue))
                 .setRange(0f, 100f, 0f)
                 .setLineWidth(10f)
@@ -51,10 +60,11 @@ class PowerSavingComplitionActivity : BaseActivity() {
                 .setLineWidth(10f)
                 .build()
         //        int series1Index = dynamicArcView2.addSeries(seriesItem1);
-        val series1Index2 = dynamicArcView2.addSeries(seriesItem2)
+        val series1Index2 = dynamicArcView2!!.addSeries(seriesItem2)
 
         seriesItem2.addArcSeriesItemListener(object : SeriesItem.SeriesItemListener {
             override fun onSeriesItemAnimationProgress(v: Float, v1: Float) {
+
                 val i = v1.toInt()
                 completion!!.text = "$i%"
 
@@ -71,40 +81,48 @@ class PowerSavingComplitionActivity : BaseActivity() {
                     fou!!.setTextColor(getColorRes(R.color.colorTextWhite))
                     foupic!!.setImageResource(R.drawable.circle_white)
                 }
+
             }
+
             override fun onSeriesItemDisplayProgress(v: Float) {}
         })
 
-        dynamicArcView2.addEvent(DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
+
+        dynamicArcView2!!.addEvent(DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
                 .setDelay(0)
                 .setDuration(0)
                 .setListener(object : DecoEvent.ExecuteEventListener {
                     override fun onEventStart(decoEvent: DecoEvent) {}
                     override fun onEventEnd(decoEvent: DecoEvent) {}
+
                 })
                 .build())
 
-        dynamicArcView2.addEvent(DecoEvent.Builder(100f).setIndex(series1Index2).setDelay(1000).setListener(object : DecoEvent.ExecuteEventListener {
+        dynamicArcView2!!.addEvent(DecoEvent.Builder(100f).setIndex(series1Index2).setDelay(1000).setListener(object : DecoEvent.ExecuteEventListener {
             override fun onEventStart(decoEvent: DecoEvent) {}
-
             override fun onEventEnd(decoEvent: DecoEvent) {
-                setupShowAdsInterstitial()
-                youDesirePermissionCode(this@PowerSavingComplitionActivity)
-                closesall()
+                try {
+                    setupShowAdsInterstitial()
+                } catch (e: Exception) {
+
+                }
                 check = 1
+                youDesirePermissionCode(this@NormalModeBatterySaverActivity)
+                editor!!.putString("mode", "0")
+                editor!!.commit()
+
             }
         }).build())
     }
 
-    fun closesall() {
-        val mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-        if (mBluetoothAdapter.isEnabled) {
-            mBluetoothAdapter.disable()
-        }
-        ContentResolver.setMasterSyncAutomatically(false)
+    fun enablesAll() {
+        PowerSavingComplitionActivity.setAutoOrientationEnabled(applicationContext, true)
+        Settings.System.putInt(this.contentResolver, Settings.System.SCREEN_BRIGHTNESS, 255)
+        ContentResolver.setMasterSyncAutomatically(true)
     }
 
     fun youDesirePermissionCode(context: Activity) {
+        // Run time permission for marshmallow users
         val permission: Boolean
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             permission = Settings.System.canWrite(context)
@@ -112,13 +130,10 @@ class PowerSavingComplitionActivity : BaseActivity() {
             permission = ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_SETTINGS) == PackageManager.PERMISSION_GRANTED
         }
         if (permission) {
-            //do your code
-            Settings.System.putInt(context.contentResolver, Settings.System.SCREEN_BRIGHTNESS, 30)
-            setAutoOrientationEnabled(context, false)
-
+            enablesAll()
             finish()
         } else {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                 val intent = Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS)
                 intent.data = Uri.parse("package:" + context.packageName)
                 context.startActivityForResult(intent, 1)
@@ -128,14 +143,12 @@ class PowerSavingComplitionActivity : BaseActivity() {
         }
     }
 
-    //
     @SuppressLint("NewApi")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1 && Settings.System.canWrite(this)) {
             Log.d("TAG", "CODE_WRITE_SETTINGS_PERMISSION success")
-            Settings.System.putInt(this.contentResolver, Settings.System.SCREEN_BRIGHTNESS, 30)
-            setAutoOrientationEnabled(this, false)
+            enablesAll()
             finish()
         }
     }
@@ -143,10 +156,7 @@ class PowerSavingComplitionActivity : BaseActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            //do your code
-            Toast.makeText(applicationContext, "onRequestPermissionsResult", Toast.LENGTH_LONG).show()
-            Settings.System.putInt(this.contentResolver, Settings.System.SCREEN_BRIGHTNESS, 30)
-            setAutoOrientationEnabled(this, false)
+            enablesAll()
             finish()
         }
     }
@@ -155,19 +165,11 @@ class PowerSavingComplitionActivity : BaseActivity() {
         super.onResume()
         if (check == 1) {
             try {
-                Settings.System.putInt(this.contentResolver, Settings.System.SCREEN_BRIGHTNESS, 30)
-                setAutoOrientationEnabled(this, false)
+                enablesAll()
             } catch (e: Exception) {
                 finish()
             }
             finish()
-        }
-    }
-
-    companion object {
-        /// Power Saving Mode is Applied Compeltion Indicator Animation
-        fun setAutoOrientationEnabled(context: Context, enabled: Boolean) {
-            Settings.System.putInt(context.contentResolver, Settings.System.ACCELEROMETER_ROTATION, if (enabled) 1 else 0)
         }
     }
 }

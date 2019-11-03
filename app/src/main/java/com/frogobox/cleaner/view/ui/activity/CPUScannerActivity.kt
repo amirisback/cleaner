@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.activity
+package com.frogobox.cleaner.view.ui.activity
 
 import android.animation.Animator
 import android.animation.AnimatorInflater
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseActivity
 import com.frogobox.cleaner.view.adapter.ScanCpuAppsViewAdapter
-import com.frogobox.cleaner.view.fragment.CPUCoolerFragment
+import com.frogobox.cleaner.view.ui.fragment.CPUCoolerFragment
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import kotlinx.android.synthetic.main.activity_cpu_scanner.*

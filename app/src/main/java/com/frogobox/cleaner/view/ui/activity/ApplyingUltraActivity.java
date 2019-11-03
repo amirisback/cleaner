@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.activity;
+package com.frogobox.cleaner.view.ui.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;

@@ -1,26 +1,19 @@
-package com.frogobox.cleaner.view.activity.batterysaver
+package com.frogobox.cleaner.view.ui.activity.batterysaver
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
-import android.view.View
 import android.view.animation.OvershootInterpolator
-import android.widget.ImageView
-import android.widget.TextView
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseActivity
 import com.frogobox.cleaner.model.PowerItem
 import com.frogobox.cleaner.utils.Constant
-import com.frogobox.cleaner.view.activity.PowerSavingComplitionActivity
+import com.frogobox.cleaner.view.ui.activity.PowerSavingComplitionActivity
 import com.frogobox.cleaner.view.adapter.PowerViewAdapter
-
-import java.util.ArrayList
 
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator

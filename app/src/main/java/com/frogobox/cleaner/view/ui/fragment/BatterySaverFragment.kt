@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.fragment
+package com.frogobox.cleaner.view.ui.fragment
 
 import android.content.*
 import android.graphics.Color
@@ -11,9 +11,9 @@ import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseFragment
 import com.frogobox.cleaner.model.Time
 import com.frogobox.cleaner.utils.Constant
-import com.frogobox.cleaner.view.activity.batterysaver.NormalModeBatterySaverActivity
-import com.frogobox.cleaner.view.activity.batterysaver.PowerSavingBatterySaverActivity
-import com.frogobox.cleaner.view.activity.batterysaver.UltraBaterrySaverActivity
+import com.frogobox.cleaner.view.ui.activity.batterysaver.NormalModeBatterySaverActivity
+import com.frogobox.cleaner.view.ui.activity.batterysaver.PowerSavingBatterySaverActivity
+import com.frogobox.cleaner.view.ui.activity.batterysaver.UltraBaterrySaverActivity
 import kotlinx.android.synthetic.main.fragment_battery_saver.*
 import me.itangqi.waveloadingview.WaveLoadingView
 

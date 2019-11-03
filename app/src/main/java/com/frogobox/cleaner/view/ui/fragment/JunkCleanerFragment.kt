@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.fragment
+package com.frogobox.cleaner.view.ui.fragment
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -19,7 +19,7 @@ import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_JUNK
 import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_WASEEM
 import com.frogobox.cleaner.utils.Constant.Variable.ZERO_MB
 import com.frogobox.cleaner.utils.Constant.Variable._MB
-import com.frogobox.cleaner.view.activity.ScanningJunkActivity
+import com.frogobox.cleaner.view.ui.activity.ScanningJunkActivity
 import kotlinx.android.synthetic.main.fragment_junk_cleaner.*
 import java.util.*
 

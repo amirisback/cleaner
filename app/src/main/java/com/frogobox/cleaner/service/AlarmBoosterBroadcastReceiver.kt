@@ -3,9 +3,8 @@ package com.frogobox.cleaner.service
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.frogobox.cleaner.R
 import com.frogobox.cleaner.utils.Constant
-import com.frogobox.cleaner.view.fragment.ChargeBoosterFragment
+
 /**
  * Created by Frogobox Software Industries 3/2/2017.
  */

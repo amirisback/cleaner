@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.activity
+package com.frogobox.cleaner.view.ui.activity
 
 import android.animation.Animator
 import android.animation.AnimatorInflater
