@@ -93,7 +93,7 @@ class JunkCleanerFragment : BaseFragment() {
             setupCleanFromJunk()
             editor = sharedpreferences?.edit()
             editor?.putString(SHARED_PREF_JUNK, "0")
-            editor?.commit()
+            editor?.apply()
             val intent = Intent(activity, AlarmJunkBroadcastReceiver::class.java)
             val pendingIntent = PendingIntent.getBroadcast(activity, 0,
                     intent, PendingIntent.FLAG_ONE_SHOT)

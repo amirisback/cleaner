@@ -10,12 +10,10 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.*
-import android.widget.ImageView
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseFragment
 import com.frogobox.cleaner.service.AlarmBoosterBroadcastReceiver
@@ -27,6 +25,7 @@ import java.io.RandomAccessFile
 import java.text.DecimalFormat
 import java.util.*
 import java.util.regex.Pattern
+import kotlin.math.abs
 
 /**
  * Created by Faisal Amir
@@ -47,10 +46,6 @@ import java.util.regex.Pattern
 
 class ChargeBoosterFragment : BaseFragment() {
 
-//    companion object {
-//        lateinit var optimizeButton : ImageView
-//    }
-
     private val mb = 1024 * 1024
     private var timer: TimerTask? = null
     private var timer2: TimerTask? = null
@@ -64,71 +59,57 @@ class ChargeBoosterFragment : BaseFragment() {
     // System.out.println("Ram : " + value);
     // totRam = totRam / 1024;
     // Streams.close(reader);
-    val totalRAM: String
-        get() {
 
-            var reader: RandomAccessFile? = null
-            var load: String? = null
+    private fun totalRAM(): String {
+
+        var lastValue = ""
+        var value = ""
+
+        try {
             val twoDecimalForm = DecimalFormat("#.##")
-            var totRam = 0.0
-            var lastValue = ""
-            try {
-                try {
-                    reader = RandomAccessFile("/proc/meminfo", "r")
-                    load = reader.readLine()
-                } catch (e: Exception) {
+            val reader = RandomAccessFile("/proc/meminfo", "r")
+            val load = reader.readLine()
+            val p = Pattern.compile("(\\d+)")
+            val m = p.matcher(load)
 
-                }
-
-                val p = Pattern.compile("(\\d+)")
-                val m = p.matcher(load)
-                var value = ""
-                while (m.find()) {
-                    value = m.group(1)
-                }
-
-                try {
-                    reader!!.close()
-                } catch (e: Exception) {
-                }
-
-                totRam = java.lang.Double.parseDouble(value)
-
-                val mb = totRam / 1024.0
-                val gb = totRam / 1048576.0
-                val tb = totRam / 1073741824.0
-
-                if (tb > 1) {
-                    lastValue = twoDecimalForm.format(tb) + " TB"
-                } else if (gb > 1) {
-                    lastValue = twoDecimalForm.format(gb) + " GB"
-                } else if (mb > 1) {
-                    lastValue = twoDecimalForm.format(mb) + " MB"
-                } else {
-                    lastValue = twoDecimalForm.format(totRam) + " KB"
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            } finally {
+            while (m.find()) {
+                value = m.group(1)
             }
 
-            return lastValue
+            reader.close()
+
+            val totRam = java.lang.Double.parseDouble(value)
+            val mb = totRam / 1024.0
+            val gb = totRam / 1048576.0
+            val tb = totRam / 1073741824.0
+
+            lastValue = when {
+                tb > 1 -> twoDecimalForm.format(tb) + " TB"
+                gb > 1 -> twoDecimalForm.format(gb) + " GB"
+                mb > 1 -> twoDecimalForm.format(mb) + " MB"
+                else -> twoDecimalForm.format(totRam) + " KB"
+            }
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
         }
 
-    private val usedMemorySize: Long
-        get() {
-            try {
-                val mi = ActivityManager.MemoryInfo()
-                val activityManager = activity!!.getSystemService(ACTIVITY_SERVICE) as ActivityManager
-                activityManager.getMemoryInfo(mi)
-                return mi.availMem / 1048576L
-            } catch (e: Exception) {
-                return 200
-            }
+        return lastValue
+    }
+
+    private fun usedMemorySize(): Long {
+        try {
+            val mi = ActivityManager.MemoryInfo()
+            val activityManager = activity!!.getSystemService(ACTIVITY_SERVICE) as ActivityManager
+            activityManager.getMemoryInfo(mi)
+            return mi.availMem / 1048576L
+        } catch (e: Exception) {
+            return 200
         }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        optimizeButton = optbutton
         return inflater.inflate(R.layout.fragment_charge_booster, container, false)
     }
 
@@ -137,9 +118,8 @@ class ChargeBoosterFragment : BaseFragment() {
         sharedpreferences = activity!!.getSharedPreferences(Constant.Variable.SHARED_PREF_WASEEM, Context.MODE_PRIVATE)
 
         try {
-            val ran3 = Random()
-            ramperct!!.text = (ran3.nextInt(60) + 40).toString() + "%"
 
+            ramperct.text = (Random().nextInt(60) + 40).toString() + "%"
             optbutton.setBackgroundResource(0)
             optbutton.setImageResource(0)
             optbutton.setImageResource(R.drawable.bg_button_optimize)
@@ -161,10 +141,7 @@ class ChargeBoosterFragment : BaseFragment() {
                     editor!!.commit()
 
                     val intent = Intent(activity, AlarmBoosterBroadcastReceiver::class.java)
-
-                    val pendingIntent = PendingIntent.getBroadcast(activity, 0,
-                            intent, PendingIntent.FLAG_ONE_SHOT)
-
+                    val pendingIntent = PendingIntent.getBroadcast(activity, 0, intent, PendingIntent.FLAG_ONE_SHOT)
                     val alarmManager = activity!!.getSystemService(ALARM_SERVICE) as AlarmManager
                     alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 100 * 1000, pendingIntent)
                 } else {
@@ -172,13 +149,9 @@ class ChargeBoosterFragment : BaseFragment() {
                 }
             }
 
-            //#F22938 red
-            // Create background track
-
-            //    background_button_optimize();
         } catch (e: Exception) {
-
         }
+
     }
 
     fun optimize() {
@@ -187,17 +160,14 @@ class ChargeBoosterFragment : BaseFragment() {
         rotate.duration = 5000
         rotate.interpolator = LinearInterpolator()
 
-        val image = view!!.findViewById<ImageView>(R.id.circularlines)
+        circularlines.startAnimation(rotate)
 
-        image.startAnimation(rotate)
-
-
-        dynamicArcView2!!.addSeries(SeriesItem.Builder(Color.argb(255, 218, 218, 218))
+        dynamicArcView2.addSeries(SeriesItem.Builder(Color.argb(255, 218, 218, 218))
                 .setRange(0f, 100f, 0f)
                 .setInterpolator(AccelerateInterpolator())
                 .build())
 
-        dynamicArcView2!!.addSeries(SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
+        dynamicArcView2.addSeries(SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
                 .setRange(0f, 100f, 100f)
                 .setInitialVisibility(false)
                 .setLineWidth(32f)
@@ -217,99 +187,77 @@ class ChargeBoosterFragment : BaseFragment() {
         //        int series1Index = dynamicArcView2.addSeries(seriesItem1);
         val series1Index2 = dynamicArcView2!!.addSeries(seriesItem2)
 
-        dynamicArcView2!!.addEvent(DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
+        dynamicArcView2.addEvent(DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
                 .setDelay(500)
                 .setDuration(2000)
                 .setListener(object : DecoEvent.ExecuteEventListener {
                     override fun onEventStart(decoEvent: DecoEvent) {
-                        bottom!!.text = ""
-                        top!!.text = ""
-                        centree!!.text = "Optimizing..."
+                        bottom.text = ""
+                        top.text = ""
+                        centree.text = "Optimizing..."
                     }
 
-                    override fun onEventEnd(decoEvent: DecoEvent) {
+                    override fun onEventEnd(decoEvent: DecoEvent) {}
+                }).build())
 
-                    }
-                })
-                .build())
-
-        dynamicArcView2!!.addEvent(DecoEvent.Builder(25f).setIndex(series1Index2).setDelay(4000).setListener(object : DecoEvent.ExecuteEventListener {
+        dynamicArcView2.addEvent(DecoEvent.Builder(25f).setIndex(series1Index2).setDelay(4000).setListener(object : DecoEvent.ExecuteEventListener {
             override fun onEventStart(decoEvent: DecoEvent) {
-                bottom!!.text = ""
-                top!!.text = ""
-                centree!!.text = "Optimizing..."
+                bottom.text = ""
+                top.text = ""
+                centree.text = "Optimizing..."
             }
 
             override fun onEventEnd(decoEvent: DecoEvent) {
                 mActivity.setupShowAdsInterstitial()
-                bottom!!.text = "Found"
-                top!!.text = "Storage"
-                val ran3 = Random()
-                ramperct!!.text = (ran3.nextInt(40) + 20).toString() + "%"
+                bottom.text = "Found"
+                top.text = "Storage"
+                ramperct.text = (Random().nextInt(40) + 20).toString() + "%"
             }
         }).build())
-
-        val img_animation = view!!.findViewById<ImageView>(R.id.waves)
 
         val animation = TranslateAnimation(0.0f, 1000.0f, 0.0f, 0.0f)          //  new TranslateAnimation(xFrom,xTo, yFrom,yTo)
         animation.duration = 5000  // animation duration
         animation.repeatCount = 0
         animation.interpolator = LinearInterpolator()// animation repeat count
-        //        animation.setRepeatMode(2);   // repeat animation (left to right, right to left )
         animation.fillAfter = true
 
-        img_animation.startAnimation(animation)
+        waves.startAnimation(animation)
 
         val counter = 0
         animation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation) {
-
-                scanlay!!.visibility = View.VISIBLE
-                optimizelay!!.visibility = View.GONE
-                scanning!!.text = "SCANNING..."
+                scanlay.visibility = View.VISIBLE
+                optimizelay.visibility = View.GONE
+                scanning.text = "SCANNING..."
             }
 
             override fun onAnimationEnd(animation: Animation) {
-                scanlay!!.visibility = View.GONE
-                optimizelay!!.visibility = View.VISIBLE
-                //                optbutton.setOnClickListener(null);
-                optbutton.setImageResource(R.drawable.bg_button_optimized)
-
-
-                val ran = Random()
-                x = ran.nextInt(100) + 30
-
-                val ran2 = Random()
-                val proc = ran2.nextInt(10) + 5
-
-                centree!!.text = (usedMemorySize - x).toString() + " MB"
-
                 editor = sharedpreferences!!.edit()
-                editor!!.putString(Constant.Variable.SHARED_PREF_VALUE, (usedMemorySize - x).toString() + " MB")
+                editor!!.putString(Constant.Variable.SHARED_PREF_VALUE, (usedMemorySize() - x).toString() + " MB")
                 editor!!.commit()
 
-                Log.e("used mem", "$usedMemorySize MB")
-                Log.e("used mem", totalRAM)
+                scanlay.visibility = View.GONE
+                optimizelay.visibility = View.VISIBLE
+                optbutton.setImageResource(R.drawable.bg_button_optimized)
 
-                totalram!!.text = totalRAM
-                usedram!!.text = (usedMemorySize - x).toString() + " MB/ "
+                x = Random().nextInt(100) + 30
+                val proc = Random().nextInt(10) + 5
 
-                appsfreed!!.text = totalRAM
-                appsused!!.text = Math.abs(usedMemorySize - x.toLong() - 30).toString() + " MB/ "
-
-                processes!!.text = (y - proc).toString() + ""
+                totalram.text = totalRAM()
+                usedram.text = (usedMemorySize() - x).toString() + " MB/ "
+                appsfreed.text = totalRAM()
+                appsused.text = abs(usedMemorySize() - x.toLong() - 30).toString() + " MB/ "
+                processes.text = (y - proc).toString() + ""
+                centree.text = (usedMemorySize() - x).toString() + " MB"
 
             }
 
-            override fun onAnimationRepeat(animation: Animation) {
-
-            }
+            override fun onAnimationRepeat(animation: Animation) {}
         })
     }
 
 
     fun start() {
-
 
         val t = Timer()
         timer = object : TimerTask() {
@@ -318,32 +266,25 @@ class ChargeBoosterFragment : BaseFragment() {
 
                 try {
                     activity!!.runOnUiThread {
-                        //                        optbutton.setBackgroundResource(0);
-                        //                        optbutton.setBackgroundResource(R.drawable.background_button_optimize);
                         counter++
-                        centree!!.text = counter.toString() + "MB"
+                        centree.text = counter.toString() + "MB"
                     }
+
                 } catch (e: Exception) {
-
                 }
-
-
             }
 
         }
         t.schedule(timer, 30, 30)
 
+        val proc = Random().nextInt(60) + 30
 
-        val ran2 = Random()
-        val proc = ran2.nextInt(60) + 30
-
-
-        dynamicArcView2!!.addSeries(SeriesItem.Builder(Color.argb(255, 218, 218, 218))
+        dynamicArcView2.addSeries(SeriesItem.Builder(Color.argb(255, 218, 218, 218))
                 .setRange(0f, 100f, 0f)
                 .setInterpolator(AccelerateInterpolator())
                 .build())
 
-        dynamicArcView2!!.addSeries(SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
+        dynamicArcView2.addSeries(SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
                 .setRange(0f, 100f, 100f)
                 .setInitialVisibility(false)
                 .setLineWidth(32f)
@@ -360,22 +301,16 @@ class ChargeBoosterFragment : BaseFragment() {
                 .setLineWidth(32f)
                 .build()
 
+        val series1Index2 = dynamicArcView2.addSeries(seriesItem2)
 
-        //
-        //        int series1Index = dynamicArcView2.addSeries(seriesItem1);
-        val series1Index2 = dynamicArcView2!!.addSeries(seriesItem2)
-
-        dynamicArcView2!!.addEvent(DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
+        dynamicArcView2.addEvent(DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
                 .setDelay(0)
                 .setDuration(600)
                 .build())
 
 
-        dynamicArcView2!!.addEvent(DecoEvent.Builder(proc.toFloat()).setIndex(series1Index2).setDelay(2000).setListener(object : DecoEvent.ExecuteEventListener {
-            override fun onEventStart(decoEvent: DecoEvent) {
-
-
-            }
+        dynamicArcView2.addEvent(DecoEvent.Builder(proc.toFloat()).setIndex(series1Index2).setDelay(2000).setListener(object : DecoEvent.ExecuteEventListener {
+            override fun onEventStart(decoEvent: DecoEvent) {}
 
             override fun onEventEnd(decoEvent: DecoEvent) {
 
@@ -383,69 +318,48 @@ class ChargeBoosterFragment : BaseFragment() {
                 timer!!.cancel()
                 t.purge()
 
-
-                centree!!.text = "$usedMemorySize MB"
+                centree.text = "${usedMemorySize()} MB"
 
                 if (sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1") == "0") {
-
-                    centree!!.text = sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB")
+                    centree.text = sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB")
                 }
-
 
                 val t = Timer()
                 val t2 = Timer()
 
-
                 try {
 
                     timer2 = object : TimerTask() {
-
                         override fun run() {
-
                             try {
                                 activity!!.runOnUiThread {
-                                    centree!!.text = "$usedMemorySize MB"
-
+                                    centree.text = "${usedMemorySize()} MB"
                                     if (sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1") == "0") {
-
-                                        centree!!.text = sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB")
+                                        centree.text = sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB")
                                     }
-
                                     t2.cancel()
                                     timer2!!.cancel()
                                     t2.purge()
                                 }
                             } catch (e: Exception) {
-
                             }
-
                         }
-
                     }
-                    //Set the schedule function and rate
                 } catch (e: Exception) {
-
                 }
 
                 t2.schedule(timer2, 100, 100)
 
-
             }
         }).build())
-        //        centree.setText(getUsedMemorySize()+" MB");
-        Log.e("used mem", "$usedMemorySize MB")
-        Log.e("used mem", totalRAM)
 
-        totalram!!.text = totalRAM
-        usedram!!.text = "$usedMemorySize MB/ "
-        appsfreed!!.text = totalRAM
-        appsused!!.text = (usedMemorySize - x.toLong() - 30).toString() + " MB/ "
+        y = Random().nextInt(50) + 15
 
-        val ran = Random()
-        y = ran.nextInt(50) + 15
-
-        processes!!.text = y.toString() + ""
-
+        processes.text = y.toString() + ""
+        totalram.text = totalRAM()
+        usedram.text = "${usedMemorySize()} MB/ "
+        appsfreed.text = totalRAM()
+        appsused.text = (usedMemorySize() - x.toLong() - 30).toString() + " MB/ "
 
     }
 
