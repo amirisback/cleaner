@@ -29,7 +29,9 @@ android {
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        setProperty("archivesBaseName", "inteligent-cleaner" + versionName + "#" + code + "-"
+        def nameAPK = "inteligent-cleaner"
+
+        setProperty("archivesBaseName", nameAPK + versionName + "#" + code + "-"
                 + new Date().format('ddMMyy'))
 
         resConfigs "en", "id"
