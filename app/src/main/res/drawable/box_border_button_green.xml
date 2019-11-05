@@ -22,11 +22,9 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
     <stroke
-        android:width="40dp"
-        android:color="@color/colorBaseSeaBlue" />
+        android:width="4dp"
+        android:color="@color/colorBackgroundGreen" />
     <corners
-        android:radius="10dp"/>
-
-    <solid android:color="@color/colorBaseSeaBlue"/>
+        android:radius="48dp"/>
 
 </shape>

@@ -49,15 +49,13 @@
                 android:layout_height="0dp"
                 android:paddingBottom="@dimen/_5sdp" />
 
-            <ImageView
+            <Button
                 android:id="@+id/mainbutton"
-                android:padding="@dimen/_10sdp"
-                android:paddingBottom="@dimen/_10sdp"
-                android:src="@drawable/bg_button_clean"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginBottom="@dimen/_15sdp" />
+                android:layout_gravity="center"
+                android:text="@string/button_clean"
+                android:background="@drawable/box_border_button_blue"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

@@ -23,10 +23,10 @@
 
     <stroke
         android:width="2dp"
-        android:color="@color/colorPrimary" />
-<!--    <corners-->
-<!--        android:radius="10dp"/>-->
+        android:color="@color/colorBackgroundSeaBlue" />
+    <corners
+        android:radius="48dp"/>
 
-    <solid android:color="@color/colorPrimary"/>
+    <solid android:color="@color/colorBackgroundSeaBlue"/>
 
 </shape>

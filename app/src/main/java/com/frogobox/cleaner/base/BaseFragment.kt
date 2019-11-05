@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.frogobox.cleaner.R
+import kotlinx.android.synthetic.main.fragment_cpu_cooler.*
 
 /**
  * Created by Faisal Amir
@@ -105,6 +107,17 @@ abstract class BaseFragment : Fragment() {
         toast.duration = Toast.LENGTH_LONG
         toast.view = layout
         toast.show()
+    }
+
+    protected fun setOptimizeButton(button: Button, text: Int){
+        button.setBackgroundResource(R.drawable.box_border_button_blue)
+        button.text = getString(text)
+    }
+
+
+    protected fun setDoneOptimizeButton(button: Button, text: Int){
+        button.setBackgroundResource(R.drawable.box_border_button_green)
+        button.text = getString(text)
     }
 
 }

@@ -18,5 +18,11 @@
     <string name="toast_cleaned_junk">No Junk Files Already Cleaned</string>
     <string name="toast_cpu_normal_temperature">CPU Temperature is Already Normal</string>
     <string name="toast_phone_already_optimized">Phone Is Already Optimized</string>
+    <string name="button_cool_down">Cool Down</string>
+    <string name="button_cooled">Cooled</string>
+    <string name="button_clean">Clean</string>
+    <string name="button_cleaned">Cleaned</string>
+    <string name="button_optimize">Optimize</string>
+    <string name="button_optimized">Optimized</string>
 
 </resources>

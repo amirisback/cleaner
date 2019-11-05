@@ -104,7 +104,7 @@ class JunkCleanerFragment : BaseFragment() {
 
     private fun setupDirtyFromJunk() {
         mainbrush.setImageResource(R.drawable.img_junktop_red)
-        mainbutton.setImageResource(R.drawable.bg_button_clean)
+        setOptimizeButton(mainbutton, R.string.button_clean)
         cache.setImageResource(R.drawable.img_junk_red_cache)
         temp.setImageResource(R.drawable.img_junk_red_temp)
         residue.setImageResource(R.drawable.img_junk_red_residual)
@@ -134,7 +134,7 @@ class JunkCleanerFragment : BaseFragment() {
 
     private fun setupCleanFromJunk() {
         mainbrush.setImageResource(R.drawable.img_junktop_blue)
-        mainbutton.setImageResource(R.drawable.bg_button_cleaned)
+        setDoneOptimizeButton(mainbutton, R.string.button_cleaned)
         cache.setImageResource(R.drawable.img_junk_green_cache)
         temp.setImageResource(R.drawable.img_junk_green_temp)
         residue.setImageResource(R.drawable.img_junk_green_residual)

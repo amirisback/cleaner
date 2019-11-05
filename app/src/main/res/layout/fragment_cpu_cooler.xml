@@ -52,14 +52,13 @@
             android:layout_width="match_parent"
             android:layout_height="0dp" />
 
-        <ImageView
+        <Button
             android:id="@+id/coolbutton"
-            android:padding="@dimen/_7sdp"
-            android:gravity="center"
-            android:src="@drawable/bg_button_cool_blue"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp" />
+            android:layout_gravity="center"
+            android:text="@string/button_cool_down"
+            android:background="@drawable/box_border_button_blue"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/showsec"

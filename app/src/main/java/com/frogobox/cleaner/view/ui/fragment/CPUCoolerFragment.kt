@@ -104,7 +104,7 @@ class CPUCoolerFragment : BaseFragment() {
         showmain.setTextColor(mActivity.getColorRes(R.color.colorTextRed))
         showsec.text = "Apps are causing problem hit cool down"
         nooverheating.text = ""
-        coolbutton.setImageResource(R.drawable.bg_button_cool_blue)
+        setOptimizeButton(coolbutton, R.string.button_cool_down)
         coolbutton.setOnClickListener { setupCoolingBattery() }
         setupAndroidVersion()
         setupHotApps()
@@ -128,7 +128,7 @@ class CPUCoolerFragment : BaseFragment() {
         showmain.text = "NORMAL"
         showsec.text = "CPU Temperature is GOOD"
         tempimg.setImageResource(R.drawable.img_cooler_blue)
-        coolbutton.setImageResource(R.drawable.bg_button_cooled)
+        setDoneOptimizeButton(coolbutton, R.string.button_cooled)
         coolbutton.setOnClickListener { showCustomToast(getString(R.string.toast_cpu_normal_temperature)) }
     }
 

@@ -120,14 +120,11 @@ class ChargeBoosterFragment : BaseFragment() {
         try {
 
             ramperct.text = (Random().nextInt(60) + 40).toString() + "%"
-            optbutton.setBackgroundResource(0)
-            optbutton.setImageResource(0)
-            optbutton.setImageResource(R.drawable.bg_button_optimize)
+            setOptimizeButton(optbutton, R.string.button_optimize)
 
             if (sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1") == "0") {
-                optbutton.setImageResource(0)
-                optbutton.setImageResource(R.drawable.bg_button_optimized)
-                centree!!.text = sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB")
+                setDoneOptimizeButton(optbutton, R.string.button_optimized)
+                centree.text = sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB")
             }
 
             start()
@@ -238,7 +235,7 @@ class ChargeBoosterFragment : BaseFragment() {
 
                 scanlay.visibility = View.GONE
                 optimizelay.visibility = View.VISIBLE
-                optbutton.setImageResource(R.drawable.bg_button_optimized)
+                setDoneOptimizeButton(optbutton, R.string.button_optimized)
 
                 x = Random().nextInt(100) + 30
                 val proc = Random().nextInt(10) + 5
