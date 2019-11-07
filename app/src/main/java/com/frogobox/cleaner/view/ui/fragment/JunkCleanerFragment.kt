@@ -105,10 +105,10 @@ class JunkCleanerFragment : BaseFragment() {
     private fun setupDirtyFromJunk() {
         mainbrush.setImageResource(R.drawable.img_junktop_red)
         setOptimizeButton(mainbutton, R.string.button_clean)
-        cache.setImageResource(R.drawable.img_junk_red_cache)
-        temp.setImageResource(R.drawable.img_junk_red_temp)
-        residue.setImageResource(R.drawable.img_junk_red_residual)
-        system.setImageResource(R.drawable.img_junk_red_system)
+        cache.setBackgroundResource(R.drawable.bg_circle_border_red)
+        temp.setBackgroundResource(R.drawable.bg_circle_border_red)
+        residue.setBackgroundResource(R.drawable.bg_circle_border_red)
+        system.setBackgroundResource(R.drawable.bg_circle_border_red)
 
         val proc1 = Random().nextInt(20) + 5
         val proc2 = Random().nextInt(15) + 10
@@ -135,10 +135,10 @@ class JunkCleanerFragment : BaseFragment() {
     private fun setupCleanFromJunk() {
         mainbrush.setImageResource(R.drawable.img_junktop_blue)
         setDoneOptimizeButton(mainbutton, R.string.button_cleaned)
-        cache.setImageResource(R.drawable.img_junk_green_cache)
-        temp.setImageResource(R.drawable.img_junk_green_temp)
-        residue.setImageResource(R.drawable.img_junk_green_residual)
-        system.setImageResource(R.drawable.img_junk_green_system)
+        cache.setBackgroundResource(R.drawable.bg_circle_border_green)
+        temp.setBackgroundResource(R.drawable.bg_circle_border_green)
+        residue.setBackgroundResource(R.drawable.bg_circle_border_green)
+        system.setBackgroundResource(R.drawable.bg_circle_border_green)
 
         val color = mActivity.getColorRes(R.color.colorTextGreen)
 

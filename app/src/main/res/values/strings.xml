@@ -25,4 +25,9 @@
     <string name="button_optimize">Optimize</string>
     <string name="button_optimized">Optimized</string>
 
+    <string name="text_junk_cache">Cache Memory</string>
+    <string name="text_junk_residual">Residual Files</string>
+    <string name="text_junk_system">System Junk</string>
+    <string name="text_junk_temp">Temporary Files</string>
+
 </resources>

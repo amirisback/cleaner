@@ -38,4 +38,33 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="TextViewJunk">
+        <item name="android:textColor">@color/colorTextWhite</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">0 MB</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+
+    <style name="LinearLayoutJunk">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="CircleJunk">
+        <item name="android:textColor">@color/colorTextWhite</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:background">@drawable/bg_circle_border_green</item>
+        <item name="android:layout_width">72dp</item>
+        <item name="android:layout_height">72dp</item>
+    </style>
+
 </resources>
