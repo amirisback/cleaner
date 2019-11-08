@@ -38,8 +38,11 @@
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="TextViewJunk">
+    <style name="base_text_view">
         <item name="android:textColor">@color/colorTextWhite</item>
+    </style>
+
+    <style name="TextViewJunk" parent="base_text_view">
         <item name="android:gravity">center</item>
         <item name="android:text">0 MB</item>
         <item name="android:layout_weight">1</item>
@@ -47,7 +50,7 @@
         <item name="android:layout_height">0dp</item>
     </style>
 
-    <style name="LinearLayoutJunk">
+    <style name="LinearLayoutJunk" parent="base_text_view">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_gravity">center</item>
@@ -56,22 +59,54 @@
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="CircleJunk">
-        <item name="android:textColor">@color/colorTextWhite</item>
+    <style name="CircleJunk" parent="base_text_view">
         <item name="android:gravity">center</item>
         <item name="android:maxLines">2</item>
         <item name="android:padding">8dp</item>
-        <item name="android:textSize">11sp</item>
+        <item name="android:textSize">10sp</item>
         <item name="android:background">@drawable/bg_circle_border_green</item>
-        <item name="android:layout_width">72dp</item>
-        <item name="android:layout_height">72dp</item>
+        <item name="android:layout_width">64dp</item>
+        <item name="android:layout_height">64dp</item>
     </style>
 
-    <style name="ButtonDoCleaner">
+    <style name="ButtonDoCleaner" parent="base_text_view">
         <item name="android:layout_width">@dimen/dimen_button_180dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/bg_border_button_blue</item>
     </style>
 
+    <style name="TextViewChargeBoosterPrimary" parent="base_text_view">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">@dimen/dimen_big_16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:textSize">@dimen/_22sdp</item>
+    </style>
+
+    <style name="TextViewChargeBoosterSecondary" parent="base_text_view">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+    </style>
+
+    <style name="TextViewChargeBoosterTersiary" parent="base_text_view">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textAppearance">?android:textAppearanceLarge</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+    </style>
+
+    <style name="layout_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_above">@id/layout_footer</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">@dimen/dimen_big_16dp</item>
+        <item name="android:paddingBottom">@dimen/dimen_big_16dp</item>
+    </style>
 
 </resources>

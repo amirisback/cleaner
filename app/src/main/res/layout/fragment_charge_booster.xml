@@ -1,233 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackgroundBlack"
-    android:orientation="vertical"
-    android:weightSum="10">
+    android:background="@color/colorBackgroundDarkBlackBlue"
+    android:orientation="vertical">
 
     <LinearLayout
+        android:orientation="vertical"
+        android:layout_above="@id/layout_button"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5.5"
-        android:background="@color/colorBackgroundDarkBlackBlue"
-        android:gravity="center">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
+            android:layout_height="0dp"
+            android:layout_weight="5.5"
+            android:background="@color/colorBackgroundDarkBlackBlue"
             android:gravity="center">
 
-            <ImageView
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:src="@drawable/circle_black" />
+                android:layout_gravity="center"
+                android:gravity="center">
 
-            <ImageView
-                android:id="@+id/waves"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="-700dp"
-                android:paddingTop="@dimen/_20sdp"
-                android:src="@drawable/img_loading_running" />
-
-            <ImageView
-                android:id="@+id/circularlines"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/circle_lines" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:padding="@dimen/_18sdp">
-
-                <com.hookedonplay.decoviewlib.DecoView
-                    android:id="@+id/dynamicArcView2"
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/circle_black" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="@dimen/_40sdp"
-                android:weightSum="3">
-
-                <TextView
-                    android:id="@+id/top"
+                <ImageView
+                    android:id="@+id/waves"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="-700dp"
+                    android:paddingTop="@dimen/_20sdp"
+                    android:src="@drawable/img_loading_running" />
+
+                <ImageView
+                    android:id="@+id/circularlines"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:padding="@dimen/_10sdp"
+                    android:src="@drawable/circle_lines" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
                     android:gravity="center"
-                    android:text="Storage"
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="#F22938" />
+                    android:padding="@dimen/_18sdp">
 
-                <TextView
-                    android:id="@+id/centree"
+                    <com.hookedonplay.decoviewlib.DecoView
+                        android:id="@+id/dynamicArcView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="match_parent"
                     android:gravity="center"
-                    android:textColor="@color/colorTextWhite"
-                    android:textSize="@dimen/_24sdp" />
+                    android:orientation="vertical"
+                    android:padding="@dimen/_40sdp"
+                    android:weightSum="3">
 
-                <TextView
-                    android:id="@+id/bottom"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Found"
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="@color/colorTextGreen" />
+                    <TextView
+                        android:id="@+id/top"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Storage"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textColor="#F22938" />
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/centree"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/colorTextWhite"
+                        android:textSize="@dimen/_24sdp" />
 
-        </RelativeLayout>
+                    <TextView
+                        android:id="@+id/bottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Found"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textColor="@color/colorTextGreen" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.2"
-        android:background="@color/colorBackgroundDarkBlackBlue">
+        android:id="@+id/layout_button"
+        style="@style/layout_button">
 
-        <LinearLayout
-            android:id="@+id/scanlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
+        <TextView
+            android:id="@+id/scanning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@color/colorTextWhite" />
 
-            <TextView
-                android:id="@+id/scanning"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAppearance="?android:textAppearanceLarge"
-                android:textColor="@color/colorTextWhite" />
+        <Button
+            android:id="@+id/optbutton"
+            style="@style/ButtonDoCleaner"
+            android:text="@string/button_optimized" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/optimizelay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/optbutton"
-                android:text="@string/button_optimized"
-                style="@style/ButtonDoCleaner"/>
-
-        </LinearLayout>
 
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/layout_footer"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3.3"
-        android:orientation="horizontal"
-        android:paddingTop="1dp"
-        android:weightSum="2">
+        android:layout_height="124dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_weight="1"
-            android:background="@color/colorBackgroundDarkBlackBlue"
-            android:gravity="center_vertical|center_horizontal"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/_1sdp"
-            android:weightSum="6">
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ramperct"
+                style="@style/TextViewChargeBoosterPrimary"
+                android:drawableStart="@drawable/ic_chargebooster_cpu"
+                android:text="48%" />
+
+            <TextView
+                style="@style/TextViewChargeBoosterSecondary"
+                android:layout_marginTop="@dimen/dimen_medium_8dp"
+                android:layout_marginBottom="@dimen/dimen_medium_8dp"
+                android:text="Ram Usage" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:gravity="center"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_12sdp"
-                    android:src="@drawable/ic_chargebooster_apps" />
-
                 <TextView
-                    android:id="@+id/processes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="13"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="@color/colorTextWhite"
-                    android:textSize="@dimen/_22sdp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Running Processes"
-                    android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="@color/colorTextWhite"
-                    android:textSize="@dimen/_12sdp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:paddingTop="@dimen/_3sdp"
-                android:weightSum="2">
-
-                <TextView
-                    android:id="@+id/appsused"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:id="@+id/usedram"
+                    style="@style/TextViewChargeBoosterTersiary"
                     android:gravity="right"
                     android:text="1.24 GB/"
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="@color/colorTextWhite"
-                    android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/appsfreed"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:id="@+id/totalram"
+                    style="@style/TextViewChargeBoosterTersiary"
                     android:gravity="left"
-                    android:text="2.67 GB"
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="@color/colorTextWhite"
-                    android:textSize="@dimen/_12sdp" />
+                    android:text="2.67 GB" />
 
             </LinearLayout>
 
@@ -236,88 +175,39 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_weight="1"
-            android:background="@color/colorBackgroundDarkBlackBlue"
-            android:gravity="center_vertical|center_horizontal"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/_1sdp"
-            android:weightSum="6">
+            android:gravity="center"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/processes"
+                style="@style/TextViewChargeBoosterPrimary"
+                android:drawableStart="@drawable/ic_chargebooster_process"
+                android:text="13" />
+
+            <TextView
+                style="@style/TextViewChargeBoosterSecondary"
+                android:layout_marginTop="@dimen/dimen_medium_8dp"
+                android:layout_marginBottom="@dimen/dimen_medium_8dp"
+                android:text="Running Processes" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:gravity="center"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_12sdp"
-                    android:src="@drawable/ic_chargebooster_ram" />
-
                 <TextView
-                    android:id="@+id/ramperct"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="48%"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="@color/colorTextWhite"
-                    android:textSize="@dimen/_22sdp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Ram Usage"
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="@color/colorTextWhite"
-                    android:textSize="@dimen/_12sdp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:paddingTop="@dimen/_3sdp"
-                android:weightSum="2">
-
-                <TextView
-                    android:id="@+id/usedram"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:id="@+id/appsused"
+                    style="@style/TextViewChargeBoosterTersiary"
                     android:gravity="right"
                     android:text="1.24 GB/"
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="@color/colorTextWhite"
-                    android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/totalram"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:id="@+id/appsfreed"
+                    style="@style/TextViewChargeBoosterTersiary"
                     android:gravity="left"
-                    android:text="2.67 GB"
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="@color/colorTextWhite"
-                    android:textSize="@dimen/_12sdp" />
+                    android:text="2.67 GB" />
 
             </LinearLayout>
 
@@ -325,4 +215,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

@@ -2,13 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/colorBackgroundDarkBlackBlue">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/residuaa"
-        android:background="@color/colorBackgroundDarkBlackBlue"
+        android:layout_above="@id/layout_button"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -30,19 +29,24 @@
             android:textSize="@dimen/_25sdp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/mainbutton"
-            android:text="@string/button_clean"
-            style="@style/ButtonDoCleaner"/>
-
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/layout_button"
+        style="@style/layout_button">
+
+        <Button
+            android:id="@+id/mainbutton"
+            style="@style/ButtonDoCleaner"
+            android:text="@string/button_clean" />
+
+    </RelativeLayout>
+
     <LinearLayout
-        android:id="@+id/residuaa"
+        android:id="@+id/layout_footer"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="124dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorBackgroundDarkBlackBlue"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="@dimen/dimen_big_16dp"

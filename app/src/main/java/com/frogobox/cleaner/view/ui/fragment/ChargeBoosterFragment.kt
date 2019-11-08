@@ -223,8 +223,8 @@ class ChargeBoosterFragment : BaseFragment() {
         val counter = 0
         animation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation) {
-                scanlay.visibility = View.VISIBLE
-                optimizelay.visibility = View.GONE
+                scanning.visibility = View.VISIBLE
+                optbutton.visibility = View.INVISIBLE
                 scanning.text = "SCANNING..."
             }
 
@@ -233,8 +233,8 @@ class ChargeBoosterFragment : BaseFragment() {
                 editor!!.putString(Constant.Variable.SHARED_PREF_VALUE, (usedMemorySize() - x).toString() + " MB")
                 editor!!.commit()
 
-                scanlay.visibility = View.GONE
-                optimizelay.visibility = View.VISIBLE
+                scanning.visibility = View.INVISIBLE
+                optbutton.visibility = View.VISIBLE
                 setDoneOptimizeButton(optbutton, R.string.button_optimized)
 
                 x = Random().nextInt(100) + 30
