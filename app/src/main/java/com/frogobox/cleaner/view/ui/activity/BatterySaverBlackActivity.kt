@@ -200,12 +200,12 @@ class BatterySaverBlackActivity : BaseActivity() {
             if (resultCode == Activity.RESULT_OK) {
                 val uri = intent?.data
                 val projection = arrayOf(ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
-                val cursor = contentResolver.query(uri, projection, null, null, null)
-                cursor.moveToFirst()
-                val numberColumnIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
-                val number = cursor.getString(numberColumnIndex)
-                val nameColumnIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
-                val name = cursor.getString(nameColumnIndex)
+                val cursor = contentResolver.query(uri!!, projection, null, null, null)
+                cursor?.moveToFirst()
+                val numberColumnIndex = cursor?.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                val number = numberColumnIndex?.let { cursor?.getString(it) }
+                val nameColumnIndex = cursor?.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
+                val name = nameColumnIndex?.let { cursor?.getString(it) }
 
                 Log.d(TAG, "ZZZ number : $number , name : $name")
 

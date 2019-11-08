@@ -70,8 +70,11 @@
     </style>
 
     <style name="ButtonDoCleaner" parent="base_text_view">
-        <item name="android:layout_width">@dimen/dimen_button_180dp</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_marginStart">@dimen/dimen_big_ultra_32dp</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_big_ultra_32dp</item>
         <item name="android:background">@drawable/bg_border_button_blue</item>
     </style>
 
@@ -104,7 +107,6 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_above">@id/layout_footer</item>
-        <item name="android:gravity">center</item>
         <item name="android:paddingTop">@dimen/dimen_big_16dp</item>
         <item name="android:paddingBottom">@dimen/dimen_big_16dp</item>
     </style>

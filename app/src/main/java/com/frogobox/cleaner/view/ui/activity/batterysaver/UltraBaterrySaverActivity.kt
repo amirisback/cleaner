@@ -71,7 +71,7 @@ class UltraBaterrySaverActivity : BaseActivity() {
         var min: Int
 
         try {
-            hour = Integer.parseInt(extraBundles.getString(Constant.Variable.EXTRA_HOURS)!!.replace("[^0-9]".toRegex(), "")) - Integer.parseInt(extraBundles.getString(Constant.Variable.EXTRA_HOURS_NORMAL)!!.replace("[^0-9]".toRegex(), ""))
+            hour = Integer.parseInt(extraBundles?.getString(Constant.Variable.EXTRA_HOURS)!!.replace("[^0-9]".toRegex(), "")) - Integer.parseInt(extraBundles.getString(Constant.Variable.EXTRA_HOURS_NORMAL)!!.replace("[^0-9]".toRegex(), ""))
             min = Integer.parseInt(extraBundles.getString(Constant.Variable.EXTRA_MINUTES)!!.replace("[^0-9]".toRegex(), "")) - Integer.parseInt(extraBundles.getString(Constant.Variable.EXTRA_MINUTES_NORMAL)!!.replace("[^0-9]".toRegex(), ""))
         } catch (e: Exception) {
             hour = 4
