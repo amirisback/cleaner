@@ -34,8 +34,7 @@
                 android:id="@+id/centerImage"
                 android:layout_width="@dimen/_90sdp"
                 android:layout_height="@dimen/_90sdp"
-                android:layout_centerInParent="true"
-                android:clickable="true" />
+                android:layout_centerInParent="true"/>
 
         </com.skyfishjy.library.RippleBackground>
 

@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:padding="@dimen/dimen_big_16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -13,15 +14,14 @@
         <ImageView
             android:id="@+id/appimage"
             android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_gravity="center" />
+            android:layout_height="@dimen/_40sdp" />
 
         <TextView
             android:id="@+id/apptext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
+            android:layout_marginLeft="@dimen/dimen_medium_8dp"
             android:textColor="@color/colorTextWhite"
             android:textSize="@dimen/_10sdp" />
 
@@ -29,6 +29,7 @@
 
 
     <View
+        android:id="@+id/lineScale"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_1sdp"
         android:background="@color/colorBackgroundWhite" />

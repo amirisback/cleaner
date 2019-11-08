@@ -36,40 +36,44 @@
         </activity>
         <activity
             android:name="com.frogobox.cleaner.view.ui.activity.batterysaver.PowerSavingBatterySaverActivity"
-            android:theme="@style/AppThemeNoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name="com.frogobox.cleaner.view.ui.activity.AboutUsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
         <activity
             android:name="com.frogobox.cleaner.view.ui.activity.batterysaver.UltraBaterrySaverActivity"
-            android:theme="@style/AppThemeNoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name="com.frogobox.cleaner.view.ui.activity.BatterySaverBlackActivity"
-            android:theme="@style/AppThemeNoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name="com.frogobox.cleaner.view.ui.activity.batterysaver.NormalModeBatterySaverActivity"
-            android:theme="@style/AppThemeNoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name="com.frogobox.cleaner.view.ui.activity.PowerSavingComplitionActivity"
-            android:theme="@style/AppThemeNoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name="com.frogobox.cleaner.view.ui.activity.ApplyingUltraActivity"
-            android:theme="@style/AppThemeNoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name="com.frogobox.cleaner.view.ui.activity.ScanningJunkActivity"
-            android:theme="@style/AppThemeNoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name="com.frogobox.cleaner.view.ui.activity.CPUScannerActivity"
-            android:theme="@style/AppThemeNoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name="com.frogobox.cleaner.view.ui.activity.PickAppsActivity"
-            android:theme="@style/Theme.Transparent"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
 
         <receiver android:name="com.frogobox.cleaner.service.AlarmBoosterBroadcastReceiver" />
         <receiver android:name="com.frogobox.cleaner.service.AlarmJunkBroadcastReceiver" />

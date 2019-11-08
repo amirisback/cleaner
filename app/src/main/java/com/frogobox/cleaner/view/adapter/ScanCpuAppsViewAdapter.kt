@@ -25,6 +25,8 @@ class ScanCpuAppsViewAdapter(private val apps: List<Apps>) :
         val (_, image) = apps[position]
         holder.size.text = ""
         holder.image.setImageDrawable(image)
+        holder.viewLine.visibility = View.GONE
+
     }
 
     override fun getItemCount(): Int {
@@ -34,5 +36,6 @@ class ScanCpuAppsViewAdapter(private val apps: List<Apps>) :
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val size = view.apptext
         val image = view.appimage
+        val viewLine = view.lineScale
     }
 }

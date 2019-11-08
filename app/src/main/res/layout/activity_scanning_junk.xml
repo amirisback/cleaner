@@ -4,14 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="10"
-    android:background="@color/colorBackgroundBlack"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="6.5"
-        android:background="@color/colorBackgroundDarkBlackBlue"
         android:orientation="vertical"
         android:weightSum="10">
 
@@ -155,8 +153,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="1dp"
-        android:layout_weight="3.5"
-        android:background="@color/colorBackgroundDarkBlackBlue">
+        android:layout_weight="3.5">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
