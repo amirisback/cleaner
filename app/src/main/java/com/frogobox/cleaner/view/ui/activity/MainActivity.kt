@@ -54,7 +54,7 @@ class MainActivity : BaseActivity() {
 
     private fun setupDeclareTabLayoutViewPager() {
         tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_tablayout_chargebooster))
-        tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_tablayout_batterysaver))
+//        tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_tablayout_batterysaver))
         tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_tablayout_cooler))
         tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_tablayout_junkcleaner))
         tab_layout.tabGravity = TabLayout.GRAVITY_FILL
@@ -62,12 +62,12 @@ class MainActivity : BaseActivity() {
         val adapter = PagerAdapter(supportFragmentManager)
 
         adapter.addFragment(ChargeBoosterFragment(), getString(R.string.title_charge_booster))
-        adapter.addFragment(BatterySaverFragment(), getString(R.string.title_baterry_saver))
+//        adapter.addFragment(BatterySaverFragment(), getString(R.string.title_baterry_saver))
         adapter.addFragment(CPUCoolerFragment(), getString(R.string.title_cpu_cooler))
         adapter.addFragment(JunkCleanerFragment(), getString(R.string.title_junk_cleaner))
 
         pager.adapter = adapter
-        pager.offscreenPageLimit = 4
+        pager.offscreenPageLimit = 3
 
     }
 
@@ -78,9 +78,9 @@ class MainActivity : BaseActivity() {
             override fun onPageSelected(position: Int) {
                 when (position) {
                     0 -> supportActionBar?.setTitle(R.string.title_charge_booster)
-                    1 -> supportActionBar?.setTitle(R.string.title_baterry_saver)
-                    2 -> supportActionBar?.setTitle(R.string.title_cpu_cooler)
-                    3 -> supportActionBar?.setTitle(R.string.title_junk_cleaner)
+//                    1 -> supportActionBar?.setTitle(R.string.title_baterry_saver)
+                    1 -> supportActionBar?.setTitle(R.string.title_cpu_cooler)
+                    2 -> supportActionBar?.setTitle(R.string.title_junk_cleaner)
                 }
             }
 
