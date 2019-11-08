@@ -3,6 +3,8 @@ package com.frogobox.cleaner.view.ui.activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.viewpager.widget.ViewPager
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseActivity
@@ -31,6 +33,21 @@ class MainActivity : BaseActivity() {
         setupDeclareTabLayoutViewPager()
         setupViewPagerChangeListener()
         setupTabSelectedListener()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_toolbar_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.toolbar_menu_about -> {
+                baseStartActivity<AboutUsActivity>()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setupInitGlobalVariable() {
