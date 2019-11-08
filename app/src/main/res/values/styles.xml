@@ -67,4 +67,11 @@
         <item name="android:layout_height">72dp</item>
     </style>
 
+    <style name="ButtonDoCleaner">
+        <item name="android:layout_width">@dimen/dimen_button_180dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_border_button_blue</item>
+    </style>
+
+
 </resources>
