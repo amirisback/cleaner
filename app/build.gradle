@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android'
 
 android {
 
+    // Declaration app name
+    def nameApp = "Inteligent Cleaner"
+
     def versionPropsFile = file('version.properties')
     Properties versionProps = new Properties()
 
@@ -30,9 +33,6 @@ android {
 
         // Declaration apk / aab name
         def nameAPK = "inteligent-cleaner"
-
-        // Declaration app name
-        def nameApp = "Inteligent Cleaner"
 
         // Declaration apps name debug mode
         def debugAttribute = " Development"
@@ -66,6 +66,7 @@ android {
         release {
             // You need to specify either an absolute path or include the
             // keystore file in the same directory as the build.gradle file.
+            // [PROJECT FOLDER NAME/app/[COPY YOUT KEY STORE] .jks in here
             storeFile file("key-speech-booster.jks")
             storePassword "cronoclez"
             keyAlias "frogobox"
@@ -87,9 +88,6 @@ android {
             def releaseAdmobInterstitial = "ca-app-pub-3940256099942544/1033173712"
             def releaseAdmobVideo = "ca-app-pub-3940256099942544/5224354917"
             def releaseAdmobBanner = "ca-app-pub-3940256099942544/6300978111"
-
-            // Declaration app name release
-            def nameApp = "Inteligent Cleaner"
 
             // Inject app name for release
             resValue "string", "app_name", nameApp
