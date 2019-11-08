@@ -223,7 +223,7 @@ android:orientation="vertical">
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/box_border_button_blue"
+        android:background="@drawable/bg_border_button_blue"
         android:text="@string/button_clean" />
 
 </LinearLayout>

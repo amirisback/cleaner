@@ -1,6 +1,5 @@
 package com.frogobox.cleaner.base
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
@@ -11,7 +10,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.frogobox.cleaner.R
-import kotlinx.android.synthetic.main.fragment_cpu_cooler.*
 
 /**
  * Created by Faisal Amir
@@ -110,13 +108,13 @@ abstract class BaseFragment : Fragment() {
     }
 
     protected fun setOptimizeButton(button: Button, text: Int){
-        button.setBackgroundResource(R.drawable.box_border_button_blue)
+        button.setBackgroundResource(R.drawable.bg_border_button_blue)
         button.text = getString(text)
     }
 
 
     protected fun setDoneOptimizeButton(button: Button, text: Int){
-        button.setBackgroundResource(R.drawable.box_border_button_green)
+        button.setBackgroundResource(R.drawable.bg_border_button_green)
         button.text = getString(text)
     }
 

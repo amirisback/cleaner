@@ -130,7 +130,7 @@
             <Button
                 android:id="@+id/optbutton"
                 android:layout_width="180dp"
-                android:background="@drawable/box_border_button_blue"
+                android:background="@drawable/bg_border_button_blue"
                 android:text="@string/button_optimized"
                 android:layout_height="wrap_content"/>
 

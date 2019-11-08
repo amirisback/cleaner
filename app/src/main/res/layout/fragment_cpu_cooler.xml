@@ -56,7 +56,7 @@
             android:id="@+id/coolbutton"
             android:layout_gravity="center"
             android:text="@string/button_cool_down"
-            android:background="@drawable/box_border_button_blue"
+            android:background="@drawable/bg_border_button_blue"
             android:layout_width="180dp"
             android:layout_height="wrap_content"/>
 
