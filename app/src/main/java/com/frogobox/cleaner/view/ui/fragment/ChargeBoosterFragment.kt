@@ -124,7 +124,7 @@ class ChargeBoosterFragment : BaseFragment() {
 
             if (sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1") == "0") {
                 setDoneOptimizeButton(optbutton, R.string.button_optimized)
-                centree.text = sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB")
+                textview_ramsize.text = sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB")
             }
 
             start()
@@ -191,7 +191,7 @@ class ChargeBoosterFragment : BaseFragment() {
                     override fun onEventStart(decoEvent: DecoEvent) {
                         bottom.text = ""
                         top.text = ""
-                        centree.text = "Optimizing..."
+                        textview_ramsize.text = "Optimizing..."
                     }
 
                     override fun onEventEnd(decoEvent: DecoEvent) {}
@@ -201,7 +201,7 @@ class ChargeBoosterFragment : BaseFragment() {
             override fun onEventStart(decoEvent: DecoEvent) {
                 bottom.text = ""
                 top.text = ""
-                centree.text = "Optimizing..."
+                textview_ramsize.text = "Optimizing..."
             }
 
             override fun onEventEnd(decoEvent: DecoEvent) {
@@ -245,7 +245,7 @@ class ChargeBoosterFragment : BaseFragment() {
                 appsfreed.text = totalRAM()
                 appsused.text = abs(usedMemorySize() - x.toLong() - 30).toString() + " MB/ "
                 processes.text = (y - proc).toString() + ""
-                centree.text = (usedMemorySize() - x).toString() + " MB"
+                textview_ramsize.text = (usedMemorySize() - x).toString() + " MB"
 
             }
 
@@ -264,7 +264,7 @@ class ChargeBoosterFragment : BaseFragment() {
                 try {
                     activity!!.runOnUiThread {
                         counter++
-                        centree.text = counter.toString() + "MB"
+                        textview_ramsize.text = counter.toString() + "MB"
                     }
 
                 } catch (e: Exception) {
@@ -315,10 +315,10 @@ class ChargeBoosterFragment : BaseFragment() {
                 timer!!.cancel()
                 t.purge()
 
-                centree.text = "${usedMemorySize()} MB"
+                textview_ramsize.text = "${usedMemorySize()} MB"
 
                 if (sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1") == "0") {
-                    centree.text = sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB")
+                    textview_ramsize.text = sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB")
                 }
 
                 val t = Timer()
@@ -330,9 +330,9 @@ class ChargeBoosterFragment : BaseFragment() {
                         override fun run() {
                             try {
                                 activity!!.runOnUiThread {
-                                    centree.text = "${usedMemorySize()} MB"
+                                    textview_ramsize.text = "${usedMemorySize()} MB"
                                     if (sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1") == "0") {
-                                        centree.text = sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB")
+                                        textview_ramsize.text = sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB")
                                     }
                                     t2.cancel()
                                     timer2!!.cancel()

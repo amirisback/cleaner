@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackgroundDarkBlackBlue"
-    android:fitsSystemWindows="true"
+    android:background="@color/colorBackgroundWhite"
     android:id="@+id/linearLayout">
 
     <include
@@ -14,21 +13,28 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/line"
         android:layout_below="@id/toolbar_main"/>
+
+    <View
+        android:id="@+id/line"
+        android:layout_above="@id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryBackground"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F22938"
-        android:elevation="6dp"
+        android:elevation="2dp"
+        android:background="@color/colorBackgroundWhite"
         app:tabBackground="@drawable/bg_tab_color_selector"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:tabIndicatorColor="@color/colorIndicatorTablayout"/>
+        app:tabIndicatorHeight="0dp"/>
 
 </RelativeLayout>

@@ -1,19 +1,27 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorBaseWhite</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:statusBarColor">@color/colorBaseWhite</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+
     </style>
 
     <!-- Base application theme. -->
     <style name="AppThemeNoActionBar" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorBaseWhite</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:statusBarColor">@color/colorBaseWhite</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -39,7 +47,7 @@
     </style>
 
     <style name="base_text_view">
-        <item name="android:textColor">@color/colorTextWhite</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
     </style>
 
     <style name="TextViewJunk" parent="base_text_view">
@@ -69,12 +77,12 @@
         <item name="android:layout_height">64dp</item>
     </style>
 
-    <style name="ButtonDoCleaner" parent="base_text_view">
-        <item name="android:layout_width">match_parent</item>
+    <style name="ButtonDoCleaner">
+        <item name="android:layout_width">180dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerInParent">true</item>
-        <item name="android:layout_marginStart">@dimen/dimen_big_ultra_32dp</item>
-        <item name="android:layout_marginEnd">@dimen/dimen_big_ultra_32dp</item>
+<!--        <item name="android:layout_marginStart">@dimen/dimen_big_ultra_32dp</item>-->
+<!--        <item name="android:layout_marginEnd">@dimen/dimen_big_ultra_32dp</item>-->
         <item name="android:background">@drawable/bg_border_button_blue</item>
     </style>
 

@@ -30,4 +30,4 @@
     android:elevation="2dp"
     app:title="@string/app_name"
     app:titleTextAppearance="@style/Toolbar.TitleText"
-    app:titleTextColor="@color/colorTextWhite" />
+    app:titleTextColor="@color/colorPrimaryText" />

@@ -109,12 +109,14 @@ abstract class BaseFragment : Fragment() {
 
     protected fun setOptimizeButton(button: Button, text: Int){
         button.setBackgroundResource(R.drawable.bg_border_button_blue)
+        button.setTextColor(mActivity.getColorRes(R.color.colorTextWhite))
         button.text = getString(text)
     }
 
 
     protected fun setDoneOptimizeButton(button: Button, text: Int){
         button.setBackgroundResource(R.drawable.bg_border_button_green)
+        button.setTextColor(mActivity.getColorRes(R.color.colorPrimaryText))
         button.text = getString(text)
     }
 

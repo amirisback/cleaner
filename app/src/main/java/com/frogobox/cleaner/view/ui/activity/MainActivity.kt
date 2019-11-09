@@ -70,10 +70,10 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupDeclareTabLayoutViewPager() {
-        tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_tablayout_chargebooster))
+        tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_bottom_nav_chargebooster))
 //        tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_tablayout_batterysaver))
-        tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_tablayout_cooler))
-        tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_tablayout_junkcleaner))
+        tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_bottom_nav_temperature))
+        tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_bottom_nav_junk))
         tab_layout.tabGravity = TabLayout.GRAVITY_FILL
 
         val adapter = PagerAdapter(supportFragmentManager)

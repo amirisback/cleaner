@@ -99,7 +99,7 @@ class CPUCoolerFragment : BaseFragment() {
 
     private fun setupSmartPhoneHotCondition() {
         apps = ArrayList()
-        tempimg.setImageResource(R.drawable.img_cooler_red)
+        iv_temperature_state.setImageResource(R.drawable.ic_temperature_hot_full)
         showmain.text = "OVERHEATED"
         showmain.setTextColor(mActivity.getColorRes(R.color.colorTextRed))
         showsec.text = "Apps are causing problem hit cool down"
@@ -127,7 +127,7 @@ class CPUCoolerFragment : BaseFragment() {
         nooverheating.text = "Currently No App causing Overheating"
         showmain.text = "NORMAL"
         showsec.text = "CPU Temperature is GOOD"
-        tempimg.setImageResource(R.drawable.img_cooler_blue)
+        iv_temperature_state.setImageResource(R.drawable.ic_temperature_cold_full)
         setDoneOptimizeButton(coolbutton, R.string.button_cooled)
         coolbutton.setOnClickListener { showCustomToast(getString(R.string.toast_cpu_normal_temperature)) }
     }

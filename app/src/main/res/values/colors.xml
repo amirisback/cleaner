@@ -13,6 +13,10 @@
     <color name="colorBaseDarkBlackBlue">#27282D</color>
     <color name="colorBase">#272A2D</color>
 
+    <color name="colorPrimaryBackground">#E9E7E7</color>
+    <color name="colorPrimaryText">#AE000000</color>
+
+
     <color name="colorPrimary">@color/colorBaseDarkBlackBlue</color>
     <color name="colorPrimaryDark">@color/colorBaseDarkBlackBlue</color>
     <color name="colorAccent">@color/colorBasePink</color>

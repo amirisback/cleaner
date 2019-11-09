@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackgroundDarkBlackBlue"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,7 +14,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="5.5"
-            android:background="@color/colorBackgroundDarkBlackBlue"
             android:gravity="center">
 
             <RelativeLayout
@@ -79,7 +77,7 @@
                         android:textColor="#F22938" />
 
                     <TextView
-                        android:id="@+id/centree"
+                        android:id="@+id/textview_ramsize"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
