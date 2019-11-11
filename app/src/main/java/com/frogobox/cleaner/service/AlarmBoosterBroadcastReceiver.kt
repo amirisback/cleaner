@@ -20,7 +20,7 @@ class AlarmBoosterBroadcastReceiver : BroadcastReceiver() {
         val sharedpreferences = context.getSharedPreferences(Constant.Variable.SHARED_PREF_WASEEM, Context.MODE_PRIVATE)
         val editor = sharedpreferences.edit()
         editor.putString(Constant.Variable.SHARED_PREF_BOOSTER, "1")
-        editor.commit()
+        editor.apply()
 
 //        try {
 //            ChargeBoosterFragment.optimizeButton.setBackgroundResource(0)

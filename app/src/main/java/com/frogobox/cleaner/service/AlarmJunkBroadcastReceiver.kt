@@ -16,7 +16,7 @@ class AlarmJunkBroadcastReceiver : BroadcastReceiver() {
         val sharedpreferences = context.getSharedPreferences(Constant.Variable.SHARED_PREF_WASEEM, Context.MODE_PRIVATE)
         val editor = sharedpreferences.edit()
         editor.putString(Constant.Variable.SHARED_PREF_JUNK, "1")
-        editor.commit()
+        editor.apply()
 
     }
 }

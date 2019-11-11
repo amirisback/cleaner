@@ -42,11 +42,10 @@ import java.util.*
 
 class JunkCleanerFragment : BaseFragment() {
 
-    private val checkvar = 0
     private var alljunk: Int = 0
 
-    private var sharedpreferences: SharedPreferences? = null
-    private var editor: SharedPreferences.Editor? = null
+    private lateinit var sharedpreferences: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -55,25 +54,14 @@ class JunkCleanerFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupCheckJunk()
-    }
 
-    private fun setupCheckJunk() {
-        try {
-            sharedpreferences = activity!!.getSharedPreferences(SHARED_PREF_WASEEM, Context.MODE_PRIVATE)
-            if (sharedpreferences!!.getString(SHARED_PREF_JUNK, "1") == "1") {
-                setupDirtyFromJunk()
-            } else {
-                setupCleanFromJunk()
-            }
-            mainbutton!!.setOnClickListener {
-                if (sharedpreferences!!.getString(SHARED_PREF_JUNK, "1") == "1") {
-                    setupDoInClenerJunk()
-                } else {
-                    showCustomToast(getString(R.string.toast_cleaned_junk))
-                }
-            }
-        } catch (e: Exception) {
+        sharedpreferences = mActivity.getSharedPreferences(SHARED_PREF_WASEEM, Context.MODE_PRIVATE)
+        editor = sharedpreferences.edit()
+
+        if (sharedpreferences.getString(SHARED_PREF_JUNK, "1") == "1") {
+            setupDirtyFromJunk()
+        } else {
+            setupCleanFromJunk()
         }
 
     }
@@ -84,32 +72,25 @@ class JunkCleanerFragment : BaseFragment() {
     }
 
     private fun setupDoInClenerJunk() {
-
         baseStartActivity<ScanningJunkActivity, String>(SHARED_PREF_JUNK, alljunk.toString() + "")
-
-        val handler = Handler()
-        handler.postDelayed({
+        Handler().postDelayed({
             //Do something after 100ms
             setupCleanFromJunk()
-            editor = sharedpreferences?.edit()
-            editor?.putString(SHARED_PREF_JUNK, "0")
-            editor?.apply()
-            val intent = Intent(activity, AlarmJunkBroadcastReceiver::class.java)
-            val pendingIntent = PendingIntent.getBroadcast(activity, 0,
-                    intent, PendingIntent.FLAG_ONE_SHOT)
-            val alarmManager = activity!!.getSystemService(ALARM_SERVICE) as AlarmManager
-            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 600 * 1000, pendingIntent)
+            editor.putString(SHARED_PREF_JUNK, "0")
+            editor.apply()
+            setupAlarmManager()
         }, 2000)
     }
 
-    private fun setupDirtyFromJunk() {
-        iv_icon_junk.setImageResource(R.drawable.ic_junk_dirty)
-        setOptimizeButton(mainbutton, R.string.button_clean)
-        cache.setBackgroundResource(R.drawable.bg_circle_border_red)
-        temp.setBackgroundResource(R.drawable.bg_circle_border_red)
-        residue.setBackgroundResource(R.drawable.bg_circle_border_red)
-        system.setBackgroundResource(R.drawable.bg_circle_border_red)
+    private fun setupAlarmManager(){
+        val intent = Intent(mActivity, AlarmJunkBroadcastReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(mActivity, 0,
+                intent, PendingIntent.FLAG_ONE_SHOT)
+        val alarmManager = mActivity.getSystemService(ALARM_SERVICE) as AlarmManager
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 600 * 1000, pendingIntent)
+    }
 
+    private fun setupDirtyFromJunk() {
         val proc1 = Random().nextInt(20) + 5
         val proc2 = Random().nextInt(15) + 10
         val proc3 = Random().nextInt(30) + 15
@@ -124,29 +105,44 @@ class JunkCleanerFragment : BaseFragment() {
 
         val colorText = mActivity.getColorRes(R.color.colorTextRed)
 
+        setOptimizeButton(mainbutton, R.string.button_clean)
+        iv_icon_junk.setImageResource(R.drawable.ic_junk_dirty)
+        cache.setBackgroundResource(R.drawable.bg_circle_border_red)
+        temp.setBackgroundResource(R.drawable.bg_circle_border_red)
+        residue.setBackgroundResource(R.drawable.bg_circle_border_red)
+        system.setBackgroundResource(R.drawable.bg_circle_border_red)
+
         setupText(maintext, mainString, colorText)
         setupText(cachetext, cacheString, colorText)
         setupText(temptext, tempString, colorText)
         setupText(residuetext, residueString, colorText)
         setupText(systemtext, systemString, colorText)
 
+        mainbutton.setOnClickListener {
+            setupDoInClenerJunk()
+        }
+
     }
 
     private fun setupCleanFromJunk() {
-        iv_icon_junk.setImageResource(R.drawable.ic_junk_clean)
+        val color = mActivity.getColorRes(R.color.colorTextGreen)
+
         setDoneOptimizeButton(mainbutton, R.string.button_cleaned)
+        iv_icon_junk.setImageResource(R.drawable.ic_junk_clean)
         cache.setBackgroundResource(R.drawable.bg_circle_border_green)
         temp.setBackgroundResource(R.drawable.bg_circle_border_green)
         residue.setBackgroundResource(R.drawable.bg_circle_border_green)
         system.setBackgroundResource(R.drawable.bg_circle_border_green)
-
-        val color = mActivity.getColorRes(R.color.colorTextGreen)
 
         setupText(maintext, "CRYSTAL CLEAR", color)
         setupText(cachetext, ZERO_MB, color)
         setupText(temptext, ZERO_MB, color)
         setupText(residuetext, ZERO_MB, color)
         setupText(systemtext, ZERO_MB, color)
+
+        mainbutton.setOnClickListener {
+            showCustomToast(getString(R.string.toast_cleaned_junk))
+        }
     }
 
 }

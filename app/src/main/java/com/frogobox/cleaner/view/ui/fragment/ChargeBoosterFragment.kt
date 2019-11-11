@@ -123,7 +123,7 @@ class ChargeBoosterFragment : BaseFragment() {
     private fun setupCheckStartUp() {
         val proc = Random().nextInt(60) + 30
         val timerCounting = Timer()
-        val timerTaskCouting = object : TimerTask() {
+        val timerTaskCounting = object : TimerTask() {
             override fun run() {
                 try {
                     mActivity.runOnUiThread {
@@ -136,7 +136,7 @@ class ChargeBoosterFragment : BaseFragment() {
             }
 
         }
-        timerCounting.schedule(timerTaskCouting, 30, 30)
+        timerCounting.schedule(timerTaskCounting, 30, 30)
 
         setupInitDynamicView()
 
@@ -148,7 +148,7 @@ class ChargeBoosterFragment : BaseFragment() {
         dynamicArcView2.addEvent(DecoEvent.Builder(proc.toFloat()).setIndex(setupInitDynamicSeriesIndex()).setDelay(2000).setListener(object : DecoEvent.ExecuteEventListener {
             override fun onEventStart(decoEvent: DecoEvent) {}
             override fun onEventEnd(decoEvent: DecoEvent) {
-                dynamicStartUpEventEnd(timerCounting, timerTaskCouting)
+                dynamicStartUpEventEnd(timerCounting, timerTaskCounting)
             }
         }).build())
 
