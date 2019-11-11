@@ -137,7 +137,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/ramperct"
+                android:id="@+id/tv_precentage_ram"
                 style="@style/TextViewChargeBoosterPrimary"
                 android:drawableStart="@drawable/ic_chargebooster_cpu"
                 android:text="48%" />
@@ -178,7 +178,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/processes"
+                android:id="@+id/tv_precentage_proceses"
                 style="@style/TextViewChargeBoosterPrimary"
                 android:drawableStart="@drawable/ic_chargebooster_process"
                 android:text="13" />

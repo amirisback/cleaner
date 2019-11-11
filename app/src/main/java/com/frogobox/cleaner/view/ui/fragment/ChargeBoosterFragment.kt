@@ -17,7 +17,9 @@ import android.view.animation.*
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseFragment
 import com.frogobox.cleaner.service.AlarmBoosterBroadcastReceiver
-import com.frogobox.cleaner.utils.Constant
+import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_BOOSTER
+import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_VALUE
+import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_WASEEM
 import com.hookedonplay.decoviewlib.charts.SeriesItem
 import com.hookedonplay.decoviewlib.events.DecoEvent
 import kotlinx.android.synthetic.main.fragment_charge_booster.*
@@ -47,67 +49,15 @@ import kotlin.math.abs
 class ChargeBoosterFragment : BaseFragment() {
 
     private val mb = 1024 * 1024
+
     private var timer: TimerTask? = null
     private var timer2: TimerTask? = null
     private var x: Int = 0
     private var y: Int = 0
     private var counter = 0
-    private var sharedpreferences: SharedPreferences? = null
-    private var editor: SharedPreferences.Editor? = null
 
-    // Get the Number value from the string
-    // System.out.println("Ram : " + value);
-    // totRam = totRam / 1024;
-    // Streams.close(reader);
-
-    private fun totalRAM(): String {
-
-        var lastValue = ""
-        var value = ""
-
-        try {
-            val twoDecimalForm = DecimalFormat("#.##")
-            val reader = RandomAccessFile("/proc/meminfo", "r")
-            val load = reader.readLine()
-            val p = Pattern.compile("(\\d+)")
-            val m = p.matcher(load)
-
-            while (m.find()) {
-                value = m.group(1)
-            }
-
-            reader.close()
-
-            val totRam = java.lang.Double.parseDouble(value)
-            val mb = totRam / 1024.0
-            val gb = totRam / 1048576.0
-            val tb = totRam / 1073741824.0
-
-            lastValue = when {
-                tb > 1 -> twoDecimalForm.format(tb) + " TB"
-                gb > 1 -> twoDecimalForm.format(gb) + " GB"
-                mb > 1 -> twoDecimalForm.format(mb) + " MB"
-                else -> twoDecimalForm.format(totRam) + " KB"
-            }
-
-        } catch (e: Exception) {
-            e.printStackTrace()
-        } finally {
-        }
-
-        return lastValue
-    }
-
-    private fun usedMemorySize(): Long {
-        try {
-            val mi = ActivityManager.MemoryInfo()
-            val activityManager = activity!!.getSystemService(ACTIVITY_SERVICE) as ActivityManager
-            activityManager.getMemoryInfo(mi)
-            return mi.availMem / 1048576L
-        } catch (e: Exception) {
-            return 200
-        }
-    }
+    private lateinit var sharedpreferences: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_charge_booster, container, false)
@@ -115,43 +65,47 @@ class ChargeBoosterFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedpreferences = activity!!.getSharedPreferences(Constant.Variable.SHARED_PREF_WASEEM, Context.MODE_PRIVATE)
 
-        try {
+        sharedpreferences = mActivity.getSharedPreferences(SHARED_PREF_WASEEM, Context.MODE_PRIVATE)
+        editor = sharedpreferences.edit()
 
-            ramperct.text = (Random().nextInt(60) + 40).toString() + "%"
+        setupCheckOptimize()
+        setupButtonOptimize()
+        setupInitCheckStartUp()
+    }
+
+    private fun setupCheckOptimize() {
+        if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "0") {
+            setDoneOptimizeButton(optbutton, R.string.button_optimized)
+            textview_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
+        } else {
             setOptimizeButton(optbutton, R.string.button_optimize)
-
-            if (sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1") == "0") {
-                setDoneOptimizeButton(optbutton, R.string.button_optimized)
-                textview_ramsize.text = sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB")
-            }
-
-            start()
-
-            optbutton.setOnClickListener {
-                if (sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1") == "1") {
-                    optimize()
-
-                    editor = sharedpreferences!!.edit()
-                    editor!!.putString(Constant.Variable.SHARED_PREF_BOOSTER, "0")
-                    editor!!.commit()
-
-                    val intent = Intent(activity, AlarmBoosterBroadcastReceiver::class.java)
-                    val pendingIntent = PendingIntent.getBroadcast(activity, 0, intent, PendingIntent.FLAG_ONE_SHOT)
-                    val alarmManager = activity!!.getSystemService(ALARM_SERVICE) as AlarmManager
-                    alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 100 * 1000, pendingIntent)
-                } else {
-                    showCustomToast(getString(R.string.toast_phone_already_optimized))
-                }
-            }
-
-        } catch (e: Exception) {
+            tv_precentage_ram.text = (Random().nextInt(60) + 40).toString() + "%"
         }
+    }
+
+    private fun setupAlarmManager() {
+        val intent = Intent(mActivity, AlarmBoosterBroadcastReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(mActivity, 0, intent, PendingIntent.FLAG_ONE_SHOT)
+        val alarmManager = mActivity.getSystemService(ALARM_SERVICE) as AlarmManager
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 100 * 1000, pendingIntent)
 
     }
 
-    fun optimize() {
+    private fun setupButtonOptimize() {
+        optbutton.setOnClickListener {
+            if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "1") {
+                editor.putString(SHARED_PREF_BOOSTER, "0")
+                editor.apply()
+                setupOptimizingPhone()
+                setupAlarmManager()
+            } else {
+                showCustomToast(getString(R.string.toast_phone_already_optimized))
+            }
+        }
+    }
+
+    private fun setupOptimizingPhone() {
 
         val rotate = RotateAnimation(0f, 359f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
         rotate.duration = 5000
@@ -181,8 +135,8 @@ class ChargeBoosterFragment : BaseFragment() {
                 .setLineWidth(32f)
                 .build()
         //
-        //        int series1Index = dynamicArcView2.addSeries(seriesItem1);
-        val series1Index2 = dynamicArcView2!!.addSeries(seriesItem2)
+//                val series1Index = dynamicArcView2.addSeries(seriesItem1);
+        val series1Index2 = dynamicArcView2.addSeries(seriesItem2)
 
         dynamicArcView2.addEvent(DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
                 .setDelay(500)
@@ -208,7 +162,7 @@ class ChargeBoosterFragment : BaseFragment() {
                 mActivity.setupShowAdsInterstitial()
                 bottom.text = "Found"
                 top.text = "Storage"
-                ramperct.text = (Random().nextInt(40) + 20).toString() + "%"
+                tv_precentage_ram.text = (Random().nextInt(40) + 20).toString() + "%"
             }
         }).build())
 
@@ -217,44 +171,16 @@ class ChargeBoosterFragment : BaseFragment() {
         animation.repeatCount = 0
         animation.interpolator = LinearInterpolator()// animation repeat count
         animation.fillAfter = true
-
-        waves.startAnimation(animation)
-
-        val counter = 0
         animation.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(animation: Animation) {
-                scanning.visibility = View.VISIBLE
-                optbutton.visibility = View.INVISIBLE
-                scanning.text = "SCANNING..."
-            }
-
-            override fun onAnimationEnd(animation: Animation) {
-                editor = sharedpreferences!!.edit()
-                editor!!.putString(Constant.Variable.SHARED_PREF_VALUE, (usedMemorySize() - x).toString() + " MB")
-                editor!!.commit()
-
-                scanning.visibility = View.INVISIBLE
-                optbutton.visibility = View.VISIBLE
-                setDoneOptimizeButton(optbutton, R.string.button_optimized)
-
-                x = Random().nextInt(100) + 30
-                val proc = Random().nextInt(10) + 5
-
-                totalram.text = totalRAM()
-                usedram.text = (usedMemorySize() - x).toString() + " MB/ "
-                appsfreed.text = totalRAM()
-                appsused.text = abs(usedMemorySize() - x.toLong() - 30).toString() + " MB/ "
-                processes.text = (y - proc).toString() + ""
-                textview_ramsize.text = (usedMemorySize() - x).toString() + " MB"
-
-            }
-
+            override fun onAnimationStart(animation: Animation) { animationOptimizeStart() }
+            override fun onAnimationEnd(animation: Animation) { animationOptimizeEnd() }
             override fun onAnimationRepeat(animation: Animation) {}
         })
+
+        waves.startAnimation(animation)
     }
 
-
-    fun start() {
+    private fun setupInitCheckStartUp() {
 
         val t = Timer()
         timer = object : TimerTask() {
@@ -262,7 +188,7 @@ class ChargeBoosterFragment : BaseFragment() {
             override fun run() {
 
                 try {
-                    activity!!.runOnUiThread {
+                    mActivity.runOnUiThread {
                         counter++
                         textview_ramsize.text = counter.toString() + "MB"
                     }
@@ -312,13 +238,13 @@ class ChargeBoosterFragment : BaseFragment() {
             override fun onEventEnd(decoEvent: DecoEvent) {
 
                 t.cancel()
-                timer!!.cancel()
+                (timer as TimerTask).cancel()
                 t.purge()
 
-                textview_ramsize.text = "${usedMemorySize()} MB"
+                textview_ramsize.text = "${getUsedMemorySize()} MB"
 
-                if (sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1") == "0") {
-                    textview_ramsize.text = sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB")
+                if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "0") {
+                    textview_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
                 }
 
                 val t = Timer()
@@ -329,13 +255,13 @@ class ChargeBoosterFragment : BaseFragment() {
                     timer2 = object : TimerTask() {
                         override fun run() {
                             try {
-                                activity!!.runOnUiThread {
-                                    textview_ramsize.text = "${usedMemorySize()} MB"
-                                    if (sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_BOOSTER, "1") == "0") {
-                                        textview_ramsize.text = sharedpreferences!!.getString(Constant.Variable.SHARED_PREF_VALUE, "50MB")
+                                mActivity.runOnUiThread {
+                                    textview_ramsize.text = "${getUsedMemorySize()} MB"
+                                    if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "0") {
+                                        textview_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
                                     }
                                     t2.cancel()
-                                    timer2!!.cancel()
+                                    timer2?.cancel()
                                     t2.purge()
                                 }
                             } catch (e: Exception) {
@@ -352,12 +278,76 @@ class ChargeBoosterFragment : BaseFragment() {
 
         y = Random().nextInt(50) + 15
 
-        processes.text = y.toString() + ""
-        totalram.text = totalRAM()
-        usedram.text = "${usedMemorySize()} MB/ "
-        appsfreed.text = totalRAM()
-        appsused.text = (usedMemorySize() - x.toLong() - 30).toString() + " MB/ "
+        tv_precentage_proceses.text = y.toString() + ""
+        totalram.text = getTotalRam()
+        usedram.text = "${getUsedMemorySize()} MB/ "
+        appsfreed.text = getTotalRam()
+        appsused.text = (getUsedMemorySize() - x.toLong() - 30).toString() + " MB/ "
 
+    }
+
+    private fun getTotalRam(): String {
+        val twoDecimalForm = DecimalFormat("#.##")
+        val reader = RandomAccessFile("/proc/meminfo", "r")
+        val load = reader.readLine()
+        val p = Pattern.compile("(\\d+)")
+        val m = p.matcher(load)
+
+        var value = ""
+
+        while (m.find()) {
+            value = m.group(1)
+        }
+
+        reader.close()
+
+        val totRam = java.lang.Double.parseDouble(value)
+        val mb = totRam / 1024.0
+        val gb = totRam / 1048576.0
+        val tb = totRam / 1073741824.0
+
+        return when {
+            tb > 1 -> twoDecimalForm.format(tb) + " TB"
+            gb > 1 -> twoDecimalForm.format(gb) + " GB"
+            mb > 1 -> twoDecimalForm.format(mb) + " MB"
+            else -> twoDecimalForm.format(totRam) + " KB"
+        }
+    }
+
+    private fun getUsedMemorySize(): Long {
+        try {
+            val mi = ActivityManager.MemoryInfo()
+            val mActivityManager = mActivity.getSystemService(ACTIVITY_SERVICE) as ActivityManager
+            mActivityManager.getMemoryInfo(mi)
+            return mi.availMem / 1048576L
+        } catch (e: Exception) {
+            return 200
+        }
+    }
+
+    private fun animationOptimizeStart() {
+        scanning.visibility = View.VISIBLE
+        optbutton.visibility = View.INVISIBLE
+        scanning.text = "SCANNING..."
+    }
+
+    private fun animationOptimizeEnd() {
+        editor.putString(SHARED_PREF_VALUE, (getUsedMemorySize() - x).toString() + " MB")
+        editor.apply()
+
+        scanning.visibility = View.INVISIBLE
+        optbutton.visibility = View.VISIBLE
+        setDoneOptimizeButton(optbutton, R.string.button_optimized)
+
+        x = Random().nextInt(100) + 30
+        val proc = Random().nextInt(10) + 5
+
+        totalram.text = getTotalRam()
+        usedram.text = (getUsedMemorySize() - x).toString() + " MB/ "
+        appsfreed.text = getTotalRam()
+        appsused.text = abs(getUsedMemorySize() - x.toLong() - 30).toString() + " MB/ "
+        tv_precentage_proceses.text = (y - proc).toString()
+        textview_ramsize.text = (getUsedMemorySize() - x).toString() + " MB"
     }
 
 }
