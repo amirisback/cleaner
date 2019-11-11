@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackgroundWhite"
+    android:background="@color/colorPrimaryDark"
     android:id="@+id/linearLayout">
 
     <include
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="2dp"
-        android:background="@color/colorBackgroundWhite"
+        android:background="@color/colorPrimaryDark"
         app:tabBackground="@drawable/bg_tab_color_selector"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"

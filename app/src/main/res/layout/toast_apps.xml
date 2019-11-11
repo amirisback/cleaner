@@ -27,6 +27,6 @@
         tools:text="dummy"
         android:maxLines="1"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/colorTextWhite"/>
+        android:textColor="@color/colorPrimaryText"/>
 
 </LinearLayout>

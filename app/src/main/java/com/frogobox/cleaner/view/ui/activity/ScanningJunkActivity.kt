@@ -211,7 +211,7 @@ class ScanningJunkActivity : BaseActivity() {
         }
         // or avi.smoothToShow();
     }
-    
+
     fun add(text: String, position: Int) {
 
         val p = 0 + (Math.random() * (packages.size - 1 - 0 + 1)).toInt()
