@@ -21,13 +21,12 @@ import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseFragment
 import com.frogobox.cleaner.model.Apps
 import com.frogobox.cleaner.utils.Constant
-import com.frogobox.cleaner.view.ui.activity.CPUScannerActivity
 import com.frogobox.cleaner.view.adapter.CPUCoolerViewAdapter
+import com.frogobox.cleaner.view.ui.activity.CPUScannerActivity
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import kotlinx.android.synthetic.main.fragment_cpu_cooler.*
 import java.io.File
-import java.util.*
 
 /**
  * Created by Faisal Amir
@@ -47,12 +46,17 @@ import java.util.*
  */
 
 class CPUCoolerFragment : BaseFragment() {
+
     private var check = 0
 
     private val batteryReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             setupBatteryReceiver(intent)
         }
+    }
+
+    companion object {
+        lateinit var apps: MutableList<Apps>
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -64,41 +68,22 @@ class CPUCoolerFragment : BaseFragment() {
         setupCheckCooledBattery()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        try {
-            activity!!.unregisterReceiver(batteryReceiver)
-        } catch (e: Exception) {
-
-        }
-
+    private fun setupCheckCooledBattery() {
+        mActivity.registerReceiver(batteryReceiver, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
+        setupBatteryCooled()
     }
 
     private fun setupBatteryReceiver(intent: Intent) {
-        try {
-            val level = intent.getIntExtra("level", 0)
-            val temp = intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0).toFloat() / 10
-            batterytemp!!.text = "$temp°C"
-            if (temp >= 30.0) {
-                setupSmartPhoneHotCondition()
-            }
-        } catch (e: Exception) {
+        val level = intent.getIntExtra("level", 0)
+        val temp = intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0).toFloat() / 10
+        batterytemp.text = "$temp°C"
+        if (temp >= 30.0) {
+            setupSmartPhoneHotCondition()
         }
-
-    }
-
-    private fun setupCheckCooledBattery() {
-        try {
-            activity!!.registerReceiver(batteryReceiver, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
-            setupBatteryCooled()
-        } catch (e: Exception) {
-
-        }
-
     }
 
     private fun setupSmartPhoneHotCondition() {
-        apps = ArrayList()
+        apps = mutableListOf()
         iv_temperature_state.setImageResource(R.drawable.ic_temperature_hot_full)
         showmain.text = "OVERHEATED"
         showmain.setTextColor(mActivity.getColorRes(R.color.colorTextRed))
@@ -112,9 +97,7 @@ class CPUCoolerFragment : BaseFragment() {
 
     private fun setupCoolingBattery() {
         startActivity(Intent(context, CPUScannerActivity::class.java))
-        val handler = Handler()
-        handler.postDelayed({
-            //                getActivity().unregisterReceiver(batteryReceiver);
+        Handler().postDelayed({
             setupBatteryCooled()
             batterytemp.text = "25.3" + "°C"
             recycler_view.adapter = null
@@ -165,14 +148,14 @@ class CPUCoolerFragment : BaseFragment() {
                         ico = activity?.packageManager?.getApplicationIcon(packages[k].packageName)
                         app.image = ico
                         activity?.packageManager
-                        Log.e("ico-->", "" + ico!!)
+                        Log.e("ico-->", "" + ico)
 
                         if (a.flags and ApplicationInfo.FLAG_SYSTEM == 0) {
                             if (check <= 5) {
                                 check++
                                 apps.add(app)
                             } else {
-                                activity!!.unregisterReceiver(batteryReceiver)
+                                mActivity.unregisterReceiver(batteryReceiver)
                                 break
                             }
 
@@ -205,8 +188,9 @@ class CPUCoolerFragment : BaseFragment() {
         recycler_view.adapter = adapter
     }
 
-    companion object {
-        lateinit var apps: MutableList<Apps>
+    override fun onDestroy() {
+        super.onDestroy()
+        mActivity.unregisterReceiver(batteryReceiver)
     }
 
 }

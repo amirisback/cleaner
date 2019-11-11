@@ -101,7 +101,6 @@ class ScanningJunkActivity : BaseActivity() {
 
         recycler_view.itemAnimator = SlideInLeftAnimator()
         recycler_view.addItemDecoration(SimpleDividerItemDecoration(this))
-
         recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recycler_view.itemAnimator = SlideInUpAnimator(OvershootInterpolator(1f))
         recycler_view.computeHorizontalScrollExtent()

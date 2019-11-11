@@ -18,20 +18,16 @@ import kotlinx.android.synthetic.main.activity_cpu_scanner.*
 
 class CPUScannerActivity : BaseActivity() {
 
-    // Scan Cpu For Power Consuming and Over heating Apps
-
-    private lateinit var mAdapter: ScanCpuAppsViewAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cpu_scanner)
 
-        setupAnimationIcon()
-        setupRecyclerView()
+        setupAnimationProcess()
+        setupRecyclerViewApps()
 
     }
 
-    private fun setupAnimationIcon() {
+    private fun setupAnimationProcess() {
         val rotate = RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
         rotate.duration = 1500
         rotate.repeatCount = 3
@@ -57,107 +53,75 @@ class CPUScannerActivity : BaseActivity() {
         })
     }
 
-    private fun setupRecyclerView() {
-        mAdapter = ScanCpuAppsViewAdapter(CPUCoolerFragment.apps)
-
+    private fun setupRecyclerViewApps() {
+        val scanCpuAppsViewAdapter = ScanCpuAppsViewAdapter(CPUCoolerFragment.apps)
         val mLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
         recycler_view.itemAnimator = SlideInLeftAnimator()
         recycler_view.layoutManager = mLayoutManager
         recycler_view.itemAnimator = SlideInUpAnimator(OvershootInterpolator(1f))
         recycler_view.computeHorizontalScrollExtent()
-        recycler_view.adapter = mAdapter
+        recycler_view.adapter = scanCpuAppsViewAdapter
+        scanCpuAppsViewAdapter.notifyDataSetChanged()
 
-        mAdapter.notifyDataSetChanged()
-
-        setupContentAdapter()
+        setupContentAdapter(scanCpuAppsViewAdapter)
     }
 
-    private fun setupContentAdapter() {
-        try {
+    private fun setupContentAdapter(adapter: ScanCpuAppsViewAdapter) {
+        Handler().postDelayed({ add(adapter, 0) }, 0)
+        Handler().postDelayed({ changeAppsItem(adapter,1) }, 900)
+        Handler().postDelayed({ changeAppsItem(adapter,2) }, 1800)
+        Handler().postDelayed({ changeAppsItem(adapter,3) }, 2700)
+        Handler().postDelayed({ changeAppsItem(adapter,4) }, 3700)
+        Handler().postDelayed({ changeAppsItem(adapter,5) }, 4400)
 
-            Handler().postDelayed({ add("Limit Brightness Upto 80%", 0) }, 0)
+        Handler().postDelayed({
+            changeAppsItem(adapter,6)
 
-            Handler().postDelayed({
-                remove(0)
-                add("Decrease Device Performance", 1)
-            }, 900)
+            rippleBackground.startRippleAnimation()
+            heart.setImageResource(0)
+            heart.setBackgroundResource(0)
+            cpu.setImageResource(R.drawable.circle_line_green)
+            scann.setImageResource(R.drawable.img_scan_task_complete)
 
-            Handler().postDelayed({
-                remove(0)
-                add("Close All Battery Consuming Apps", 2)
-            }, 1800)
+            val anim = AnimatorInflater.loadAnimator(applicationContext, R.animator.flipping) as ObjectAnimator
+            anim.target = scann
+            anim.duration = 3000
+            anim.start()
 
-            Handler().postDelayed({
-                remove(0)
-                add("Closes System Services like Bluetooth,Screen Rotation,Sync etc.", 3)
-            }, 2700)
+            rel.visibility = View.GONE
+            cpucooler.text = "Cooled CPU to 25.3°C"
+            anim.addListener(object : Animator.AnimatorListener {
+                override fun onAnimationStart(animation: Animator) {
+                    heart.setImageResource(0)
+                    heart.setBackgroundResource(0)
+                }
 
-            Handler().postDelayed({
-                remove(0)
-                add("Closes System Services like Bluetooth,Screen Rotation,Sync etc.", 4)
-            }, 3700)
+                override fun onAnimationEnd(animation: Animator) {
+                    rippleBackground.stopRippleAnimation()
+                    setupShowAdsInterstitial()
+                    Handler().postDelayed({ finish() }, 1000)
+                }
 
-            Handler().postDelayed({
-                remove(0)
-                add("Closes System Services like Bluetooth,Screen Rotation,Sync etc.", 5)
-            }, 4400)
+                override fun onAnimationCancel(animation: Animator) {}
+                override fun onAnimationRepeat(animation: Animator) {}
 
-            Handler().postDelayed({
-                add("Closes System Services like Bluetooth,Screen Rotation,Sync etc.", 6)
-                remove(0)
-
-                rippleBackground.startRippleAnimation()
-                heart.setImageResource(0)
-                heart.setBackgroundResource(0)
-                cpu.setImageResource(R.drawable.circle_line_green)
-                scann.setImageResource(R.drawable.img_scan_task_complete)
-                val anim = AnimatorInflater.loadAnimator(applicationContext, R.animator.flipping) as ObjectAnimator
-                anim.target = scann
-                anim.duration = 3000
-                anim.start()
-
-                rel.visibility = View.GONE
-
-                cpucooler.text = "Cooled CPU to 25.3°C"
-                anim.addListener(object : Animator.AnimatorListener {
-                    override fun onAnimationStart(animation: Animator) {
-                        heart.setImageResource(0)
-                        heart.setBackgroundResource(0)
-                    }
-
-                    override fun onAnimationEnd(animation: Animator) {
-                        rippleBackground.stopRippleAnimation()
-                        setupShowAdsInterstitial()
-                        Handler().postDelayed({ finish() }, 1000)
-                    }
-
-                    override fun onAnimationCancel(animation: Animator) {}
-                    override fun onAnimationRepeat(animation: Animator) {}
-
-                })
-            }, 5500)
-
-        } catch (e: Exception) {
-
-        }
+            })
+        }, 5500)
     }
 
-    private fun add(text: String, position: Int) {
-        try {
-            mAdapter.notifyItemInserted(position)
-
-        } catch (e: Exception) {
-        }
-
+    private fun changeAppsItem(adapter: ScanCpuAppsViewAdapter, position: Int){
+        remove(adapter)
+        add(adapter, position)
     }
 
+    private fun add(adapter: ScanCpuAppsViewAdapter, position: Int) {
+        adapter.notifyItemInserted(position)
+    }
 
-    private fun remove(position: Int) {
-        mAdapter.notifyItemRemoved(position)
-        try {
-            CPUCoolerFragment.apps.removeAt(position)
-        } catch (e: Exception) {
-        }
+    private fun remove(adapter: ScanCpuAppsViewAdapter) {
+        adapter.notifyItemRemoved(0)
+        CPUCoolerFragment.apps.removeAt(0)
     }
 
 }
