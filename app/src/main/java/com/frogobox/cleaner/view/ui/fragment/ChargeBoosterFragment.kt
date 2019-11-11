@@ -48,10 +48,6 @@ import kotlin.math.abs
 
 class ChargeBoosterFragment : BaseFragment() {
 
-    private val mb = 1024 * 1024
-
-    private var timer: TimerTask? = null
-    private var timer2: TimerTask? = null
     private var x: Int = 0
     private var y: Int = 0
     private var counter = 0
@@ -71,7 +67,99 @@ class ChargeBoosterFragment : BaseFragment() {
 
         setupCheckOptimize()
         setupButtonOptimize()
-        setupInitCheckStartUp()
+        setupCheckStartUp()
+    }
+
+    private fun setupOptimizingPhone() {
+
+        val rotate = RotateAnimation(0f, 359f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
+        rotate.duration = 5000
+        rotate.interpolator = LinearInterpolator()
+        circularlines.startAnimation(rotate)
+
+        setupInitDynamicView()
+
+        dynamicArcView2.addEvent(DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
+                .setDelay(500)
+                .setDuration(2000)
+                .setListener(object : DecoEvent.ExecuteEventListener {
+                    override fun onEventStart(decoEvent: DecoEvent) {
+                        dynamicOptimizingEventStart()
+                    }
+
+                    override fun onEventEnd(decoEvent: DecoEvent) {}
+                }).build())
+
+        dynamicArcView2.addEvent(DecoEvent.Builder(25f).setIndex(setupInitDynamicSeriesIndex()).setDelay(4000).setListener(object : DecoEvent.ExecuteEventListener {
+            override fun onEventStart(decoEvent: DecoEvent) {
+                dynamicOptimizingEventStart()
+            }
+
+            override fun onEventEnd(decoEvent: DecoEvent) {
+                dynamicOptimzingEventEnd()
+            }
+        }).build())
+
+        val animation = TranslateAnimation(0.0f, 1000.0f, 0.0f, 0.0f)          //  new TranslateAnimation(xFrom,xTo, yFrom,yTo)
+        animation.duration = 5000  // animation duration
+        animation.repeatCount = 0
+        animation.interpolator = LinearInterpolator()// animation repeat count
+        animation.fillAfter = true
+        animation.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation) {
+                animationOptimizeStart()
+            }
+
+            override fun onAnimationEnd(animation: Animation) {
+                animationOptimizeEnd()
+            }
+
+            override fun onAnimationRepeat(animation: Animation) {}
+        })
+
+        waves.startAnimation(animation)
+    }
+
+    private fun setupCheckStartUp() {
+        val proc = Random().nextInt(60) + 30
+        val timerCounting = Timer()
+        val timerTaskCouting = object : TimerTask() {
+            override fun run() {
+                try {
+                    mActivity.runOnUiThread {
+                        counter++
+                        textview_ramsize.text = counter.toString() + "MB"
+                    }
+
+                } catch (e: Exception) {
+                }
+            }
+
+        }
+        timerCounting.schedule(timerTaskCouting, 30, 30)
+
+        setupInitDynamicView()
+
+        dynamicArcView2.addEvent(DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
+                .setDelay(0)
+                .setDuration(600)
+                .build())
+
+        dynamicArcView2.addEvent(DecoEvent.Builder(proc.toFloat()).setIndex(setupInitDynamicSeriesIndex()).setDelay(2000).setListener(object : DecoEvent.ExecuteEventListener {
+            override fun onEventStart(decoEvent: DecoEvent) {}
+            override fun onEventEnd(decoEvent: DecoEvent) {
+                dynamicStartUpEventEnd(timerCounting, timerTaskCouting)
+            }
+        }).build())
+
+        y = Random().nextInt(50) + 15
+
+        tv_precentage_proceses.text = y.toString() + ""
+        totalram.text = getTotalRam()
+        usedram.text = "${getUsedMemorySize()} MB/ "
+        appsfreed.text = getTotalRam()
+        appsused.text = (getUsedMemorySize() - x.toLong() - 30).toString() + " MB/ "
+
     }
 
     private fun setupCheckOptimize() {
@@ -105,14 +193,7 @@ class ChargeBoosterFragment : BaseFragment() {
         }
     }
 
-    private fun setupOptimizingPhone() {
-
-        val rotate = RotateAnimation(0f, 359f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
-        rotate.duration = 5000
-        rotate.interpolator = LinearInterpolator()
-
-        circularlines.startAnimation(rotate)
-
+    private fun setupInitDynamicView() {
         dynamicArcView2.addSeries(SeriesItem.Builder(Color.argb(255, 218, 218, 218))
                 .setRange(0f, 100f, 0f)
                 .setInterpolator(AccelerateInterpolator())
@@ -123,167 +204,60 @@ class ChargeBoosterFragment : BaseFragment() {
                 .setInitialVisibility(false)
                 .setLineWidth(32f)
                 .build())
-
-        // Create data series track
-        val seriesItem1 = SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
-                .setRange(0f, 100f, 0f)
-                .setLineWidth(32f)
-                .build()
-
-        val seriesItem2 = SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundSeaBlue))
-                .setRange(0f, 100f, 0f)
-                .setLineWidth(32f)
-                .build()
-        //
-//                val series1Index = dynamicArcView2.addSeries(seriesItem1);
-        val series1Index2 = dynamicArcView2.addSeries(seriesItem2)
-
-        dynamicArcView2.addEvent(DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
-                .setDelay(500)
-                .setDuration(2000)
-                .setListener(object : DecoEvent.ExecuteEventListener {
-                    override fun onEventStart(decoEvent: DecoEvent) {
-                        bottom.text = ""
-                        top.text = ""
-                        textview_ramsize.text = "Optimizing..."
-                    }
-
-                    override fun onEventEnd(decoEvent: DecoEvent) {}
-                }).build())
-
-        dynamicArcView2.addEvent(DecoEvent.Builder(25f).setIndex(series1Index2).setDelay(4000).setListener(object : DecoEvent.ExecuteEventListener {
-            override fun onEventStart(decoEvent: DecoEvent) {
-                bottom.text = ""
-                top.text = ""
-                textview_ramsize.text = "Optimizing..."
-            }
-
-            override fun onEventEnd(decoEvent: DecoEvent) {
-                mActivity.setupShowAdsInterstitial()
-                bottom.text = "Found"
-                top.text = "Storage"
-                tv_precentage_ram.text = (Random().nextInt(40) + 20).toString() + "%"
-            }
-        }).build())
-
-        val animation = TranslateAnimation(0.0f, 1000.0f, 0.0f, 0.0f)          //  new TranslateAnimation(xFrom,xTo, yFrom,yTo)
-        animation.duration = 5000  // animation duration
-        animation.repeatCount = 0
-        animation.interpolator = LinearInterpolator()// animation repeat count
-        animation.fillAfter = true
-        animation.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(animation: Animation) { animationOptimizeStart() }
-            override fun onAnimationEnd(animation: Animation) { animationOptimizeEnd() }
-            override fun onAnimationRepeat(animation: Animation) {}
-        })
-
-        waves.startAnimation(animation)
     }
 
-    private fun setupInitCheckStartUp() {
-
-        val t = Timer()
-        timer = object : TimerTask() {
-
-            override fun run() {
-
-                try {
-                    mActivity.runOnUiThread {
-                        counter++
-                        textview_ramsize.text = counter.toString() + "MB"
-                    }
-
-                } catch (e: Exception) {
-                }
-            }
-
-        }
-        t.schedule(timer, 30, 30)
-
-        val proc = Random().nextInt(60) + 30
-
-        dynamicArcView2.addSeries(SeriesItem.Builder(Color.argb(255, 218, 218, 218))
-                .setRange(0f, 100f, 0f)
-                .setInterpolator(AccelerateInterpolator())
-                .build())
-
-        dynamicArcView2.addSeries(SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
-                .setRange(0f, 100f, 100f)
-                .setInitialVisibility(false)
-                .setLineWidth(32f)
-                .build())
-
-        //Create data series track
-        val seriesItem1 = SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
-                .setRange(0f, 100f, 0f)
-                .setLineWidth(32f)
-                .build()
-
+    private fun setupInitDynamicSeriesIndex(): Int {
         val seriesItem2 = SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundSeaBlue))
                 .setRange(0f, 100f, 0f)
                 .setLineWidth(32f)
                 .build()
 
-        val series1Index2 = dynamicArcView2.addSeries(seriesItem2)
+        return dynamicArcView2.addSeries(seriesItem2)
+    }
 
-        dynamicArcView2.addEvent(DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
-                .setDelay(0)
-                .setDuration(600)
-                .build())
+    private fun dynamicOptimizingEventStart() {
+        bottom.text = ""
+        top.text = ""
+        textview_ramsize.text = "Optimizing..."
+    }
 
+    private fun dynamicOptimzingEventEnd() {
+        mActivity.setupShowAdsInterstitial()
+        bottom.text = "Found"
+        top.text = "Storage"
+        tv_precentage_ram.text = (Random().nextInt(40) + 20).toString() + "%"
+    }
 
-        dynamicArcView2.addEvent(DecoEvent.Builder(proc.toFloat()).setIndex(series1Index2).setDelay(2000).setListener(object : DecoEvent.ExecuteEventListener {
-            override fun onEventStart(decoEvent: DecoEvent) {}
+    private fun dynamicStartUpEventEnd(timerCounting : Timer, TimerTaskCounting: TimerTask) {
+        timerCounting.cancel()
+        TimerTaskCounting.cancel()
+        timerCounting.purge()
 
-            override fun onEventEnd(decoEvent: DecoEvent) {
+        textview_ramsize.text = "${getUsedMemorySize()} MB"
 
-                t.cancel()
-                (timer as TimerTask).cancel()
-                t.purge()
+        if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "0") {
+            textview_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
+        }
 
-                textview_ramsize.text = "${getUsedMemorySize()} MB"
-
-                if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "0") {
-                    textview_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
-                }
-
-                val t = Timer()
-                val t2 = Timer()
-
+        val timerCounting2 = Timer()
+        val timerTask2 = object : TimerTask() {
+            override fun run() {
                 try {
-
-                    timer2 = object : TimerTask() {
-                        override fun run() {
-                            try {
-                                mActivity.runOnUiThread {
-                                    textview_ramsize.text = "${getUsedMemorySize()} MB"
-                                    if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "0") {
-                                        textview_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
-                                    }
-                                    t2.cancel()
-                                    timer2?.cancel()
-                                    t2.purge()
-                                }
-                            } catch (e: Exception) {
-                            }
+                    mActivity.runOnUiThread {
+                        textview_ramsize.text = "${getUsedMemorySize()} MB"
+                        if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "0") {
+                            textview_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
                         }
+                        timerCounting2.cancel()
+//                        timerTask2.cancel()
+                        timerCounting2.purge()
                     }
                 } catch (e: Exception) {
                 }
-
-                t2.schedule(timer2, 100, 100)
-
             }
-        }).build())
+        }
 
-        y = Random().nextInt(50) + 15
-
-        tv_precentage_proceses.text = y.toString() + ""
-        totalram.text = getTotalRam()
-        usedram.text = "${getUsedMemorySize()} MB/ "
-        appsfreed.text = getTotalRam()
-        appsused.text = (getUsedMemorySize() - x.toLong() - 30).toString() + " MB/ "
-
+        timerCounting2.schedule(timerTask2, 100, 100)
     }
 
     private fun getTotalRam(): String {
@@ -335,12 +309,12 @@ class ChargeBoosterFragment : BaseFragment() {
         editor.putString(SHARED_PREF_VALUE, (getUsedMemorySize() - x).toString() + " MB")
         editor.apply()
 
+        x = Random().nextInt(100) + 30
+        val proc = Random().nextInt(10) + 5
+
         scanning.visibility = View.INVISIBLE
         optbutton.visibility = View.VISIBLE
         setDoneOptimizeButton(optbutton, R.string.button_optimized)
-
-        x = Random().nextInt(100) + 30
-        val proc = Random().nextInt(10) + 5
 
         totalram.text = getTotalRam()
         usedram.text = (getUsedMemorySize() - x).toString() + " MB/ "
