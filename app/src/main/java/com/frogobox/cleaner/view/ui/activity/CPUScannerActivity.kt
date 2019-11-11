@@ -106,7 +106,7 @@ class CPUScannerActivity : BaseActivity() {
                 add("Closes System Services like Bluetooth,Screen Rotation,Sync etc.", 6)
                 remove(0)
 
-                content.startRippleAnimation()
+                rippleBackground.startRippleAnimation()
                 heart.setImageResource(0)
                 heart.setBackgroundResource(0)
                 cpu.setImageResource(R.drawable.circle_line_green)
@@ -126,7 +126,7 @@ class CPUScannerActivity : BaseActivity() {
                     }
 
                     override fun onAnimationEnd(animation: Animator) {
-                        content.stopRippleAnimation()
+                        rippleBackground.stopRippleAnimation()
                         setupShowAdsInterstitial()
                         Handler().postDelayed({ finish() }, 1000)
                     }
