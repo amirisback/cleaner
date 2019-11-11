@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.ui.activity
+package com.frogobox.cleaner.view.ui.activity.notshow
 
 import android.Manifest
 import android.app.Activity
@@ -23,7 +23,6 @@ import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_BUTTON_2
 import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_BUTTON_3
 import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_BUTTON_4
 import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_WASEEMBEST
-import com.frogobox.cleaner.view.ui.activity.batterysaver.NormalModeBatterySaverActivity
 import kotlinx.android.synthetic.main.activity_powersaving_main.*
 import java.util.*
 

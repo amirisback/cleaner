@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.batterysaver.PowerSavingBatterySaverActivity"
+            android:name="com.frogobox.cleaner.view.ui.activity.notshow.PowerSavingBatterySaverActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
@@ -43,23 +43,23 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.batterysaver.UltraBaterrySaverActivity"
+            android:name="com.frogobox.cleaner.view.ui.activity.notshow.UltraBaterrySaverActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.BatterySaverBlackActivity"
+            android:name="com.frogobox.cleaner.view.ui.activity.notshow.BatterySaverBlackActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.batterysaver.NormalModeBatterySaverActivity"
+            android:name="com.frogobox.cleaner.view.ui.activity.notshow.NormalModeBatterySaverActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.PowerSavingComplitionActivity"
+            android:name="com.frogobox.cleaner.view.ui.activity.notshow.PowerSavingComplitionActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.ApplyingUltraActivity"
+            android:name="com.frogobox.cleaner.view.ui.activity.notshow.ApplyingUltraActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
@@ -71,7 +71,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.PickAppsActivity"
+            android:name="com.frogobox.cleaner.view.ui.activity.notshow.PickAppsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Transparent" />
 

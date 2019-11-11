@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.ui.activity
+package com.frogobox.cleaner.view.ui.activity.notshow
 
 
 import android.content.Context

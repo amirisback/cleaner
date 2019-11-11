@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.ui.activity.batterysaver
+package com.frogobox.cleaner.view.ui.activity.notshow
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -12,7 +12,6 @@ import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseActivity
 import com.frogobox.cleaner.model.PowerItem
 import com.frogobox.cleaner.utils.Constant
-import com.frogobox.cleaner.view.ui.activity.PowerSavingComplitionActivity
 import com.frogobox.cleaner.view.adapter.PowerViewAdapter
 
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
