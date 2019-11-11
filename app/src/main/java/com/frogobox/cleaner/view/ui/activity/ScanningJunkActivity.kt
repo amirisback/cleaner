@@ -148,7 +148,6 @@ class ScanningJunkActivity : BaseActivity() {
             anim.addListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator) {
                     scanning.text = "Cleared " + intent.extras?.getString(Constant.Variable.SHARED_PREF_JUNK) + " MB"
-                    scanning.setTextColor(getColorRes(R.color.colorTextWhite))
                 }
                 override fun onAnimationEnd(animation: Animator) { setupFinishCleaningJunk() }
                 override fun onAnimationCancel(animation: Animator) {}

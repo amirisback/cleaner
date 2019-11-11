@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.content_item_apps.view.*
 class JunkAppsViewAdapter(private val apps: List<Apps>) : RecyclerView.Adapter<JunkAppsViewAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.content_item_apps, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.content_item_junk_apps, parent, false)
         return MyViewHolder(itemView)
     }
 
