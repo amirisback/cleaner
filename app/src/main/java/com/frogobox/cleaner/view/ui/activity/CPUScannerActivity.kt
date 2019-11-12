@@ -5,7 +5,6 @@ import android.animation.AnimatorInflater
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.os.Handler
-import android.view.View
 import android.view.animation.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.cleaner.R
@@ -69,14 +68,14 @@ class CPUScannerActivity : BaseActivity() {
 
     private fun setupContentAdapter(adapter: ScanCpuAppsViewAdapter) {
         Handler().postDelayed({ add(adapter, 0) }, 0)
-        Handler().postDelayed({ changeAppsItem(adapter,1) }, 900)
-        Handler().postDelayed({ changeAppsItem(adapter,2) }, 1800)
-        Handler().postDelayed({ changeAppsItem(adapter,3) }, 2700)
-        Handler().postDelayed({ changeAppsItem(adapter,4) }, 3700)
-        Handler().postDelayed({ changeAppsItem(adapter,5) }, 4400)
+        Handler().postDelayed({ changeAppsItem(adapter, 1) }, 900)
+        Handler().postDelayed({ changeAppsItem(adapter, 2) }, 1800)
+        Handler().postDelayed({ changeAppsItem(adapter, 3) }, 2700)
+        Handler().postDelayed({ changeAppsItem(adapter, 4) }, 3700)
+        Handler().postDelayed({ changeAppsItem(adapter, 5) }, 4400)
 
         Handler().postDelayed({
-            changeAppsItem(adapter,6)
+            changeAppsItem(adapter, 6)
 
             rippleBackground.startRippleAnimation()
             heart.setImageResource(0)
@@ -89,7 +88,6 @@ class CPUScannerActivity : BaseActivity() {
             anim.duration = 3000
             anim.start()
 
-            rel.visibility = View.GONE
             cpucooler.text = "Cooled CPU to 25.3°C"
             anim.addListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator) {
@@ -110,7 +108,7 @@ class CPUScannerActivity : BaseActivity() {
         }, 5500)
     }
 
-    private fun changeAppsItem(adapter: ScanCpuAppsViewAdapter, position: Int){
+    private fun changeAppsItem(adapter: ScanCpuAppsViewAdapter, position: Int) {
         remove(adapter)
         add(adapter, position)
     }

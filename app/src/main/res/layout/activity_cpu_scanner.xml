@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    android:orientation="vertical"
-    android:weightSum="10">
+    android:background="@color/colorPrimaryDark">
 
+    <!--  Animation Image -->
     <RelativeLayout
+        android:id="@+id/rel"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_weight="6">
+        android:layout_height="match_parent"
+        android:layout_above="@id/cpucooler">
 
         <ImageView
             android:id="@+id/cpu"
@@ -34,7 +33,7 @@
                 android:id="@+id/centerImage"
                 android:layout_width="@dimen/_90sdp"
                 android:layout_height="@dimen/_90sdp"
-                android:layout_centerInParent="true"/>
+                android:layout_centerInParent="true" />
 
         </com.skyfishjy.library.RippleBackground>
 
@@ -47,51 +46,30 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/cpucooler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/recycler_view"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/dimen_big_16dp"
+        android:text="Cooling CPU "
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/colorPrimaryText" />
+
+    <ImageView
+        android:id="@+id/heart"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.5">
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="-700dp"
+        android:src="@drawable/img_loading_heartbeat" />
 
-        <TextView
-            android:id="@+id/cpucooler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Cooling CPU "
-            android:textAppearance="?android:textAppearanceLarge"
-            android:textColor="@color/colorTextWhite" />
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/rel"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2.5">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:scrollbars="none" />
 
-        <!--<ImageView-->
-        <!--android:src="@drawable/back_cpu_sca"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" />-->
-        <ImageView
-            android:id="@+id/heart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="-700dp"
-            android:paddingBottom="@dimen/_15sdp"
-            android:src="@drawable/img_loading_heartbeat" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:foregroundGravity="center"
-            android:scrollbars="vertical" />
-
-
-
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

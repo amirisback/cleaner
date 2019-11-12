@@ -48,5 +48,6 @@
     <dimen name="dimen_elevation_2dp">2dp</dimen>
     <dimen name="show_permission_padding">20dp</dimen>
     <dimen name="dimen_menu_category_100dp">100dp</dimen>
+    <dimen name="dimen_app_list">72dp</dimen>
 
 </resources>

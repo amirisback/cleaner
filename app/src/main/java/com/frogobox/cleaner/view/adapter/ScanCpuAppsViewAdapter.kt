@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.model.Apps
-import kotlinx.android.synthetic.main.content_item_apps.view.*
+import kotlinx.android.synthetic.main.content_item_cpu_cooler_doing.view.*
 
 /**
  * Created by Frogobox Software Industries 2/25/2017.
@@ -17,16 +17,13 @@ class ScanCpuAppsViewAdapter(private val apps: List<Apps>) :
         RecyclerView.Adapter<ScanCpuAppsViewAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.content_item_apps, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.content_item_cpu_cooler_doing, parent, false)
         return MyViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val (_, image) = apps[position]
-        holder.size.text = ""
         holder.image.setImageDrawable(image)
-        holder.viewLine.visibility = View.GONE
-
     }
 
     override fun getItemCount(): Int {
@@ -34,8 +31,6 @@ class ScanCpuAppsViewAdapter(private val apps: List<Apps>) :
     }
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val size = view.apptext
         val image = view.appimage
-        val viewLine = view.lineScale
     }
 }

@@ -22,7 +22,6 @@ class CPUCoolerViewAdapter(private val apps: List<Apps>)
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val (size, image) = apps[position]
-        holder.size.text = size
         holder.image.setImageDrawable(image)
     }
 
@@ -31,7 +30,6 @@ class CPUCoolerViewAdapter(private val apps: List<Apps>)
     }
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val size = view.apptext
         val image = view.appimage
     }
 }

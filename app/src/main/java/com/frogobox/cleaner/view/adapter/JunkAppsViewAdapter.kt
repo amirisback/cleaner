@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.model.Apps
-import kotlinx.android.synthetic.main.content_item_apps.view.*
+import kotlinx.android.synthetic.main.content_item_junk_apps.view.*
 
 /**
  * Created by Frogobox Software Industries 2/25/2017.
