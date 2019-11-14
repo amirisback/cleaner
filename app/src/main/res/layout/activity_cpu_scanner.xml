@@ -17,13 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/_30sdp"
-            android:src="@drawable/img_cpu" />
+            android:src="@drawable/ic_scan_temp_cpu" />
 
         <com.skyfishjy.library.RippleBackground
             android:id="@+id/rippleBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:rb_color="#24D149"
+            app:rb_color="@color/colorIcTaskDone"
             app:rb_duration="3000"
             app:rb_radius="22dp"
             app:rb_rippleAmount="4"
@@ -33,7 +33,8 @@
                 android:id="@+id/centerImage"
                 android:layout_width="@dimen/_90sdp"
                 android:layout_height="@dimen/_90sdp"
-                android:layout_centerInParent="true" />
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_task_done_main"/>
 
         </com.skyfishjy.library.RippleBackground>
 

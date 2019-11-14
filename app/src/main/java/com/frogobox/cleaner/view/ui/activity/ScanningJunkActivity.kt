@@ -124,8 +124,8 @@ class ScanningJunkActivity : BaseActivity() {
             removeArrayApps(apps, adapter, 0)
 
             rippleBackground.startRippleAnimation()
-            front.setImageResource(R.drawable.img_scan_task_complete)
-            back.setImageResource(R.drawable.circle_line_green)
+            front.setImageResource(R.drawable.ic_task_done_background)
+            back.setImageResource(R.drawable.ic_task_done_main)
 
             spin_kit.setIndeterminateDrawable(ThreeBounce())
             spin_kit.visibility = View.GONE

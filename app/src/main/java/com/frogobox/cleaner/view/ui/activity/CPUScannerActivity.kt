@@ -80,8 +80,8 @@ class CPUScannerActivity : BaseActivity() {
             rippleBackground.startRippleAnimation()
             heart.setImageResource(0)
             heart.setBackgroundResource(0)
-            cpu.setImageResource(R.drawable.circle_line_green)
-            scann.setImageResource(R.drawable.img_scan_task_complete)
+            cpu.setImageResource(R.drawable.ic_task_done_background)
+            scann.setImageResource(R.drawable.ic_task_done_main)
 
             val anim = AnimatorInflater.loadAnimator(applicationContext, R.animator.flipping) as ObjectAnimator
             anim.target = scann

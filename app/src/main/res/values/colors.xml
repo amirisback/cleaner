@@ -11,6 +11,7 @@
     <color name="colorBaseGreen">#24D149</color>
     <color name="colorBaseDarkGrey">#808080</color>
     <color name="colorBaseDarkBlackBlue">#27282D</color>
+    <color name="colorBaseGreenTosca">#3DB39E</color>
     <color name="colorBase">#272A2D</color>
 
     <color name="colorPrimaryBackground">#E9E7E7</color>
@@ -38,5 +39,7 @@
     <color name="colorBackgroundDarkBlackBlue">@color/colorBaseDarkBlackBlue</color>
     <color name="colorBackgroundSeaBlue">@color/colorBaseSeaBlue</color>
     <color name="colorIndicatorTablayout">@color/colorBaseWhite</color>
+
+    <color name="colorIcTaskDone">@color/colorBaseGreenTosca</color>
 
 </resources>
