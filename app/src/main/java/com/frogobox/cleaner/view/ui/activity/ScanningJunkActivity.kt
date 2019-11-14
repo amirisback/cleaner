@@ -78,7 +78,7 @@ class ScanningJunkActivity : BaseActivity() {
                 startAnim(check)
             }
         })
-        front.startAnimation(rotate)
+        iv_scanning_main.startAnimation(rotate)
 
         timer.scheduleAtFixedRate(object : TimerTask() {
             override fun run() {
@@ -124,8 +124,8 @@ class ScanningJunkActivity : BaseActivity() {
             removeArrayApps(apps, adapter, 0)
 
             rippleBackground.startRippleAnimation()
-            front.setImageResource(R.drawable.ic_task_done_background)
-            back.setImageResource(R.drawable.ic_task_done_main)
+            iv_scanning_main.setImageResource(R.drawable.ic_task_done_background)
+            ic_scanning_background.setImageResource(R.drawable.ic_task_done_main)
 
             spin_kit.setIndeterminateDrawable(ThreeBounce())
             spin_kit.visibility = View.GONE
@@ -141,7 +141,7 @@ class ScanningJunkActivity : BaseActivity() {
             }
 
             val anim = AnimatorInflater.loadAnimator(this, R.animator.flipping) as ObjectAnimator
-            anim.target = front
+            anim.target = iv_scanning_main
             anim.duration = 3000
             anim.start()
 

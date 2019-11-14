@@ -12,17 +12,11 @@
         android:layout_height="match_parent"
         android:layout_above="@id/cpucooler">
 
-        <ImageView
-            android:id="@+id/cpu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/_30sdp"
-            android:src="@drawable/ic_scan_temp_cpu" />
-
         <com.skyfishjy.library.RippleBackground
             android:id="@+id/rippleBackground"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/dimen_image_scan"
+            android:layout_height="@dimen/dimen_image_scan"
+            android:layout_centerInParent="true"
             app:rb_color="@color/colorIcTaskDone"
             app:rb_duration="3000"
             app:rb_radius="22dp"
@@ -31,18 +25,18 @@
 
             <ImageView
                 android:id="@+id/centerImage"
-                android:layout_width="@dimen/_90sdp"
-                android:layout_height="@dimen/_90sdp"
+                android:layout_width="@dimen/dimen_center_image_ripple_background"
+                android:layout_height="@dimen/dimen_center_image_ripple_background"
                 android:layout_centerInParent="true"
-                android:src="@drawable/ic_task_done_main"/>
+                android:src="@drawable/ic_scan_temp_cpu" />
 
         </com.skyfishjy.library.RippleBackground>
 
         <ImageView
-            android:id="@+id/scann"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/_30sdp"
+            android:id="@+id/iv_scanning"
+            android:layout_width="@dimen/dimen_image_scan"
+            android:layout_height="@dimen/dimen_image_scan"
+            android:layout_centerInParent="true"
             android:src="@drawable/img_scan_scanner" />
 
     </RelativeLayout>
@@ -58,18 +52,10 @@
         android:textAppearance="?android:textAppearanceLarge"
         android:textColor="@color/colorPrimaryText" />
 
-    <ImageView
-        android:id="@+id/heart"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="-700dp"
-        android:src="@drawable/img_loading_heartbeat" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:scrollbars="none" />
 

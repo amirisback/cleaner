@@ -49,5 +49,7 @@
     <dimen name="show_permission_padding">20dp</dimen>
     <dimen name="dimen_menu_category_100dp">100dp</dimen>
     <dimen name="dimen_app_list">72dp</dimen>
+    <dimen name="dimen_center_image_ripple_background">186dp</dimen>
+    <dimen name="dimen_image_scan">360dp</dimen>
 
 </resources>

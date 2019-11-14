@@ -14,7 +14,7 @@
         android:padding="@dimen/_10sdp">
 
         <ImageView
-            android:id="@+id/back"
+            android:id="@+id/ic_scanning_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/ic_scanjunk_back" />
@@ -23,7 +23,8 @@
             android:id="@+id/rippleBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:rb_color="#24D149"
+            android:layout_centerInParent="true"
+            app:rb_color="@color/colorIcTaskDone"
             app:rb_duration="3000"
             app:rb_radius="22dp"
             app:rb_rippleAmount="4"
@@ -31,11 +32,10 @@
 
             <ImageView
                 android:id="@+id/centerImage"
-                android:layout_width="@dimen/_90sdp"
-                android:layout_height="@dimen/_90sdp"
+                android:layout_width="@dimen/dimen_center_image_ripple_background"
+                android:layout_height="@dimen/dimen_center_image_ripple_background"
                 android:layout_centerInParent="true"
-                android:clickable="true"
-                android:focusable="true" />
+                android:src="@drawable/ic_task_done_main" />
 
         </com.skyfishjy.library.RippleBackground>
 
@@ -94,7 +94,7 @@
             app:indicatorName="BallScaleMultipleIndicator" />
 
         <ImageView
-            android:id="@+id/front"
+            android:id="@+id/iv_scanning_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/img_scan_needle" />

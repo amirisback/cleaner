@@ -5,6 +5,7 @@ import android.animation.AnimatorInflater
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import android.view.animation.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.cleaner.R
@@ -31,25 +32,8 @@ class CPUScannerActivity : BaseActivity() {
         rotate.duration = 1500
         rotate.repeatCount = 3
         rotate.interpolator = LinearInterpolator()
-        scann.startAnimation(rotate)
+        iv_scanning.startAnimation(rotate)
 
-        val animation = TranslateAnimation(0.0f, 1000.0f, 0.0f, 0.0f)          //  new TranslateAnimation(xFrom,xTo, yFrom,yTo)
-        animation.duration = 5000  // animation duration
-        animation.repeatCount = 0
-        animation.interpolator = LinearInterpolator() // animation repeat count
-        animation.fillAfter = true
-        heart.startAnimation(animation)
-
-        animation.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(animation: Animation) {}
-
-            override fun onAnimationEnd(animation: Animation) {
-                heart.setImageResource(0)
-                heart.setBackgroundResource(0)
-            }
-
-            override fun onAnimationRepeat(animation: Animation) {}
-        })
     }
 
     private fun setupRecyclerViewApps() {
@@ -68,44 +52,26 @@ class CPUScannerActivity : BaseActivity() {
 
     private fun setupContentAdapter(adapter: ScanCpuAppsViewAdapter) {
         Handler().postDelayed({ add(adapter, 0) }, 0)
-        Handler().postDelayed({ changeAppsItem(adapter, 1) }, 900)
-        Handler().postDelayed({ changeAppsItem(adapter, 2) }, 1800)
-        Handler().postDelayed({ changeAppsItem(adapter, 3) }, 2700)
-        Handler().postDelayed({ changeAppsItem(adapter, 4) }, 3700)
-        Handler().postDelayed({ changeAppsItem(adapter, 5) }, 4400)
+        var timeDelay = 900
+        for (i in 1..5) {
+            Handler().postDelayed({ changeAppsItem(adapter, i) }, timeDelay.toLong())
+            timeDelay += 850
+        }
 
         Handler().postDelayed({
+            iv_scanning.visibility = View.GONE
             changeAppsItem(adapter, 6)
-
             rippleBackground.startRippleAnimation()
-            heart.setImageResource(0)
-            heart.setBackgroundResource(0)
-            cpu.setImageResource(R.drawable.ic_task_done_background)
-            scann.setImageResource(R.drawable.ic_task_done_main)
-
-            val anim = AnimatorInflater.loadAnimator(applicationContext, R.animator.flipping) as ObjectAnimator
-            anim.target = scann
-            anim.duration = 3000
-            anim.start()
-
+            centerImage.setImageResource(R.drawable.ic_task_done_main)
             cpucooler.text = "Cooled CPU to 25.3°C"
-            anim.addListener(object : Animator.AnimatorListener {
-                override fun onAnimationStart(animation: Animator) {
-                    heart.setImageResource(0)
-                    heart.setBackgroundResource(0)
-                }
-
-                override fun onAnimationEnd(animation: Animator) {
-                    rippleBackground.stopRippleAnimation()
-                    setupShowAdsInterstitial()
-                    Handler().postDelayed({ finish() }, 1000)
-                }
-
-                override fun onAnimationCancel(animation: Animator) {}
-                override fun onAnimationRepeat(animation: Animator) {}
-
-            })
+            Handler().postDelayed({ finishCondition() }, 3000)
         }, 5500)
+    }
+
+    private fun finishCondition(){
+        rippleBackground.stopRippleAnimation()
+        setupShowAdsInterstitial()
+        Handler().postDelayed({ finish() }, 1000)
     }
 
     private fun changeAppsItem(adapter: ScanCpuAppsViewAdapter, position: Int) {

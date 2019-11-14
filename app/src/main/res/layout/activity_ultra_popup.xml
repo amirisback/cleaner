@@ -67,13 +67,17 @@
             android:textColor="@color/colorTextWhite"
             android:textSize="@dimen/_16sdp" />
 
-        <ImageView
+        <Button
             android:id="@+id/applied"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.5"
             android:padding="@dimen/_8sdp"
-            android:src="@drawable/bg_button_apply" />
+            android:text="@string/button_apply"
+            android:background="@drawable/bg_border_button_blue"
+            android:textColor="@color/colorTextWhite"
+            android:layout_marginStart="64dp"
+            android:layout_marginEnd="64dp"/>
 
     </LinearLayout>
 
