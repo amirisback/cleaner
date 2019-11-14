@@ -62,7 +62,7 @@
     <RelativeLayout
         android:id="@+id/layout_footer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dimen_height_footer"
         android:layout_alignParentBottom="true">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -71,7 +71,6 @@
             android:layout_height="wrap_content"
             android:foregroundGravity="center"
             android:clipToPadding="false"
-            android:paddingEnd="@dimen/dimen_big_16dp"
             android:scrollbars="horizontal" />
 
         <TextView

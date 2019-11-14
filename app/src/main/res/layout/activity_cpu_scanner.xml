@@ -45,18 +45,35 @@
         android:id="@+id/cpucooler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/recycler_view"
+        android:layout_above="@id/layout_footer"
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/dimen_big_16dp"
         android:text="Cooling CPU "
         android:textAppearance="?android:textAppearanceLarge"
         android:textColor="@color/colorPrimaryText" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+    <RelativeLayout
+        android:id="@+id/layout_footer"
         android:layout_alignParentBottom="true"
-        android:scrollbars="none" />
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_height_footer">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
 
 </RelativeLayout>

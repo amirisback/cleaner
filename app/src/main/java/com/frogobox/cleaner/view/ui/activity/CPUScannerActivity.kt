@@ -1,12 +1,12 @@
 package com.frogobox.cleaner.view.ui.activity
 
-import android.animation.Animator
-import android.animation.AnimatorInflater
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import android.view.animation.*
+import android.view.animation.Animation
+import android.view.animation.LinearInterpolator
+import android.view.animation.OvershootInterpolator
+import android.view.animation.RotateAnimation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseActivity
@@ -68,7 +68,7 @@ class CPUScannerActivity : BaseActivity() {
         }, 5500)
     }
 
-    private fun finishCondition(){
+    private fun finishCondition() {
         rippleBackground.stopRippleAnimation()
         setupShowAdsInterstitial()
         Handler().postDelayed({ finish() }, 1000)
