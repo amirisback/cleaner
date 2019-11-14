@@ -111,7 +111,7 @@ abstract class BaseActivity : AppCompatActivity() {
     protected fun showCustomToast(message: String){
         val layout = LayoutInflater.from(this).inflate(R.layout.toast_apps, null)
         val text = layout.findViewById<TextView>(R.id.textView1)
-        text.setText(message)
+        text.text = message
         val toast = Toast(this)
         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 70)
         toast.duration = Toast.LENGTH_LONG

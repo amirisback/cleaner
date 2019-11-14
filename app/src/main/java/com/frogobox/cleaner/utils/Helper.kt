@@ -23,8 +23,4 @@ import java.util.*
  * com.frogobox.cleaner.utils
  *
  */
-class Helper : BaseHelper() {
-
-
-
-}
+class Helper : BaseHelper()

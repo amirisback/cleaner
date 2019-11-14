@@ -48,7 +48,7 @@ class AdmobHelper {
                     mInterstitialAd.loadAd(AdRequest.Builder().build())
                 }
                 override fun onAdLoaded() {
-                    Log.d("Interstitial Load State", "loaded");
+                    Log.d("Interstitial Load State", "loaded")
                 }
                 override fun onAdFailedToLoad(i: Int) {
                     Log.w("Interstitial Load State", "onAdFailedToLoad:" + i)
