@@ -8,9 +8,9 @@
         android:id="@+id/appimage"
         android:elevation="@dimen/dimen_small_4dp"
         android:layout_marginTop="@dimen/dimen_big_16dp"
-        android:layout_marginStart="@dimen/dimen_big_16dp"
+        android:layout_marginEnd="@dimen/dimen_big_16dp"
         android:layout_marginBottom="@dimen/dimen_big_16dp"
-        android:padding="@dimen/dimen_medium_8dp"
+        android:padding="@dimen/dimen_small_4dp"
         android:layout_width="@dimen/dimen_app_list"
         android:layout_height="@dimen/dimen_app_list"  />
 
