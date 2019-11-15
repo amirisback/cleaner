@@ -12,6 +12,13 @@
         android:layout_height="match_parent"
         android:layout_above="@id/cpucooler">
 
+        <ImageView
+            android:id="@+id/iv_scanning_background"
+            android:layout_width="182dp"
+            android:layout_height="182dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_scan_temp_cpu" />
+
         <com.skyfishjy.library.RippleBackground
             android:id="@+id/rippleBackground"
             android:layout_width="@dimen/dimen_image_scan"
@@ -27,13 +34,12 @@
                 android:id="@+id/centerImage"
                 android:layout_width="@dimen/dimen_center_image_ripple_background"
                 android:layout_height="@dimen/dimen_center_image_ripple_background"
-                android:layout_centerInParent="true"
-                android:src="@drawable/ic_scan_temp_cpu" />
+                android:layout_centerInParent="true"/>
 
         </com.skyfishjy.library.RippleBackground>
 
         <ImageView
-            android:id="@+id/iv_scanning"
+            android:id="@+id/iv_scanning_main"
             android:layout_width="@dimen/dimen_image_scan"
             android:layout_height="@dimen/dimen_image_scan"
             android:layout_centerInParent="true"

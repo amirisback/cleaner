@@ -124,8 +124,9 @@ class ScanningJunkActivity : BaseActivity() {
             removeArrayApps(apps, adapter, 0)
 
             rippleBackground.startRippleAnimation()
-            iv_scanning_main.setImageResource(R.drawable.ic_task_done_background)
-            ic_scanning_background.setImageResource(R.drawable.ic_task_done_main)
+            iv_scanning_background.visibility = View.INVISIBLE
+            iv_scanning_main.visibility = View.INVISIBLE
+            centerImage.setImageResource(R.drawable.ic_task_done_main)
 
             spin_kit.setIndeterminateDrawable(ThreeBounce())
             spin_kit.visibility = View.GONE
@@ -141,13 +142,15 @@ class ScanningJunkActivity : BaseActivity() {
             }
 
             val anim = AnimatorInflater.loadAnimator(this, R.animator.flipping) as ObjectAnimator
-            anim.target = iv_scanning_main
+            anim.target = centerImage
             anim.duration = 3000
             anim.start()
 
             anim.addListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator) {
-                    scanning.text = "Cleared " + intent.extras?.getString(Constant.Variable.SHARED_PREF_JUNK) + " MB"
+
+                    val cache = intent.extras?.getString(Constant.Variable.SHARED_PREF_JUNK)
+                    scanning.text = "Cleared $cache MB"
                 }
                 override fun onAnimationEnd(animation: Animator) { setupFinishCleaningJunk() }
                 override fun onAnimationCancel(animation: Animator) {}

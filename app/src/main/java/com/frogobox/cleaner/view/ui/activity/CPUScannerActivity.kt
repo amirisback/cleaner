@@ -1,5 +1,8 @@
 package com.frogobox.cleaner.view.ui.activity
 
+import android.animation.Animator
+import android.animation.AnimatorInflater
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -32,7 +35,7 @@ class CPUScannerActivity : BaseActivity() {
         rotate.duration = 1500
         rotate.repeatCount = 3
         rotate.interpolator = LinearInterpolator()
-        iv_scanning.startAnimation(rotate)
+        iv_scanning_main.startAnimation(rotate)
 
     }
 
@@ -59,12 +62,28 @@ class CPUScannerActivity : BaseActivity() {
         }
 
         Handler().postDelayed({
-            iv_scanning.visibility = View.GONE
+            iv_scanning_main.visibility = View.GONE
+            iv_scanning_background.visibility = View.GONE
+            centerImage.setImageResource(R.drawable.ic_task_done_main)
             changeAppsItem(adapter, 6)
             rippleBackground.startRippleAnimation()
-            centerImage.setImageResource(R.drawable.ic_task_done_main)
-            cpucooler.text = "Cooled CPU to 25.3°C"
-            Handler().postDelayed({ finishCondition() }, 3000)
+
+
+
+            val anim = AnimatorInflater.loadAnimator(this, R.animator.flipping) as ObjectAnimator
+            anim.target = centerImage
+            anim.duration = 3000
+            anim.start()
+
+            anim.addListener(object : Animator.AnimatorListener {
+                override fun onAnimationStart(animation: Animator) {
+                    cpucooler.text = "Cooled CPU to 25.3°C"
+                }
+                override fun onAnimationEnd(animation: Animator) {finishCondition() }
+                override fun onAnimationCancel(animation: Animator) {}
+                override fun onAnimationRepeat(animation: Animator) {}
+            })
+
         }, 5500)
     }
 
