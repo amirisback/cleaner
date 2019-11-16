@@ -75,7 +75,7 @@ class ChargeBoosterFragment : BaseFragment() {
         val rotate = RotateAnimation(0f, 359f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
         rotate.duration = 5000
         rotate.interpolator = LinearInterpolator()
-        circularlines.startAnimation(rotate)
+        iv_back_line_speedo.startAnimation(rotate)
 
         setupInitDynamicView()
 
@@ -117,7 +117,7 @@ class ChargeBoosterFragment : BaseFragment() {
             override fun onAnimationRepeat(animation: Animation) {}
         })
 
-        waves.startAnimation(animation)
+        iv_waves.startAnimation(animation)
     }
 
     private fun setupCheckStartUp() {
@@ -128,7 +128,7 @@ class ChargeBoosterFragment : BaseFragment() {
                 try {
                     mActivity.runOnUiThread {
                         counter++
-                        textview_ramsize.text = counter.toString() + "MB"
+                        tv_ramsize.text = counter.toString() + "MB"
                     }
 
                 } catch (e: Exception) {
@@ -165,7 +165,7 @@ class ChargeBoosterFragment : BaseFragment() {
     private fun setupCheckOptimize() {
         if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "0") {
             setDoneOptimizeButton(optbutton, R.string.button_optimized)
-            textview_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
+            tv_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
         } else {
             setOptimizeButton(optbutton, R.string.button_optimize)
             tv_precentage_ram.text = (Random().nextInt(60) + 40).toString() + "%"
@@ -216,15 +216,15 @@ class ChargeBoosterFragment : BaseFragment() {
     }
 
     private fun dynamicOptimizingEventStart() {
-        bottom.text = ""
-        top.text = ""
-        textview_ramsize.text = "Optimizing..."
+        tv_found.text = ""
+        tv_storage.text = ""
+        tv_ramsize.text = "Optimizing..."
     }
 
     private fun dynamicOptimzingEventEnd() {
         mActivity.setupShowAdsInterstitial()
-        bottom.text = "Found"
-        top.text = "Storage"
+        tv_found.text = "Found"
+        tv_storage.text = "Storage"
         tv_precentage_ram.text = (Random().nextInt(40) + 20).toString() + "%"
     }
 
@@ -233,10 +233,10 @@ class ChargeBoosterFragment : BaseFragment() {
         TimerTaskCounting.cancel()
         timerCounting.purge()
 
-        textview_ramsize.text = "${getUsedMemorySize()} MB"
+        tv_ramsize.text = "${getUsedMemorySize()} MB"
 
         if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "0") {
-            textview_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
+            tv_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
         }
 
         val timerCounting2 = Timer()
@@ -244,9 +244,9 @@ class ChargeBoosterFragment : BaseFragment() {
             override fun run() {
                 try {
                     mActivity.runOnUiThread {
-                        textview_ramsize.text = "${getUsedMemorySize()} MB"
+                        tv_ramsize.text = "${getUsedMemorySize()} MB"
                         if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "0") {
-                            textview_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
+                            tv_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
                         }
                         timerCounting2.cancel()
 //                        timerTask2.cancel()
@@ -321,7 +321,7 @@ class ChargeBoosterFragment : BaseFragment() {
         appsfreed.text = getTotalRam()
         appsused.text = abs(getUsedMemorySize() - x.toLong() - 30).toString() + " MB/ "
         tv_precentage_proceses.text = (y - proc).toString()
-        textview_ramsize.text = (getUsedMemorySize() - x).toString() + " MB"
+        tv_ramsize.text = (getUsedMemorySize() - x).toString() + " MB"
     }
 
 }

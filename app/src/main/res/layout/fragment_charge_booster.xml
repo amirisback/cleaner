@@ -1,105 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_above="@id/layout_button"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@id/container_ram">
 
-        <LinearLayout
+        <!--        <ImageView-->
+        <!--            android:id="@+id/iv_back_speedo"-->
+        <!--            android:layout_width="350dp"-->
+        <!--            android:layout_height="350dp"-->
+        <!--            android:layout_centerInParent="true"-->
+        <!--            android:src="@drawable/bg_circle_speedo_meter" />-->
+
+        <ImageView
+            android:id="@+id/iv_back_line_speedo"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/circle_lines" />
+
+        <com.hookedonplay.decoviewlib.DecoView
+            android:id="@+id/dynamicArcView2"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_centerInParent="true" />
+
+        <ImageView
+            android:id="@+id/iv_waves"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5.5"
-            android:gravity="center">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="-700dp"
+            android:paddingTop="48dp"
+            android:src="@drawable/img_loading_running" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center">
+    </RelativeLayout>
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/circle_black" />
+    <LinearLayout
+        android:id="@+id/container_ram"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layout_button"
+        android:gravity="center|center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimen_big_16dp">
 
-                <ImageView
-                    android:id="@+id/waves"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="-700dp"
-                    android:paddingTop="@dimen/_20sdp"
-                    android:src="@drawable/img_loading_running" />
+        <TextView
+            android:id="@+id/tv_storage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Storage"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="#F22938" />
 
-                <ImageView
-                    android:id="@+id/circularlines"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
-                    android:padding="@dimen/_10sdp"
-                    android:src="@drawable/circle_lines" />
+        <TextView
+            android:id="@+id/tv_ramsize"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_big_16dp"
+            android:layout_marginEnd="@dimen/dimen_big_16dp"
+            android:textColor="@color/colorPrimaryText"
+            tools:text="@string/text_junk_residual" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
-                    android:gravity="center"
-                    android:padding="@dimen/_18sdp">
-
-                    <com.hookedonplay.decoviewlib.DecoView
-                        android:id="@+id/dynamicArcView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_40sdp"
-                    android:weightSum="3">
-
-                    <TextView
-                        android:id="@+id/top"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Storage"
-                        android:textAppearance="?android:textAppearanceLarge"
-                        android:textColor="#F22938" />
-
-                    <TextView
-                        android:id="@+id/textview_ramsize"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:textColor="@color/colorTextWhite"
-                        android:textSize="@dimen/_24sdp" />
-
-                    <TextView
-                        android:id="@+id/bottom"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Found"
-                        android:textAppearance="?android:textAppearanceLarge"
-                        android:textColor="@color/colorTextGreen" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Found"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@color/colorTextGreen" />
 
     </LinearLayout>
 
