@@ -300,9 +300,9 @@ class ChargeBoosterFragment : BaseFragment() {
     }
 
     private fun animationOptimizeStart() {
-        scanning.visibility = View.VISIBLE
+        tv_scanning.visibility = View.VISIBLE
         optbutton.visibility = View.INVISIBLE
-        scanning.text = "SCANNING..."
+        tv_scanning.text = "SCANNING..."
     }
 
     private fun animationOptimizeEnd() {
@@ -312,7 +312,7 @@ class ChargeBoosterFragment : BaseFragment() {
         x = Random().nextInt(100) + 30
         val proc = Random().nextInt(10) + 5
 
-        scanning.visibility = View.INVISIBLE
+        tv_scanning.visibility = View.INVISIBLE
         optbutton.visibility = View.VISIBLE
         setDoneOptimizeButton(optbutton, R.string.button_optimized)
 

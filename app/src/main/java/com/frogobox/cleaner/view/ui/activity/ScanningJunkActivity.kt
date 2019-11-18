@@ -7,7 +7,6 @@ import android.app.ActivityManager
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -63,14 +62,14 @@ class ScanningJunkActivity : BaseActivity() {
             override fun onAnimationEnd(animation: Animation) {
                 timer.cancel()
                 timer.purge()
-                scan1.hide()
-                scan2.hide()
-                scan3.hide()
-                scan4.hide()
-                scan5.hide()
-                scan6.hide()
+                iv_ball_indicator_1.hide()
+                iv_ball_indicator_2.hide()
+                iv_ball_indicator_3.hide()
+                iv_ball_indicator_4.hide()
+                iv_ball_indicator_5.hide()
+                iv_ball_indicator_6.hide()
 
-                files.text = ""
+                tv_files_data.text = ""
             }
 
             override fun onAnimationRepeat(animation: Animation) {
@@ -84,7 +83,7 @@ class ScanningJunkActivity : BaseActivity() {
             override fun run() {
                 runOnUiThread {
                     if (prog < packages.size) {
-                        files.text = "" + packages[prog].sourceDir
+                        tv_files_data.text = packages[prog].sourceDir
                         prog++
                     } else {
                         timer.cancel()
@@ -128,18 +127,11 @@ class ScanningJunkActivity : BaseActivity() {
             iv_scanning_main.visibility = View.INVISIBLE
             centerImage.setImageResource(R.drawable.ic_task_done_main)
 
-            spin_kit.setIndeterminateDrawable(ThreeBounce())
-            spin_kit.visibility = View.GONE
+            loading_indicator.setIndeterminateDrawable(ThreeBounce())
+            loading_indicator.visibility = View.GONE
 
-            scanning.setPadding(20, 0, 0, 0)
-
-            if (Build.VERSION.SDK_INT < 23) {
-                scanning.setTextAppearance(applicationContext, android.R.style.TextAppearance_Medium)
-                scanning.text = intent.extras?.getString(Constant.Variable.SHARED_PREF_JUNK) + " MB of Junk Files Are Cleared"
-            } else {
-                scanning.setTextAppearance(android.R.style.TextAppearance_Medium)
-                scanning.text = intent.extras?.getString(Constant.Variable.SHARED_PREF_JUNK) + " MB of Junk Files Are Cleared"
-            }
+            val sumJunk = intent.extras?.getString(Constant.Variable.SHARED_PREF_JUNK)
+            tv_scanning.text =   "$sumJunk MB of Junk Files Are Cleared"
 
             val anim = AnimatorInflater.loadAnimator(this, R.animator.flipping) as ObjectAnimator
             anim.target = centerImage
@@ -150,14 +142,14 @@ class ScanningJunkActivity : BaseActivity() {
                 override fun onAnimationStart(animation: Animator) {
 
                     val cache = intent.extras?.getString(Constant.Variable.SHARED_PREF_JUNK)
-                    scanning.text = "Cleared $cache MB"
+                    tv_scanning.text = "Cleared $cache MB"
                 }
                 override fun onAnimationEnd(animation: Animator) { setupFinishCleaningJunk() }
                 override fun onAnimationCancel(animation: Animator) {}
                 override fun onAnimationRepeat(animation: Animator) {}
             })
 
-            files.text = ""
+            tv_files_data.text = ""
         }, 8000)
     }
 
@@ -170,40 +162,40 @@ class ScanningJunkActivity : BaseActivity() {
     private fun startAnim(timePosition: Int) {
         when (timePosition) {
             1 -> {
-                scan1.show()
-                scan3.show()
-                scan5.show()
+                iv_ball_indicator_1.show()
+                iv_ball_indicator_3.show()
+                iv_ball_indicator_5.show()
 
-                scan2.hide()
-                scan4.hide()
-                scan6.hide()
+                iv_ball_indicator_2.hide()
+                iv_ball_indicator_4.hide()
+                iv_ball_indicator_6.hide()
             }
             2 -> {
-                scan2.show()
-                scan4.show()
-                scan6.show()
+                iv_ball_indicator_2.show()
+                iv_ball_indicator_4.show()
+                iv_ball_indicator_6.show()
 
-                scan1.hide()
-                scan3.hide()
-                scan5.hide()
+                iv_ball_indicator_1.hide()
+                iv_ball_indicator_3.hide()
+                iv_ball_indicator_5.hide()
             }
             3 -> {
-                scan2.show()
-                scan4.show()
-                scan6.show()
+                iv_ball_indicator_2.show()
+                iv_ball_indicator_4.show()
+                iv_ball_indicator_6.show()
 
-                scan1.show()
-                scan3.show()
-                scan5.show()
+                iv_ball_indicator_1.show()
+                iv_ball_indicator_3.show()
+                iv_ball_indicator_5.show()
             }
             4 -> {
-                scan2.show()
-                scan3.show()
-                scan5.show()
+                iv_ball_indicator_2.show()
+                iv_ball_indicator_3.show()
+                iv_ball_indicator_5.show()
 
-                scan1.show()
-                scan2.show()
-                scan6.show()
+                iv_ball_indicator_1.show()
+                iv_ball_indicator_2.show()
+                iv_ball_indicator_6.show()
             }
         }
     }

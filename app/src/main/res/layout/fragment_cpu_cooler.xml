@@ -69,10 +69,10 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipToPadding="false"
             android:foregroundGravity="center"
             android:paddingStart="@dimen/dimen_big_16dp"
-            android:clipToPadding="false"
-            android:scrollbars="horizontal" />
+            android:scrollbars="none" />
 
         <TextView
             android:id="@+id/nooverheating"

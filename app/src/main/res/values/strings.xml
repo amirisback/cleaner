@@ -27,5 +27,6 @@
     <string name="text_storage">Storage</string>
     <string name="text_found">Found</string>
     <string name="text_phone_junk_cleaned">Phone totally cleaned</string>
+    <string name="text_junk_scanning">Scanning</string>
 
 </resources>
