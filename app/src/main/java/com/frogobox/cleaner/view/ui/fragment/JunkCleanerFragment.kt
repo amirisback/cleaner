@@ -6,13 +6,11 @@ import android.content.Context
 import android.content.Context.ALARM_SERVICE
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseFragment
 import com.frogobox.cleaner.service.AlarmJunkBroadcastReceiver
@@ -67,15 +65,6 @@ class JunkCleanerFragment : BaseFragment() {
 
     }
 
-    private fun setupText(textView: TextView, text: String, color: Int) {
-        textView.text = text
-        textView.setTextColor(color)
-        if (!text.equals(getString(R.string.text_phone_junk_cleaned))) {
-            textView.setTypeface(null, Typeface.BOLD);
-        }
-
-    }
-
     private fun setupDoInClenerJunk() {
         baseStartActivity<ScanningJunkActivity, String>(SHARED_PREF_JUNK, alljunk.toString() + "")
         Handler().postDelayed({
@@ -87,7 +76,7 @@ class JunkCleanerFragment : BaseFragment() {
         }, 2000)
     }
 
-    private fun setupAlarmManager(){
+    private fun setupAlarmManager() {
         val intent = Intent(mActivity, AlarmJunkBroadcastReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(mActivity, 0,
                 intent, PendingIntent.FLAG_ONE_SHOT)
@@ -96,20 +85,17 @@ class JunkCleanerFragment : BaseFragment() {
     }
 
     private fun setupDirtyFromJunk() {
-        val colorText = mActivity.getColorRes(R.color.colorTextRed)
-
         val proc1 = Random().nextInt(50) + 5
         val proc2 = Random().nextInt(15) + 10
         val proc3 = Random().nextInt(30) + 15
         val proc4 = Random().nextInt(25) + 10
         alljunk = proc1 + proc2 + proc3 + proc4
 
-        val mainString = alljunk.toString() + _MB + " junk has been found"
+        val mainString = alljunk.toString() + _MB
         val cacheString = proc1.toString() + _MB
         val tempString = proc2.toString() + _MB
         val residueString = proc3.toString() + _MB
         val systemString = proc4.toString() + _MB
-
 
         setOptimizeButton(mainbutton, R.string.button_clean)
         iv_icon_junk.setImageResource(R.drawable.ic_junk_dirty)
@@ -118,11 +104,12 @@ class JunkCleanerFragment : BaseFragment() {
         residue.setBackgroundResource(R.drawable.bg_circle_border_red)
         system.setBackgroundResource(R.drawable.bg_circle_border_red)
 
-        setupText(tv_junk_condition_1, mainString, colorText)
-        setupText(cachetext, cacheString, colorText)
-        setupText(temptext, tempString, colorText)
-        setupText(residuetext, residueString, colorText)
-        setupText(systemtext, systemString, colorText)
+        setupTextValueColor(tv_state_condition_1, mainString, colorTextRed())
+        setupTextValueColor(tv_state_condition_2, getString(R.string.text_junk_condition_2_dirty), colorTextRed())
+        setupTextValueColor(cachetext, cacheString, colorTextRed())
+        setupTextValueColor(temptext, tempString, colorTextRed())
+        setupTextValueColor(residuetext, residueString, colorTextRed())
+        setupTextValueColor(systemtext, systemString, colorTextRed())
 
         mainbutton.setOnClickListener {
             setupDoInClenerJunk()
@@ -131,8 +118,6 @@ class JunkCleanerFragment : BaseFragment() {
     }
 
     private fun setupCleanFromJunk() {
-        val color = mActivity.getColorRes(R.color.colorTextGreen)
-
         setDoneOptimizeButton(mainbutton, R.string.button_cleaned)
         iv_icon_junk.setImageResource(R.drawable.ic_junk_clean)
         cache.setBackgroundResource(R.drawable.bg_circle_border_green)
@@ -140,11 +125,12 @@ class JunkCleanerFragment : BaseFragment() {
         residue.setBackgroundResource(R.drawable.bg_circle_border_green)
         system.setBackgroundResource(R.drawable.bg_circle_border_green)
 
-        setupText(tv_junk_condition_1, getString(R.string.text_phone_junk_cleaned), color)
-        setupText(cachetext, ZERO_MB, color)
-        setupText(temptext, ZERO_MB, color)
-        setupText(residuetext, ZERO_MB, color)
-        setupText(systemtext, ZERO_MB, color)
+        setupTextValueColor(tv_state_condition_1, getString(R.string.text_junk_condition_1_clean), colorTextGreen())
+        setupTextValueColor(tv_state_condition_2, getString(R.string.text_junk_condition_2_clean), colorTextGreen())
+        setupTextValueColor(cachetext, ZERO_MB, colorTextGreen())
+        setupTextValueColor(temptext, ZERO_MB, colorTextGreen())
+        setupTextValueColor(residuetext, ZERO_MB, colorTextGreen())
+        setupTextValueColor(systemtext, ZERO_MB, colorTextGreen())
 
         mainbutton.setOnClickListener {
             showCustomToast(getString(R.string.toast_cleaned_junk))

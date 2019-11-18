@@ -8,7 +8,6 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.os.BatteryManager
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -85,12 +84,10 @@ class CPUCoolerFragment : BaseFragment() {
 
     private fun setupSmartPhoneHotCondition() {
         apps = mutableListOf()
-        tv_state_condition_1.setTextColor(mActivity.getColorRes(R.color.colorTextRed))
-        tv_state_condition_2.setTextColor(mActivity.getColorRes(R.color.colorTextRed))
-        tv_temperature_phone.setTextColor(mActivity.getColorRes(R.color.colorTextRed))
-        tv_state_condition_1.text = getString(R.string.text_temp_condition_1_hot)
-        tv_state_condition_2.text = getString(R.string.text_temp_condition_2_hot)
-        tv_empty_apps_heat.text = ""
+        setupTextValueColor(tv_state_condition_1, getString(R.string.text_temp_condition_1_hot), colorTextRed())
+        setupTextValueColor(tv_state_condition_2, getString(R.string.text_temp_condition_2_hot), colorTextRed())
+        setupTextValueColor(tv_empty_apps_heat, "", colorTextRed())
+        tv_temperature_phone.setTextColor(colorTextRed())
         iv_temperature_state.setImageResource(R.drawable.ic_temperature_hot_full)
         setOptimizeButton(btn_cooler, R.string.button_cool_down)
         btn_cooler.setOnClickListener { setupCoolingBattery() }
@@ -98,12 +95,10 @@ class CPUCoolerFragment : BaseFragment() {
     }
 
     private fun setupBatteryCooled() {
-        tv_state_condition_2.setTextColor(mActivity.getColorRes(R.color.colorTextGreen))
-        tv_state_condition_1.setTextColor(mActivity.getColorRes(R.color.colorTextGreen))
-        tv_temperature_phone.setTextColor(mActivity.getColorRes(R.color.colorTextGreen))
-        tv_state_condition_1.text = getString(R.string.text_temp_condition_1_cool)
-        tv_state_condition_2.text = getString(R.string.text_temp_condition_2_cool)
-        tv_empty_apps_heat.text = getString(R.string.text_cpu_cooler_empty_apps)
+        setupTextValueColor(tv_state_condition_1, getString(R.string.text_temp_condition_1_cool), colorTextGreen())
+        setupTextValueColor(tv_state_condition_2, getString(R.string.text_temp_condition_2_cool), colorTextGreen())
+        setupTextValueColor(tv_empty_apps_heat, getString(R.string.text_cpu_cooler_empty_apps), colorTextGreen())
+        tv_temperature_phone.setTextColor(mActivity.getColorRes(R.color.colorPrimaryText))
         iv_temperature_state.setImageResource(R.drawable.ic_temperature_cold_full)
         setDoneOptimizeButton(btn_cooler, R.string.button_cooled)
         btn_cooler.setOnClickListener { showCustomToast(getString(R.string.toast_cpu_normal_temperature)) }

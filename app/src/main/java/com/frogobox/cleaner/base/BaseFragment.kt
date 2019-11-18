@@ -120,4 +120,17 @@ abstract class BaseFragment : Fragment() {
         button.text = getString(text)
     }
 
+    protected fun setupTextValueColor(textView: TextView, text: String, color: Int) {
+        textView.text = text
+        textView.setTextColor(color)
+    }
+
+    protected fun colorTextGreen(): Int {
+        return mActivity.getColorRes(R.color.colorTextGreen)
+    }
+
+    protected fun colorTextRed(): Int {
+        return mActivity.getColorRes(R.color.colorTextRed)
+    }
+
 }

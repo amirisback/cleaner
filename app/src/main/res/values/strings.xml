@@ -26,8 +26,12 @@
     <string name="text_junk_temp">Temporary Files</string>
     <string name="text_storage">Storage</string>
     <string name="text_found">Found</string>
-    <string name="text_phone_junk_cleaned">Phone totally cleaned</string>
+
     <string name="text_junk_scanning">Scanning</string>
+    <string name="text_junk_condition_1_clean">Crystal Clear</string>
+    <string name="text_junk_condition_2_clean">Phone totally cleaned</string>
+    <string name="text_junk_condition_2_dirty">Junk has been found</string>
+
     <string name="text_temp_condition_1_cool">Normal</string>
     <string name="text_temp_condition_1_hot">Overheated</string>
     <string name="text_temp_condition_2_cool">CPU Temperature is GOOD</string>

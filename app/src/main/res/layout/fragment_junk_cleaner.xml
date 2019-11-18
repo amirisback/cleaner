@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/tv_junk_condition_1"
+        android:layout_above="@id/tv_state_condition_1"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -21,15 +22,15 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_junk_condition_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/layout_button"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:text="@string/text_phone_junk_cleaned"
-        android:textColor="@color/colorTextGreen"
-        android:textSize="@dimen/text_size_title_medium_20sp" />
+        android:id="@+id/tv_state_condition_1"
+        style="@style/textview_condition_1"
+        tools:text="@string/text_junk_condition_1_clean"/>
+
+    <TextView
+        android:id="@+id/tv_state_condition_2"
+        style="@style/textview_condition_2"
+        tools:text="@string/text_junk_condition_2_clean" />
+
 
     <RelativeLayout
         android:id="@+id/layout_button"
