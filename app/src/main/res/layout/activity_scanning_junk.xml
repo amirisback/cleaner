@@ -42,7 +42,7 @@
         </com.skyfishjy.library.RippleBackground>
 
         <ImageView
-            android:id="@+id/centerImage"
+            android:id="@+id/iv_image_done"
             android:layout_width="@dimen/dimen_center_image_ripple_background"
             android:layout_height="@dimen/dimen_center_image_ripple_background"
             android:layout_centerInParent="true" />

@@ -24,10 +24,8 @@ class CPUScannerActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cpu_scanner)
-
         setupAnimationProcess()
         setupRecyclerViewApps()
-
     }
 
     private fun setupAnimationProcess() {
@@ -36,7 +34,6 @@ class CPUScannerActivity : BaseActivity() {
         rotate.repeatCount = 3
         rotate.interpolator = LinearInterpolator()
         iv_scanning_main.startAnimation(rotate)
-
     }
 
     private fun setupRecyclerViewApps() {
@@ -62,27 +59,25 @@ class CPUScannerActivity : BaseActivity() {
         }
 
         Handler().postDelayed({
-            iv_scanning_main.visibility = View.GONE
-            iv_scanning_background.visibility = View.GONE
-            centerImage.setImageResource(R.drawable.ic_task_done_main)
+
+            iv_image_done.setImageResource(R.drawable.ic_task_done_main)
             changeAppsItem(adapter, 6)
             rippleBackground.startRippleAnimation()
 
-
-
-            val anim = AnimatorInflater.loadAnimator(this, R.animator.flipping) as ObjectAnimator
-            anim.target = centerImage
-            anim.duration = 3000
-            anim.start()
-
-            anim.addListener(object : Animator.AnimatorListener {
+            val animationWaterRiple = AnimatorInflater.loadAnimator(this, R.animator.flipping) as ObjectAnimator
+            animationWaterRiple.target = iv_image_done
+            animationWaterRiple.duration = 3000
+            animationWaterRiple.addListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator) {
-                    cpucooler.text = "Cooled CPU to 25.3°C"
+                    iv_scanning_main.visibility = View.GONE
+                    tv_cooling_cpu.text = "Cooled CPU to 25.3°C"
                 }
-                override fun onAnimationEnd(animation: Animator) {finishCondition() }
+                override fun onAnimationEnd(animation: Animator) { finishCondition() }
                 override fun onAnimationCancel(animation: Animator) {}
                 override fun onAnimationRepeat(animation: Animator) {}
             })
+
+            animationWaterRiple.start()
 
         }, 5500)
     }

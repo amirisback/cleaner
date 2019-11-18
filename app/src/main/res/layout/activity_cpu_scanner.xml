@@ -7,17 +7,10 @@
 
     <!--  Animation Image -->
     <RelativeLayout
-        android:id="@+id/rel"
+        android:id="@+id/layout_image_animation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/cpucooler">
-
-        <ImageView
-            android:id="@+id/iv_scanning_background"
-            android:layout_width="182dp"
-            android:layout_height="182dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/ic_scan_temp_cpu" />
+        android:layout_above="@id/tv_cooling_cpu">
 
         <com.skyfishjy.library.RippleBackground
             android:id="@+id/rippleBackground"
@@ -31,7 +24,7 @@
             app:rb_scale="6">
 
             <ImageView
-                android:id="@+id/centerImage"
+                android:id="@+id/iv_image_done"
                 android:layout_width="@dimen/dimen_center_image_ripple_background"
                 android:layout_height="@dimen/dimen_center_image_ripple_background"
                 android:layout_centerInParent="true"/>
@@ -40,15 +33,15 @@
 
         <ImageView
             android:id="@+id/iv_scanning_main"
-            android:layout_width="@dimen/dimen_image_scan"
-            android:layout_height="@dimen/dimen_image_scan"
+            android:layout_width="182dp"
+            android:layout_height="182dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/img_scan_scanner" />
+            android:src="@drawable/ic_scan_temp_cpu" />
 
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/cpucooler"
+        android:id="@+id/tv_cooling_cpu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/layout_footer"
@@ -64,18 +57,12 @@
         android:layout_width="match_parent"
         android:layout_height="250dp">
 
-        <LinearLayout
-            android:layout_alignParentBottom="true"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_height_footer">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none" />
-
-        </LinearLayout>
+            android:layout_height="@dimen/dimen_height_footer"
+            android:layout_alignParentBottom="true"
+            android:scrollbars="none" />
 
 
     </RelativeLayout>

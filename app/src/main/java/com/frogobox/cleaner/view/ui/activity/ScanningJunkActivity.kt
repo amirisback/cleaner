@@ -27,27 +27,21 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import kotlinx.android.synthetic.main.activity_scanning_junk.*
 import java.util.*
 
-/**
- * Created by Frogobox Software Industries 2/24/2017.
- */
-
 class ScanningJunkActivity : BaseActivity() {
 
     private var check = 0
     private var prog = 0
-
     private lateinit var packages: List<ApplicationInfo>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanning_junk)
-
         packages = packageManager.getInstalledApplications(0)
         setupAnimationProcess()
         setupRecyclerViewApps()
     }
 
-    private fun setupAnimationProcess(){
+    private fun setupAnimationProcess() {
         val timer = Timer()
         val mActivityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
 
@@ -94,7 +88,7 @@ class ScanningJunkActivity : BaseActivity() {
         }, 80, 80)
     }
 
-    private fun setupRecyclerViewApps(){
+    private fun setupRecyclerViewApps() {
         val apps = mutableListOf<Apps>()
         val junkAppsViewAdapter = JunkAppsViewAdapter(apps)
 
@@ -125,16 +119,16 @@ class ScanningJunkActivity : BaseActivity() {
             rippleBackground.startRippleAnimation()
             iv_scanning_background.visibility = View.INVISIBLE
             iv_scanning_main.visibility = View.INVISIBLE
-            centerImage.setImageResource(R.drawable.ic_task_done_main)
+            iv_image_done.setImageResource(R.drawable.ic_task_done_main)
 
             loading_indicator.setIndeterminateDrawable(ThreeBounce())
             loading_indicator.visibility = View.GONE
 
             val sumJunk = intent.extras?.getString(Constant.Variable.SHARED_PREF_JUNK)
-            tv_scanning.text =   "$sumJunk MB of Junk Files Are Cleared"
+            tv_scanning.text = "$sumJunk MB of Junk Files Are Cleared"
 
             val anim = AnimatorInflater.loadAnimator(this, R.animator.flipping) as ObjectAnimator
-            anim.target = centerImage
+            anim.target = iv_image_done
             anim.duration = 3000
             anim.start()
 
@@ -144,7 +138,11 @@ class ScanningJunkActivity : BaseActivity() {
                     val cache = intent.extras?.getString(Constant.Variable.SHARED_PREF_JUNK)
                     tv_scanning.text = "Cleared $cache MB"
                 }
-                override fun onAnimationEnd(animation: Animator) { setupFinishCleaningJunk() }
+
+                override fun onAnimationEnd(animation: Animator) {
+                    setupFinishCleaningJunk()
+                }
+
                 override fun onAnimationCancel(animation: Animator) {}
                 override fun onAnimationRepeat(animation: Animator) {}
             })
@@ -153,7 +151,7 @@ class ScanningJunkActivity : BaseActivity() {
         }, 8000)
     }
 
-    private fun setupFinishCleaningJunk(){
+    private fun setupFinishCleaningJunk() {
         setupShowAdsInterstitial()
         rippleBackground.stopRippleAnimation()
         Handler().postDelayed({ finish() }, 1000)
@@ -216,5 +214,4 @@ class ScanningJunkActivity : BaseActivity() {
         adapter.notifyItemRemoved(position)
         apps.removeAt(position)
     }
-
 }
