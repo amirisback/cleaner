@@ -45,6 +45,8 @@ class Constant {
         const val _MB = " MB"
         const val ZERO_MB = "0 MB"
 
+        const val _CELCIUS = "°C"
+
     }
 
 }

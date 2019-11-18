@@ -28,5 +28,11 @@
     <string name="text_found">Found</string>
     <string name="text_phone_junk_cleaned">Phone totally cleaned</string>
     <string name="text_junk_scanning">Scanning</string>
+    <string name="text_temp_condition_1_cool">Normal</string>
+    <string name="text_temp_condition_1_hot">Overheated</string>
+    <string name="text_temp_condition_2_cool">CPU Temperature is GOOD</string>
+    <string name="text_temp_condition_2_hot">Apps are causing problem hit cool down</string>
+    <string name="text_cpu_cooler_empty_apps">Currently No App Causing Overheating</string>
+
 
 </resources>

@@ -155,10 +155,10 @@ class ChargeBoosterFragment : BaseFragment() {
         y = Random().nextInt(50) + 15
 
         tv_precentage_proceses.text = y.toString() + ""
-        totalram.text = getTotalRam()
-        usedram.text = "${getUsedMemorySize()} MB/ "
-        appsfreed.text = getTotalRam()
-        appsused.text = (getUsedMemorySize() - x.toLong() - 30).toString() + " MB/ "
+        tv_total_ram.text = getTotalRam()
+        tv_used_ram.text = "${getUsedMemorySize()} MB/ "
+        tv_apps_freed.text = getTotalRam()
+        tv_apps_used.text = (getUsedMemorySize() - x.toLong() - 30).toString() + " MB/ "
 
     }
 
@@ -316,10 +316,10 @@ class ChargeBoosterFragment : BaseFragment() {
         optbutton.visibility = View.VISIBLE
         setDoneOptimizeButton(optbutton, R.string.button_optimized)
 
-        totalram.text = getTotalRam()
-        usedram.text = (getUsedMemorySize() - x).toString() + " MB/ "
-        appsfreed.text = getTotalRam()
-        appsused.text = abs(getUsedMemorySize() - x.toLong() - 30).toString() + " MB/ "
+        tv_total_ram.text = getTotalRam()
+        tv_used_ram.text = (getUsedMemorySize() - x).toString() + " MB/ "
+        tv_apps_freed.text = getTotalRam()
+        tv_apps_used.text = abs(getUsedMemorySize() - x.toLong() - 30).toString() + " MB/ "
         tv_precentage_proceses.text = (y - proc).toString()
         tv_ramsize.text = (getUsedMemorySize() - x).toString() + " MB"
     }

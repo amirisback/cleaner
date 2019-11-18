@@ -118,7 +118,7 @@ class JunkCleanerFragment : BaseFragment() {
         residue.setBackgroundResource(R.drawable.bg_circle_border_red)
         system.setBackgroundResource(R.drawable.bg_circle_border_red)
 
-        setupText(tv_junk_reminder, mainString, colorText)
+        setupText(tv_junk_condition_1, mainString, colorText)
         setupText(cachetext, cacheString, colorText)
         setupText(temptext, tempString, colorText)
         setupText(residuetext, residueString, colorText)
@@ -140,7 +140,7 @@ class JunkCleanerFragment : BaseFragment() {
         residue.setBackgroundResource(R.drawable.bg_circle_border_green)
         system.setBackgroundResource(R.drawable.bg_circle_border_green)
 
-        setupText(tv_junk_reminder, getString(R.string.text_phone_junk_cleaned), color)
+        setupText(tv_junk_condition_1, getString(R.string.text_phone_junk_cleaned), color)
         setupText(cachetext, ZERO_MB, color)
         setupText(temptext, ZERO_MB, color)
         setupText(residuetext, ZERO_MB, color)

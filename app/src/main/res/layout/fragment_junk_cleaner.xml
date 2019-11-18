@@ -6,14 +6,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/tv_junk_reminder"
+        android:layout_above="@id/tv_junk_condition_1"
         android:gravity="center"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/iv_icon_junk"
-            android:layout_width="@dimen/dimen_image_alert"
-            android:layout_height="@dimen/dimen_image_alert"
+            android:layout_width="@dimen/dimen_img_junk"
+            android:layout_height="@dimen/dimen_img_junk"
             android:layout_margin="@dimen/dimen_big_16dp"
             android:padding="@dimen/dimen_big_16dp"
             android:src="@drawable/ic_junk_clean" />
@@ -21,7 +21,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_junk_reminder"
+        android:id="@+id/tv_junk_condition_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/layout_button"
@@ -37,7 +37,7 @@
 
         <Button
             android:id="@+id/mainbutton"
-            style="@style/ButtonDoCleaner"
+            style="@style/button_do_cleaner"
             android:text="@string/button_clean" />
 
     </RelativeLayout>
@@ -52,54 +52,54 @@
         android:padding="@dimen/dimen_big_16dp"
         android:weightSum="4">
 
-        <LinearLayout style="@style/LinearLayoutJunk">
+        <LinearLayout style="@style/layout_junk">
 
             <TextView
                 android:id="@+id/cachetext"
-                style="@style/TextViewJunk" />
+                style="@style/text_view_junk" />
 
             <TextView
                 android:id="@+id/cache"
-                style="@style/CircleJunk"
+                style="@style/circle_junk"
                 android:text="@string/text_junk_cache" />
 
         </LinearLayout>
 
-        <LinearLayout style="@style/LinearLayoutJunk">
+        <LinearLayout style="@style/layout_junk">
 
             <TextView
                 android:id="@+id/temptext"
-                style="@style/TextViewJunk" />
+                style="@style/text_view_junk" />
 
             <TextView
                 android:id="@+id/temp"
-                style="@style/CircleJunk"
+                style="@style/circle_junk"
                 android:text="@string/text_junk_temp" />
 
         </LinearLayout>
 
-        <LinearLayout style="@style/LinearLayoutJunk">
+        <LinearLayout style="@style/layout_junk">
 
             <TextView
                 android:id="@+id/residuetext"
-                style="@style/TextViewJunk" />
+                style="@style/text_view_junk" />
 
             <TextView
                 android:id="@+id/residue"
-                style="@style/CircleJunk"
+                style="@style/circle_junk"
                 android:text="@string/text_junk_residual" />
 
         </LinearLayout>
 
-        <LinearLayout style="@style/LinearLayoutJunk">
+        <LinearLayout style="@style/layout_junk">
 
             <TextView
                 android:id="@+id/systemtext"
-                style="@style/TextViewJunk" />
+                style="@style/text_view_junk" />
 
             <TextView
                 android:id="@+id/system"
-                style="@style/CircleJunk"
+                style="@style/circle_junk"
                 android:text="@string/text_junk_system" />
 
         </LinearLayout>

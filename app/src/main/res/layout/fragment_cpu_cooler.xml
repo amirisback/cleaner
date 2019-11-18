@@ -1,60 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/layout_button"
+        android:layout_above="@id/tv_state_condition_1"
         android:gravity="center"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/iv_temperature_state"
-            android:layout_width="124dp"
-            android:layout_height="124dp"
+            android:layout_width="@dimen/dimen_img_temperature"
+            android:layout_height="@dimen/dimen_img_temperature"
             android:src="@drawable/ic_temperature_cold_full" />
 
         <TextView
-            android:id="@+id/batterytemp"
+            android:id="@+id/tv_temperature_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_big_16dp"
             android:gravity="center"
-            android:text="23.2"
             android:textColor="@color/colorPrimaryText"
-            android:textSize="@dimen/_25sdp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/showmain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="NORMAL"
-            android:textAppearance="?android:textAppearanceLarge"
-            android:textColor="@color/colorTextGreen"
-            android:textSize="@dimen/_25sdp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/showsec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/dimen_medium_8dp"
-            android:text="CPU Temperature is GOOD"
-            android:textAppearance="?android:textAppearanceLarge"
-            android:textColor="@color/colorTextGreen" />
+            android:textSize="@dimen/text_size_title_big_24sp"
+            android:textStyle="bold"
+            tools:text="23.2" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_state_condition_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_state_condition_2"
+        android:layout_centerHorizontal="true"
+        android:text="@string/text_temp_condition_1_cool"
+        android:textAllCaps="true"
+        android:textColor="@color/colorTextGreen"
+        android:textSize="@dimen/text_size_title_medium_20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_state_condition_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layout_button"
+        android:layout_centerHorizontal="true"
+        android:text="@string/text_temp_condition_2_cool"
+        android:textColor="@color/colorTextGreen"
+        android:textSize="13sp" />
 
     <RelativeLayout
         android:id="@+id/layout_button"
         style="@style/layout_button">
 
         <Button
-            android:id="@+id/coolbutton"
-            style="@style/ButtonDoCleaner"
+            android:id="@+id/btn_cooler"
+            style="@style/button_do_cleaner"
             android:text="@string/button_cool_down" />
 
     </RelativeLayout>
@@ -70,16 +74,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
-            android:foregroundGravity="center"
             android:paddingStart="@dimen/dimen_big_16dp"
-            android:scrollbars="none" />
+            android:scrollbars="none"
+            tools:listitem="@layout/content_item_cpu_cooler" />
 
         <TextView
-            android:id="@+id/nooverheating"
+            android:id="@+id/tv_empty_apps_heat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Currently No App Causing Overheating"
+            android:text="@string/text_cpu_cooler_empty_apps"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@color/colorTextGreen" />
 

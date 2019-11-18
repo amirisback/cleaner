@@ -51,7 +51,7 @@
         <item name="android:textColor">@color/colorPrimaryText</item>
     </style>
 
-    <style name="TextViewJunk" parent="base_text_view">
+    <style name="text_view_junk" parent="base_text_view">
         <item name="android:gravity">center</item>
         <item name="android:text">0 MB</item>
         <item name="android:layout_weight">1</item>
@@ -59,7 +59,7 @@
         <item name="android:layout_height">0dp</item>
     </style>
 
-    <style name="LinearLayoutJunk" parent="base_text_view">
+    <style name="layout_junk" parent="base_text_view">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_gravity">center</item>
@@ -68,7 +68,7 @@
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="CircleJunk" parent="base_text_view">
+    <style name="circle_junk" parent="base_text_view">
         <item name="android:gravity">center</item>
         <item name="android:maxLines">2</item>
         <item name="android:padding">8dp</item>
@@ -78,7 +78,7 @@
         <item name="android:layout_height">64dp</item>
     </style>
 
-    <style name="ButtonDoCleaner">
+    <style name="button_do_cleaner">
         <item name="android:layout_width">180dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerInParent">true</item>
@@ -104,7 +104,7 @@
         <item name="android:textSize">@dimen/_12sdp</item>
     </style>
 
-    <style name="TextViewChargeBoosterTersiary" parent="base_text_view">
+    <style name="textview_charge_booster_tersiary" parent="base_text_view">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>

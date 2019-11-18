@@ -21,6 +21,7 @@ import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseFragment
 import com.frogobox.cleaner.model.Apps
 import com.frogobox.cleaner.utils.Constant
+import com.frogobox.cleaner.utils.Constant.Variable._CELCIUS
 import com.frogobox.cleaner.view.adapter.CPUCoolerViewAdapter
 import com.frogobox.cleaner.view.ui.activity.CPUScannerActivity
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
@@ -76,7 +77,7 @@ class CPUCoolerFragment : BaseFragment() {
     private fun setupBatteryReceiver(intent: Intent) {
         val level = intent.getIntExtra("level", 0)
         val temp = intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0).toFloat() / 10
-        batterytemp.text = "$temp°C"
+        tv_temperature_phone.text = "$temp°C"
         if (temp >= 30.0) {
             setupSmartPhoneHotCondition()
         }
@@ -84,45 +85,37 @@ class CPUCoolerFragment : BaseFragment() {
 
     private fun setupSmartPhoneHotCondition() {
         apps = mutableListOf()
+        tv_state_condition_1.setTextColor(mActivity.getColorRes(R.color.colorTextRed))
+        tv_state_condition_2.setTextColor(mActivity.getColorRes(R.color.colorTextRed))
+        tv_temperature_phone.setTextColor(mActivity.getColorRes(R.color.colorTextRed))
+        tv_state_condition_1.text = getString(R.string.text_temp_condition_1_hot)
+        tv_state_condition_2.text = getString(R.string.text_temp_condition_2_hot)
+        tv_empty_apps_heat.text = ""
         iv_temperature_state.setImageResource(R.drawable.ic_temperature_hot_full)
-        showmain.text = "OVERHEATED"
-        showmain.setTextColor(mActivity.getColorRes(R.color.colorTextRed))
-        showsec.text = "Apps are causing problem hit cool down"
-        nooverheating.text = ""
-        setOptimizeButton(coolbutton, R.string.button_cool_down)
-        coolbutton.setOnClickListener { setupCoolingBattery() }
-        setupAndroidVersion()
+        setOptimizeButton(btn_cooler, R.string.button_cool_down)
+        btn_cooler.setOnClickListener { setupCoolingBattery() }
         setupHotApps()
+    }
+
+    private fun setupBatteryCooled() {
+        tv_state_condition_2.setTextColor(mActivity.getColorRes(R.color.colorTextGreen))
+        tv_state_condition_1.setTextColor(mActivity.getColorRes(R.color.colorTextGreen))
+        tv_temperature_phone.setTextColor(mActivity.getColorRes(R.color.colorTextGreen))
+        tv_state_condition_1.text = getString(R.string.text_temp_condition_1_cool)
+        tv_state_condition_2.text = getString(R.string.text_temp_condition_2_cool)
+        tv_empty_apps_heat.text = getString(R.string.text_cpu_cooler_empty_apps)
+        iv_temperature_state.setImageResource(R.drawable.ic_temperature_cold_full)
+        setDoneOptimizeButton(btn_cooler, R.string.button_cooled)
+        btn_cooler.setOnClickListener { showCustomToast(getString(R.string.toast_cpu_normal_temperature)) }
     }
 
     private fun setupCoolingBattery() {
         startActivity(Intent(context, CPUScannerActivity::class.java))
         Handler().postDelayed({
             setupBatteryCooled()
-            batterytemp.text = "25.3" + "°C"
+            tv_temperature_phone.text = "25.3" + _CELCIUS
             recycler_view.adapter = null
         }, 2000)
-    }
-
-    private fun setupBatteryCooled() {
-        showsec.setTextColor(mActivity.getColorRes(R.color.colorTextGreen))
-        showmain.setTextColor(mActivity.getColorRes(R.color.colorTextGreen))
-        nooverheating.text = "Currently No App causing Overheating"
-        showmain.text = "NORMAL"
-        showsec.text = "CPU Temperature is GOOD"
-        iv_temperature_state.setImageResource(R.drawable.ic_temperature_cold_full)
-        setDoneOptimizeButton(coolbutton, R.string.button_cooled)
-        coolbutton.setOnClickListener { showCustomToast(getString(R.string.toast_cpu_normal_temperature)) }
-    }
-
-    private fun setupAndroidVersion() {
-        if (Build.VERSION.SDK_INT < 23) {
-            showsec.setTextAppearance(context, android.R.style.TextAppearance_Medium)
-            showsec.setTextColor(mActivity.getColorRes(R.color.colorTextRed))
-        } else {
-            showsec.setTextAppearance(android.R.style.TextAppearance_Small)
-            showsec.setTextColor(mActivity.getColorRes(R.color.colorTextRed))
-        }
     }
 
     private fun setupHotApps() {

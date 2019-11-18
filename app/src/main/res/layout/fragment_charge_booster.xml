@@ -93,7 +93,7 @@
 
         <Button
             android:id="@+id/optbutton"
-            style="@style/ButtonDoCleaner"
+            style="@style/button_do_cleaner"
             android:text="@string/button_optimized" />
 
 
@@ -131,16 +131,16 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/usedram"
-                    style="@style/TextViewChargeBoosterTersiary"
-                    android:gravity="right"
+                    android:id="@+id/tv_used_ram"
+                    style="@style/textview_charge_booster_tersiary"
+                    android:gravity="end"
                     android:text="1.24 GB/"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/totalram"
-                    style="@style/TextViewChargeBoosterTersiary"
-                    android:gravity="left"
+                    android:id="@+id/tv_total_ram"
+                    style="@style/textview_charge_booster_tersiary"
+                    android:gravity="start"
                     android:text="2.67 GB" />
 
             </LinearLayout>
@@ -172,16 +172,16 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/appsused"
-                    style="@style/TextViewChargeBoosterTersiary"
-                    android:gravity="right"
+                    android:id="@+id/tv_apps_used"
+                    style="@style/textview_charge_booster_tersiary"
+                    android:gravity="end"
                     android:text="1.24 GB/"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/appsfreed"
-                    style="@style/TextViewChargeBoosterTersiary"
-                    android:gravity="left"
+                    android:id="@+id/tv_apps_freed"
+                    style="@style/textview_charge_booster_tersiary"
+                    android:gravity="start"
                     android:text="2.67 GB" />
 
             </LinearLayout>
