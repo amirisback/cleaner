@@ -19,15 +19,17 @@
 
         <ImageView
             android:id="@+id/iv_back_line_speedo"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
+            android:layout_width="@dimen/dimen_circle_speedo"
+            android:layout_height="@dimen/dimen_circle_speedo"
+            android:layout_margin="@dimen/dimen_big_16dp"
             android:layout_centerInParent="true"
             android:src="@drawable/circle_lines" />
 
         <com.hookedonplay.decoviewlib.DecoView
             android:id="@+id/dynamicArcView2"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
+            android:layout_width="@dimen/dimen_circle_speedo"
+            android:layout_height="@dimen/dimen_circle_speedo"
+            android:layout_margin="@dimen/dimen_big_16dp"
             android:layout_centerInParent="true" />
 
         <ImageView
@@ -45,17 +47,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/layout_button"
-        android:gravity="center|center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/dimen_big_16dp">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_storage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Storage"
-            android:textAppearance="?android:textAppearanceLarge"
-            android:textColor="#F22938" />
+            android:textSize="@dimen/text_size_title_medium_20sp"
+            android:text="@string/text_storage"
+            android:textColor="@color/colorTextRed" />
 
         <TextView
             android:id="@+id/tv_ramsize"
@@ -64,6 +65,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_big_16dp"
             android:layout_marginEnd="@dimen/dimen_big_16dp"
+            android:textSize="@dimen/text_size_title_medium_20sp"
+            android:textStyle="bold"
             android:textColor="@color/colorPrimaryText"
             tools:text="@string/text_junk_residual" />
 
@@ -71,8 +74,8 @@
             android:id="@+id/tv_found"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Found"
-            android:textAppearance="?android:textAppearanceLarge"
+            android:text="@string/text_found"
+            android:textSize="@dimen/text_size_title_medium_20sp"
             android:textColor="@color/colorTextGreen" />
 
     </LinearLayout>

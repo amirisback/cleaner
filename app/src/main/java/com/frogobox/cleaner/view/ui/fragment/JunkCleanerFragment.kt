@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Context.ALARM_SERVICE
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -69,6 +70,10 @@ class JunkCleanerFragment : BaseFragment() {
     private fun setupText(textView: TextView, text: String, color: Int) {
         textView.text = text
         textView.setTextColor(color)
+        if (!text.equals(getString(R.string.text_phone_junk_cleaned))) {
+            textView.setTypeface(null, Typeface.BOLD);
+        }
+
     }
 
     private fun setupDoInClenerJunk() {
@@ -91,19 +96,20 @@ class JunkCleanerFragment : BaseFragment() {
     }
 
     private fun setupDirtyFromJunk() {
-        val proc1 = Random().nextInt(20) + 5
+        val colorText = mActivity.getColorRes(R.color.colorTextRed)
+
+        val proc1 = Random().nextInt(50) + 5
         val proc2 = Random().nextInt(15) + 10
         val proc3 = Random().nextInt(30) + 15
         val proc4 = Random().nextInt(25) + 10
         alljunk = proc1 + proc2 + proc3 + proc4
 
-        val mainString = alljunk.toString() + _MB
+        val mainString = alljunk.toString() + _MB + " junk has been found"
         val cacheString = proc1.toString() + _MB
         val tempString = proc2.toString() + _MB
         val residueString = proc3.toString() + _MB
         val systemString = proc4.toString() + _MB
 
-        val colorText = mActivity.getColorRes(R.color.colorTextRed)
 
         setOptimizeButton(mainbutton, R.string.button_clean)
         iv_icon_junk.setImageResource(R.drawable.ic_junk_dirty)
@@ -112,7 +118,7 @@ class JunkCleanerFragment : BaseFragment() {
         residue.setBackgroundResource(R.drawable.bg_circle_border_red)
         system.setBackgroundResource(R.drawable.bg_circle_border_red)
 
-        setupText(maintext, mainString, colorText)
+        setupText(tv_junk_reminder, mainString, colorText)
         setupText(cachetext, cacheString, colorText)
         setupText(temptext, tempString, colorText)
         setupText(residuetext, residueString, colorText)
@@ -134,7 +140,7 @@ class JunkCleanerFragment : BaseFragment() {
         residue.setBackgroundResource(R.drawable.bg_circle_border_green)
         system.setBackgroundResource(R.drawable.bg_circle_border_green)
 
-        setupText(maintext, "CRYSTAL CLEAR", color)
+        setupText(tv_junk_reminder, getString(R.string.text_phone_junk_cleaned), color)
         setupText(cachetext, ZERO_MB, color)
         setupText(temptext, ZERO_MB, color)
         setupText(residuetext, ZERO_MB, color)

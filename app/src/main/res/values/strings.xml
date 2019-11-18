@@ -24,5 +24,8 @@
     <string name="text_junk_residual">Residual Files</string>
     <string name="text_junk_system">System Junk</string>
     <string name="text_junk_temp">Temporary Files</string>
+    <string name="text_storage">Storage</string>
+    <string name="text_found">Found</string>
+    <string name="text_phone_junk_cleaned">Phone totally cleaned</string>
 
 </resources>
