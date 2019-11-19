@@ -67,7 +67,7 @@ android {
             // You need to specify either an absolute path or include the
             // keystore file in the same directory as the build.gradle file.
             // [PROJECT FOLDER NAME/app/[COPY YOUT KEY STORE] .jks in here
-            storeFile file("key-speech-booster.jks")
+            storeFile file("frogoboxdev.jks")
             storePassword "cronoclez"
             keyAlias "frogobox"
             keyPassword "xeonranger"
@@ -84,8 +84,8 @@ android {
             signingConfig signingConfigs.release
 
             // Declaration admob id for release
-            def releaseAdmobPublisherId = "ca-app-pub-3940256099942544~3347511713"
-            def releaseAdmobInterstitial = "ca-app-pub-3940256099942544/1033173712"
+            def releaseAdmobPublisherId = "ca-app-pub-5472340099809711~9558797229"
+            def releaseAdmobInterstitial = "ca-app-pub-5472340099809711/4114898854"
             def releaseAdmobVideo = "ca-app-pub-3940256099942544/5224354917"
             def releaseAdmobBanner = "ca-app-pub-3940256099942544/6300978111"
 

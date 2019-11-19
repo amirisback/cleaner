@@ -13,13 +13,15 @@
     <color name="colorBaseDarkBlackBlue">#27282D</color>
     <color name="colorBaseGreenTosca">#3DB39E</color>
     <color name="colorBase">#272A2D</color>
+    <color name="colorOrange">#FF9800</color>
+    <color name="colorAccentOrange">#C62828</color>
 
     <color name="colorBackgroundLine">#E9E7E7</color>
     <color name="colorPrimaryText">#AE000000</color>
 
-    <color name="colorPrimary">@color/colorBaseDarkBlackBlue</color>
+    <color name="colorPrimary">@color/colorOrange</color>
     <color name="colorPrimaryDark">@color/colorBaseWhite</color>
-    <color name="colorAccent">@color/colorBasePink</color>
+    <color name="colorAccent">@color/colorAccentOrange</color>
     <color name="colorPrimaryBackground">@color/colorBackgroundWhite</color>
 
 
