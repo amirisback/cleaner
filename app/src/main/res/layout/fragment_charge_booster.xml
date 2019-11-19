@@ -10,13 +10,6 @@
         android:layout_height="match_parent"
         android:layout_above="@id/container_ram">
 
-        <!--        <ImageView-->
-        <!--            android:id="@+id/iv_back_speedo"-->
-        <!--            android:layout_width="350dp"-->
-        <!--            android:layout_height="350dp"-->
-        <!--            android:layout_centerInParent="true"-->
-        <!--            android:src="@drawable/bg_circle_speedo_meter" />-->
-
         <ImageView
             android:id="@+id/iv_back_line_speedo"
             android:layout_width="@dimen/dimen_circle_speedo"
@@ -35,10 +28,10 @@
         <ImageView
             android:id="@+id/iv_waves"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="-700dp"
-            android:paddingTop="48dp"
-            android:src="@drawable/img_loading_running" />
+            android:src="@drawable/ic_waves_booster" />
 
     </RelativeLayout>
 
