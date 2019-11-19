@@ -56,4 +56,6 @@
     <dimen name="dimen_img_junk">200dp</dimen>
     <dimen name="dimen_img_temperature">132dp</dimen>
 
+    <dimen name="dimen_splash_screen">144dp</dimen>
+
 </resources>
