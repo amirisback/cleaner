@@ -28,6 +28,5 @@
     android:layout_marginEnd="@dimen/dimen_big_16dp"
     android:background="@drawable/bg_card_toolbar"
     android:elevation="2dp"
-    app:title="@string/app_name"
     app:titleTextAppearance="@style/Toolbar.TitleText"
     app:titleTextColor="@color/colorPrimaryText" />

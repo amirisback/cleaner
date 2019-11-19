@@ -199,7 +199,7 @@ class ChargeBoosterFragment : BaseFragment() {
                 .setInterpolator(AccelerateInterpolator())
                 .build())
 
-        dynamicArcView2.addSeries(SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundRed))
+        dynamicArcView2.addSeries(SeriesItem.Builder(colorAccent())
                 .setRange(0f, 100f, 100f)
                 .setInitialVisibility(false)
                 .setLineWidth(32f)
@@ -207,7 +207,7 @@ class ChargeBoosterFragment : BaseFragment() {
     }
 
     private fun setupInitDynamicSeriesIndex(): Int {
-        val seriesItem2 = SeriesItem.Builder(mActivity.getColorRes(R.color.colorBackgroundSeaBlue))
+        val seriesItem2 = SeriesItem.Builder(colorPrimary())
                 .setRange(0f, 100f, 0f)
                 .setLineWidth(32f)
                 .build()

@@ -19,7 +19,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:windowBackground">@drawable/layout_splash_screen</item>
         <item name="android:statusBarColor">@color/colorBaseWhite</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
 
@@ -84,7 +84,7 @@
         <item name="android:layout_centerInParent">true</item>
 <!--        <item name="android:layout_marginStart">@dimen/dimen_big_ultra_32dp</item>-->
 <!--        <item name="android:layout_marginEnd">@dimen/dimen_big_ultra_32dp</item>-->
-        <item name="android:background">@drawable/bg_border_button_blue</item>
+        <item name="android:background">@drawable/bg_border_button_positive</item>
     </style>
 
     <style name="TextViewChargeBoosterPrimary" parent="base_text_view">

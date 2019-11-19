@@ -5,36 +5,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorPrimaryBackground"
     android:id="@+id/linearLayout">
 
     <include
         layout="@layout/toolbar_main"/>
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager"
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/line"
-        android:layout_below="@id/toolbar_main"/>
-
-    <View
-        android:id="@+id/line"
         android:layout_above="@id/tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimaryBackground"/>
+        android:layout_below="@id/toolbar_main"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="2dp"
-        android:background="@color/colorPrimaryDark"
+        android:elevation="8dp"
+        android:background="@color/tab_background"
         app:tabBackground="@drawable/bg_tab_color_selector"
         android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:tabIndicatorHeight="0dp"/>
 
 </RelativeLayout>

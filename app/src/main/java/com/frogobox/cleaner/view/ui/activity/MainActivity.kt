@@ -10,7 +10,6 @@ import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseActivity
 import com.frogobox.cleaner.utils.Constant
 import com.frogobox.cleaner.utils.PagerAdapter
-import com.frogobox.cleaner.view.ui.fragment.BatterySaverFragment
 import com.frogobox.cleaner.view.ui.fragment.CPUCoolerFragment
 import com.frogobox.cleaner.view.ui.fragment.ChargeBoosterFragment
 import com.frogobox.cleaner.view.ui.fragment.JunkCleanerFragment
@@ -83,14 +82,14 @@ class MainActivity : BaseActivity() {
         adapter.addFragment(CPUCoolerFragment(), getString(R.string.title_cpu_cooler))
         adapter.addFragment(JunkCleanerFragment(), getString(R.string.title_junk_cleaner))
 
-        pager.adapter = adapter
-        pager.offscreenPageLimit = 3
+        view_pager.adapter = adapter
+        view_pager.offscreenPageLimit = 3
 
     }
 
     private fun setupViewPagerChangeListener() {
-        pager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab_layout))
-        pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        view_pager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab_layout))
+        view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
             override fun onPageSelected(position: Int) {
                 when (position) {
@@ -108,7 +107,7 @@ class MainActivity : BaseActivity() {
     private fun setupTabSelectedListener() {
         tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-                pager.currentItem = tab.position
+                view_pager.currentItem = tab.position
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {}

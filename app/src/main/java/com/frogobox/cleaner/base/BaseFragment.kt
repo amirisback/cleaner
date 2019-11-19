@@ -108,14 +108,14 @@ abstract class BaseFragment : Fragment() {
     }
 
     protected fun setOptimizeButton(button: Button, text: Int){
-        button.setBackgroundResource(R.drawable.bg_border_button_blue)
+        button.setBackgroundResource(R.drawable.bg_border_button_positive)
         button.setTextColor(mActivity.getColorRes(R.color.colorTextWhite))
         button.text = getString(text)
     }
 
 
     protected fun setDoneOptimizeButton(button: Button, text: Int){
-        button.setBackgroundResource(R.drawable.bg_border_button_green)
+        button.setBackgroundResource(R.drawable.bg_border_button_negatif)
         button.setTextColor(mActivity.getColorRes(R.color.colorPrimaryText))
         button.text = getString(text)
     }
@@ -131,6 +131,14 @@ abstract class BaseFragment : Fragment() {
 
     protected fun colorTextRed(): Int {
         return mActivity.getColorRes(R.color.colorTextRed)
+    }
+
+    protected fun colorPrimary(): Int {
+        return mActivity.getColorRes(R.color.colorPrimary)
+    }
+
+    protected fun colorAccent(): Int {
+        return mActivity.getColorRes(R.color.colorAccent)
     }
 
 }
