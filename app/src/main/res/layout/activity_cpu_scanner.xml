@@ -27,7 +27,7 @@
                 android:id="@+id/iv_image_done"
                 android:layout_width="@dimen/dimen_center_image_ripple_background"
                 android:layout_height="@dimen/dimen_center_image_ripple_background"
-                android:layout_centerInParent="true"/>
+                android:layout_centerInParent="true" />
 
         </com.skyfishjy.library.RippleBackground>
 
@@ -53,9 +53,9 @@
 
     <RelativeLayout
         android:id="@+id/layout_footer"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="250dp">
+        android:layout_height="250dp"
+        android:layout_above="@+id/ads_banner">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -67,6 +67,6 @@
 
     </RelativeLayout>
 
-
+    <include layout="@layout/view_ads" />
 
 </RelativeLayout>

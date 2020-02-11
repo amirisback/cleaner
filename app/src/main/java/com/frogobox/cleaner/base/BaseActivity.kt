@@ -34,31 +34,10 @@ import com.google.android.gms.ads.reward.RewardedVideoAd
  * com.frogobox.publicspeakingbooster.base
  *
  */
-abstract class BaseActivity : AppCompatActivity() {
-
-    lateinit var mActivity: AppCompatActivity
-    lateinit var mInterstitialAd: InterstitialAd
-    lateinit var mRewardedVideoAd: RewardedVideoAd
+abstract class BaseActivity : BaseAdmobActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mActivity = this
-        setupAdmob()
-    }
-
-    private fun setupAdmob() {
-        setupPublisher(this)
-        setupAdmobInterstitial()
-//        setupAdmobVideo(context)
-    }
-
-    private fun setupAdmobInterstitial() {
-        mInterstitialAd = InterstitialAd(this)
-        setupInterstitial(this, mInterstitialAd)
-    }
-
-    fun setupShowAdsInterstitial() {
-        showInterstitial(mInterstitialAd)
     }
 
     protected fun setupNoLimitStatBar() {

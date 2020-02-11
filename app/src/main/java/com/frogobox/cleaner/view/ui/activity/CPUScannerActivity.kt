@@ -18,6 +18,7 @@ import com.frogobox.cleaner.view.ui.fragment.CPUCoolerFragment
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import kotlinx.android.synthetic.main.activity_cpu_scanner.*
+import kotlinx.android.synthetic.main.view_ads.*
 
 class CPUScannerActivity : BaseActivity() {
 
@@ -26,6 +27,7 @@ class CPUScannerActivity : BaseActivity() {
         setContentView(R.layout.activity_cpu_scanner)
         setupAnimationProcess()
         setupRecyclerViewApps()
+        setupShowAdsBanner(ads_banner)
     }
 
     private fun setupAnimationProcess() {

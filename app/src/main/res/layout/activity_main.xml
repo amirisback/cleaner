@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryBackground"
-    android:id="@+id/linearLayout">
+    android:background="@color/colorPrimaryBackground">
 
-    <include
-        layout="@layout/toolbar_main"/>
+    <include layout="@layout/toolbar_main" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/tab_layout"
-        android:layout_below="@id/toolbar_main"/>
+        android:layout_below="@id/toolbar_main" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="8dp"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
         android:background="@color/tab_background"
+        android:elevation="8dp"
         app:tabBackground="@drawable/bg_tab_color_selector"
-        android:minHeight="?attr/actionBarSize"
-        app:tabIndicatorHeight="0dp"/>
+        app:tabIndicatorHeight="1dp" />
 
 </RelativeLayout>

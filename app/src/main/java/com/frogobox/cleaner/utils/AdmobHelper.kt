@@ -3,10 +3,7 @@ package com.frogobox.cleaner.utils
 import android.content.Context
 import android.util.Log
 import com.frogobox.cleaner.R
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.InterstitialAd
-import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.*
 import com.google.android.gms.ads.reward.RewardedVideoAd
 import com.google.android.gms.ads.reward.RewardedVideoAdListener
 
@@ -40,23 +37,25 @@ class AdmobHelper {
 
     object Interstitial {
 
-        fun setupInterstitial(context: Context, mInterstitialAd: InterstitialAd){
+        fun setupInterstitial(context: Context, mInterstitialAd: InterstitialAd) {
             mInterstitialAd.adUnitId = context.getString(R.string.admob_interstitial)
             mInterstitialAd.loadAd(AdRequest.Builder().build())
             mInterstitialAd.adListener = object : AdListener() {
                 override fun onAdClosed() {
                     mInterstitialAd.loadAd(AdRequest.Builder().build())
                 }
+
                 override fun onAdLoaded() {
-                    Log.d("Interstitial Load State", "loaded")
+                    Log.d("Interstitial Load State", "loaded");
                 }
+
                 override fun onAdFailedToLoad(i: Int) {
                     Log.w("Interstitial Load State", "onAdFailedToLoad:" + i)
                 }
             }
         }
 
-        fun showInterstitial(mInterstitialAd: InterstitialAd){
+        fun showInterstitial(mInterstitialAd: InterstitialAd) {
             if (mInterstitialAd.isLoaded) {
                 mInterstitialAd.show()
             } else {
@@ -66,14 +65,40 @@ class AdmobHelper {
 
     }
 
-    object Video {
+    object Banner {
 
-        fun setupVideo(context: Context, rewardedVideoAdListener: RewardedVideoAdListener, mRewardedVideoAd: RewardedVideoAd){
-            mRewardedVideoAd.rewardedVideoAdListener = rewardedVideoAdListener
-            mRewardedVideoAd.loadAd(context.getString(R.string.admob_video), AdRequest.Builder().build())
+        fun setupBanner(mAdView: AdView) {
+            mAdView.adListener = object : AdListener() {
+                override fun onAdLoaded() {}
+                override fun onAdFailedToLoad(errorCode: Int) {}
+                override fun onAdOpened() {}
+                override fun onAdClicked() {}
+                override fun onAdLeftApplication() {}
+                override fun onAdClosed() {}
+            }
         }
 
-        fun showVideo(mRewardedVideoAd: RewardedVideoAd){
+        fun showBanner(mAdView: AdView){
+            mAdView.loadAd(AdRequest.Builder().build())
+        }
+
+    }
+
+    object Video {
+
+        fun setupVideo(
+                context: Context,
+                rewardedVideoAdListener: RewardedVideoAdListener,
+                mRewardedVideoAd: RewardedVideoAd
+        ) {
+            mRewardedVideoAd.rewardedVideoAdListener = rewardedVideoAdListener
+            mRewardedVideoAd.loadAd(
+                    context.getString(R.string.admob_rewarded_video),
+                    AdRequest.Builder().build()
+            )
+        }
+
+        fun showVideo(mRewardedVideoAd: RewardedVideoAd) {
             if (mRewardedVideoAd.isLoaded) {
                 mRewardedVideoAd.show()
             }

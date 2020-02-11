@@ -147,9 +147,10 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/ads_banner"
         android:scrollbars="none"
         tools:listitem="@layout/content_item_junk_apps" />
 
+    <include layout="@layout/view_ads"/>
 
 </RelativeLayout>

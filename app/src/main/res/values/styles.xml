@@ -125,6 +125,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_above">@id/tv_state_condition_2</item>
         <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textColor">@color/colorTextBlack</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">@dimen/text_size_title_medium_20sp</item>
         <item name="android:textStyle">bold</item>
@@ -133,6 +134,7 @@
     <style name="textview_condition_2" parent="base_text_view">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorTextBlack</item>
         <item name="android:layout_above">@id/layout_button</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:textSize">13sp</item>

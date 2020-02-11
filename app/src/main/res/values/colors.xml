@@ -17,7 +17,7 @@
     <color name="colorAccentOrange">#C62828</color>
 
     <color name="colorBackgroundLine">#E9E7E7</color>
-    <color name="colorPrimaryText">#AE000000</color>
+    <color name="colorPrimaryText">#000000</color>
 
     <color name="colorPrimary">@color/colorOrange</color>
     <color name="colorPrimaryDark">@color/colorBaseWhite</color>

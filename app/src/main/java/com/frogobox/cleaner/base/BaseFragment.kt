@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.frogobox.cleaner.R
+import com.google.android.gms.ads.AdView
 
 /**
  * Created by Faisal Amir
@@ -42,6 +43,14 @@ abstract class BaseFragment : Fragment() {
             replace(frameId, fragment)
             commit()
         }
+    }
+
+    protected fun setupShowAdsInterstitial(){
+        mActivity.setupShowAdsInterstitial()
+    }
+
+    protected fun setupShowAdsBanner(mAdView: AdView){
+        mActivity.setupShowAdsBanner(mAdView)
     }
 
     protected inline fun <reified ClassActivity> baseStartActivity() {

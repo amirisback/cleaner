@@ -25,6 +25,7 @@ import com.github.ybq.android.spinkit.style.ThreeBounce
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import kotlinx.android.synthetic.main.activity_scanning_junk.*
+import kotlinx.android.synthetic.main.view_ads.*
 import java.util.*
 
 class ScanningJunkActivity : BaseActivity() {
@@ -39,6 +40,7 @@ class ScanningJunkActivity : BaseActivity() {
         packages = packageManager.getInstalledApplications(0)
         setupAnimationProcess()
         setupRecyclerViewApps()
+        setupShowAdsBanner(ads_banner)
     }
 
     private fun setupAnimationProcess() {
