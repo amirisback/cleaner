@@ -40,7 +40,6 @@ class ScanningJunkActivity : BaseActivity() {
         packages = packageManager.getInstalledApplications(0)
         setupAnimationProcess()
         setupRecyclerViewApps()
-        setupShowAdsBanner(ads_banner)
     }
 
     private fun setupAnimationProcess() {
