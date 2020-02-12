@@ -69,7 +69,6 @@ class ChargeBoosterFragment : BaseFragment() {
         setupCheckOptimize()
         setupButtonOptimize()
         setupCheckStartUp()
-        setupShowAdsBanner(ads_banner)
     }
 
     private fun setupOptimizingPhone() {

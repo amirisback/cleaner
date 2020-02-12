@@ -67,7 +67,6 @@ class CPUCoolerFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupCheckCooledBattery()
-        setupShowAdsBanner(ads_banner)
     }
 
     private fun setupCheckCooledBattery() {

@@ -96,7 +96,7 @@
         android:id="@+id/layout_footer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_height_footer"
-        android:layout_above="@+id/ads_banner"
+        android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -182,7 +182,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <include layout="@layout/view_ads"/>
 
 </RelativeLayout>

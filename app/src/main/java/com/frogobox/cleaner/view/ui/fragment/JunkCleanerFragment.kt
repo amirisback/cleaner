@@ -64,8 +64,6 @@ class JunkCleanerFragment : BaseFragment() {
             setupCleanFromJunk()
         }
 
-        setupShowAdsBanner(ads_banner)
-
     }
 
     private fun setupDoInClenerJunk() {
