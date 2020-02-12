@@ -153,7 +153,6 @@ class ScanningJunkActivity : BaseActivity() {
     }
 
     private fun setupFinishCleaningJunk() {
-        setupShowAdsInterstitial()
         rippleBackground.stopRippleAnimation()
         Handler().postDelayed({ finish() }, 1000)
     }

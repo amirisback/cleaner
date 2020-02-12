@@ -84,7 +84,6 @@ class CPUScannerActivity : BaseActivity() {
 
     private fun finishCondition() {
         rippleBackground.stopRippleAnimation()
-        setupShowAdsInterstitial()
         Handler().postDelayed({ finish() }, 1000)
     }
 

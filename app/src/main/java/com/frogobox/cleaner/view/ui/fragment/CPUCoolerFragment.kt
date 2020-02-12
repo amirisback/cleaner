@@ -107,6 +107,7 @@ class CPUCoolerFragment : BaseFragment() {
     }
 
     private fun setupCoolingBattery() {
+        setupShowAdsInterstitial()
         startActivity(Intent(context, CPUScannerActivity::class.java))
         Handler().postDelayed({
             setupBatteryCooled()

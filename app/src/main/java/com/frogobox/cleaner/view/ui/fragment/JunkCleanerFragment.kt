@@ -69,6 +69,7 @@ class JunkCleanerFragment : BaseFragment() {
     }
 
     private fun setupDoInClenerJunk() {
+        setupShowAdsInterstitial()
         baseStartActivity<ScanningJunkActivity, String>(SHARED_PREF_JUNK, alljunk.toString() + "")
         Handler().postDelayed({
             //Do something after 100ms
