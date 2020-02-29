@@ -1,5 +1,7 @@
 package com.frogobox.cleaner.utils
 
+import com.frogobox.cleaner.BuildConfig
+
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
@@ -20,7 +22,7 @@ class Constant {
 
     object Variable {
 
-        const val PACKAGE_NAME = "com.frogobox.cleaner"
+        const val PACKAGE_NAME = BuildConfig.APPLICATION_ID
 
         const val SHARED_PREF_WASEEM = "SHARED_PREF_WASEEM"
         const val SHARED_PREF_WASEEMBEST = "SHARED_PREF_WASEEMBEST"
