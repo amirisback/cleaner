@@ -10,20 +10,6 @@ android {
     // Declaration apk / aab name
     def nameAPK = nameApp.toLowerCase().replace(" ", "-")
 
-    def versionPropsFile = file('version.properties')
-    Properties versionProps = new Properties()
-
-    if (versionPropsFile.canRead()) {
-        versionProps.load(new FileInputStream(versionPropsFile))
-    } else {
-        versionProps['VERSION_CODE'] = '0'
-    }
-
-    def code = versionProps['VERSION_CODE'].toInteger()
-
-    versionProps['VERSION_CODE'] = code.toString()
-    versionProps.store(versionPropsFile.newWriter(), null)
-
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
     defaultConfig {
@@ -48,7 +34,7 @@ android {
         def debugAdmobNativeAdvancedVideo = "ca-app-pub-3940256099942544/1044960115"
 
         // Naming APK // AAB
-        setProperty("archivesBaseName", nameAPK + versionName + "#" + code + "-"
+        setProperty("archivesBaseName", nameAPK + versionName + "#(vcode" + String.valueOf(versionCode) + ")-"
                 + new Date().format('ddMMyy'))
 
         resConfigs "en", "id"
