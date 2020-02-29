@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.frogobox.cleaner">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<!--    <uses-permission android:name="android.permission.READ_CONTACTS" />-->
-<!--    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />-->
-<!--    <uses-permission android:name="android.permission.BLUETOOTH" />-->
-<!--    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />-->
-<!--    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
-<!--    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />-->
-<!--    <uses-permission-->
-<!--        android:name="android.permission.WRITE_SETTINGS"-->
-<!--        tools:ignore="ProtectedPermissions" />-->
-<!--    <uses-permission android:name="android.permission.CAMERA" />-->
 
     <application
         android:allowBackup="true"
@@ -26,61 +15,32 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.MainActivity"
-            android:theme="@style/AppThemeNoActionBar">
 
+        <activity
+            android:name=".view.ui.activity.MainActivity"
+            android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.notshow.PowerSavingBatterySaverActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.AboutUsActivity"
-            android:screenOrientation="portrait"
+            android:name=".view.ui.activity.AboutUsActivity"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.notshow.UltraBaterrySaverActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.notshow.BatterySaverBlackActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.notshow.NormalModeBatterySaverActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.notshow.PowerSavingComplitionActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.notshow.ApplyingUltraActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.ScanningJunkActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.CPUScannerActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name="com.frogobox.cleaner.view.ui.activity.notshow.PickAppsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Transparent" />
 
-        <receiver android:name="com.frogobox.cleaner.service.AlarmBoosterBroadcastReceiver" />
-        <receiver android:name="com.frogobox.cleaner.service.AlarmJunkBroadcastReceiver" />
+        <activity
+            android:name=".view.ui.activity.ScanningJunkActivity"
+            android:theme="@style/AppThemeNoActionBar" />
+        
+        <activity
+            android:name=".view.ui.activity.CPUScannerActivity"
+            android:theme="@style/AppThemeNoActionBar" />
 
-        <receiver android:name="com.frogobox.cleaner.service.AppListenerBroadcastReceiver">
+        <receiver android:name=".service.AlarmBoosterBroadcastReceiver" />
+        <receiver android:name=".service.AlarmJunkBroadcastReceiver" />
+        <receiver android:name=".service.AppListenerBroadcastReceiver">
             <intent-filter android:priority="100">
                 <action android:name="android.intent.action.PACKAGE_INSTALL" />
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
@@ -89,7 +49,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name="com.frogobox.cleaner.service.PowerConnectedBroadcastReceiver">
+        <receiver android:name=".service.PowerConnectedBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
             </intent-filter>
