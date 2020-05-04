@@ -64,9 +64,6 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        // Naming APK // AAB
-        setProperty("archivesBaseName", nameAPK + "#(" + versionName + ")-" + new Date().format('ddMMyy'))
-
         resConfigs "en", "id"
         vectorDrawables.useSupportLibrary = true
 
@@ -134,12 +131,18 @@ android {
             def debugAttribute = "Development"
             def nameAppDebug = "$nameApp $debugAttribute"
 
+            // Naming APK // AAB
+            setProperty("archivesBaseName", nameAPK + projectVersionName + "#(" + applicationId + ")-" + new Date().format('ddMMyy'))
+
             // Inject app name for debug
             resValue "string", "app_name", nameAppDebug
         }
         production {
             // For release package name
             applicationId projectPackageName
+
+            // Naming APK // AAB
+            setProperty("archivesBaseName", nameAPK + projectVersionName + "#(" + applicationId + ")-" + new Date().format('ddMMyy'))
 
             // Inject app name for release
             resValue "string", "app_name", nameApp
