@@ -1,19 +1,21 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+
+    // Application ID
+    def basePackageName = "com.frogobox.cleaner"
 
     // Version Project
     def versionMajor = 1
     def versionMinor = 0
     def versionPatch = 0
 
-    // Application ID
     def packageDomain = "com"
-    def packageAccount = "frogobox"
-    def packageProject = "cleaner"
+    def packageAccount = "octavira"
+    def packageProject = "pinkcleaner"
 
     // Signing Release Key Store
     def projectJksStoreFile = "frogoboxdev.jks"
@@ -31,42 +33,42 @@ android {
     // Declaration apk / aab name
     def nameAPK = nameApp.toLowerCase().replace(" ", "-")
 
+    // Declaration admob id for debug
+    def debugAdmobPublisherId = "ca-app-pub-3940256099942544~3347511713"
+    def debugAdmobBanner = "ca-app-pub-3940256099942544/6300978111"
+    def debugAdmobInterstitial = "ca-app-pub-3940256099942544/1033173712"
+    def debugAdmobInterstitialVideo = "ca-app-pub-3940256099942544/8691691433"
+    def debugAdmobRewardedVideo = "ca-app-pub-3940256099942544/5224354917"
+    def debugAdmobNativeAdvanced = "ca-app-pub-3940256099942544/2247696110"
+    def debugAdmobNativeAdvancedVideo = "ca-app-pub-3940256099942544/1044960115"
+
+    // Declaration admob id for release
+    def releaseAdmobPublisherId = ""
+    def releaseAdmobBanner = ""
+    def releaseAdmobInterstitial = ""
+    def releaseAdmobInterstitialVideo = ""
+    def releaseAdmobRewardedVideo = ""
+    def releaseAdmobNativeAdvanced = ""
+    def releaseAdmobNativeAdvancedVideo = ""
+
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
+    flavorDimensions "default"
+
     defaultConfig {
-        applicationId projectPackageName
+        applicationId basePackageName
         minSdkVersion 21
         targetSdkVersion 29
         versionCode projectVersionCode
         versionName projectVersionName
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        // Declaration admob id for debug
-        def debugAdmobPublisherId = "ca-app-pub-3940256099942544~3347511713"
-        def debugAdmobBanner = "ca-app-pub-3940256099942544/6300978111"
-        def debugAdmobInterstitial = "ca-app-pub-3940256099942544/1033173712"
-        def debugAdmobInterstitialVideo = "ca-app-pub-3940256099942544/8691691433"
-        def debugAdmobRewardedVideo = "ca-app-pub-3940256099942544/5224354917"
-        def debugAdmobNativeAdvanced = "ca-app-pub-3940256099942544/2247696110"
-        def debugAdmobNativeAdvancedVideo = "ca-app-pub-3940256099942544/1044960115"
 
         // Naming APK // AAB
         setProperty("archivesBaseName", nameAPK + "#(" + versionName + ")-" + new Date().format('ddMMyy'))
 
         resConfigs "en", "id"
         vectorDrawables.useSupportLibrary = true
-
-        // Inject app name for debug
-        resValue "string", "app_name", nameApp
-
-        // Inject admob id for debug
-        resValue "string", "admob_publisher_id", debugAdmobPublisherId
-        resValue "string", "admob_banner", debugAdmobBanner
-        resValue "string", "admob_interstitial", debugAdmobInterstitial
-        resValue "string", "admob_interstitial_video", debugAdmobInterstitialVideo
-        resValue "string", "admob_rewarded_video", debugAdmobRewardedVideo
-        resValue "string", "admob_native_advanced", debugAdmobNativeAdvanced
-        resValue "string", "admob_native_advanced_video", debugAdmobNativeAdvancedVideo
 
     }
 
@@ -82,27 +84,34 @@ android {
         }
     }
 
-
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable true
+
+            // Inject admob id for debug
+            resValue "string", "admob_publisher_id", debugAdmobPublisherId
+            resValue "string", "admob_banner", debugAdmobBanner
+            resValue "string", "admob_interstitial", debugAdmobInterstitial
+            resValue "string", "admob_interstitial_video", debugAdmobInterstitialVideo
+            resValue "string", "admob_rewarded_video", debugAdmobRewardedVideo
+            resValue "string", "admob_native_advanced", debugAdmobNativeAdvanced
+            resValue "string", "admob_native_advanced_video", debugAdmobNativeAdvancedVideo
+
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+
+            // Disable Debug Mode
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+            pseudoLocalesEnabled false
 
             // Generated Signed APK / AAB
             signingConfig signingConfigs.release
-
-            // Declaration admob id for release
-            def releaseAdmobPublisherId = ""
-            def releaseAdmobBanner = ""
-            def releaseAdmobInterstitial = ""
-            def releaseAdmobInterstitialVideo = ""
-            def releaseAdmobRewardedVideo = ""
-            def releaseAdmobNativeAdvanced = ""
-            def releaseAdmobNativeAdvancedVideo = ""
-
-
-            // Inject app name for release
-            resValue "string", "app_name", nameApp
 
             // Inject admob id for release
             resValue "string", "admob_publisher_id", releaseAdmobPublisherId
@@ -113,8 +122,30 @@ android {
             resValue "string", "admob_native_advanced", releaseAdmobNativeAdvanced
             resValue "string", "admob_native_advanced_video", releaseAdmobNativeAdvancedVideo
 
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), "proguard-rules.pro"
         }
     }
+
+    productFlavors {
+        development {
+            // For development package name
+            applicationId basePackageName
+
+            def debugAttribute = "Development"
+            def nameAppDebug = "$nameApp $debugAttribute"
+
+            // Inject app name for debug
+            resValue "string", "app_name", nameAppDebug
+        }
+        production {
+            // For release package name
+            applicationId projectPackageName
+
+            // Inject app name for release
+            resValue "string", "app_name", nameApp
+        }
+    }
+
 }
 
 dependencies {
