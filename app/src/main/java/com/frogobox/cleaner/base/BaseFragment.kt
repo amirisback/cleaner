@@ -38,18 +38,18 @@ abstract class BaseFragment : Fragment() {
         mActivity = (activity as BaseActivity)
     }
 
-    protected fun setupChildFragment(frameId: Int, fragment: Fragment){
+    protected fun setupChildFragment(frameId: Int, fragment: Fragment) {
         childFragmentManager.beginTransaction().apply {
             replace(frameId, fragment)
             commit()
         }
     }
 
-    protected fun setupShowAdsInterstitial(){
+    protected fun setupShowAdsInterstitial() {
         mActivity.setupShowAdsInterstitial()
     }
 
-    protected fun setupShowAdsBanner(mAdView: AdView){
+    protected fun setupShowAdsBanner(mAdView: AdView) {
         mActivity.setupShowAdsBanner(mAdView)
     }
 
@@ -67,7 +67,7 @@ abstract class BaseFragment : Fragment() {
         context?.startActivity(intent)
     }
 
-    fun <Model> baseNewInstance(argsKey: String, data: Model){
+    fun <Model> baseNewInstance(argsKey: String, data: Model) {
         val argsData = BaseHelper().baseToJson(data)
         val bundleArgs = Bundle().apply {
             putString(argsKey, argsData)
@@ -75,13 +75,13 @@ abstract class BaseFragment : Fragment() {
         this.arguments = bundleArgs
     }
 
-    protected inline fun <reified Model> baseGetInstance(argsKey: String) : Model {
+    protected inline fun <reified Model> baseGetInstance(argsKey: String): Model {
         val argsData = this.arguments?.getString(argsKey)
         val instaceData = BaseHelper().baseFromJson<Model>(argsData)
         return instaceData
     }
 
-    protected fun checkArgument(argsKey: String) : Boolean{
+    protected fun checkArgument(argsKey: String): Boolean {
         return arguments!!.containsKey(argsKey)
     }
 
@@ -105,9 +105,9 @@ abstract class BaseFragment : Fragment() {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
-    protected fun showCustomToast(message: String){
+    protected fun showCustomToast(message: String) {
         val layout = LayoutInflater.from(context).inflate(R.layout.toast_apps, null)
-        val text = layout.findViewById<TextView>(R.id.textView1)
+        val text = layout.findViewById<TextView>(R.id.toast_tv)
         text.text = message
         val toast = Toast(context)
         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 70)
@@ -116,14 +116,13 @@ abstract class BaseFragment : Fragment() {
         toast.show()
     }
 
-    protected fun setOptimizeButton(button: Button, text: Int){
+    protected fun setOptimizeButton(button: Button, text: Int) {
         button.setBackgroundResource(R.drawable.bg_border_button_positive)
         button.setTextColor(mActivity.getColorRes(R.color.colorTextWhite))
         button.text = getString(text)
     }
 
-
-    protected fun setDoneOptimizeButton(button: Button, text: Int){
+    protected fun setDoneOptimizeButton(button: Button, text: Int) {
         button.setBackgroundResource(R.drawable.bg_border_button_negatif)
         button.setTextColor(mActivity.getColorRes(R.color.colorPrimaryText))
         button.text = getString(text)

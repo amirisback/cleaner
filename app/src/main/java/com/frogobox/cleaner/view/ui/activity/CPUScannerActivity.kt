@@ -72,7 +72,11 @@ class CPUScannerActivity : BaseActivity() {
                     iv_scanning_main.visibility = View.GONE
                     tv_cooling_cpu.text = "Cooled CPU to 25.3°C"
                 }
-                override fun onAnimationEnd(animation: Animator) { finishCondition() }
+
+                override fun onAnimationEnd(animation: Animator) {
+                    finishCondition()
+                }
+
                 override fun onAnimationCancel(animation: Animator) {}
                 override fun onAnimationRepeat(animation: Animator) {}
             })

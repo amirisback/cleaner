@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.model.Apps
-import kotlinx.android.synthetic.main.content_item_cpu_cooler_doing.view.*
+import kotlinx.android.synthetic.main.list_cpu_cooler_doing.view.*
 
 /**
  * Created by Frogobox Software Industries 2/25/2017.
@@ -17,7 +17,7 @@ class ScanCpuAppsViewAdapter(private val apps: List<Apps>) :
         RecyclerView.Adapter<ScanCpuAppsViewAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.content_item_cpu_cooler_doing, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_cpu_cooler_doing, parent, false)
         return MyViewHolder(itemView)
     }
 

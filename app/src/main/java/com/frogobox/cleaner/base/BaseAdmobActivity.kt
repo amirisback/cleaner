@@ -56,7 +56,7 @@ open class BaseAdmobActivity : AppCompatActivity() {
         showInterstitial(mInterstitialAd)
     }
 
-    fun setupShowAdsBanner(mAdView : AdView) {
+    fun setupShowAdsBanner(mAdView: AdView) {
         setupBanner(mAdView)
         showBanner(mAdView)
     }

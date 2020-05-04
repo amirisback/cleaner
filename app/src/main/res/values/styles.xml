@@ -6,9 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
-        <item name="android:statusBarColor">@color/colorBaseWhite</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
 
     </style>
 
@@ -18,11 +16,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
-        <item name="android:windowBackground">@drawable/layout_splash_screen</item>
-        <item name="android:statusBarColor">@color/colorBaseWhite</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-
+        <item name="android:fontFamily">@font/montserrat_regular</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

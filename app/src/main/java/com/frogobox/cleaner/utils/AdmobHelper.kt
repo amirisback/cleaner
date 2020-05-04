@@ -78,7 +78,7 @@ class AdmobHelper {
             }
         }
 
-        fun showBanner(mAdView: AdView){
+        fun showBanner(mAdView: AdView) {
             mAdView.loadAd(AdRequest.Builder().build())
         }
 

@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mylayout"
+    android:id="@+id/toast_layout_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_toast"
+    android:background="@drawable/frogo_rv_bg_card_32dp"
+    android:elevation="@dimen/frogo_rv_dimen_2dp"
     android:gravity="center"
-    android:paddingStart="@dimen/dimen_big_16dp"
-    android:paddingEnd="@dimen/dimen_big_16dp"
-    android:paddingTop="@dimen/dimen_medium_8dp"
-    android:paddingBottom="@dimen/dimen_medium_8dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/dimen_big_ultra_32dp"
+    android:paddingTop="@dimen/frogo_rv_dimen_12dp"
+    android:paddingEnd="@dimen/dimen_big_ultra_32dp"
+    android:paddingBottom="@dimen/frogo_rv_dimen_12dp">
 
     <ImageView
-        android:id="@+id/imageview"
+        android:id="@+id/toast_iv"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:src="@drawable/ic_bottom_nav_chargebooster"/>
+        android:src="@drawable/ic_bottom_nav_chargebooster" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/toast_tv"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
         android:layout_marginLeft="@dimen/dimen_big_16dp"
-        tools:text="dummy"
+        android:gravity="center_vertical"
         android:maxLines="1"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/colorPrimaryText"/>
+        android:textColor="@color/colorPrimaryText"
+        tools:text="dummy" />
 
 </LinearLayout>

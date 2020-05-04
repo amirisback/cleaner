@@ -6,15 +6,9 @@ import android.os.Bundle
 import android.view.*
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.frogobox.cleaner.R
-import com.frogobox.cleaner.utils.AdmobHelper.Interstitial.setupInterstitial
-import com.frogobox.cleaner.utils.AdmobHelper.Interstitial.showInterstitial
-import com.frogobox.cleaner.utils.AdmobHelper.Publisher.setupPublisher
-import com.google.android.gms.ads.InterstitialAd
-import com.google.android.gms.ads.reward.RewardedVideoAd
 
 
 /**
@@ -87,9 +81,9 @@ abstract class BaseActivity : BaseAdmobActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    protected fun showCustomToast(message: String){
+    protected fun showCustomToast(message: String) {
         val layout = LayoutInflater.from(this).inflate(R.layout.toast_apps, null)
-        val text = layout.findViewById<TextView>(R.id.textView1)
+        val text = layout.findViewById<TextView>(R.id.toast_tv)
         text.text = message
         val toast = Toast(this)
         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 70)

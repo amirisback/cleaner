@@ -26,7 +26,6 @@ import com.frogobox.cleaner.view.ui.activity.CPUScannerActivity
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import kotlinx.android.synthetic.main.fragment_cpu_cooler.*
-import kotlinx.android.synthetic.main.view_ads.*
 import java.io.File
 
 /**

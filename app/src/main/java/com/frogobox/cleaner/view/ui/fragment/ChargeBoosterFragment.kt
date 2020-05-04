@@ -23,7 +23,6 @@ import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_WASEEM
 import com.hookedonplay.decoviewlib.charts.SeriesItem
 import com.hookedonplay.decoviewlib.events.DecoEvent
 import kotlinx.android.synthetic.main.fragment_charge_booster.*
-import kotlinx.android.synthetic.main.view_ads.*
 import java.io.RandomAccessFile
 import java.text.DecimalFormat
 import java.util.*
@@ -229,7 +228,7 @@ class ChargeBoosterFragment : BaseFragment() {
         tv_precentage_ram.text = (Random().nextInt(40) + 20).toString() + "%"
     }
 
-    private fun dynamicStartUpEventEnd(timerCounting : Timer, TimerTaskCounting: TimerTask) {
+    private fun dynamicStartUpEventEnd(timerCounting: Timer, TimerTaskCounting: TimerTask) {
         timerCounting.cancel()
         TimerTaskCounting.cancel()
         timerCounting.purge()

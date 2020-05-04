@@ -20,7 +20,6 @@ import com.frogobox.cleaner.utils.Constant.Variable.ZERO_MB
 import com.frogobox.cleaner.utils.Constant.Variable._MB
 import com.frogobox.cleaner.view.ui.activity.ScanningJunkActivity
 import kotlinx.android.synthetic.main.fragment_junk_cleaner.*
-import kotlinx.android.synthetic.main.view_ads.*
 import java.util.*
 
 /**

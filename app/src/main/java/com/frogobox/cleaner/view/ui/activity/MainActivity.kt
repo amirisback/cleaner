@@ -3,8 +3,6 @@ package com.frogobox.cleaner.view.ui.activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.viewpager.widget.ViewPager
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseActivity
@@ -15,7 +13,6 @@ import com.frogobox.cleaner.view.ui.fragment.ChargeBoosterFragment
 import com.frogobox.cleaner.view.ui.fragment.JunkCleanerFragment
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.toolbar_main.*
 
 class MainActivity : BaseActivity() {
 
@@ -25,28 +22,12 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar_main)
 
         setupInitGlobalVariable()
         setupInitThreadHandler()
         setupDeclareTabLayoutViewPager()
         setupViewPagerChangeListener()
         setupTabSelectedListener()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_toolbar_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.toolbar_menu_about -> {
-                baseStartActivity<AboutUsActivity>()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     private fun setupInitGlobalVariable() {
@@ -70,7 +51,6 @@ class MainActivity : BaseActivity() {
 
     private fun setupDeclareTabLayoutViewPager() {
         tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_bottom_nav_chargebooster))
-//        tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_tablayout_batterysaver))
         tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_bottom_nav_temperature))
         tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_bottom_nav_junk))
         tab_layout.tabGravity = TabLayout.GRAVITY_FILL

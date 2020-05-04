@@ -35,7 +35,7 @@ class AppListenerBroadcastReceiver : BroadcastReceiver() {
                 val inflater = LayoutInflater.from(context)
                 val layout = inflater.inflate(R.layout.toast_apps, null)
                 val image = layout.findViewById<ImageView>(R.id.image)
-                val text = layout.findViewById<TextView>(R.id.textView1)
+                val text = layout.findViewById<TextView>(R.id.toast_tv)
                 val notif = appName + " Is Optimized by" + context.getString(R.string.app_name)
                 text.text = notif
 

@@ -64,7 +64,7 @@
             android:clipToPadding="false"
             android:paddingStart="@dimen/dimen_big_16dp"
             android:scrollbars="none"
-            tools:listitem="@layout/content_item_cpu_cooler" />
+            tools:listitem="@layout/list_cpu_cooler" />
 
         <TextView
             android:id="@+id/tv_empty_apps_heat"
