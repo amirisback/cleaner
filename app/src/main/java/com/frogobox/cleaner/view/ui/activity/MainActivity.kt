@@ -94,7 +94,6 @@ class MainActivity : BaseActivity() {
             override fun onPageSelected(position: Int) {
                 when (position) {
                     0 -> supportActionBar?.setTitle(R.string.title_charge_booster)
-//                    1 -> supportActionBar?.setTitle(R.string.title_baterry_saver)
                     1 -> supportActionBar?.setTitle(R.string.title_cpu_cooler)
                     2 -> supportActionBar?.setTitle(R.string.title_junk_cleaner)
                 }

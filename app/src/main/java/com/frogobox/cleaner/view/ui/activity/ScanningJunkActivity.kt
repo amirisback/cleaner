@@ -20,12 +20,10 @@ import com.frogobox.cleaner.base.BaseActivity
 import com.frogobox.cleaner.model.Apps
 import com.frogobox.cleaner.utils.Constant
 import com.frogobox.cleaner.view.adapter.JunkAppsViewAdapter
-import com.frogobox.cleaner.view.adapter.SimpleDividerItemDecoration
 import com.github.ybq.android.spinkit.style.ThreeBounce
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import kotlinx.android.synthetic.main.activity_scanning_junk.*
-import kotlinx.android.synthetic.main.view_ads.*
 import java.util.*
 
 class ScanningJunkActivity : BaseActivity() {
@@ -94,13 +92,11 @@ class ScanningJunkActivity : BaseActivity() {
         val junkAppsViewAdapter = JunkAppsViewAdapter(apps)
 
         recycler_view.itemAnimator = SlideInLeftAnimator()
-        recycler_view.addItemDecoration(SimpleDividerItemDecoration(this))
         recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recycler_view.itemAnimator = SlideInUpAnimator(OvershootInterpolator(1f))
         recycler_view.computeHorizontalScrollExtent()
         recycler_view.adapter = junkAppsViewAdapter
         junkAppsViewAdapter.notifyDataSetChanged()
-        recycler_view.addItemDecoration(SimpleDividerItemDecoration(this))
 
         setupContentRecyclerView(apps, junkAppsViewAdapter)
     }

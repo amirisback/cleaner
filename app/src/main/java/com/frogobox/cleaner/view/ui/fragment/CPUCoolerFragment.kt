@@ -178,9 +178,4 @@ class CPUCoolerFragment : BaseFragment() {
         recycler_view.adapter = adapter
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mActivity.unregisterReceiver(batteryReceiver)
-    }
-
 }
