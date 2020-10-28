@@ -4,14 +4,14 @@
     android:id="@+id/toast_layout_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/frogo_rv_bg_card_32dp"
-    android:elevation="@dimen/frogo_rv_dimen_2dp"
+    android:background="@drawable/frogo_bg_card_32dp"
+    android:elevation="@dimen/frogo_dimen_2dp"
     android:gravity="center"
     android:orientation="horizontal"
     android:paddingStart="@dimen/dimen_big_ultra_32dp"
-    android:paddingTop="@dimen/frogo_rv_dimen_12dp"
+    android:paddingTop="@dimen/frogo_dimen_12dp"
     android:paddingEnd="@dimen/dimen_big_ultra_32dp"
-    android:paddingBottom="@dimen/frogo_rv_dimen_12dp">
+    android:paddingBottom="@dimen/frogo_dimen_12dp">
 
     <ImageView
         android:id="@+id/toast_iv"
