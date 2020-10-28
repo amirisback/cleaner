@@ -13,17 +13,20 @@ import android.view.animation.RotateAnimation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseActivity
+import com.frogobox.cleaner.databinding.ActivityCpuScannerBinding
 import com.frogobox.cleaner.view.adapter.ScanCpuAppsViewAdapter
 import com.frogobox.cleaner.view.ui.fragment.CPUCoolerFragment
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
-import kotlinx.android.synthetic.main.activity_cpu_scanner.*
 
 class CPUScannerActivity : BaseActivity() {
 
+    private lateinit var activityCPUScannerBinding: ActivityCpuScannerBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cpu_scanner)
+        activityCPUScannerBinding = ActivityCpuScannerBinding.inflate(baseLayoutInflater())
+        setContentView(activityCPUScannerBinding.root)
         setupAnimationProcess()
         setupRecyclerViewApps()
     }
@@ -33,21 +36,28 @@ class CPUScannerActivity : BaseActivity() {
         rotate.duration = 1500
         rotate.repeatCount = 3
         rotate.interpolator = LinearInterpolator()
-        iv_scanning_main.startAnimation(rotate)
+        activityCPUScannerBinding.ivScanningMain.startAnimation(rotate)
     }
 
     private fun setupRecyclerViewApps() {
-        val scanCpuAppsViewAdapter = ScanCpuAppsViewAdapter(CPUCoolerFragment.apps)
-        val mLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        recycler_view.itemAnimator = SlideInLeftAnimator()
-        recycler_view.layoutManager = mLayoutManager
-        recycler_view.itemAnimator = SlideInUpAnimator(OvershootInterpolator(1f))
-        recycler_view.computeHorizontalScrollExtent()
-        recycler_view.adapter = scanCpuAppsViewAdapter
-        scanCpuAppsViewAdapter.notifyDataSetChanged()
+        activityCPUScannerBinding.apply {
 
-        setupContentAdapter(scanCpuAppsViewAdapter)
+            val scanCpuAppsViewAdapter = ScanCpuAppsViewAdapter(CPUCoolerFragment.apps)
+            val mLayoutManager = LinearLayoutManager(this@CPUScannerActivity, LinearLayoutManager.HORIZONTAL, false)
+
+            recyclerView.apply {
+                itemAnimator = SlideInLeftAnimator()
+                layoutManager = mLayoutManager
+                itemAnimator = SlideInUpAnimator(OvershootInterpolator(1f))
+                computeHorizontalScrollExtent()
+                adapter = scanCpuAppsViewAdapter
+            }
+
+            scanCpuAppsViewAdapter.notifyDataSetChanged()
+            setupContentAdapter(scanCpuAppsViewAdapter)
+        }
+
     }
 
     private fun setupContentAdapter(adapter: ScanCpuAppsViewAdapter) {
@@ -60,34 +70,36 @@ class CPUScannerActivity : BaseActivity() {
 
         Handler().postDelayed({
 
-            iv_image_done.setImageResource(R.drawable.ic_task_done_main)
-            changeAppsItem(adapter, 6)
-            rippleBackground.startRippleAnimation()
+            activityCPUScannerBinding.apply {
+                ivImageDone.setImageResource(R.drawable.ic_task_done_main)
+                changeAppsItem(adapter, 6)
+                rippleBackground.startRippleAnimation()
 
-            val animationWaterRiple = AnimatorInflater.loadAnimator(this, R.animator.flipping) as ObjectAnimator
-            animationWaterRiple.target = iv_image_done
-            animationWaterRiple.duration = 3000
-            animationWaterRiple.addListener(object : Animator.AnimatorListener {
-                override fun onAnimationStart(animation: Animator) {
-                    iv_scanning_main.visibility = View.GONE
-                    tv_cooling_cpu.text = "Cooled CPU to 25.3°C"
-                }
+                val animationWaterRiple = AnimatorInflater.loadAnimator(this@CPUScannerActivity, R.animator.flipping) as ObjectAnimator
+                animationWaterRiple.target = ivImageDone
+                animationWaterRiple.duration = 3000
+                animationWaterRiple.addListener(object : Animator.AnimatorListener {
+                    override fun onAnimationStart(animation: Animator) {
+                        ivScanningMain.visibility = View.GONE
+                        tvCoolingCpu.text = "Cooled CPU to 25.3°C"
+                    }
 
-                override fun onAnimationEnd(animation: Animator) {
-                    finishCondition()
-                }
+                    override fun onAnimationEnd(animation: Animator) {
+                        finishCondition()
+                    }
 
-                override fun onAnimationCancel(animation: Animator) {}
-                override fun onAnimationRepeat(animation: Animator) {}
-            })
+                    override fun onAnimationCancel(animation: Animator) {}
+                    override fun onAnimationRepeat(animation: Animator) {}
+                })
 
-            animationWaterRiple.start()
+                animationWaterRiple.start()
+            }
 
         }, 5500)
     }
 
     private fun finishCondition() {
-        rippleBackground.stopRippleAnimation()
+        activityCPUScannerBinding.rippleBackground.stopRippleAnimation()
         Handler().postDelayed({ finish() }, 1000)
     }
 

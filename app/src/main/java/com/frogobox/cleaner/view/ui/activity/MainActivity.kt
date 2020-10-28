@@ -6,22 +6,24 @@ import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseActivity
+import com.frogobox.cleaner.databinding.ActivityMainBinding
 import com.frogobox.cleaner.utils.Constant
 import com.frogobox.cleaner.utils.PagerAdapter
 import com.frogobox.cleaner.view.ui.fragment.CPUCoolerFragment
 import com.frogobox.cleaner.view.ui.fragment.ChargeBoosterFragment
 import com.frogobox.cleaner.view.ui.fragment.JunkCleanerFragment
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
+    private lateinit var activityMainBinding: ActivityMainBinding
     private var sharedpreferences: SharedPreferences? = null
     private var editor: SharedPreferences.Editor? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        activityMainBinding = ActivityMainBinding.inflate(baseLayoutInflater())
+        setContentView(activityMainBinding.root)
 
         setupInitGlobalVariable()
         setupInitThreadHandler()
@@ -49,49 +51,62 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    private fun setupPagerAdapter(): PagerAdapter {
+        return PagerAdapter(supportFragmentManager).apply {
+            addFragment(ChargeBoosterFragment(), getString(R.string.title_charge_booster))
+            addFragment(CPUCoolerFragment(), getString(R.string.title_cpu_cooler))
+            addFragment(JunkCleanerFragment(), getString(R.string.title_junk_cleaner))
+        }
+    }
+
     private fun setupDeclareTabLayoutViewPager() {
-        tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_bottom_nav_chargebooster))
-        tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_bottom_nav_temperature))
-        tab_layout.addTab(tab_layout.newTab().setIcon(R.drawable.ic_bottom_nav_junk))
-        tab_layout.tabGravity = TabLayout.GRAVITY_FILL
+        activityMainBinding.apply {
 
-        val adapter = PagerAdapter(supportFragmentManager)
+            tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_bottom_nav_chargebooster))
+            tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_bottom_nav_temperature))
+            tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_bottom_nav_junk))
+            tabLayout.tabGravity = TabLayout.GRAVITY_FILL
 
-        adapter.addFragment(ChargeBoosterFragment(), getString(R.string.title_charge_booster))
-//        adapter.addFragment(BatterySaverFragment(), getString(R.string.title_baterry_saver))
-        adapter.addFragment(CPUCoolerFragment(), getString(R.string.title_cpu_cooler))
-        adapter.addFragment(JunkCleanerFragment(), getString(R.string.title_junk_cleaner))
+            viewPager.adapter = setupPagerAdapter()
+            viewPager.offscreenPageLimit = 3
 
-        view_pager.adapter = adapter
-        view_pager.offscreenPageLimit = 3
-
+        }
     }
 
     private fun setupViewPagerChangeListener() {
-        view_pager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab_layout))
-        view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
-            override fun onPageSelected(position: Int) {
-                when (position) {
-                    0 -> supportActionBar?.setTitle(R.string.title_charge_booster)
-                    1 -> supportActionBar?.setTitle(R.string.title_cpu_cooler)
-                    2 -> supportActionBar?.setTitle(R.string.title_junk_cleaner)
-                }
-            }
 
-            override fun onPageScrollStateChanged(state: Int) {}
-        })
+        activityMainBinding.apply {
+
+            viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
+            viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+                override fun onPageSelected(position: Int) {
+                    when (position) {
+                        0 -> supportActionBar?.setTitle(R.string.title_charge_booster)
+                        1 -> supportActionBar?.setTitle(R.string.title_cpu_cooler)
+                        2 -> supportActionBar?.setTitle(R.string.title_junk_cleaner)
+                    }
+                }
+
+                override fun onPageScrollStateChanged(state: Int) {}
+            })
+
+
+        }
+
     }
 
     private fun setupTabSelectedListener() {
-        tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                view_pager.currentItem = tab.position
-            }
+        activityMainBinding.apply {
+            tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab) {
+                    viewPager.currentItem = tab.position
+                }
 
-            override fun onTabUnselected(tab: TabLayout.Tab) {}
-            override fun onTabReselected(tab: TabLayout.Tab) {}
-        })
+                override fun onTabUnselected(tab: TabLayout.Tab) {}
+                override fun onTabReselected(tab: TabLayout.Tab) {}
+            })
+        }
     }
 
     override fun onDestroy() {

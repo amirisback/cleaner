@@ -34,6 +34,10 @@ abstract class BaseActivity : BaseAdmobActivity() {
         super.onCreate(savedInstanceState)
     }
 
+    protected fun baseLayoutInflater() : LayoutInflater {
+        return LayoutInflater.from(this)
+    }
+
     protected fun setupNoLimitStatBar() {
         val windows = window // in Activity's onCreate() for instance
         windows.setFlags(

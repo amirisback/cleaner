@@ -17,13 +17,13 @@ import android.view.animation.RotateAnimation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseActivity
+import com.frogobox.cleaner.databinding.ActivityScanningJunkBinding
 import com.frogobox.cleaner.model.Apps
 import com.frogobox.cleaner.utils.Constant
 import com.frogobox.cleaner.view.adapter.JunkAppsViewAdapter
 import com.github.ybq.android.spinkit.style.ThreeBounce
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
-import kotlinx.android.synthetic.main.activity_scanning_junk.*
 import java.util.*
 
 class ScanningJunkActivity : BaseActivity() {
@@ -31,10 +31,12 @@ class ScanningJunkActivity : BaseActivity() {
     private var check = 0
     private var prog = 0
     private lateinit var packages: List<ApplicationInfo>
+    private lateinit var activityScanningJunkBinding: ActivityScanningJunkBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scanning_junk)
+        activityScanningJunkBinding = ActivityScanningJunkBinding.inflate(baseLayoutInflater())
+        setContentView(activityScanningJunkBinding.root)
         packages = packageManager.getInstalledApplications(0)
         setupAnimationProcess()
         setupRecyclerViewApps()
@@ -55,14 +57,17 @@ class ScanningJunkActivity : BaseActivity() {
             override fun onAnimationEnd(animation: Animation) {
                 timer.cancel()
                 timer.purge()
-                iv_ball_indicator_1.hide()
-                iv_ball_indicator_2.hide()
-                iv_ball_indicator_3.hide()
-                iv_ball_indicator_4.hide()
-                iv_ball_indicator_5.hide()
-                iv_ball_indicator_6.hide()
 
-                tv_files_data.text = ""
+                activityScanningJunkBinding.apply {
+                    ivBallIndicator1.hide()
+                    ivBallIndicator2.hide()
+                    ivBallIndicator3.hide()
+                    ivBallIndicator4.hide()
+                    ivBallIndicator5.hide()
+                    ivBallIndicator6.hide()
+                    tvFilesData.text = ""
+                }
+
             }
 
             override fun onAnimationRepeat(animation: Animation) {
@@ -70,13 +75,13 @@ class ScanningJunkActivity : BaseActivity() {
                 startAnim(check)
             }
         })
-        iv_scanning_main.startAnimation(rotate)
+        activityScanningJunkBinding.ivScanningMain.startAnimation(rotate)
 
         timer.scheduleAtFixedRate(object : TimerTask() {
             override fun run() {
                 runOnUiThread {
                     if (prog < packages.size) {
-                        tv_files_data.text = packages[prog].sourceDir
+                        activityScanningJunkBinding.tvFilesData.text = packages[prog].sourceDir
                         prog++
                     } else {
                         timer.cancel()
@@ -90,14 +95,18 @@ class ScanningJunkActivity : BaseActivity() {
     private fun setupRecyclerViewApps() {
         val apps = mutableListOf<Apps>()
         val junkAppsViewAdapter = JunkAppsViewAdapter(apps)
+        val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        recycler_view.itemAnimator = SlideInLeftAnimator()
-        recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        recycler_view.itemAnimator = SlideInUpAnimator(OvershootInterpolator(1f))
-        recycler_view.computeHorizontalScrollExtent()
-        recycler_view.adapter = junkAppsViewAdapter
+        activityScanningJunkBinding.recyclerView.apply {
+            itemAnimator = SlideInLeftAnimator()
+            layoutManager = linearLayoutManager
+            itemAnimator = SlideInUpAnimator(OvershootInterpolator(1f))
+            computeHorizontalScrollExtent()
+            adapter = junkAppsViewAdapter
+        }
+
+
         junkAppsViewAdapter.notifyDataSetChanged()
-
         setupContentRecyclerView(apps, junkAppsViewAdapter)
     }
 
@@ -113,83 +122,97 @@ class ScanningJunkActivity : BaseActivity() {
         Handler().postDelayed({
             removeArrayApps(apps, adapter, 0)
 
-            rippleBackground.startRippleAnimation()
-            iv_scanning_background.visibility = View.INVISIBLE
-            iv_scanning_main.visibility = View.INVISIBLE
-            iv_image_done.setImageResource(R.drawable.ic_task_done_main)
+            activityScanningJunkBinding.apply {
 
-            loading_indicator.setIndeterminateDrawable(ThreeBounce())
-            loading_indicator.visibility = View.GONE
+                rippleBackground.startRippleAnimation()
+                ivScanningBackground.visibility = View.INVISIBLE
+                ivScanningMain.visibility = View.INVISIBLE
+                ivImageDone.setImageResource(R.drawable.ic_task_done_main)
 
-            val sumJunk = intent.extras?.getString(Constant.Variable.SHARED_PREF_JUNK)
-            tv_scanning.text = "$sumJunk MB of Junk Files Are Cleared"
+                loadingIndicator.setIndeterminateDrawable(ThreeBounce())
+                loadingIndicator.visibility = View.GONE
 
-            val anim = AnimatorInflater.loadAnimator(this, R.animator.flipping) as ObjectAnimator
-            anim.target = iv_image_done
-            anim.duration = 3000
-            anim.start()
+                val sumJunk = intent.extras?.getString(Constant.Variable.SHARED_PREF_JUNK)
+                tvScanning.text = "$sumJunk MB of Junk Files Are Cleared"
 
-            anim.addListener(object : Animator.AnimatorListener {
-                override fun onAnimationStart(animation: Animator) {
+                val anim = AnimatorInflater.loadAnimator(this@ScanningJunkActivity, R.animator.flipping) as ObjectAnimator
+                anim.target = ivImageDone
+                anim.duration = 3000
+                anim.start()
 
-                    val cache = intent.extras?.getString(Constant.Variable.SHARED_PREF_JUNK)
-                    tv_scanning.text = "Cleared $cache MB"
-                }
+                anim.addListener(object : Animator.AnimatorListener {
+                    override fun onAnimationStart(animation: Animator) {
 
-                override fun onAnimationEnd(animation: Animator) {
-                    setupFinishCleaningJunk()
-                }
+                        val cache = intent.extras?.getString(Constant.Variable.SHARED_PREF_JUNK)
+                        tvScanning.text = "Cleared $cache MB"
+                    }
 
-                override fun onAnimationCancel(animation: Animator) {}
-                override fun onAnimationRepeat(animation: Animator) {}
-            })
+                    override fun onAnimationEnd(animation: Animator) {
+                        setupFinishCleaningJunk()
+                    }
 
-            tv_files_data.text = ""
+                    override fun onAnimationCancel(animation: Animator) {}
+                    override fun onAnimationRepeat(animation: Animator) {}
+                })
+
+                tvFilesData.text = ""
+            }
+
         }, 8000)
     }
 
     private fun setupFinishCleaningJunk() {
-        rippleBackground.stopRippleAnimation()
+        activityScanningJunkBinding.rippleBackground.stopRippleAnimation()
         Handler().postDelayed({ finish() }, 1000)
     }
 
     private fun startAnim(timePosition: Int) {
         when (timePosition) {
             1 -> {
-                iv_ball_indicator_1.show()
-                iv_ball_indicator_3.show()
-                iv_ball_indicator_5.show()
+                activityScanningJunkBinding.apply {
+                    ivBallIndicator1.show()
+                    ivBallIndicator3.show()
+                    ivBallIndicator5.show()
 
-                iv_ball_indicator_2.hide()
-                iv_ball_indicator_4.hide()
-                iv_ball_indicator_6.hide()
+                    ivBallIndicator2.hide()
+                    ivBallIndicator4.hide()
+                    ivBallIndicator6.hide()
+                }
             }
             2 -> {
-                iv_ball_indicator_2.show()
-                iv_ball_indicator_4.show()
-                iv_ball_indicator_6.show()
+                activityScanningJunkBinding.apply {
+                    ivBallIndicator2.show()
+                    ivBallIndicator4.show()
+                    ivBallIndicator6.show()
 
-                iv_ball_indicator_1.hide()
-                iv_ball_indicator_3.hide()
-                iv_ball_indicator_5.hide()
+                    ivBallIndicator1.hide()
+                    ivBallIndicator3.hide()
+                    ivBallIndicator5.hide()
+                }
+
             }
             3 -> {
-                iv_ball_indicator_2.show()
-                iv_ball_indicator_4.show()
-                iv_ball_indicator_6.show()
+                activityScanningJunkBinding.apply {
+                    ivBallIndicator2.show()
+                    ivBallIndicator4.show()
+                    ivBallIndicator6.show()
 
-                iv_ball_indicator_1.show()
-                iv_ball_indicator_3.show()
-                iv_ball_indicator_5.show()
+                    ivBallIndicator1.hide()
+                    ivBallIndicator3.hide()
+                    ivBallIndicator5.hide()
+                }
             }
             4 -> {
-                iv_ball_indicator_2.show()
-                iv_ball_indicator_3.show()
-                iv_ball_indicator_5.show()
+                activityScanningJunkBinding.apply {
+                    ivBallIndicator2.show()
+                    ivBallIndicator3.show()
+                    ivBallIndicator5.show()
 
-                iv_ball_indicator_1.show()
-                iv_ball_indicator_2.show()
-                iv_ball_indicator_6.show()
+                    ivBallIndicator1.hide()
+                    ivBallIndicator2.hide()
+                    ivBallIndicator6.hide()
+                }
+
             }
         }
     }

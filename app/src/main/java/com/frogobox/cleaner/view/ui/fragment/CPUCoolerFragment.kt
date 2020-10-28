@@ -18,6 +18,7 @@ import android.view.animation.OvershootInterpolator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseFragment
+import com.frogobox.cleaner.databinding.FragmentCpuCoolerBinding
 import com.frogobox.cleaner.model.Apps
 import com.frogobox.cleaner.utils.Constant
 import com.frogobox.cleaner.utils.Constant.Variable._CELCIUS
@@ -25,7 +26,6 @@ import com.frogobox.cleaner.view.adapter.CPUCoolerViewAdapter
 import com.frogobox.cleaner.view.ui.activity.CPUScannerActivity
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
-import kotlinx.android.synthetic.main.fragment_cpu_cooler.*
 import java.io.File
 
 /**
@@ -48,6 +48,7 @@ import java.io.File
 class CPUCoolerFragment : BaseFragment() {
 
     private var check = 0
+    private var fragmentCpuCoolerBinding: FragmentCpuCoolerBinding? = null
 
     private val batteryReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -60,7 +61,8 @@ class CPUCoolerFragment : BaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_cpu_cooler, container, false)
+        fragmentCpuCoolerBinding = FragmentCpuCoolerBinding.inflate(inflater, container, false)
+        return fragmentCpuCoolerBinding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -76,7 +78,7 @@ class CPUCoolerFragment : BaseFragment() {
     private fun setupBatteryReceiver(intent: Intent) {
         val level = intent.getIntExtra("level", 0)
         val temp = intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0).toFloat() / 10
-        tv_temperature_phone.text = "$temp°C"
+        fragmentCpuCoolerBinding?.tvTemperaturePhone?.text = "$temp°C"
         if (temp >= 30.0) {
             setupSmartPhoneHotCondition()
         }
@@ -84,24 +86,28 @@ class CPUCoolerFragment : BaseFragment() {
 
     private fun setupSmartPhoneHotCondition() {
         apps = mutableListOf()
-        setupTextValueColor(tv_state_condition_1, getString(R.string.text_temp_condition_1_hot), colorTextRed())
-        setupTextValueColor(tv_state_condition_2, getString(R.string.text_temp_condition_2_hot), colorTextRed())
-        setupTextValueColor(tv_empty_apps_heat, "", colorTextRed())
-        tv_temperature_phone.setTextColor(colorTextRed())
-        iv_temperature_state.setImageResource(R.drawable.ic_temperature_hot_full)
-        setOptimizeButton(btn_cooler, R.string.button_cool_down)
-        btn_cooler.setOnClickListener { setupCoolingBattery() }
+        fragmentCpuCoolerBinding?.apply {
+            setupTextValueColor(tvStateCondition1, getString(R.string.text_temp_condition_1_hot), colorTextRed())
+            setupTextValueColor(tvStateCondition2, getString(R.string.text_temp_condition_2_hot), colorTextRed())
+            setupTextValueColor(tvEmptyAppsHeat, "", colorTextRed())
+            tvTemperaturePhone.setTextColor(colorTextRed())
+            ivTemperatureState.setImageResource(R.drawable.ic_temperature_hot_full)
+            setOptimizeButton(btnCooler, R.string.button_cool_down)
+            btnCooler.setOnClickListener { setupCoolingBattery() }
+        }
         setupHotApps()
     }
 
     private fun setupBatteryCooled() {
-        setupTextValueColor(tv_state_condition_1, getString(R.string.text_temp_condition_1_cool), colorTextGreen())
-        setupTextValueColor(tv_state_condition_2, getString(R.string.text_temp_condition_2_cool), colorTextGreen())
-        setupTextValueColor(tv_empty_apps_heat, getString(R.string.text_cpu_cooler_empty_apps), colorTextGreen())
-        tv_temperature_phone.setTextColor(mActivity.getColorRes(R.color.colorPrimaryText))
-        iv_temperature_state.setImageResource(R.drawable.ic_temperature_cold_full)
-        setDoneOptimizeButton(btn_cooler, R.string.button_cooled)
-        btn_cooler.setOnClickListener { showCustomToast(getString(R.string.toast_cpu_normal_temperature)) }
+        fragmentCpuCoolerBinding?.apply {
+            setupTextValueColor(tvStateCondition1, getString(R.string.text_temp_condition_1_cool), colorTextGreen())
+            setupTextValueColor(tvStateCondition2, getString(R.string.text_temp_condition_2_cool), colorTextGreen())
+            setupTextValueColor(tvEmptyAppsHeat, getString(R.string.text_cpu_cooler_empty_apps), colorTextGreen())
+            tvTemperaturePhone.setTextColor(mActivity.getColorRes(R.color.colorPrimaryText))
+            ivTemperatureState.setImageResource(R.drawable.ic_temperature_cold_full)
+            setDoneOptimizeButton(btnCooler, R.string.button_cooled)
+            btnCooler.setOnClickListener { showCustomToast(getString(R.string.toast_cpu_normal_temperature)) }
+        }
     }
 
     private fun setupCoolingBattery() {
@@ -109,8 +115,11 @@ class CPUCoolerFragment : BaseFragment() {
         startActivity(Intent(context, CPUScannerActivity::class.java))
         Handler().postDelayed({
             setupBatteryCooled()
-            tv_temperature_phone.text = "25.3" + _CELCIUS
-            recycler_view.adapter = null
+            fragmentCpuCoolerBinding?.apply {
+                tvTemperaturePhone.text = "25.3" + _CELCIUS
+                recyclerView.adapter = null
+            }
+
         }, 2000)
     }
 
@@ -167,14 +176,22 @@ class CPUCoolerFragment : BaseFragment() {
         }
     }
 
-    private fun setupRecyclerView(adapter: CPUCoolerViewAdapter) {
+    private fun setupRecyclerView(adapterCooler: CPUCoolerViewAdapter) {
         val mLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        recycler_view.itemAnimator = SlideInLeftAnimator()
-        recycler_view.itemAnimator!!.addDuration = 10000
-        recycler_view.layoutManager = mLayoutManager
-        recycler_view.itemAnimator = SlideInUpAnimator(OvershootInterpolator(1f))
-        recycler_view.computeHorizontalScrollExtent()
-        recycler_view.adapter = adapter
+        fragmentCpuCoolerBinding?.recyclerView?.apply {
+            itemAnimator = SlideInLeftAnimator()
+            itemAnimator!!.addDuration = 10000
+            layoutManager = mLayoutManager
+            itemAnimator = SlideInUpAnimator(OvershootInterpolator(1f))
+            computeHorizontalScrollExtent()
+            adapter = adapterCooler
+
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        fragmentCpuCoolerBinding = null
     }
 
 }

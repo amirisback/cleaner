@@ -16,13 +16,13 @@ import android.view.ViewGroup
 import android.view.animation.*
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseFragment
+import com.frogobox.cleaner.databinding.FragmentChargeBoosterBinding
 import com.frogobox.cleaner.service.AlarmBoosterBroadcastReceiver
 import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_BOOSTER
 import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_VALUE
 import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_WASEEM
 import com.hookedonplay.decoviewlib.charts.SeriesItem
 import com.hookedonplay.decoviewlib.events.DecoEvent
-import kotlinx.android.synthetic.main.fragment_charge_booster.*
 import java.io.RandomAccessFile
 import java.text.DecimalFormat
 import java.util.*
@@ -54,9 +54,11 @@ class ChargeBoosterFragment : BaseFragment() {
 
     private lateinit var sharedpreferences: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
+    private var fragmentChargeBoosterBinding: FragmentChargeBoosterBinding? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_charge_booster, container, false)
+        fragmentChargeBoosterBinding = FragmentChargeBoosterBinding.inflate(inflater, container, false)
+        return fragmentChargeBoosterBinding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,11 +77,11 @@ class ChargeBoosterFragment : BaseFragment() {
         val rotate = RotateAnimation(0f, 359f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
         rotate.duration = 5000
         rotate.interpolator = LinearInterpolator()
-        iv_back_line_speedo.startAnimation(rotate)
+        fragmentChargeBoosterBinding?.ivBackLineSpeedo?.startAnimation(rotate)
 
         setupInitDynamicView()
 
-        dynamicArcView2.addEvent(DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
+        fragmentChargeBoosterBinding?.dynamicArcView2?.addEvent(DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
                 .setDelay(500)
                 .setDuration(2000)
                 .setListener(object : DecoEvent.ExecuteEventListener {
@@ -90,7 +92,7 @@ class ChargeBoosterFragment : BaseFragment() {
                     override fun onEventEnd(decoEvent: DecoEvent) {}
                 }).build())
 
-        dynamicArcView2.addEvent(DecoEvent.Builder(25f).setIndex(setupInitDynamicSeriesIndex()).setDelay(4000).setListener(object : DecoEvent.ExecuteEventListener {
+        fragmentChargeBoosterBinding?.dynamicArcView2?.addEvent(DecoEvent.Builder(25f).setIndex(setupInitDynamicSeriesIndex()).setDelay(4000).setListener(object : DecoEvent.ExecuteEventListener {
             override fun onEventStart(decoEvent: DecoEvent) {
                 dynamicOptimizingEventStart()
             }
@@ -117,7 +119,7 @@ class ChargeBoosterFragment : BaseFragment() {
             override fun onAnimationRepeat(animation: Animation) {}
         })
 
-        iv_waves.startAnimation(animation)
+        fragmentChargeBoosterBinding?.ivWaves?.startAnimation(animation)
     }
 
     private fun setupCheckStartUp() {
@@ -128,7 +130,7 @@ class ChargeBoosterFragment : BaseFragment() {
                 try {
                     mActivity.runOnUiThread {
                         counter++
-                        tv_ramsize.text = counter.toString() + "MB"
+                        fragmentChargeBoosterBinding?.tvRamsize?.text = counter.toString() + "MB"
                     }
 
                 } catch (e: Exception) {
@@ -140,12 +142,12 @@ class ChargeBoosterFragment : BaseFragment() {
 
         setupInitDynamicView()
 
-        dynamicArcView2.addEvent(DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
+        fragmentChargeBoosterBinding?.dynamicArcView2?.addEvent(DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
                 .setDelay(0)
                 .setDuration(600)
                 .build())
 
-        dynamicArcView2.addEvent(DecoEvent.Builder(proc.toFloat()).setIndex(setupInitDynamicSeriesIndex()).setDelay(2000).setListener(object : DecoEvent.ExecuteEventListener {
+        fragmentChargeBoosterBinding?.dynamicArcView2?.addEvent(DecoEvent.Builder(proc.toFloat()).setIndex(setupInitDynamicSeriesIndex()).setDelay(2000).setListener(object : DecoEvent.ExecuteEventListener {
             override fun onEventStart(decoEvent: DecoEvent) {}
             override fun onEventEnd(decoEvent: DecoEvent) {
                 dynamicStartUpEventEnd(timerCounting, timerTaskCounting)
@@ -154,22 +156,27 @@ class ChargeBoosterFragment : BaseFragment() {
 
         y = Random().nextInt(50) + 15
 
-        tv_precentage_proceses.text = y.toString() + ""
-        tv_total_ram.text = getTotalRam()
-        tv_used_ram.text = "${getUsedMemorySize()} MB/ "
-        tv_apps_freed.text = getTotalRam()
-        tv_apps_used.text = (getUsedMemorySize() - x.toLong() - 30).toString() + " MB/ "
+        fragmentChargeBoosterBinding?.apply {
+            tvPrecentageProceses.text = y.toString() + ""
+            tvTotalRam.text = getTotalRam()
+            tvUsedRam.text = "${getUsedMemorySize()} MB/ "
+            tvAppsFreed.text = getTotalRam()
+            tvAppsUsed.text = (getUsedMemorySize() - x.toLong() - 30).toString() + " MB/ "
+        }
 
     }
 
     private fun setupCheckOptimize() {
-        if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "0") {
-            setDoneOptimizeButton(optbutton, R.string.button_optimized)
-            tv_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
-        } else {
-            setOptimizeButton(optbutton, R.string.button_optimize)
-            tv_precentage_ram.text = (Random().nextInt(60) + 40).toString() + "%"
+        fragmentChargeBoosterBinding?.apply {
+            if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "0") {
+                setDoneOptimizeButton(optbutton, R.string.button_optimized)
+                tvRamsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
+            } else {
+                setOptimizeButton(optbutton, R.string.button_optimize)
+                tvPrecentageRam.text = (Random().nextInt(60) + 40).toString() + "%"
+            }
         }
+
     }
 
     private fun setupAlarmManager() {
@@ -181,7 +188,7 @@ class ChargeBoosterFragment : BaseFragment() {
     }
 
     private fun setupButtonOptimize() {
-        optbutton.setOnClickListener {
+        fragmentChargeBoosterBinding?.optbutton!!.setOnClickListener {
             if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "1") {
                 editor.putString(SHARED_PREF_BOOSTER, "0")
                 editor.apply()
@@ -194,16 +201,20 @@ class ChargeBoosterFragment : BaseFragment() {
     }
 
     private fun setupInitDynamicView() {
-        dynamicArcView2.addSeries(SeriesItem.Builder(Color.argb(255, 218, 218, 218))
-                .setRange(0f, 100f, 0f)
-                .setInterpolator(AccelerateInterpolator())
-                .build())
 
-        dynamicArcView2.addSeries(SeriesItem.Builder(colorAccent())
-                .setRange(0f, 100f, 100f)
-                .setInitialVisibility(false)
-                .setLineWidth(32f)
-                .build())
+        fragmentChargeBoosterBinding?.apply {
+            dynamicArcView2.addSeries(SeriesItem.Builder(Color.argb(255, 218, 218, 218))
+                    .setRange(0f, 100f, 0f)
+                    .setInterpolator(AccelerateInterpolator())
+                    .build())
+
+            dynamicArcView2.addSeries(SeriesItem.Builder(colorAccent())
+                    .setRange(0f, 100f, 100f)
+                    .setInitialVisibility(false)
+                    .setLineWidth(32f)
+                    .build())
+        }
+
     }
 
     private fun setupInitDynamicSeriesIndex(): Int {
@@ -212,20 +223,26 @@ class ChargeBoosterFragment : BaseFragment() {
                 .setLineWidth(32f)
                 .build()
 
-        return dynamicArcView2.addSeries(seriesItem2)
+        return fragmentChargeBoosterBinding?.dynamicArcView2!!.addSeries(seriesItem2)
     }
 
     private fun dynamicOptimizingEventStart() {
-        tv_found.text = ""
-        tv_storage.text = ""
-        tv_ramsize.text = "Optimizing..."
+        fragmentChargeBoosterBinding?.apply {
+            tvFound.text = ""
+            tvStorage.text = ""
+            tvRamsize.text = "Optimizing..."
+        }
+
     }
 
     private fun dynamicOptimzingEventEnd() {
         mActivity.setupShowAdsInterstitial()
-        tv_found.text = "Found"
-        tv_storage.text = "Storage"
-        tv_precentage_ram.text = (Random().nextInt(40) + 20).toString() + "%"
+        fragmentChargeBoosterBinding?.apply {
+            tvFound.text = "Found"
+            tvStorage.text = "Storage"
+            tvPrecentageRam.text = (Random().nextInt(40) + 20).toString() + "%"
+
+        }
     }
 
     private fun dynamicStartUpEventEnd(timerCounting: Timer, TimerTaskCounting: TimerTask) {
@@ -233,10 +250,10 @@ class ChargeBoosterFragment : BaseFragment() {
         TimerTaskCounting.cancel()
         timerCounting.purge()
 
-        tv_ramsize.text = "${getUsedMemorySize()} MB"
+        fragmentChargeBoosterBinding?.tvRamsize!!.text = "${getUsedMemorySize()} MB"
 
         if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "0") {
-            tv_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
+            fragmentChargeBoosterBinding?.tvRamsize!!.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
         }
 
         val timerCounting2 = Timer()
@@ -244,9 +261,9 @@ class ChargeBoosterFragment : BaseFragment() {
             override fun run() {
                 try {
                     mActivity.runOnUiThread {
-                        tv_ramsize.text = "${getUsedMemorySize()} MB"
+                        fragmentChargeBoosterBinding?.tvRamsize!!.text = "${getUsedMemorySize()} MB"
                         if (sharedpreferences.getString(SHARED_PREF_BOOSTER, "1") == "0") {
-                            tv_ramsize.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
+                            fragmentChargeBoosterBinding?.tvRamsize!!.text = sharedpreferences.getString(SHARED_PREF_VALUE, "50MB")
                         }
                         timerCounting2.cancel()
 //                        timerTask2.cancel()
@@ -300,9 +317,11 @@ class ChargeBoosterFragment : BaseFragment() {
     }
 
     private fun animationOptimizeStart() {
-        tv_scanning.visibility = View.VISIBLE
-        optbutton.visibility = View.INVISIBLE
-        tv_scanning.text = "SCANNING..."
+        fragmentChargeBoosterBinding?.apply {
+            tvScanning.visibility = View.VISIBLE
+            optbutton.visibility = View.INVISIBLE
+            tvScanning.text = "SCANNING..."
+        }
     }
 
     private fun animationOptimizeEnd() {
@@ -312,16 +331,23 @@ class ChargeBoosterFragment : BaseFragment() {
         x = Random().nextInt(100) + 30
         val proc = Random().nextInt(10) + 5
 
-        tv_scanning.visibility = View.INVISIBLE
-        optbutton.visibility = View.VISIBLE
-        setDoneOptimizeButton(optbutton, R.string.button_optimized)
+        fragmentChargeBoosterBinding?.apply {
+            tvScanning.visibility = View.INVISIBLE
+            optbutton.visibility = View.VISIBLE
+            setDoneOptimizeButton(optbutton, R.string.button_optimized)
 
-        tv_total_ram.text = getTotalRam()
-        tv_used_ram.text = (getUsedMemorySize() - x).toString() + " MB/ "
-        tv_apps_freed.text = getTotalRam()
-        tv_apps_used.text = abs(getUsedMemorySize() - x.toLong() - 30).toString() + " MB/ "
-        tv_precentage_proceses.text = (y - proc).toString()
-        tv_ramsize.text = (getUsedMemorySize() - x).toString() + " MB"
+            tvTotalRam.text = getTotalRam()
+            tvUsedRam.text = (getUsedMemorySize() - x).toString() + " MB/ "
+            tvAppsFreed.text = getTotalRam()
+            tvAppsUsed.text = abs(getUsedMemorySize() - x.toLong() - 30).toString() + " MB/ "
+            tvPrecentageProceses.text = (y - proc).toString()
+            tvRamsize.text = (getUsedMemorySize() - x).toString() + " MB"
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        fragmentChargeBoosterBinding = null
     }
 
 }

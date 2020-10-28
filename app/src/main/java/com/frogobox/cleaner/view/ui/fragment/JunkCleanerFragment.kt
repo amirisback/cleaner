@@ -13,14 +13,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.base.BaseFragment
+import com.frogobox.cleaner.databinding.FragmentJunkCleanerBinding
 import com.frogobox.cleaner.service.AlarmJunkBroadcastReceiver
 import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_JUNK
 import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_WASEEM
 import com.frogobox.cleaner.utils.Constant.Variable.ZERO_MB
 import com.frogobox.cleaner.utils.Constant.Variable._MB
 import com.frogobox.cleaner.view.ui.activity.ScanningJunkActivity
-import kotlinx.android.synthetic.main.fragment_junk_cleaner.*
-import java.util.*
+import java.util.Random
 
 /**
  * Created by Faisal Amir
@@ -45,10 +45,12 @@ class JunkCleanerFragment : BaseFragment() {
 
     private lateinit var sharedpreferences: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
+    private var fragmentJunkCleanerBinding: FragmentJunkCleanerBinding? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_junk_cleaner, container, false)
+        fragmentJunkCleanerBinding = FragmentJunkCleanerBinding.inflate(inflater, container, false)
+        return fragmentJunkCleanerBinding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -98,44 +100,57 @@ class JunkCleanerFragment : BaseFragment() {
         val residueString = proc3.toString() + _MB
         val systemString = proc4.toString() + _MB
 
-        setOptimizeButton(mainbutton, R.string.button_clean)
-        iv_icon_junk.setImageResource(R.drawable.ic_junk_dirty)
-        cache.setBackgroundResource(R.drawable.bg_circle_border_red)
-        temp.setBackgroundResource(R.drawable.bg_circle_border_red)
-        residue.setBackgroundResource(R.drawable.bg_circle_border_red)
-        system.setBackgroundResource(R.drawable.bg_circle_border_red)
+        fragmentJunkCleanerBinding?.apply {
 
-        setupTextValueColor(tv_state_condition_1, mainString, colorTextRed())
-        setupTextValueColor(tv_state_condition_2, getString(R.string.text_junk_condition_2_dirty), colorTextRed())
-        setupTextValueColor(cachetext, cacheString, colorTextRed())
-        setupTextValueColor(temptext, tempString, colorTextRed())
-        setupTextValueColor(residuetext, residueString, colorTextRed())
-        setupTextValueColor(systemtext, systemString, colorTextRed())
+            setOptimizeButton(mainbutton, R.string.button_clean)
+            ivIconJunk.setImageResource(R.drawable.ic_junk_dirty)
+            cache.setBackgroundResource(R.drawable.bg_circle_border_red)
+            temp.setBackgroundResource(R.drawable.bg_circle_border_red)
+            residue.setBackgroundResource(R.drawable.bg_circle_border_red)
+            system.setBackgroundResource(R.drawable.bg_circle_border_red)
 
-        mainbutton.setOnClickListener {
-            setupDoInClenerJunk()
+            setupTextValueColor(tvStateCondition1, mainString, colorTextRed())
+            setupTextValueColor(tvStateCondition2, getString(R.string.text_junk_condition_2_dirty), colorTextRed())
+            setupTextValueColor(cachetext, cacheString, colorTextRed())
+            setupTextValueColor(temptext, tempString, colorTextRed())
+            setupTextValueColor(residuetext, residueString, colorTextRed())
+            setupTextValueColor(systemtext, systemString, colorTextRed())
+
+            mainbutton.setOnClickListener {
+                setupDoInClenerJunk()
+            }
         }
 
     }
 
     private fun setupCleanFromJunk() {
-        setDoneOptimizeButton(mainbutton, R.string.button_cleaned)
-        iv_icon_junk.setImageResource(R.drawable.ic_junk_clean)
-        cache.setBackgroundResource(R.drawable.bg_circle_border_green)
-        temp.setBackgroundResource(R.drawable.bg_circle_border_green)
-        residue.setBackgroundResource(R.drawable.bg_circle_border_green)
-        system.setBackgroundResource(R.drawable.bg_circle_border_green)
+        fragmentJunkCleanerBinding?.apply {
 
-        setupTextValueColor(tv_state_condition_1, getString(R.string.text_junk_condition_1_clean), colorTextGreen())
-        setupTextValueColor(tv_state_condition_2, getString(R.string.text_junk_condition_2_clean), colorTextGreen())
-        setupTextValueColor(cachetext, ZERO_MB, colorTextGreen())
-        setupTextValueColor(temptext, ZERO_MB, colorTextGreen())
-        setupTextValueColor(residuetext, ZERO_MB, colorTextGreen())
-        setupTextValueColor(systemtext, ZERO_MB, colorTextGreen())
+            setDoneOptimizeButton(mainbutton, R.string.button_cleaned)
+            ivIconJunk.setImageResource(R.drawable.ic_junk_clean)
+            cache.setBackgroundResource(R.drawable.bg_circle_border_green)
+            temp.setBackgroundResource(R.drawable.bg_circle_border_green)
+            residue.setBackgroundResource(R.drawable.bg_circle_border_green)
+            system.setBackgroundResource(R.drawable.bg_circle_border_green)
 
-        mainbutton.setOnClickListener {
-            showCustomToast(getString(R.string.toast_cleaned_junk))
+            setupTextValueColor(tvStateCondition1, getString(R.string.text_junk_condition_1_clean), colorTextGreen())
+            setupTextValueColor(tvStateCondition2, getString(R.string.text_junk_condition_2_clean), colorTextGreen())
+            setupTextValueColor(cachetext, ZERO_MB, colorTextGreen())
+            setupTextValueColor(temptext, ZERO_MB, colorTextGreen())
+            setupTextValueColor(residuetext, ZERO_MB, colorTextGreen())
+            setupTextValueColor(systemtext, ZERO_MB, colorTextGreen())
+
+            mainbutton.setOnClickListener {
+                showCustomToast(getString(R.string.toast_cleaned_junk))
+            }
+
+
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        fragmentJunkCleanerBinding = null
     }
 
 }
