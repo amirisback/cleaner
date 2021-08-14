@@ -9,7 +9,9 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import com.frogobox.cleaner.R
+import com.frogobox.frogosdk.core.FrogoFragment
 import com.google.android.gms.ads.AdView
 import com.google.gson.Gson
 
@@ -30,75 +32,13 @@ import com.google.gson.Gson
  * com.frogobox.publicspeakingbooster.base
  *
  */
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment<VB : ViewBinding> : FrogoFragment<VB>() {
 
-    lateinit var mActivity: BaseActivity
+    lateinit var mActivity: BaseActivity<*>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mActivity = (activity as BaseActivity)
-    }
-
-    protected fun setupChildFragment(frameId: Int, fragment: Fragment) {
-        childFragmentManager.beginTransaction().apply {
-            replace(frameId, fragment)
-            commit()
-        }
-    }
-
-    protected fun setupShowAdsInterstitial() {
-        mActivity.setupShowAdsInterstitial()
-    }
-
-    protected inline fun <reified ClassActivity> baseStartActivity() {
-        context?.startActivity(Intent(context, ClassActivity::class.java))
-    }
-
-    protected inline fun <reified ClassActivity, Model> baseStartActivity(
-            extraKey: String,
-            data: Model
-    ) {
-        val intent = Intent(context, ClassActivity::class.java)
-        val extraData = Gson().toJson(data)
-        intent.putExtra(extraKey, extraData)
-        context?.startActivity(intent)
-    }
-
-    fun <Model> baseNewInstance(argsKey: String, data: Model) {
-        val argsData = Gson().toJson(data)
-        val bundleArgs = Bundle().apply {
-            putString(argsKey, argsData)
-        }
-        this.arguments = bundleArgs
-    }
-
-    protected inline fun <reified Model> baseGetInstance(argsKey: String): Model {
-        val argsData = this.arguments?.getString(argsKey)
-        return Gson().fromJson(argsData, Model::class.java)
-    }
-
-    protected fun checkArgument(argsKey: String): Boolean {
-        return requireArguments().containsKey(argsKey)
-    }
-
-    protected fun setupEventEmptyView(view: View, isEmpty: Boolean) {
-        if (isEmpty) {
-            view.visibility = View.VISIBLE
-        } else {
-            view.visibility = View.GONE
-        }
-    }
-
-    protected fun setupEventProgressView(view: View, progress: Boolean) {
-        if (progress) {
-            view.visibility = View.VISIBLE
-        } else {
-            view.visibility = View.GONE
-        }
-    }
-
-    protected fun showToast(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        mActivity = (activity as BaseActivity<*>)
     }
 
     protected fun showCustomToast(message: String) {

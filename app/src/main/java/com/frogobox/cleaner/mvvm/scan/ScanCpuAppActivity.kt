@@ -18,29 +18,32 @@ import com.frogobox.cleaner.mvvm.cpu.CpuCoolerFragment
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
-class ScanCpuAppActivity : BaseActivity() {
+class ScanCpuAppActivity : BaseActivity<ActivityCpuCoolerBinding>() {
 
-    private lateinit var activityCPUScannerBinding: ActivityCpuCoolerBinding
+    override fun setupViewBinding(): ActivityCpuCoolerBinding {
+        return ActivityCpuCoolerBinding.inflate(layoutInflater)
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        activityCPUScannerBinding = ActivityCpuCoolerBinding.inflate(baseLayoutInflater())
-        setContentView(activityCPUScannerBinding.root)
+    override fun setupViewModel() {
+    }
+
+    override fun setupUI(savedInstanceState: Bundle?) {
         setupAnimationProcess()
         setupRecyclerViewApps()
     }
+
 
     private fun setupAnimationProcess() {
         val rotate = RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
         rotate.duration = 1500
         rotate.repeatCount = 3
         rotate.interpolator = LinearInterpolator()
-        activityCPUScannerBinding.ivScanningMain.startAnimation(rotate)
+        binding.ivScanningMain.startAnimation(rotate)
     }
 
     private fun setupRecyclerViewApps() {
 
-        activityCPUScannerBinding.apply {
+        binding.apply {
 
             val scanCpuAppsViewAdapter = ScanCpuAppAdapter(CpuCoolerFragment.apps)
             val mLayoutManager = LinearLayoutManager(this@ScanCpuAppActivity, LinearLayoutManager.HORIZONTAL, false)
@@ -69,7 +72,7 @@ class ScanCpuAppActivity : BaseActivity() {
 
         Handler().postDelayed({
 
-            activityCPUScannerBinding.apply {
+            binding.apply {
                 ivImageDone.setImageResource(R.drawable.ic_task_done_main)
                 changeAppsItem(adapter, 6)
                 rippleBackground.startRippleAnimation()
@@ -98,7 +101,7 @@ class ScanCpuAppActivity : BaseActivity() {
     }
 
     private fun finishCondition() {
-        activityCPUScannerBinding.rippleBackground.stopRippleAnimation()
+        binding.rippleBackground.stopRippleAnimation()
         Handler().postDelayed({ finish() }, 1000)
     }
 

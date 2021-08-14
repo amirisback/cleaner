@@ -13,17 +13,19 @@ import com.frogobox.cleaner.mvvm.cpu.CpuCoolerFragment
 import com.frogobox.cleaner.mvvm.junk.JunkCleanerFragment
 import com.google.android.material.tabs.TabLayout
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    private lateinit var activityMainBinding: ActivityMainBinding
     private var sharedpreferences: SharedPreferences? = null
     private var editor: SharedPreferences.Editor? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        activityMainBinding = ActivityMainBinding.inflate(baseLayoutInflater())
-        setContentView(activityMainBinding.root)
+    override fun setupViewBinding(): ActivityMainBinding {
+        return ActivityMainBinding.inflate(layoutInflater)
+    }
 
+    override fun setupViewModel() {
+    }
+
+    override fun setupUI(savedInstanceState: Bundle?) {
         setupInitGlobalVariable()
         setupInitThreadHandler()
         setupDeclareTabLayoutViewPager()
@@ -59,7 +61,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupDeclareTabLayoutViewPager() {
-        activityMainBinding.apply {
+        binding.apply {
 
             tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_bottom_nav_chargebooster))
             tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_bottom_nav_temperature))
@@ -74,7 +76,7 @@ class MainActivity : BaseActivity() {
 
     private fun setupViewPagerChangeListener() {
 
-        activityMainBinding.apply {
+        binding.apply {
 
             viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
             viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
@@ -96,7 +98,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupTabSelectedListener() {
-        activityMainBinding.apply {
+        binding.apply {
             tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab) {
                     viewPager.currentItem = tab.position
@@ -116,5 +118,7 @@ class MainActivity : BaseActivity() {
         editor?.putString(Constant.SHARED_PREF_BUTTON_4, "0")
         editor?.commit()
     }
+
+
 
 }

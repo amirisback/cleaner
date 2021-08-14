@@ -9,7 +9,6 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.core.BaseFragment
@@ -38,23 +37,24 @@ import java.util.Random
  * com.frogobox.publicspeakingbooster.base
  */
 
-class JunkCleanerFragment : BaseFragment() {
+class JunkCleanerFragment : BaseFragment<FragmentJunkCleanerBinding>() {
 
     private var alljunk: Int = 0
 
     private lateinit var sharedpreferences: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
-    private var fragmentJunkCleanerBinding: FragmentJunkCleanerBinding? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        fragmentJunkCleanerBinding = FragmentJunkCleanerBinding.inflate(inflater, container, false)
-        return fragmentJunkCleanerBinding!!.root
+    override fun setupViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup
+    ): FragmentJunkCleanerBinding {
+        return FragmentJunkCleanerBinding.inflate(inflater, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun setupViewModel() {
+    }
 
+    override fun setupUI(savedInstanceState: Bundle?) {
         sharedpreferences = mActivity.getSharedPreferences(SHARED_PREF_WASEEM, Context.MODE_PRIVATE)
         editor = sharedpreferences.edit()
 
@@ -63,7 +63,6 @@ class JunkCleanerFragment : BaseFragment() {
         } else {
             setupCleanFromJunk()
         }
-
     }
 
     private fun setupDoInClenerJunk() {
@@ -99,7 +98,7 @@ class JunkCleanerFragment : BaseFragment() {
         val residueString = proc3.toString() + _MB
         val systemString = proc4.toString() + _MB
 
-        fragmentJunkCleanerBinding?.apply {
+        binding.apply {
 
             setOptimizeButton(mainbutton, R.string.button_clean)
             ivIconJunk.setImageResource(R.drawable.ic_junk_dirty)
@@ -123,7 +122,7 @@ class JunkCleanerFragment : BaseFragment() {
     }
 
     private fun setupCleanFromJunk() {
-        fragmentJunkCleanerBinding?.apply {
+        binding.apply {
 
             setDoneOptimizeButton(mainbutton, R.string.button_cleaned)
             ivIconJunk.setImageResource(R.drawable.ic_junk_clean)
@@ -143,13 +142,7 @@ class JunkCleanerFragment : BaseFragment() {
                 showCustomToast(getString(R.string.toast_cleaned_junk))
             }
 
-
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        fragmentJunkCleanerBinding = null
     }
 
 }

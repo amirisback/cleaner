@@ -12,7 +12,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.view.animation.OvershootInterpolator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,10 +43,9 @@ import java.io.File
  * com.frogobox.publicspeakingbooster.base
  */
 
-class CpuCoolerFragment : BaseFragment() {
+class CpuCoolerFragment : BaseFragment<FragmentCpuCoolerBinding>() {
 
     private var check = 0
-    private var fragmentCpuCoolerBinding: FragmentCpuCoolerBinding? = null
 
     private val batteryReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -59,16 +57,20 @@ class CpuCoolerFragment : BaseFragment() {
         lateinit var apps: MutableList<Apps>
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        fragmentCpuCoolerBinding = FragmentCpuCoolerBinding.inflate(inflater, container, false)
-        return fragmentCpuCoolerBinding!!.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun setupUI(savedInstanceState: Bundle?) {
         setupCheckCooledBattery()
     }
 
+    override fun setupViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup
+    ): FragmentCpuCoolerBinding {
+        return FragmentCpuCoolerBinding.inflate(inflater, container, false)
+    }
+
+    override fun setupViewModel() {
+    }
+    
     private fun setupCheckCooledBattery() {
         mActivity.registerReceiver(batteryReceiver, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
         setupBatteryCooled()
@@ -77,7 +79,7 @@ class CpuCoolerFragment : BaseFragment() {
     private fun setupBatteryReceiver(intent: Intent) {
         val level = intent.getIntExtra("level", 0)
         val temp = intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0).toFloat() / 10
-        fragmentCpuCoolerBinding?.tvTemperaturePhone?.text = "$temp°C"
+        binding.tvTemperaturePhone.text = "$temp°C"
         if (temp >= 30.0) {
             setupSmartPhoneHotCondition()
         }
@@ -85,7 +87,7 @@ class CpuCoolerFragment : BaseFragment() {
 
     private fun setupSmartPhoneHotCondition() {
         apps = mutableListOf()
-        fragmentCpuCoolerBinding?.apply {
+        binding.apply {
             setupTextValueColor(tvStateCondition1, getString(R.string.text_temp_condition_1_hot), colorTextRed())
             setupTextValueColor(tvStateCondition2, getString(R.string.text_temp_condition_2_hot), colorTextRed())
             setupTextValueColor(tvEmptyAppsHeat, "", colorTextRed())
@@ -98,7 +100,7 @@ class CpuCoolerFragment : BaseFragment() {
     }
 
     private fun setupBatteryCooled() {
-        fragmentCpuCoolerBinding?.apply {
+        binding.apply {
             setupTextValueColor(tvStateCondition1, getString(R.string.text_temp_condition_1_cool), colorTextGreen())
             setupTextValueColor(tvStateCondition2, getString(R.string.text_temp_condition_2_cool), colorTextGreen())
             setupTextValueColor(tvEmptyAppsHeat, getString(R.string.text_cpu_cooler_empty_apps), colorTextGreen())
@@ -114,8 +116,8 @@ class CpuCoolerFragment : BaseFragment() {
         startActivity(Intent(context, ScanCpuAppActivity::class.java))
         Handler().postDelayed({
             setupBatteryCooled()
-            fragmentCpuCoolerBinding?.apply {
-                tvTemperaturePhone.text = "25.3" + _CELCIUS
+            binding.apply {
+                tvTemperaturePhone.text = "25.3$_CELCIUS"
                 recyclerView.adapter = null
             }
 
@@ -177,7 +179,7 @@ class CpuCoolerFragment : BaseFragment() {
 
     private fun setupRecyclerView(adapterCooler: CpuCoolerAdapter) {
         val mLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        fragmentCpuCoolerBinding?.recyclerView?.apply {
+        binding.recyclerView.apply {
             itemAnimator = SlideInLeftAnimator()
             itemAnimator!!.addDuration = 10000
             layoutManager = mLayoutManager
@@ -186,11 +188,6 @@ class CpuCoolerFragment : BaseFragment() {
             adapter = adapterCooler
 
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        fragmentCpuCoolerBinding = null
     }
 
 }

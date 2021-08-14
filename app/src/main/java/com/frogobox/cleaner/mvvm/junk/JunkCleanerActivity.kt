@@ -25,17 +25,20 @@ import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import java.util.*
 
-class JunkCleanerActivity : BaseActivity() {
+class JunkCleanerActivity : BaseActivity<ActivityJunkCleanerBinding>() {
 
     private var check = 0
     private var prog = 0
     private lateinit var packages: List<ApplicationInfo>
-    private lateinit var activityScanningJunkBinding: ActivityJunkCleanerBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        activityScanningJunkBinding = ActivityJunkCleanerBinding.inflate(baseLayoutInflater())
-        setContentView(activityScanningJunkBinding.root)
+    override fun setupViewBinding(): ActivityJunkCleanerBinding {
+        return ActivityJunkCleanerBinding.inflate(layoutInflater)
+    }
+
+    override fun setupViewModel() {
+    }
+
+    override fun setupUI(savedInstanceState: Bundle?) {
         packages = packageManager.getInstalledApplications(0)
         setupAnimationProcess()
         setupRecyclerViewApps()
@@ -57,7 +60,7 @@ class JunkCleanerActivity : BaseActivity() {
                 timer.cancel()
                 timer.purge()
 
-                activityScanningJunkBinding.apply {
+                binding.apply {
                     ivBallIndicator1.hide()
                     ivBallIndicator2.hide()
                     ivBallIndicator3.hide()
@@ -74,13 +77,13 @@ class JunkCleanerActivity : BaseActivity() {
                 startAnim(check)
             }
         })
-        activityScanningJunkBinding.ivScanningMain.startAnimation(rotate)
+        binding.ivScanningMain.startAnimation(rotate)
 
         timer.scheduleAtFixedRate(object : TimerTask() {
             override fun run() {
                 runOnUiThread {
                     if (prog < packages.size) {
-                        activityScanningJunkBinding.tvFilesData.text = packages[prog].sourceDir
+                        binding.tvFilesData.text = packages[prog].sourceDir
                         prog++
                     } else {
                         timer.cancel()
@@ -96,7 +99,7 @@ class JunkCleanerActivity : BaseActivity() {
         val junkAppsViewAdapter = JunkCleanerAdapter(apps)
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        activityScanningJunkBinding.recyclerView.apply {
+        binding.recyclerView.apply {
             itemAnimator = SlideInLeftAnimator()
             layoutManager = linearLayoutManager
             itemAnimator = SlideInUpAnimator(OvershootInterpolator(1f))
@@ -121,7 +124,7 @@ class JunkCleanerActivity : BaseActivity() {
         Handler().postDelayed({
             removeArrayApps(apps, adapter, 0)
 
-            activityScanningJunkBinding.apply {
+            binding.apply {
 
                 rippleBackground.startRippleAnimation()
                 ivScanningBackground.visibility = View.INVISIBLE
@@ -161,14 +164,14 @@ class JunkCleanerActivity : BaseActivity() {
     }
 
     private fun setupFinishCleaningJunk() {
-        activityScanningJunkBinding.rippleBackground.stopRippleAnimation()
+        binding.rippleBackground.stopRippleAnimation()
         Handler().postDelayed({ finish() }, 1000)
     }
 
     private fun startAnim(timePosition: Int) {
         when (timePosition) {
             1 -> {
-                activityScanningJunkBinding.apply {
+                binding.apply {
                     ivBallIndicator1.show()
                     ivBallIndicator3.show()
                     ivBallIndicator5.show()
@@ -179,7 +182,7 @@ class JunkCleanerActivity : BaseActivity() {
                 }
             }
             2 -> {
-                activityScanningJunkBinding.apply {
+                binding.apply {
                     ivBallIndicator2.show()
                     ivBallIndicator4.show()
                     ivBallIndicator6.show()
@@ -191,7 +194,7 @@ class JunkCleanerActivity : BaseActivity() {
 
             }
             3 -> {
-                activityScanningJunkBinding.apply {
+                binding.apply {
                     ivBallIndicator2.show()
                     ivBallIndicator4.show()
                     ivBallIndicator6.show()
@@ -202,7 +205,7 @@ class JunkCleanerActivity : BaseActivity() {
                 }
             }
             4 -> {
-                activityScanningJunkBinding.apply {
+                binding.apply {
                     ivBallIndicator2.show()
                     ivBallIndicator3.show()
                     ivBallIndicator5.show()
@@ -232,4 +235,6 @@ class JunkCleanerActivity : BaseActivity() {
         adapter.notifyItemRemoved(position)
         apps.removeAt(position)
     }
+
+
 }
