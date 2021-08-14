@@ -1,12 +1,10 @@
 package com.frogobox.cleaner.mvvm.scan
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.frogobox.cleaner.R
+import com.frogobox.cleaner.databinding.ItemCpuCoolerDoingBinding
 import com.frogobox.cleaner.model.Apps
-import kotlinx.android.synthetic.main.list_cpu_cooler_doing.view.*
 
 /**
  * Created by Frogobox Software Industries 2/25/2017.
@@ -14,23 +12,29 @@ import kotlinx.android.synthetic.main.list_cpu_cooler_doing.view.*
 
 // Get List of Apps Causing Junk Files
 class ScanCpuAppAdapter(private val apps: List<Apps>) :
-        RecyclerView.Adapter<ScanCpuAppAdapter.MyViewHolder>() {
+        RecyclerView.Adapter<ScanCpuAppAdapter.ScanCpuAppHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_cpu_cooler_doing, parent, false)
-        return MyViewHolder(itemView)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScanCpuAppHolder {
+        return ScanCpuAppHolder(
+            ItemCpuCoolerDoingBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val (_, image) = apps[position]
-        holder.image.setImageDrawable(image)
+    override fun onBindViewHolder(holder: ScanCpuAppHolder, position: Int) {
+        holder.bind(apps[position])
     }
 
     override fun getItemCount(): Int {
         return apps.size
     }
 
-    inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val image = view.appimage
+    inner class ScanCpuAppHolder(private val binding: ItemCpuCoolerDoingBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: Apps) {
+            binding.appimage.setImageDrawable(data.image)
+        }
     }
 }

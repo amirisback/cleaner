@@ -17,7 +17,7 @@ import android.view.animation.RotateAnimation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.core.BaseActivity
-import com.frogobox.cleaner.databinding.ActivityScanningJunkBinding
+import com.frogobox.cleaner.databinding.ActivityJunkCleanerBinding
 import com.frogobox.cleaner.model.Apps
 import com.frogobox.cleaner.utils.Constant
 import com.github.ybq.android.spinkit.style.ThreeBounce
@@ -30,11 +30,11 @@ class JunkCleanerActivity : BaseActivity() {
     private var check = 0
     private var prog = 0
     private lateinit var packages: List<ApplicationInfo>
-    private lateinit var activityScanningJunkBinding: ActivityScanningJunkBinding
+    private lateinit var activityScanningJunkBinding: ActivityJunkCleanerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityScanningJunkBinding = ActivityScanningJunkBinding.inflate(baseLayoutInflater())
+        activityScanningJunkBinding = ActivityJunkCleanerBinding.inflate(baseLayoutInflater())
         setContentView(activityScanningJunkBinding.root)
         packages = packageManager.getInstalledApplications(0)
         setupAnimationProcess()

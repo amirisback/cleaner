@@ -1,35 +1,40 @@
 package com.frogobox.cleaner.mvvm.cpu
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.frogobox.cleaner.R
+import com.frogobox.cleaner.databinding.ItemCpuCoolerBinding
 import com.frogobox.cleaner.model.Apps
-import kotlinx.android.synthetic.main.list_cpu_cooler.view.*
 
 /**
  * Created by Frogobox Software Industries 2/16/2017.
  */
 
-class CpuCoolerAdapter(private val apps: List<Apps>)
-    : RecyclerView.Adapter<CpuCoolerAdapter.MyViewHolder>() {
+class CpuCoolerAdapter(private val apps: List<Apps>) :
+    RecyclerView.Adapter<CpuCoolerAdapter.CpuCoolerHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_cpu_cooler, parent, false)
-        return MyViewHolder(itemView)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CpuCoolerHolder {
+        return CpuCoolerHolder(
+            ItemCpuCoolerBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val (size, image) = apps[position]
-        holder.image.setImageDrawable(image)
+    override fun onBindViewHolder(holder: CpuCoolerHolder, position: Int) {
+        holder.bind(apps[position])
     }
 
     override fun getItemCount(): Int {
         return apps.size
     }
 
-    inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val image = view.appimage
+    inner class CpuCoolerHolder(private val binding: ItemCpuCoolerBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: Apps) {
+            binding.appimage.setImageDrawable(data.image)
+        }
     }
 }

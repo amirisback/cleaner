@@ -149,6 +149,6 @@
         android:layout_height="250dp"
         android:layout_alignParentBottom="true"
         android:scrollbars="none"
-        tools:listitem="@layout/list_junk_apps" />
+        tools:listitem="@layout/item_junk_apps" />
 
 </RelativeLayout>

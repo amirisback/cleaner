@@ -13,18 +13,18 @@ import android.view.animation.RotateAnimation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.cleaner.R
 import com.frogobox.cleaner.core.BaseActivity
-import com.frogobox.cleaner.databinding.ActivityCpuScannerBinding
+import com.frogobox.cleaner.databinding.ActivityCpuCoolerBinding
 import com.frogobox.cleaner.mvvm.cpu.CpuCoolerFragment
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 class ScanCpuAppActivity : BaseActivity() {
 
-    private lateinit var activityCPUScannerBinding: ActivityCpuScannerBinding
+    private lateinit var activityCPUScannerBinding: ActivityCpuCoolerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityCPUScannerBinding = ActivityCpuScannerBinding.inflate(baseLayoutInflater())
+        activityCPUScannerBinding = ActivityCpuCoolerBinding.inflate(baseLayoutInflater())
         setContentView(activityCPUScannerBinding.root)
         setupAnimationProcess()
         setupRecyclerViewApps()
