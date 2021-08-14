@@ -1,12 +1,11 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+}
 
 android {
-
-    // Application ID
-    def basePackageName = "com.frogobox.cleaner"
 
     // Version Project
     def versionMajor = 1
@@ -14,8 +13,8 @@ android {
     def versionPatch = 0
 
     def packageDomain = "com"
-    def packageAccount = "octavira"
-    def packageProject = "pinkcleaner"
+    def packageAccount = "frogobox"
+    def packageProject = "cleaner"
 
     // Signing Release Key Store
     def projectJksStoreFile = "frogoboxdev.jks"
@@ -28,19 +27,10 @@ android {
     def projectPackageName = "$packageDomain.$packageAccount.$packageProject"
 
     // Declaration app name
-    def nameApp = "Base Cleaner"
+    def nameApp = "Cleaner"
 
     // Declaration apk / aab name
     def nameAPK = nameApp.toLowerCase().replace(" ", "-")
-
-    // Declaration admob id for debug
-    def debugAdmobPublisherId = "ca-app-pub-3940256099942544~3347511713"
-    def debugAdmobBanner = "ca-app-pub-3940256099942544/6300978111"
-    def debugAdmobInterstitial = "ca-app-pub-3940256099942544/1033173712"
-    def debugAdmobInterstitialVideo = "ca-app-pub-3940256099942544/8691691433"
-    def debugAdmobRewardedVideo = "ca-app-pub-3940256099942544/5224354917"
-    def debugAdmobNativeAdvanced = "ca-app-pub-3940256099942544/2247696110"
-    def debugAdmobNativeAdvancedVideo = "ca-app-pub-3940256099942544/1044960115"
 
     // Declaration admob id for release
     def releaseAdmobPublisherId = ""
@@ -64,14 +54,13 @@ android {
          viewBinding = true
     }
 
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
-    flavorDimensions "default"
+    compileSdk 31
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId basePackageName
+        applicationId projectPackageName
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode projectVersionCode
         versionName projectVersionName
         multiDexEnabled true
@@ -79,6 +68,34 @@ android {
 
         resConfigs "en", "id"
         vectorDrawables.useSupportLibrary = true
+
+        def debugAttribute = "Development"
+        def nameAppDebug = "$nameApp $debugAttribute"
+
+        // Naming APK // AAB
+        setProperty("archivesBaseName", nameAPK + "#" + versionName + "-"
+                + new Date().format('ddMMyy'))
+
+        // Inject app name for debug
+        resValue "string", "app_name", nameAppDebug
+
+        // Declaration admob id for debug
+        def debugAdmobPublisherId = "ca-app-pub-3940256099942544~3347511713"
+        def debugAdmobBanner = "ca-app-pub-3940256099942544/6300978111"
+        def debugAdmobInterstitial = "ca-app-pub-3940256099942544/1033173712"
+        def debugAdmobInterstitialVideo = "ca-app-pub-3940256099942544/8691691433"
+        def debugAdmobRewardedVideo = "ca-app-pub-3940256099942544/5224354917"
+        def debugAdmobNativeAdvanced = "ca-app-pub-3940256099942544/2247696110"
+        def debugAdmobNativeAdvancedVideo = "ca-app-pub-3940256099942544/1044960115"
+
+        // Inject admob id for debug
+        resValue "string", "admob_publisher_id", debugAdmobPublisherId
+        resValue "string", "admob_banner", debugAdmobBanner
+        resValue "string", "admob_interstitial", debugAdmobInterstitial
+        resValue "string", "admob_interstitial_video", debugAdmobInterstitialVideo
+        resValue "string", "admob_rewarded_video", debugAdmobRewardedVideo
+        resValue "string", "admob_native_advanced", debugAdmobNativeAdvanced
+        resValue "string", "admob_native_advanced_video", debugAdmobNativeAdvancedVideo
 
     }
 
@@ -95,20 +112,6 @@ android {
     }
 
     buildTypes {
-        debug {
-            minifyEnabled false
-            debuggable true
-
-            // Inject admob id for debug
-            resValue "string", "admob_publisher_id", debugAdmobPublisherId
-            resValue "string", "admob_banner", debugAdmobBanner
-            resValue "string", "admob_interstitial", debugAdmobInterstitial
-            resValue "string", "admob_interstitial_video", debugAdmobInterstitialVideo
-            resValue "string", "admob_rewarded_video", debugAdmobRewardedVideo
-            resValue "string", "admob_native_advanced", debugAdmobNativeAdvanced
-            resValue "string", "admob_native_advanced_video", debugAdmobNativeAdvancedVideo
-
-        }
         release {
             minifyEnabled true
             shrinkResources true
@@ -123,6 +126,9 @@ android {
             // Generated Signed APK / AAB
             signingConfig signingConfigs.release
 
+            // Inject app name for release
+            resValue "string", "app_name", nameApp
+
             // Inject admob id for release
             resValue "string", "admob_publisher_id", releaseAdmobPublisherId
             resValue "string", "admob_banner", releaseAdmobBanner
@@ -136,32 +142,6 @@ android {
         }
     }
 
-    productFlavors {
-        development {
-            // For development package name
-            applicationId basePackageName
-
-            def debugAttribute = "Development"
-            def nameAppDebug = "$nameApp $debugAttribute"
-
-            // Naming APK // AAB
-            setProperty("archivesBaseName", nameAPK + projectVersionName + "#(" + applicationId + ")-" + new Date().format('ddMMyy'))
-
-            // Inject app name for debug
-            resValue "string", "app_name", nameAppDebug
-        }
-        production {
-            // For release package name
-            applicationId projectPackageName
-
-            // Naming APK // AAB
-            setProperty("archivesBaseName", nameAPK + projectVersionName + "#(" + applicationId + ")-" + new Date().format('ddMMyy'))
-
-            // Inject app name for release
-            resValue "string", "app_name", nameApp
-        }
-    }
-
 }
 
 dependencies {
@@ -169,22 +149,25 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation 'androidx.appcompat:appcompat:1.3.0'
-    implementation 'androidx.core:core-ktx:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'com.google.android.material:material:1.4.0'
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.google.android.gms:play-services-ads:19.5.0'
+    implementation 'com.google.android.gms:play-services-ads:20.2.0'
 
     implementation 'com.github.bmarrdev:android-DecoView-charting:v1.2'
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
-    
-    // library frogo-recycler-view
-    implementation 'com.github.amirisback:frogo-recycler-view:3.5.0'
 
-    // library frogo-ui-kit
-    implementation 'com.github.amirisback:frogo-ui-kit:1.0.5'
+    implementation 'com.github.amirisback:frogo-recycler-view:3.8.1'
+    implementation 'com.github.amirisback:frogo-log:2.0.2'
+    implementation 'com.github.amirisback:frogo-ui-kit:2.1.0'
+    implementation 'com.github.amirisback:frogo-notification:1.0.5'
+    implementation 'com.github.amirisback:frogo-admob:4.0.6'
+
+    implementation 'com.github.frogobox:frogo-android-sdk:1.0.6'
+    implementation 'com.github.frogobox:frogo-consume-api:1.0.1'
 
     implementation 'com.zys:brokenview:1.0.3'
     implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
@@ -199,7 +182,7 @@ dependencies {
 
     androidTestImplementation "androidx.room:room-testing:2.3.0"
     androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
-    androidTestImplementation 'androidx.test:runner:1.3.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 }
