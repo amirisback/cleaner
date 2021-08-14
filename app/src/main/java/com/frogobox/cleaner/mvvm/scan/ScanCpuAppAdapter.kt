@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.adapter
+package com.frogobox.cleaner.mvvm.scan
 
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +13,8 @@ import kotlinx.android.synthetic.main.list_cpu_cooler_doing.view.*
  */
 
 // Get List of Apps Causing Junk Files
-class ScanCpuAppsViewAdapter(private val apps: List<Apps>) :
-        RecyclerView.Adapter<ScanCpuAppsViewAdapter.MyViewHolder>() {
+class ScanCpuAppAdapter(private val apps: List<Apps>) :
+        RecyclerView.Adapter<ScanCpuAppAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_cpu_cooler_doing, parent, false)

@@ -16,7 +16,7 @@ import com.frogobox.cleaner.utils.Constant
  * Created by Frogobox Software Industries 3/3/2017.
  */
 
-class AppListenerBroadcastReceiver : BroadcastReceiver() {
+class AppBroadcastReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, arg1: Intent) {
         logicOnReceive(context, arg1)
@@ -26,7 +26,7 @@ class AppListenerBroadcastReceiver : BroadcastReceiver() {
         val data = arg1.data
         val installedPackageName = data!!.encodedSchemeSpecificPart
 
-        if (installedPackageName != Constant.Variable.PACKAGE_NAME) {
+        if (installedPackageName != Constant.PACKAGE_NAME) {
             //            Toast.makeText(context, installedPackageName + "", Toast.LENGTH_SHORT).show();
 
             val packageManager = context.applicationContext.packageManager

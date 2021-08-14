@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.ui.fragment
+package com.frogobox.cleaner.mvvm.cpu
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -17,13 +17,12 @@ import android.view.ViewGroup
 import android.view.animation.OvershootInterpolator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.cleaner.R
-import com.frogobox.cleaner.base.BaseFragment
+import com.frogobox.cleaner.core.BaseFragment
 import com.frogobox.cleaner.databinding.FragmentCpuCoolerBinding
 import com.frogobox.cleaner.model.Apps
+import com.frogobox.cleaner.mvvm.scan.ScanCpuAppActivity
 import com.frogobox.cleaner.utils.Constant
-import com.frogobox.cleaner.utils.Constant.Variable._CELCIUS
-import com.frogobox.cleaner.view.adapter.CPUCoolerViewAdapter
-import com.frogobox.cleaner.view.ui.activity.CPUScannerActivity
+import com.frogobox.cleaner.utils.Constant._CELCIUS
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import java.io.File
@@ -45,7 +44,7 @@ import java.io.File
  * com.frogobox.publicspeakingbooster.base
  */
 
-class CPUCoolerFragment : BaseFragment() {
+class CpuCoolerFragment : BaseFragment() {
 
     private var check = 0
     private var fragmentCpuCoolerBinding: FragmentCpuCoolerBinding? = null
@@ -112,7 +111,7 @@ class CPUCoolerFragment : BaseFragment() {
 
     private fun setupCoolingBattery() {
         setupShowAdsInterstitial()
-        startActivity(Intent(context, CPUScannerActivity::class.java))
+        startActivity(Intent(context, ScanCpuAppActivity::class.java))
         Handler().postDelayed({
             setupBatteryCooled()
             fragmentCpuCoolerBinding?.apply {
@@ -133,7 +132,7 @@ class CPUCoolerFragment : BaseFragment() {
                 val packageName = packages[k].packageName
                 Log.e("packageName-->", "" + packageName)
 
-                if (packageName != Constant.Variable.PACKAGE_NAME) {
+                if (packageName != Constant.PACKAGE_NAME) {
                     var ico: Drawable? = null
                     try {
                         val pName = pm.getApplicationLabel(pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA)) as String
@@ -170,13 +169,13 @@ class CPUCoolerFragment : BaseFragment() {
         }
 
         if (apps.size > 1) {
-            val adapter = CPUCoolerViewAdapter(apps)
+            val adapter = CpuCoolerAdapter(apps)
             adapter.notifyDataSetChanged()
             setupRecyclerView(adapter)
         }
     }
 
-    private fun setupRecyclerView(adapterCooler: CPUCoolerViewAdapter) {
+    private fun setupRecyclerView(adapterCooler: CpuCoolerAdapter) {
         val mLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         fragmentCpuCoolerBinding?.recyclerView?.apply {
             itemAnimator = SlideInLeftAnimator()

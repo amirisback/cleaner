@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.ui.fragment
+package com.frogobox.cleaner.mvvm.junk
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -12,14 +12,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.frogobox.cleaner.R
-import com.frogobox.cleaner.base.BaseFragment
+import com.frogobox.cleaner.core.BaseFragment
 import com.frogobox.cleaner.databinding.FragmentJunkCleanerBinding
-import com.frogobox.cleaner.service.AlarmJunkBroadcastReceiver
-import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_JUNK
-import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_WASEEM
-import com.frogobox.cleaner.utils.Constant.Variable.ZERO_MB
-import com.frogobox.cleaner.utils.Constant.Variable._MB
-import com.frogobox.cleaner.view.ui.activity.ScanningJunkActivity
+import com.frogobox.cleaner.service.JunkBroadcastReceiver
+import com.frogobox.cleaner.utils.Constant.SHARED_PREF_JUNK
+import com.frogobox.cleaner.utils.Constant.SHARED_PREF_WASEEM
+import com.frogobox.cleaner.utils.Constant.ZERO_MB
+import com.frogobox.cleaner.utils.Constant._MB
 import java.util.Random
 
 /**
@@ -69,7 +68,7 @@ class JunkCleanerFragment : BaseFragment() {
 
     private fun setupDoInClenerJunk() {
         setupShowAdsInterstitial()
-        baseStartActivity<ScanningJunkActivity, String>(SHARED_PREF_JUNK, alljunk.toString() + "")
+        baseStartActivity<JunkCleanerActivity, String>(SHARED_PREF_JUNK, alljunk.toString() + "")
         Handler().postDelayed({
             //Do something after 100ms
             setupCleanFromJunk()
@@ -80,7 +79,7 @@ class JunkCleanerFragment : BaseFragment() {
     }
 
     private fun setupAlarmManager() {
-        val intent = Intent(mActivity, AlarmJunkBroadcastReceiver::class.java)
+        val intent = Intent(mActivity, JunkBroadcastReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(mActivity, 0,
                 intent, PendingIntent.FLAG_ONE_SHOT)
         val alarmManager = mActivity.getSystemService(ALARM_SERVICE) as AlarmManager

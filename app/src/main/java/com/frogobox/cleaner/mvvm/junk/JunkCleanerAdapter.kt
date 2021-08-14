@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.adapter
+package com.frogobox.cleaner.mvvm.junk
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.list_junk_apps.view.*
  * Created by Frogobox Software Industries 2/25/2017.
  */
 
-class JunkAppsViewAdapter(private val apps: List<Apps>) : RecyclerView.Adapter<JunkAppsViewAdapter.MyViewHolder>() {
+class JunkCleanerAdapter(private val apps: List<Apps>) : RecyclerView.Adapter<JunkCleanerAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_junk_apps, parent, false)

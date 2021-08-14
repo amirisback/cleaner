@@ -1,17 +1,16 @@
-package com.frogobox.cleaner.view.ui.activity
+package com.frogobox.cleaner.mvvm.main
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
 import com.frogobox.cleaner.R
-import com.frogobox.cleaner.base.BaseActivity
+import com.frogobox.cleaner.core.BaseActivity
 import com.frogobox.cleaner.databinding.ActivityMainBinding
 import com.frogobox.cleaner.utils.Constant
 import com.frogobox.cleaner.utils.PagerAdapter
-import com.frogobox.cleaner.view.ui.fragment.CPUCoolerFragment
-import com.frogobox.cleaner.view.ui.fragment.ChargeBoosterFragment
-import com.frogobox.cleaner.view.ui.fragment.JunkCleanerFragment
+import com.frogobox.cleaner.mvvm.cpu.CpuCoolerFragment
+import com.frogobox.cleaner.mvvm.junk.JunkCleanerFragment
 import com.google.android.material.tabs.TabLayout
 
 class MainActivity : BaseActivity() {
@@ -33,7 +32,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupInitGlobalVariable() {
-        sharedpreferences = getSharedPreferences(Constant.Variable.SHARED_PREF_WASEEMBEST, Context.MODE_PRIVATE)
+        sharedpreferences = getSharedPreferences(Constant.SHARED_PREF_WASEEMBEST, Context.MODE_PRIVATE)
         editor = sharedpreferences?.edit()
     }
 
@@ -53,8 +52,8 @@ class MainActivity : BaseActivity() {
 
     private fun setupPagerAdapter(): PagerAdapter {
         return PagerAdapter(supportFragmentManager).apply {
-            addFragment(ChargeBoosterFragment(), getString(R.string.title_charge_booster))
-            addFragment(CPUCoolerFragment(), getString(R.string.title_cpu_cooler))
+            addFragment(CleanerFragment(), getString(R.string.title_charge_booster))
+            addFragment(CpuCoolerFragment(), getString(R.string.title_cpu_cooler))
             addFragment(JunkCleanerFragment(), getString(R.string.title_junk_cleaner))
         }
     }
@@ -111,10 +110,10 @@ class MainActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        editor?.putString(Constant.Variable.SHARED_PREF_BUTTON_1, "0")
-        editor?.putString(Constant.Variable.SHARED_PREF_BUTTON_2, "0")
-        editor?.putString(Constant.Variable.SHARED_PREF_BUTTON_3, "0")
-        editor?.putString(Constant.Variable.SHARED_PREF_BUTTON_4, "0")
+        editor?.putString(Constant.SHARED_PREF_BUTTON_1, "0")
+        editor?.putString(Constant.SHARED_PREF_BUTTON_2, "0")
+        editor?.putString(Constant.SHARED_PREF_BUTTON_3, "0")
+        editor?.putString(Constant.SHARED_PREF_BUTTON_4, "0")
         editor?.commit()
     }
 

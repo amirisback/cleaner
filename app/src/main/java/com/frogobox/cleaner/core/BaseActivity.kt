@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.base
+package com.frogobox.cleaner.core
 
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
@@ -8,7 +8,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.frogobox.admob.ui.FrogoAdmobActivity
 import com.frogobox.cleaner.R
+import com.google.gson.Gson
 
 
 /**
@@ -28,10 +30,17 @@ import com.frogobox.cleaner.R
  * com.frogobox.publicspeakingbooster.base
  *
  */
-abstract class BaseActivity : BaseAdmobActivity() {
+abstract class BaseActivity : FrogoAdmobActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupAdmob()
+    }
+
+    private fun setupAdmob() {
+        setupAdsPublisher(getString(R.string.admob_publisher_id))
+        setupAdsBanner(getString(R.string.admob_banner))
+        setupAdsInterstitial(getString(R.string.admob_interstitial))
     }
 
     protected fun baseLayoutInflater() : LayoutInflater {
@@ -62,15 +71,14 @@ abstract class BaseActivity : BaseAdmobActivity() {
             data: Model
     ) {
         val intent = Intent(this, ClassActivity::class.java)
-        val extraData = BaseHelper().baseToJson(data)
+        val extraData = Gson().toJson(data)
         intent.putExtra(extraKey, extraData)
         this.startActivity(intent)
     }
 
     protected inline fun <reified Model> baseGetExtraData(extraKey: String): Model {
         val extraIntent = intent.getStringExtra(extraKey)
-        val extraData = BaseHelper().baseFromJson<Model>(extraIntent)
-        return extraData
+        return Gson().fromJson(extraIntent, Model::class.java)
     }
 
     protected fun checkExtra(extraKey: String): Boolean {

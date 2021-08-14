@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.adapter
+package com.frogobox.cleaner.mvvm.cpu
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.list_cpu_cooler.view.*
  * Created by Frogobox Software Industries 2/16/2017.
  */
 
-class CPUCoolerViewAdapter(private val apps: List<Apps>)
-    : RecyclerView.Adapter<CPUCoolerViewAdapter.MyViewHolder>() {
+class CpuCoolerAdapter(private val apps: List<Apps>)
+    : RecyclerView.Adapter<CpuCoolerAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_cpu_cooler, parent, false)

@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.ui.activity
+package com.frogobox.cleaner.mvvm.junk
 
 import android.animation.Animator
 import android.animation.AnimatorInflater
@@ -16,17 +16,16 @@ import android.view.animation.OvershootInterpolator
 import android.view.animation.RotateAnimation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.cleaner.R
-import com.frogobox.cleaner.base.BaseActivity
+import com.frogobox.cleaner.core.BaseActivity
 import com.frogobox.cleaner.databinding.ActivityScanningJunkBinding
 import com.frogobox.cleaner.model.Apps
 import com.frogobox.cleaner.utils.Constant
-import com.frogobox.cleaner.view.adapter.JunkAppsViewAdapter
 import com.github.ybq.android.spinkit.style.ThreeBounce
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import java.util.*
 
-class ScanningJunkActivity : BaseActivity() {
+class JunkCleanerActivity : BaseActivity() {
 
     private var check = 0
     private var prog = 0
@@ -94,7 +93,7 @@ class ScanningJunkActivity : BaseActivity() {
 
     private fun setupRecyclerViewApps() {
         val apps = mutableListOf<Apps>()
-        val junkAppsViewAdapter = JunkAppsViewAdapter(apps)
+        val junkAppsViewAdapter = JunkCleanerAdapter(apps)
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         activityScanningJunkBinding.recyclerView.apply {
@@ -110,7 +109,7 @@ class ScanningJunkActivity : BaseActivity() {
         setupContentRecyclerView(apps, junkAppsViewAdapter)
     }
 
-    private fun setupContentRecyclerView(apps: MutableList<Apps>, adapter: JunkAppsViewAdapter) {
+    private fun setupContentRecyclerView(apps: MutableList<Apps>, adapter: JunkCleanerAdapter) {
         Handler().postDelayed({ addArrayApps(apps, adapter, 0) }, 1000)
         Handler().postDelayed({ addArrayApps(apps, adapter, 1) }, 2000)
         Handler().postDelayed({ addArrayApps(apps, adapter, 2) }, 3000)
@@ -132,10 +131,10 @@ class ScanningJunkActivity : BaseActivity() {
                 loadingIndicator.setIndeterminateDrawable(ThreeBounce())
                 loadingIndicator.visibility = View.GONE
 
-                val sumJunk = intent.extras?.getString(Constant.Variable.SHARED_PREF_JUNK)
+                val sumJunk = intent.extras?.getString(Constant.SHARED_PREF_JUNK)
                 tvScanning.text = "$sumJunk MB of Junk Files Are Cleared"
 
-                val anim = AnimatorInflater.loadAnimator(this@ScanningJunkActivity, R.animator.flipping) as ObjectAnimator
+                val anim = AnimatorInflater.loadAnimator(this@JunkCleanerActivity, R.animator.flipping) as ObjectAnimator
                 anim.target = ivImageDone
                 anim.duration = 3000
                 anim.start()
@@ -143,7 +142,7 @@ class ScanningJunkActivity : BaseActivity() {
                 anim.addListener(object : Animator.AnimatorListener {
                     override fun onAnimationStart(animation: Animator) {
 
-                        val cache = intent.extras?.getString(Constant.Variable.SHARED_PREF_JUNK)
+                        val cache = intent.extras?.getString(Constant.SHARED_PREF_JUNK)
                         tvScanning.text = "Cleared $cache MB"
                     }
 
@@ -217,7 +216,7 @@ class ScanningJunkActivity : BaseActivity() {
         }
     }
 
-    private fun addArrayApps(apps: MutableList<Apps>, adapter: JunkAppsViewAdapter, position: Int) {
+    private fun addArrayApps(apps: MutableList<Apps>, adapter: JunkCleanerAdapter, position: Int) {
 
         val positionRandom = 0 + (Math.random() * (packages.size - 1 - 0 + 1)).toInt()
         val packageName = packages[positionRandom].packageName
@@ -229,7 +228,7 @@ class ScanningJunkActivity : BaseActivity() {
         adapter.notifyItemInserted(position)
     }
 
-    private fun removeArrayApps(apps: MutableList<Apps>, adapter: JunkAppsViewAdapter, position: Int) {
+    private fun removeArrayApps(apps: MutableList<Apps>, adapter: JunkCleanerAdapter, position: Int) {
         adapter.notifyItemRemoved(position)
         apps.removeAt(position)
     }

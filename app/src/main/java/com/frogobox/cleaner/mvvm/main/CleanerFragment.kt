@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.ui.fragment
+package com.frogobox.cleaner.mvvm.main
 
 import android.app.ActivityManager
 import android.app.AlarmManager
@@ -15,12 +15,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.*
 import com.frogobox.cleaner.R
-import com.frogobox.cleaner.base.BaseFragment
+import com.frogobox.cleaner.core.BaseFragment
 import com.frogobox.cleaner.databinding.FragmentChargeBoosterBinding
-import com.frogobox.cleaner.service.AlarmBoosterBroadcastReceiver
-import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_BOOSTER
-import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_VALUE
-import com.frogobox.cleaner.utils.Constant.Variable.SHARED_PREF_WASEEM
+import com.frogobox.cleaner.service.CleanerBroadcastReceiver
+import com.frogobox.cleaner.utils.Constant.SHARED_PREF_BOOSTER
+import com.frogobox.cleaner.utils.Constant.SHARED_PREF_VALUE
+import com.frogobox.cleaner.utils.Constant.SHARED_PREF_WASEEM
 import com.hookedonplay.decoviewlib.charts.SeriesItem
 import com.hookedonplay.decoviewlib.events.DecoEvent
 import java.io.RandomAccessFile
@@ -46,7 +46,7 @@ import kotlin.math.abs
  * com.frogobox.publicspeakingbooster.base
  */
 
-class ChargeBoosterFragment : BaseFragment() {
+class CleanerFragment : BaseFragment() {
 
     private var x: Int = 0
     private var y: Int = 0
@@ -180,7 +180,7 @@ class ChargeBoosterFragment : BaseFragment() {
     }
 
     private fun setupAlarmManager() {
-        val intent = Intent(mActivity, AlarmBoosterBroadcastReceiver::class.java)
+        val intent = Intent(mActivity, CleanerBroadcastReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(mActivity, 0, intent, PendingIntent.FLAG_ONE_SHOT)
         val alarmManager = mActivity.getSystemService(ALARM_SERVICE) as AlarmManager
         alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 100 * 1000, pendingIntent)

@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.view.ui.activity
+package com.frogobox.cleaner.mvvm.scan
 
 import android.animation.Animator
 import android.animation.AnimatorInflater
@@ -12,14 +12,13 @@ import android.view.animation.OvershootInterpolator
 import android.view.animation.RotateAnimation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.cleaner.R
-import com.frogobox.cleaner.base.BaseActivity
+import com.frogobox.cleaner.core.BaseActivity
 import com.frogobox.cleaner.databinding.ActivityCpuScannerBinding
-import com.frogobox.cleaner.view.adapter.ScanCpuAppsViewAdapter
-import com.frogobox.cleaner.view.ui.fragment.CPUCoolerFragment
+import com.frogobox.cleaner.mvvm.cpu.CpuCoolerFragment
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
-class CPUScannerActivity : BaseActivity() {
+class ScanCpuAppActivity : BaseActivity() {
 
     private lateinit var activityCPUScannerBinding: ActivityCpuScannerBinding
 
@@ -43,8 +42,8 @@ class CPUScannerActivity : BaseActivity() {
 
         activityCPUScannerBinding.apply {
 
-            val scanCpuAppsViewAdapter = ScanCpuAppsViewAdapter(CPUCoolerFragment.apps)
-            val mLayoutManager = LinearLayoutManager(this@CPUScannerActivity, LinearLayoutManager.HORIZONTAL, false)
+            val scanCpuAppsViewAdapter = ScanCpuAppAdapter(CpuCoolerFragment.apps)
+            val mLayoutManager = LinearLayoutManager(this@ScanCpuAppActivity, LinearLayoutManager.HORIZONTAL, false)
 
             recyclerView.apply {
                 itemAnimator = SlideInLeftAnimator()
@@ -60,7 +59,7 @@ class CPUScannerActivity : BaseActivity() {
 
     }
 
-    private fun setupContentAdapter(adapter: ScanCpuAppsViewAdapter) {
+    private fun setupContentAdapter(adapter: ScanCpuAppAdapter) {
         Handler().postDelayed({ add(adapter, 0) }, 0)
         var timeDelay = 900
         for (i in 1..5) {
@@ -75,7 +74,7 @@ class CPUScannerActivity : BaseActivity() {
                 changeAppsItem(adapter, 6)
                 rippleBackground.startRippleAnimation()
 
-                val animationWaterRiple = AnimatorInflater.loadAnimator(this@CPUScannerActivity, R.animator.flipping) as ObjectAnimator
+                val animationWaterRiple = AnimatorInflater.loadAnimator(this@ScanCpuAppActivity, R.animator.flipping) as ObjectAnimator
                 animationWaterRiple.target = ivImageDone
                 animationWaterRiple.duration = 3000
                 animationWaterRiple.addListener(object : Animator.AnimatorListener {
@@ -103,18 +102,18 @@ class CPUScannerActivity : BaseActivity() {
         Handler().postDelayed({ finish() }, 1000)
     }
 
-    private fun changeAppsItem(adapter: ScanCpuAppsViewAdapter, position: Int) {
+    private fun changeAppsItem(adapter: ScanCpuAppAdapter, position: Int) {
         remove(adapter)
         add(adapter, position)
     }
 
-    private fun add(adapter: ScanCpuAppsViewAdapter, position: Int) {
+    private fun add(adapter: ScanCpuAppAdapter, position: Int) {
         adapter.notifyItemInserted(position)
     }
 
-    private fun remove(adapter: ScanCpuAppsViewAdapter) {
+    private fun remove(adapter: ScanCpuAppAdapter) {
         adapter.notifyItemRemoved(0)
-        CPUCoolerFragment.apps.removeAt(0)
+        CpuCoolerFragment.apps.removeAt(0)
     }
 
 }

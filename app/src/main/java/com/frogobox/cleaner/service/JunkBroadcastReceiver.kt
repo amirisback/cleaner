@@ -9,13 +9,13 @@ import com.frogobox.cleaner.utils.Constant
  * Created by Frogobox Software Industries 3/2/2017.
  */
 
-class AlarmJunkBroadcastReceiver : BroadcastReceiver() {
+class JunkBroadcastReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
 
-        val sharedpreferences = context.getSharedPreferences(Constant.Variable.SHARED_PREF_WASEEM, Context.MODE_PRIVATE)
+        val sharedpreferences = context.getSharedPreferences(Constant.SHARED_PREF_WASEEM, Context.MODE_PRIVATE)
         val editor = sharedpreferences.edit()
-        editor.putString(Constant.Variable.SHARED_PREF_JUNK, "1")
+        editor.putString(Constant.SHARED_PREF_JUNK, "1")
         editor.apply()
 
     }

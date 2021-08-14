@@ -1,4 +1,4 @@
-package com.frogobox.cleaner.base
+package com.frogobox.cleaner.core
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.frogobox.cleaner.R
 import com.google.android.gms.ads.AdView
+import com.google.gson.Gson
 
 /**
  * Created by Faisal Amir
@@ -49,10 +50,6 @@ abstract class BaseFragment : Fragment() {
         mActivity.setupShowAdsInterstitial()
     }
 
-    protected fun setupShowAdsBanner(mAdView: AdView) {
-        mActivity.setupShowAdsBanner(mAdView)
-    }
-
     protected inline fun <reified ClassActivity> baseStartActivity() {
         context?.startActivity(Intent(context, ClassActivity::class.java))
     }
@@ -62,13 +59,13 @@ abstract class BaseFragment : Fragment() {
             data: Model
     ) {
         val intent = Intent(context, ClassActivity::class.java)
-        val extraData = BaseHelper().baseToJson(data)
+        val extraData = Gson().toJson(data)
         intent.putExtra(extraKey, extraData)
         context?.startActivity(intent)
     }
 
     fun <Model> baseNewInstance(argsKey: String, data: Model) {
-        val argsData = BaseHelper().baseToJson(data)
+        val argsData = Gson().toJson(data)
         val bundleArgs = Bundle().apply {
             putString(argsKey, argsData)
         }
@@ -77,12 +74,11 @@ abstract class BaseFragment : Fragment() {
 
     protected inline fun <reified Model> baseGetInstance(argsKey: String): Model {
         val argsData = this.arguments?.getString(argsKey)
-        val instaceData = BaseHelper().baseFromJson<Model>(argsData)
-        return instaceData
+        return Gson().fromJson(argsData, Model::class.java)
     }
 
     protected fun checkArgument(argsKey: String): Boolean {
-        return arguments!!.containsKey(argsKey)
+        return requireArguments().containsKey(argsKey)
     }
 
     protected fun setupEventEmptyView(view: View, isEmpty: Boolean) {

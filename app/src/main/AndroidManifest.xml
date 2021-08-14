@@ -16,7 +16,8 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".view.ui.activity.MainActivity">
+            android:name=".mvvm.main.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,16 +26,17 @@
         </activity>
 
         <activity
-            android:name=".view.ui.activity.ScanningJunkActivity"
+            android:name=".mvvm.junk.JunkCleanerActivity"
             android:theme="@style/AppThemeNoActionBar" />
         
         <activity
-            android:name=".view.ui.activity.CPUScannerActivity"
+            android:name=".mvvm.scan.ScanCpuAppActivity"
             android:theme="@style/AppThemeNoActionBar" />
 
-        <receiver android:name=".service.AlarmBoosterBroadcastReceiver" />
-        <receiver android:name=".service.AlarmJunkBroadcastReceiver" />
-        <receiver android:name=".service.AppListenerBroadcastReceiver">
+        <receiver android:name=".service.CleanerBroadcastReceiver" />
+        <receiver android:name=".service.JunkBroadcastReceiver" />
+        <receiver android:name=".service.AppBroadcastReceiver"
+            android:exported="true">
             <intent-filter android:priority="100">
                 <action android:name="android.intent.action.PACKAGE_INSTALL" />
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
@@ -43,7 +45,8 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".service.PowerConnectedBroadcastReceiver">
+        <receiver android:name=".service.PowerConnectedBroadcastReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
             </intent-filter>
