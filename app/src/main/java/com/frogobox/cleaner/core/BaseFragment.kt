@@ -10,8 +10,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.frogobox.admob.core.FrogoAdmob
 import com.frogobox.cleaner.R
-import com.frogobox.frogosdk.core.FrogoFragment
+import com.frogobox.sdk.core.FrogoFragment
 import com.google.android.gms.ads.AdView
 import com.google.gson.Gson
 
@@ -34,11 +35,20 @@ import com.google.gson.Gson
  */
 abstract class BaseFragment<VB : ViewBinding> : FrogoFragment<VB>() {
 
-    lateinit var mActivity: BaseActivity<*>
+    protected lateinit var mActivity: BaseActivity<*>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivity = (activity as BaseActivity<*>)
+    }
+
+    protected fun setupShowAdsBanner(mAdView: AdView) {
+        FrogoAdmob.Banner.setupBanner(mAdView)
+        FrogoAdmob.Banner.showBanner(mAdView)
+    }
+
+    protected fun setupShowAdsInterstitial() {
+        FrogoAdmob.Interstitial.showInterstitial(mActivity)
     }
 
     protected fun showCustomToast(message: String) {

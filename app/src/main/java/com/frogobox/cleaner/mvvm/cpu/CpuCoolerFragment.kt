@@ -63,7 +63,7 @@ class CpuCoolerFragment : BaseFragment<FragmentCpuCoolerBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentCpuCoolerBinding {
         return FragmentCpuCoolerBinding.inflate(inflater, container, false)
     }

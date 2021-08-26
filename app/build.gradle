@@ -6,31 +6,6 @@ plugins {
 
 android {
 
-    // Version Project
-    def versionMajor = 1
-    def versionMinor = 0
-    def versionPatch = 0
-
-    def packageDomain = "com"
-    def packageAccount = "frogobox"
-    def packageProject = "cleaner"
-
-    // Signing Release Key Store
-    def projectJksStoreFile = "frogoboxdev.jks"
-    def projectJksStorePassword = "cronoclez"
-    def projectJksKeyAlias = "frogobox"
-    def projectJksKeyPassword = "xeonranger"
-
-    def projectVersionCode = (versionMajor * 100) + (versionMinor * 10) + (versionPatch * 1)
-    def projectVersionName = "$versionMajor.$versionMinor.$versionPatch"
-    def projectPackageName = "$packageDomain.$packageAccount.$packageProject"
-
-    // Declaration app name
-    def nameApp = "Cleaner"
-
-    // Declaration apk / aab name
-    def nameAPK = nameApp.toLowerCase().replace(" ", "-")
-
     // Declaration admob id for release
     def releaseAdmobPublisherId = ""
     def releaseAdmobBanner = ""
@@ -40,28 +15,15 @@ android {
     def releaseAdmobNativeAdvanced = ""
     def releaseAdmobNativeAdvancedVideo = ""
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-
-    buildFeatures {
-         viewBinding = true
-    }
-
-    compileSdk 31
-    buildToolsVersion "30.0.3"
+    compileSdk projectCompileSdk
 
     defaultConfig {
         applicationId projectPackageName
-        minSdkVersion 21
-        targetSdkVersion 31
+        minSdk projectMinSdk
+        targetSdk projectTargetSdk
         versionCode projectVersionCode
         versionName projectVersionName
+
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -141,6 +103,19 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
 }
 
 dependencies {
@@ -159,14 +134,14 @@ dependencies {
     implementation 'com.github.bmarrdev:android-DecoView-charting:v1.2'
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 
-    implementation 'com.github.amirisback:frogo-recycler-view:3.8.1'
-    implementation 'com.github.amirisback:frogo-log:2.0.2'
-    implementation 'com.github.amirisback:frogo-ui-kit:2.1.0'
-    implementation 'com.github.amirisback:frogo-notification:1.0.5'
-    implementation 'com.github.amirisback:frogo-admob:4.0.6'
+    implementation 'com.github.amirisback:frogo-recycler-view:3.8.5'
+    implementation 'com.github.amirisback:frogo-log:2.0.4'
+    implementation 'com.github.amirisback:frogo-notification:1.0.7'
+    implementation 'com.github.amirisback:frogo-admob:4.1.1'
 
-    implementation 'com.github.frogobox:frogo-android-sdk:1.0.6'
-    implementation 'com.github.frogobox:frogo-consume-api:1.0.1'
+    implementation 'com.github.frogobox:frogo-android-sdk:2.0.2'
+    implementation 'com.github.frogobox:frogo-android-ui-kit:1.0.4'
+    implementation 'com.github.frogobox:frogo-consume-api:1.0.5'
 
     implementation 'com.zys:brokenview:1.0.3'
     implementation 'com.skyfishjy.ripplebackground:library:1.0.1'

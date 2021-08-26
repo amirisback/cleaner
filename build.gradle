@@ -3,6 +3,36 @@
 buildscript {
 
     ext {
+
+        // Declaration app name
+        nameApp = "Cleaner"
+
+        // Declaration apk / aab name
+        nameAPK = nameApp.toLowerCase().replace(" ", "-")
+
+        // Version Project
+        versionMajor = 1
+        versionMinor = 0
+        versionPatch = 0
+
+        packageDomain = "com"
+        packageAccount = "frogobox"
+        packageProject = "cleaner"
+
+        projectCompileSdk = 31
+        projectMinSdk = 21
+        projectTargetSdk = projectCompileSdk
+
+        projectVersionCode = (versionMajor * 100) + (versionMinor * 10) + (versionPatch * 1)
+        projectVersionName = "$versionMajor.$versionMinor.$versionPatch"
+        projectPackageName = "$packageDomain.$packageAccount.$packageProject"
+
+        // Signing Release Key Store
+        projectJksStoreFile = "frogoboxdev.jks"
+        projectJksStorePassword = "cronoclez"
+        projectJksKeyAlias = "frogobox"
+        projectJksKeyPassword = "xeonranger"
+
         kotlin_version = '1.5.21'
         koin_version = "3.1.1"
         room_version = "2.3.0"
@@ -18,7 +48,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0'
+        classpath 'com.android.tools.build:gradle:7.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong

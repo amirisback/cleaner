@@ -67,7 +67,7 @@ class CleanerFragment : BaseFragment<FragmentChargeBoosterBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentChargeBoosterBinding {
         return FragmentChargeBoosterBinding.inflate(inflater, container, false)
     }
@@ -239,7 +239,7 @@ class CleanerFragment : BaseFragment<FragmentChargeBoosterBinding>() {
     }
 
     private fun dynamicOptimzingEventEnd() {
-        mActivity.setupShowAdsInterstitial()
+        setupShowAdsInterstitial()
         binding.apply {
             tvFound.text = "Found"
             tvStorage.text = "Storage"

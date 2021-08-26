@@ -7,8 +7,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.viewbinding.ViewBinding
+import com.frogobox.admob.core.FrogoAdmob
+import com.frogobox.admob.core.IFrogoAdmob
 import com.frogobox.cleaner.R
-import com.frogobox.frogosdk.core.FrogoActivity
+import com.frogobox.sdk.core.FrogoActivity
+import com.google.android.gms.ads.AdView
 
 
 /**
@@ -39,6 +42,29 @@ abstract class BaseActivity<VB: ViewBinding> : FrogoActivity<VB>() {
         setupAdsPublisher(getString(R.string.admob_publisher_id))
         setupAdsBanner(getString(R.string.admob_banner))
         setupAdsInterstitial(getString(R.string.admob_interstitial))
+    }
+
+    private fun setupAdsPublisher(mPublisherId: String) {
+        FrogoAdmob.setupPublisherID(mPublisherId)
+        FrogoAdmob.Publisher.setupPublisher(this)
+    }
+
+    private fun setupAdsBanner(mAdUnitId: String) {
+        FrogoAdmob.setupBannerAdUnitID(mAdUnitId)
+    }
+
+    private fun setupAdsInterstitial(mAdUnitId: String) {
+        FrogoAdmob.setupInterstialAdUnitID(mAdUnitId)
+        FrogoAdmob.Interstitial.setupInterstitial(this)
+    }
+
+    protected fun setupShowAdsBanner(mAdView: AdView) {
+        FrogoAdmob.Banner.setupBanner(mAdView)
+        FrogoAdmob.Banner.showBanner(mAdView)
+    }
+
+    protected fun setupShowAdsInterstitial() {
+        FrogoAdmob.Interstitial.showInterstitial(this)
     }
 
     protected fun setupNoLimitStatBar() {

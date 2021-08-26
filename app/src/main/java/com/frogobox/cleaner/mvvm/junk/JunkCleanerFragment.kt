@@ -46,7 +46,7 @@ class JunkCleanerFragment : BaseFragment<FragmentJunkCleanerBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentJunkCleanerBinding {
         return FragmentJunkCleanerBinding.inflate(inflater, container, false)
     }
